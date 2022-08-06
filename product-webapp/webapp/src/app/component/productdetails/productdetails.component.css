@@ -1,0 +1,19 @@
+
+
+
+.container1{
+    background-color: aqua;
+    width: 15rem;
+    margin-top: 10rem;
+}
+
+.container2{
+   margin-left: 16rem;
+   margin-top: -14rem;
+}
+
+.container3{
+    margin-left: 35rem;
+    background-color: blueviolet;
+    margin-top: -14rem;
+}
