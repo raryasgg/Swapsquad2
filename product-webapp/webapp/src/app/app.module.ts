@@ -7,12 +7,16 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RegisterProductComponent } from './component/register-product/register-product.component';
 import { MaterialModule } from './component/register-product/module/material/material.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { Material1Module } from './component/productdetails/material1/material1.module';
+import { ProductdetailsComponent } from './component/productdetails/productdetails.component';
+
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    RegisterProductComponent
+    RegisterProductComponent,
+    ProductdetailsComponent
   ],
   imports: [
     BrowserModule,
@@ -20,7 +24,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     BrowserAnimationsModule,
     MaterialModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    Material1Module
+
   ],
   providers: [],
   bootstrap: [AppComponent]
