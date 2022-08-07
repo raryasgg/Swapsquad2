@@ -1,19 +1,90 @@
-
-
-
-.container1{
-    background-color: aqua;
-    width: 15rem;
-    margin-top: 10rem;
+body{
+    
+    /* background: goldenrod; */
 }
 
-.container2{
-   margin-left: 16rem;
-   margin-top: -14rem;
+.main-content{
+    margin-top:1rem;
 }
 
-.container3{
-    margin-left: 35rem;
-    background-color: blueviolet;
-    margin-top: -14rem;
+h1{
+    font-size: 3rem;
+    margin-top: 1rem;
 }
+
+p{
+    padding-left: 0.25rem;
+}
+
+.post-date{
+    display: flex;
+    justify-content: right;
+}
+
+img{
+    border-radius: 4px;
+}
+
+.user-profile-box{
+    border: 1px solid black;
+    margin-top: 3rem;
+    border-radius: 3px;
+}
+
+.user-profile-box-review{
+    border: 1px solid black;
+    margin-top: 1rem;
+    border-radius: 3px;
+}
+
+.preference{
+    display: flex;
+    align-items: center;
+    /* border: 1px solid black; */
+    height: 3rem;
+    border-radius: 6px;
+    margin-top: 2rem;
+    padding-top: 0.5rem;
+    background: #E7EEE7
+
+    
+}
+
+
+.image-scroll-box{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid black;
+    height: 14rem;
+    width: 5rem;
+    border-radius: 6px;
+    margin-top: 2rem;
+    padding-top: 0.5rem;
+   overflow-x: hidden;
+    /* background: rgb(212, 207, 207); */
+    
+}
+
+.lft-scroll-box{
+    display: flex;
+    justify-content: center;
+}
+
+table {
+    border-collapse: separate;
+    border-spacing: 0 10px;
+  }
+
+  .preference-chip{
+    border: 1.5px solid black;
+    height: 1.5rem;
+    margin-bottom: 8px;
+    margin-left: 1rem;
+  }
+
+  .description-text-box{
+    border: 0.5px solid black;
+    margin-top: 4rem;
+    border-radius: 6px;
+  }
