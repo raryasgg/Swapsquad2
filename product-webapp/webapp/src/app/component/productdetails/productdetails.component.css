@@ -1,19 +1,38 @@
 
 
 
-.container1{
-    background-color: aqua;
+.container{
+    
     width: 15rem;
     margin-top: 10rem;
+    margin-left: 5rem;
+    
 }
 
-.container2{
-   margin-left: 16rem;
-   margin-top: -14rem;
+.material-icons-user{
+    display: inline;
 }
-
-.container3{
-    margin-left: 35rem;
+.container1{
+    margin-left: 3rem;
+    width: 20rem;
+}
+mat-raised button{
+    float:left;
+}
+.scroll-ele{
+    overflow-y: scroll;
+    width: 50rem;
+    margin-left: 25rem;
+    margin-top: -25rem;
     background-color: blueviolet;
-    margin-top: -14rem;
+}
+.container4{
+    margin-top: 3rem;
+    margin-left: 3rem;
+    width: 20rem;
+    
+}
+.container5{
+    margin-top: -2rem;
+    display: inline;
 }

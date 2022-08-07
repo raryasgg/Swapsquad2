@@ -5,20 +5,22 @@ import {MatGridListModule} from '@angular/material/grid-list';
 import {MatIconModule} from '@angular/material/icon';
 import {MatButtonToggleModule} from '@angular/material/button-toggle';
 import {MatCheckboxModule} from '@angular/material/checkbox';
-const MaterialComponents=[
+import {MatProgressBarModule} from '@angular/material/progress-bar';
+const Material1Components=[
   MatButtonModule,
   MatCardModule,
   MatGridListModule,
   MatIconModule,
   MatButtonToggleModule,
-  MatCheckboxModule
+  MatCheckboxModule,
+  MatProgressBarModule
   
 
 ]
 
 @NgModule({
 
-  imports: [MaterialComponents],
-  exports:[MaterialComponents]
+  imports: [Material1Components],
+  exports:[Material1Components]
 })
 export class Material1Module { }
