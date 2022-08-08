@@ -76,9 +76,9 @@ public class ProductController {
 	}
 	
 	@PostMapping("/product/add")
-	public Product createproducts(@RequestParam(value="ac") String abc, @RequestParam(value="file") MultipartFile file) throws IOException  {
+	public Product createproducts(@RequestParam(value="str") String str, @RequestParam(value="file") MultipartFile file) throws IOException  {
 		ObjectMapper objectMapper = new ObjectMapper();
-		Product prod = objectMapper.readValue(abc,Product.class);
+		Product prod = objectMapper.readValue(str,Product.class);
 		prod.setPid(sequenceGeneratorService.generateSequence(Product.SEQUENCE_NAME));
 		prod.setImage(file.getBytes());
 		
