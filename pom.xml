@@ -27,7 +27,11 @@
         <module>api-gateway</module>
         <module>product-webapp</module>
         <module>aggregator</module>
+<<<<<<< HEAD
         <module>user-service</module>
+=======
+        <module>recommendation-service</module>
+>>>>>>> 1187ab91b12d8342c954442f8a0883132bba7554
     </modules>
 
     <dependencies>
