@@ -24,6 +24,7 @@ import com.stackroute.productservice.model.Product;
 import com.stackroute.productservice.reprository.ProductRepository;
 
 import com.stackroute.productservice.service.ProductService;
+import com.stackroute.productservice.service.ProductServiceImpl;
 import com.stackroute.productservice.service.SequenceGeneratorService;
 
 @RestController
@@ -34,7 +35,7 @@ public class ProductController {
 	private ProductRepository prepository;
 	
 	@Autowired
-	private ProductService pservice;
+	private ProductServiceImpl pservice;
 	
 	@Autowired
 	private SequenceGeneratorService sequenceGeneratorService;
