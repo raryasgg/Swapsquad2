@@ -9,7 +9,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatChipsModule} from '@angular/material/chips';
 
-const MaterialComponents=[
+const MaterialComponents = [
   MatButtonModule,
   MatCardModule,
   MatGridListModule,
@@ -20,11 +20,11 @@ const MaterialComponents=[
   MatPaginatorModule,
   MatChipsModule
 
-]
+];
 
 @NgModule({
 
   imports: [MaterialComponents],
-  exports:[MaterialComponents]
+  exports: [MaterialComponents]
 })
 export class Material1Module { }
