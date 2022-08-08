@@ -1,7 +1,7 @@
 <body>
   <mat-horizontal-stepper class="body">
 
-    <!-- Step 1 start here-->
+    <!-- ===================Step 1 start here======================== -->
 
     <mat-step label="Step 1" state="phone">
 
@@ -33,21 +33,23 @@
                 <mat-form-field class="col-md-3">
                   <mat-label>Select</mat-label>
                   <mat-select>
+                    <div (click)="show(1)">
                     <mat-option value="one">Mobile, Tablet & Accessories</mat-option>
                     <mat-option value="two">Cars & Bikes</mat-option>
                     <mat-option value="three">Books & Sports</mat-option>
                     <mat-option value="four">Pets & Pet Care</mat-option>
                     <mat-option value="five">Electronics & Appliances</mat-option>
                     <mat-option value="six">Home & Life Styles</mat-option>
-                    <mat-option value="seven">Others</mat-option>
+                  </div>
+                    <mat-option value="seven" (click)="show(2)">Others</mat-option>
                   </mat-select>
                 </mat-form-field>
                 <div class="col-lg-1 col-md-1 col-sm-1 col-1"></div>
 
-                <label class="col-md-2 labelname" >If Other</label>
-                <mat-form-field class="col-md-3">
+                <label class="col-md-2 labelname" *ngIf="othercatergory">If Other</label>
+                <mat-form-field class="col-md-3" *ngIf="othercatergory">
                   <mat-label>Any</mat-label>
-                  <input matInput/>
+                  <input matInput />
                 </mat-form-field>
 
                 <div class="col-md-1"></div>
@@ -86,44 +88,49 @@
             </form>
           </mat-card>
         </div>
+        <div class="col-lg-1 col-md-1 col-sm-1 col-1"></div>
       </div>
-      <div class="col-md-1"></div>
-      <div class="row">
-        <div class="col-md-1"></div>
-        <div class="col-md-10 step-one-next-btn">
-          <button mat-raised-button matStepperNext color="primary">Next</button>
-        </div>
-        <div class="col-md-1"></div>
-      </div>
-
-    </mat-step>
-    <!-- Step 1 end here-->
-
-    <!-- Step 2 start here-->
-    <mat-step label="Step 2" state="chat">
 
       <!-- For Photo Update -->
       <div class="row">
-        <div class="col-md-1"></div>
-        <div class="col-md-10">
+        <div class="col-lg-1 col-md-1 col-sm-1 col-1"></div>
+        <div class="col-lg-10 col-md-10 col-sm-10 col-10">
 
           <mat-card class="step3-mat-custom-card">
             <div class="card-header step3-card-custom-header col-md-2">
               <!-- <h1 class="card-title card-category">Register Your Product</h1> -->
               <p class="card-category card-title h6 step3-header-card-text">Upload Photos</p>
             </div>
-
-            
-
-      
           </mat-card>
         </div>
+        <div class="col-lg-1 col-md-1 col-sm-1 col-1"></div>
       </div>
+      <!-- Button setion -->
+      <div class="row">
+        <div class="col-lg-1 col-md-1 col-sm-1 col-1"></div>
+        <div class="row">
+          <div class="col-md-1"></div>
+          <div class="col-lg-10 col-md-10 col-sm-10 col-10 step-one-next-btn">
+            <button mat-raised-button matStepperNext color="primary">Next</button>
+          </div>
+          <div class="col-md-1"></div>
+        </div>
+        <div class="col-lg-1 col-md-1 col-sm-1 col-1"></div>
+      </div>
+    </mat-step>
+
+    <!-- ===================Step 1 ends here======================== -->
+
+    <!-- ===================Step 2 start here======================== -->
+
+    <mat-step label="Step 2" state="chat">
+
+
 
       <!-- For Exchange Mode  -->
       <div class="row">
-        <div class="col-md-1"></div>
-        <div class="col-md-10">
+        <div class="col-lg-1 col-md-1 col-sm-1 col-1"></div>
+        <div class="col-lg-10 col-md-10 col-sm-10 col-10">
 
           <mat-card class="step3-mat-custom-card">
             <div class="card-header step3-card-custom-header col-md-2">
@@ -133,54 +140,57 @@
 
             <form class="form-horizontal horizontal-card-form">
               <div class="row">
-                <label class="col-md-3 step2-labelname">Exchange Mode</label>
+                <label class="col-md-2 step2-labelname">Exchange Mode</label>
                 <div class="col-md-1"></div>
-                <mat-checkbox class="example-margin col-md-2">Coin</mat-checkbox>
-                <mat-checkbox class="example-margin col-md-2">Exchange</mat-checkbox>
-                <mat-checkbox class="example-margin col-md-2">Both</mat-checkbox>
+                <mat-radio-group aria-label="Select an option" class="col-md-7">
+                  <mat-radio-button value="1" class="col-md-4" (click)="text(0)">
+
+                    <i class="fa-solid fa-coins" style="margin-right: 0.5rem; margin-left: 0.5rem;"></i>
+                    Coin
+                  </mat-radio-button>
+                  <mat-radio-button value="2" class="col-md-4" (click)="text(1)">
+                    <i class="fa-solid fa-right-left" style="margin-right: 0.5rem; margin-left: 0.5rem;"></i>
+                    Exchange
+                  </mat-radio-button>
+                  <mat-radio-button value="3" class="col-md-4" (click)="text(2)">
+                    <i class="fa-solid fa-coins" style="margin-right: 0.5rem; margin-left: 0.5rem;"></i>
+                    Both
+                    <i class="fa-solid fa-right-left" style="margin-left: 0.5rem;"></i>
+                  </mat-radio-button>
+                </mat-radio-group>
+                <div class="col-md-2"></div>
               </div>
 
               <div class="row" style="margin-top: 1rem;">
-                <label class="col-md-2 labelname">Coin</label>
-                <mat-form-field class="col-md-3">
+                <label class="col-md-2 labelname" *ngIf="coin">Coin</label>
+                <mat-form-field class="col-md-3" *ngIf="coin">
                   <mat-label>Amount</mat-label>
                   <input matInput />
                 </mat-form-field>
-              </div>
 
-              <div class="row">
-                <label class="col-md-2 labelname">Preference</label>
-                <mat-form-field class="col-md-3">
+                <div class="col-md-1" *ngIf="blankspace"></div>
+
+                <label class="col-md-2 labelname" *ngIf="preference">Preference</label>
+                <mat-form-field class="col-md-3" *ngIf="preference">
                   <mat-label></mat-label>
                   <input matInput />
                 </mat-form-field>
+
+                <div class="col-md-1"></div>
               </div>
             </form>
 
-      
+
           </mat-card>
         </div>
+        <div class="col-lg-1 col-md-1 col-sm-1 col-1"></div>
       </div>
 
-    
+      <!-- User Login Details  -->
 
       <div class="row">
-        <div class="col-md-1"></div>
-        <div class="col-md-5 step-one-back-btn">
-          <button mat-raised-button matStepperPrevious color="primary">Back</button>
-        </div>
-        <div class="col-md-5 step-one-next-btn">
-          <button mat-raised-button matStepperNext color="primary">Next</button>
-        </div>
-        <div class="col-md-1"></div>
-      </div>
-    </mat-step>
-    <!-- Step 2 start here-->
-    <!-- Step 3 start here-->
-    <mat-step label="Step 3">
-      <div class="row">
-        <div class="col-md-1"></div>
-        <div class="col-md-10">
+        <div class="col-lg-1 col-md-1 col-sm-1 col-1"></div>
+        <div class="col-lg-10 col-md-10 col-sm-10 col-10">
 
           <mat-card class="step3-mat-custom-card">
             <div class="card-header step3-card-custom-header col-md-2">
@@ -190,7 +200,6 @@
 
             <form class="form-horizontal horizontal-card-form">
               <div class="row">
-                <div class="col-md-0"></div>
                 <label class="col-md-2 labelname">Confirm Email</label>
 
                 <mat-form-field class="col-md-3">
@@ -211,27 +220,21 @@
             </form>
           </mat-card>
         </div>
+        <div class="col-lg-1 col-md-1 col-sm-1 col-1"></div>
       </div>
+      <!-- Button setion -->
       <div class="row">
-        <div class="col-md-1"></div>
-        <div class="col-md-5 step-one-back-btn">
+        <div class="col-lg-1 col-md-1 col-sm-1 col-1"></div>
+        <div class="col-lg-5 col-md-5 col-sm-5 col-5 step-one-back-btn">
           <button mat-raised-button matStepperPrevious color="primary">Back</button>
         </div>
-        <div class="col-md-5 step-one-next-btn">
+        <div class="col-lg-5 col-md-5 col-sm-5 col-5 step-one-next-btn">
           <button mat-raised-button matStepperNext style="background: #43DB52;">Finish</button>
         </div>
-        <div class="col-md-1"></div>
+        <div class="col-lg-1 col-md-1 col-sm-1 col-1"></div>
       </div>
     </mat-step>
-    <!-- Step 3 start here-->
+    <!-- ===================Step 2 ends here======================== -->
 
-
-    <!-- Icon overrides. -->
-    <ng-template matStepperIcon="phone">
-      <mat-icon>call_end</mat-icon>
-    </ng-template>
-    <ng-template matStepperIcon="chat">
-      <mat-icon>forum</mat-icon>
-    </ng-template>
   </mat-horizontal-stepper>
 </body>
