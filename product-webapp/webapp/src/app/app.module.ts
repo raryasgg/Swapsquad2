@@ -5,9 +5,11 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RegisterProductComponent } from './component/register-product/register-product.component';
-import { ProductdetailsComponent } from './component/productdetails/productdetails.component';
 import { MaterialModule } from './component/register-product/module/material/material.module';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Material1Module } from './component/productdetails/material1/material1.module';
+import { ProductdetailsComponent } from './component/productdetails/productdetails.component';
+
 
 
 @NgModule({
@@ -21,7 +23,10 @@ import { Material1Module } from './component/productdetails/material1/material1.
     AppRoutingModule,
     BrowserAnimationsModule,
     MaterialModule,
+    FormsModule,
+    ReactiveFormsModule,
     Material1Module
+
   ],
   providers: [],
   bootstrap: [AppComponent]
