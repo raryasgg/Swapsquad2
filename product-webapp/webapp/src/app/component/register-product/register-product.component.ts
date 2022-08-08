@@ -10,19 +10,14 @@ export class RegisterProductComponent implements OnInit {
 
   firstFormGroup: FormGroup;
   secondFormGroup: FormGroup;
-  
+  constructor(private formBuilder: FormBuilder) {}
 
-  constructor(private _formBuilder: FormBuilder) {}
-
-  ngOnInit() {
-    this.firstFormGroup = this._formBuilder.group({
+  ngOnInit(): void {
+    this.firstFormGroup = this.formBuilder.group({
       firstCtrl: ['', Validators.required],
     });
-    this.secondFormGroup = this._formBuilder.group({
+    this.secondFormGroup = this.formBuilder.group({
       secondCtrl: ['', Validators.required],
     });
   }
-
- 
-
 }
