@@ -1,0 +1,87 @@
+.body{
+     position: relative;
+     background: #F0ECEC;
+}
+body{
+  position: relative;
+  background: #F0ECEC;
+}
+
+.example-form {
+    
+    width: 100%;
+  }
+  
+  .example-full-width {
+    width: 100%;
+  }
+  
+  td {
+    padding-right: 8px;
+  }
+.row{
+    display: flex;
+}
+.labelname{
+    display: flex;
+    justify-content: right;
+    padding-top: 1rem;
+   
+}
+
+.step2-labelname{
+  display: flex;
+  justify-content: right;
+}
+.card-custom-header{
+  margin-top: -35px !important ;
+  background-color: #F24726;
+  border-radius: 6px;
+  display: flex;
+  justify-content: center;  
+}
+
+.step3-card-custom-header{
+  margin-top: -27px !important ;
+  background-color:#CCD5D5;
+  border-radius: 6px;
+  display: flex;
+  justify-content: center;  
+}
+
+.header-card-text{
+  padding-top: 0rem;
+  margin-bottom: -1px;
+  color: white;
+}
+
+.step3-header-card-text{
+  padding-top: 0rem;
+  margin-bottom: -1px;
+  color: black;
+}
+
+.horizontal-card-form{
+  margin-top: 2rem;
+}
+
+.step-one-next-btn{
+  display: flex;
+  justify-content: right;
+  margin-top: 1.5rem;
+}
+
+.step-one-back-btn{
+  display: flex;
+  justify-content: left;
+  margin-top: 1.5rem;
+}
+
+.mat-custom-card{
+  margin-top: 25px;
+}
+
+.step3-mat-custom-card{
+  margin-top: 25px;
+}
+
