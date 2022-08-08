@@ -11,6 +11,7 @@ import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatChipsModule} from '@angular/material/chips';
 import {MatRadioModule} from '@angular/material/radio';
 
+
 const Material1Components = [
  MatButtonModule,
   MatCardModule,
@@ -21,11 +22,16 @@ const Material1Components = [
   MatProgressBarModule,
   FlexLayoutModule,
   MatPaginatorModule,
+
   MatChipsModule,
   MatRadioModule
 ];
 @NgModule({
   imports: [Material1Components],
   exports: [Material1Components]
+
+
 })
+
+
 export class Material1Module { }
