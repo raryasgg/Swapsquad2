@@ -27,6 +27,7 @@
         <module>api-gateway</module>
         <module>product-webapp</module>
         <module>aggregator</module>
+        <module>user-service</module>
     </modules>
 
     <dependencies>
