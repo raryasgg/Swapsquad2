@@ -1,4 +1,3 @@
-
 import { NgModule } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatRippleModule } from '@angular/material/core';
@@ -12,6 +11,7 @@ import { MatNativeDateModule } from '@angular/material/core';
 import {MatIconModule} from '@angular/material/icon';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatChipsModule} from '@angular/material/chips';
+import {MatRadioModule} from '@angular/material/radio';
 
 
 const MaterialComponents = [
@@ -26,7 +26,9 @@ const MaterialComponents = [
   MatNativeDateModule,
   MatIconModule,
   MatCheckboxModule,
-  MatChipsModule
+  MatChipsModule,
+  MatRadioModule,
+
 ];
 
 
