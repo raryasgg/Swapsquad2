@@ -1,7 +1,6 @@
-package com.stackroute.model;
+package com.stackroute.recommendationservice.model;
 
 import org.neo4j.ogm.annotation.NodeEntity;
-
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;

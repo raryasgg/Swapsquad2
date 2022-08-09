@@ -1,8 +1,7 @@
-package com.stackroute.model;
+package com.stackroute.recommendationservice.model;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.neo4j.core.schema.Node;
-
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -14,7 +13,7 @@ import lombok.NoArgsConstructor;
 
 public class IncomingProductData {
 	@Id 
-	private Integer productId;
+	private int productId;
 	private String productOwnerEmail;
 	private String productName;
 	private String state;
