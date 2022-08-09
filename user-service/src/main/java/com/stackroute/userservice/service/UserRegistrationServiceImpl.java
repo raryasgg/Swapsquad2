@@ -23,4 +23,28 @@ public class UserRegistrationServiceImpl implements UserRegistrationService{
 		}
 	}
 
+	public  UserRegistration getById(String emp) throws UserNotFoundException {
+    	Optional<UserRegistration> pro = repo.findById(emp);
+		if (pro.isPresent()) {
+			return pro.get();
+		} else {
+			throw new UserNotFoundException ();
+		}
+    }
+
+	@Override
+	public void deleteEmailById(String emp) {
+		// TODO Auto-generated method stub
+		repo.deleteById(emp);
+	}
+
+	@Override
+	public UserRegistration update(UserRegistration user) {
+		UserRegistration savedEmployee = repo.save(user);
+		return savedEmployee;
+	}
+
+
+		
+		
 }
