@@ -8,7 +8,7 @@ import { UserRegistration } from '../user-registration';
 })
 export class RegisterUserComponent implements OnInit {
 
-  user:UserRegistration =new UserRegistration();
+  user: UserRegistration = new UserRegistration();
  // errorMessage: String = "";
 
   constructor(private registerService: RegisterService) { }
@@ -16,7 +16,7 @@ export class RegisterUserComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  userRegister(){
+   userRegister(){
     
     console.log(this.user);
     if(this.user.firstname=="" || this.user.lastname=="" ||
