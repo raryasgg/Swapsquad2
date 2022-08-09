@@ -1,10 +1,10 @@
-import { Component, OnInit } from "@angular/core";
-import { FormBuilder, FormGroup, Validators } from "@angular/forms";
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
-  selector: "app-register-product",
-  templateUrl: "./register-product.component.html",
-  styleUrls: ["./register-product.component.css"],
+  selector: 'app-register-product',
+  templateUrl: './register-product.component.html',
+  styleUrls: ['./register-product.component.css'],
 })
 export class RegisterProductComponent implements OnInit {
   firstFormGroup: FormGroup;
@@ -13,22 +13,21 @@ export class RegisterProductComponent implements OnInit {
 
   ngOnInit(): void {
     this.firstFormGroup = this.formBuilder.group({
-      firstCtrl: ["", Validators.required],
+      firstCtrl: ['', Validators.required],
     });
     this.secondFormGroup = this.formBuilder.group({
-      secondCtrl: ["", Validators.required],
+      secondCtrl: ['', Validators.required],
     });
   }
 
 // For adding the category
-  othercatergory: boolean = false;
-  show(x) {
-    if(x==1){
+  othercatergory = false;
+  show(x):void {
+    if(x===1){
       this.othercatergory = false;
-    }else if(x==2){
-      this.othercatergory = true
+    }else if( x===2 ){
+      this.othercatergory = true;
     }
-    
   }
 
 // for adding the coin and preference
