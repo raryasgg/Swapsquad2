@@ -1,12 +1,5 @@
 package com.stackroute.recommendationservice.service;
 
-import java.util.HashSet;
-import java.util.List;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Pageable;
-import org.springframework.stereotype.Service;
-
 import com.stackroute.recommendationservice.model.Category;
 import com.stackroute.recommendationservice.model.IncomingProductData;
 import com.stackroute.recommendationservice.model.Location;
@@ -14,10 +7,12 @@ import com.stackroute.recommendationservice.repository.CategoryRepository;
 import com.stackroute.recommendationservice.repository.LocationRepository;
 import com.stackroute.recommendationservice.repository.ProductDataRepository;
 import com.stackroute.recommendationservice.repository.UserRepository;
-
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
-
+import java.util.HashSet;
+import java.util.List;
 
 
 @Slf4j
@@ -41,6 +36,8 @@ public class RecommendationServiceImp implements RecommendationService {
         IncomingProductData data=repo.findById(productId).get();
       repo.delete(data);
     }
+
+
     @Override
 	public void createNode(IncomingProductData incomingData) {
 
@@ -60,22 +57,21 @@ public class RecommendationServiceImp implements RecommendationService {
     }
 
     @Override
-    public List<Category> getCategoryByProductIdAndCity(int productId, String city) {
-        List<Category> catdata=repo.getCategoryByProductIdAndCity(productId,city);
-        return catdata;
+    public HashSet<IncomingProductData> getProductRecommendationsByLocation(String city) {
+        HashSet<IncomingProductData> prod=repo.getProductRecommendationByLocation(city);
+        return prod;
     }
 
     @Override
-	public List<Category> getRecommendedCategory(String category) {
-		System.out.println("category in service:"+category);
-        List<Category> categoryList= categoryRepository.findAll();
-        return categoryList;
-	}
+    public HashSet<IncomingProductData> getProductRecommendationByCityAndCategory(String city, String category) {
+        HashSet<IncomingProductData> produ= repo.getProductRecommendationByCityAndCategory(city,category);
+        return produ;
+    }
 
     @Override
-    public HashSet<String> getProductRecommendationsByLocation(String city) {
-        HashSet<String> prod=repo.getProductRecommendationByLocation(city);
-        return prod;
+    public HashSet<IncomingProductData> getProductByCategory(String category) {
+        HashSet<IncomingProductData> catpo=repo.getProductByCategory(category);
+        return catpo;
     }
 }
 
