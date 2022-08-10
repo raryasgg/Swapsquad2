@@ -48,7 +48,7 @@ public class ProductServiceImpl implements ProductService {
     public List<Product> getAllUserAvailable(){
 		return repo.findAllByPstatus("AVAILABLE");
 	}
-    
+
     public Product setstatus(String abc){
     	Product ab = repo.findByPname(abc);
     	Status z = Status.NOTAVAILABLE;
