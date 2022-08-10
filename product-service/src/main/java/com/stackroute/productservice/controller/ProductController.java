@@ -9,7 +9,6 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-<<<<<<< HEAD
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -18,9 +17,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-=======
+
 import org.springframework.web.bind.annotation.*;
->>>>>>> b614eefdd8ee964d27f7bc0d21adfb74ac252701
+
 import org.springframework.web.multipart.MultipartFile;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
@@ -124,7 +123,7 @@ public class ProductController {
 		}
 	}
 	
-<<<<<<< HEAD
+
 //	@PutMapping("/update")
 //	public ResponseEntity<Product> updateProduct(@RequestBody Product prod){
 //		Product prodSaved = pservice.update(prod);
@@ -136,25 +135,25 @@ public class ProductController {
 		Product prodSaved;
 		try {
 			prodSaved = pservice.update(prod);
-			return new ResponseEntity<Product>(prodSaved,org.springframework.http.HttpStatus.OK);
+			return new ResponseEntity<Product>(prodSaved, HttpStatus.OK);
 		} catch (ProductNotFoundInRepository e) {
 			// TODO Auto-generated catch block
-			return new ResponseEntity("Product is not there so cant be updated",org.springframework.http.HttpStatus.OK);
+			return new ResponseEntity("Product is not there so cant be updated",HttpStatus.BAD_GATEWAY);
 		}
-		
-=======
-	@PostMapping("/product/add")
-	public Product createproducts(@RequestParam(value="str") String str, @RequestParam(value="file") MultipartFile file) throws IOException  {
-		ObjectMapper objectMapper = new ObjectMapper();
-		Product prod = objectMapper.readValue(str,Product.class);
-		prod.setPid(sequenceGeneratorService.generateSequence(Product.SEQUENCE_NAME));
-		prod.setImage(file.getBytes());
+	}	
 
-		prepository.save(prod);
-		return prod;
-
->>>>>>> b614eefdd8ee964d27f7bc0d21adfb74ac252701
-	}
+//	@PostMapping("/product/add")
+//	public Product createproducts(@RequestParam(value="str") String str, @RequestParam(value="file") MultipartFile file) throws IOException  {
+//		ObjectMapper objectMapper = new ObjectMapper();
+//		Product prod = objectMapper.readValue(str,Product.class);
+//		prod.setPid(sequenceGeneratorService.generateSequence(Product.SEQUENCE_NAME));
+//		prod.setImage(file.getBytes());
+//
+//		prepository.save(prod);
+//		return prod;
+//
+//
+//	}
 	
 //	@PostMapping("/product/add")
 //	public Product createproducts(@RequestParam(value="str") String str, @RequestParam(value="file") MultipartFile[] file) throws IOException  {
