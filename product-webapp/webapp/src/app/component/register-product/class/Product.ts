@@ -1,22 +1,27 @@
 
 export class Product {
     
-    // pcategory:"";
+    pcategory:"";
     pname?:String;
     desc?:String;
-    // pexchange:[String];
+    pdatepost?:String;
+    pexchange:String;
     pcoin?:Number;
+    exchangeList:[String];
     pemail?:String;
     plocation?:String;
+    
     // image:[byte];
     
 
 constructor(){
-    // this.pcategory="";
+    this.pcategory="";
     this.pname="";
     this.desc="";
-    // this.pexchange=[""];
+    this.pdatepost= "";
+    this.pexchange="";
     this.pcoin=0;
+    this.exchangeList=[""];
     this.pemail="";
     this.plocation="";
 }

@@ -1,6 +1,6 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, NgForm, Validators } from '@angular/forms';
+import { FormArray, FormBuilder, FormGroup, NgForm, Validators } from '@angular/forms';
 import { MatChipInputEvent } from '@angular/material/chips';
 import { DomSanitizer } from '@angular/platform-browser';
 import { FileHandle } from './class/file-handle';
@@ -24,20 +24,24 @@ export interface Fruit {
 export class RegisterProductComponent implements OnInit {
   firstFormGroup: FormGroup;
   secondFormGroup: FormGroup;
+  exchangeList: any;
+  form: FormGroup;
   constructor(private formBuilder: FormBuilder, private registerProductService: RegisterProductService,
-    private sanitizer: DomSanitizer
-  ) {
-
-
-    // 
-  }
+    private sanitizer: DomSanitizer, private fb: FormBuilder
+  ) { 
+   
+   }
 
 
   // for Product form
   productForm = new FormGroup({
+    pcategory:new FormControl(),
     pname: new FormControl(),
+    pdatepost: new FormControl(),
     desc: new FormControl(),
+    pexchange:new FormControl(),
     pcoin: new FormControl(),
+    exchangeList:new FormControl(),
     pemail: new FormControl(),
     plocation: new FormControl(),
   });
@@ -51,7 +55,7 @@ export class RegisterProductComponent implements OnInit {
       secondCtrl: ['', Validators.required],
     });
 
-
+    
   }
 
   onClickSubmitForm() {
@@ -87,7 +91,7 @@ export class RegisterProductComponent implements OnInit {
       this.blankspace = true;
     }
   }
-
+ 
   // for chips
   visible = true;
   selectable = true;
@@ -118,13 +122,15 @@ export class RegisterProductComponent implements OnInit {
       this.fruits.splice(index, 1);
     }
   }
+
   // end for chips
 
 
   registerProduct: RegisterProduct = {
     pemail: "",
     pname: "",
-    image: []
+    image: [],
+    controls: undefined
   }
 
   addProduct(registerProductForm: NgForm) {
@@ -180,18 +186,18 @@ export class RegisterProductComponent implements OnInit {
     this.registerProduct.image.splice(i, 1);
   }
 
-  // ====================>
-
-
-
-
-  // ====================>
-
-
-
+ 
 }
 
 
 
 
+
+function value(value: any) {
+  throw new Error('Function not implemented.');
+}
+
+function index(index: any, arg1: number) {
+  throw new Error('Function not implemented.');
+}
 

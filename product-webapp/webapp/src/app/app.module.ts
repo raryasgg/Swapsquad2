@@ -12,6 +12,15 @@ import { RegisterUserComponent } from './register-user/register-user.component';
 import {HttpClientModule} from '@angular/common/http';
 import { ProductDetailsService } from './component/productdetails/product-details.service';
 
+
+
+import { MatAutocompleteModule } from "@angular/material/autocomplete";
+import { MatChipsModule } from "@angular/material/chips";
+import { MatFormFieldModule } from "@angular/material/form-field";
+import { MatInputModule } from "@angular/material/input";
+
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -28,7 +37,13 @@ import { ProductDetailsService } from './component/productdetails/product-detail
     FormsModule,
     ReactiveFormsModule,
     Material1Module,
-    HttpClientModule
+    HttpClientModule,
+    
+    MatAutocompleteModule,
+    MatChipsModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatAutocompleteModule
 
   ],
   providers: [ProductDetailsService],
