@@ -9,16 +9,22 @@ import Swal from 'sweetalert2';
 })
 export class RegisterUserComponent implements OnInit {
 
+
   user:UserRegistration =new UserRegistration();
   errorMessage: String = "";
  emailPattern = new RegExp(/^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/);
  passwordPattern = new RegExp(/(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{5,10}/);
+
+ 
+ // errorMessage: String = "";
+
+
   constructor(private registerService: RegisterService) { }
 
   ngOnInit(): void {
   }
 
-  userRegister(){
+   userRegister(){
     
     console.log(this.user);
     if(

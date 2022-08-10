@@ -21,6 +21,35 @@ p{
     justify-content: right;
 }
 
+
+.container{
+    
+    width: 15rem;
+    margin-top: 10rem;
+    margin-left: 5rem;
+    
+}
+
+.material-icons-user{
+    display: inline;
+}
+.container1{
+    margin-left: 3rem;
+    width: 20rem;
+}
+mat-raised button{
+    float:left;
+}
+.scroll-ele{
+    overflow-y: scroll;
+    width: 50rem;
+    margin-left: 25rem;
+    margin-top: -25rem;
+    background-color: blueviolet;
+}
+
+
+
 img{
     border-radius: 4px;
 }
@@ -35,6 +64,7 @@ img{
     border: 1px solid black;
     margin-top: 1rem;
     border-radius: 3px;
+    width: 35rem;
 }
 
 .preference{
@@ -46,6 +76,7 @@ img{
     margin-top: 2rem;
     padding-top: 0.5rem;
     background: #E7EEE7
+    
 
     
 }
@@ -77,14 +108,16 @@ table {
   }
 
   .preference-chip{
-    border: 1.5px solid black;
-    height: 1.5rem;
-    margin-bottom: 8px;
-    margin-left: 1rem;
+    align-items: center;
+    margin-right: 1rem;
+    margin-top: -1rem;
   }
 
   .description-text-box{
     border: 0.5px solid black;
-    margin-top: 4rem;
+    margin-top: 1rem;
     border-radius: 6px;
+  }
+  .exchange-button{
+    margin-top: 1rem;
   }
