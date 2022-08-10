@@ -1,5 +1,6 @@
 package com.stackroute.recommendationservice.service;
 
+import com.stackroute.recommendationservice.exception.ProductNotFoundException;
 import com.stackroute.recommendationservice.model.Category;
 import com.stackroute.recommendationservice.model.IncomingProductData;
 import com.stackroute.recommendationservice.model.Location;
@@ -12,7 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.HashSet;
-import java.util.List;
+import java.util.Optional;
 
 
 @Slf4j
@@ -57,21 +58,37 @@ public class RecommendationServiceImp implements RecommendationService {
     }
 
     @Override
-    public HashSet<IncomingProductData> getProductRecommendationsByLocation(String city) {
+    public HashSet<IncomingProductData> getProductRecommendationsByLocation(String city) throws ProductNotFoundException{
         HashSet<IncomingProductData> prod=repo.getProductRecommendationByLocation(city);
-        return prod;
-    }
+        if(prod.isEmpty()){
+            throw new ProductNotFoundException();
+        }
+                else{
+                    return prod;
+            }
+        }
+
 
     @Override
-    public HashSet<IncomingProductData> getProductRecommendationByCityAndCategory(String city, String category) {
+    public HashSet<IncomingProductData> getProductRecommendationByCityAndCategory(String city, String category) throws ProductNotFoundException {
         HashSet<IncomingProductData> produ= repo.getProductRecommendationByCityAndCategory(city,category);
-        return produ;
+        if(produ.isEmpty()){
+            throw  new ProductNotFoundException();
+        }
+        else {
+            return produ;
+        }
     }
 
     @Override
-    public HashSet<IncomingProductData> getProductByCategory(String category) {
+    public HashSet<IncomingProductData> getProductByCategory(String category) throws ProductNotFoundException {
         HashSet<IncomingProductData> catpo=repo.getProductByCategory(category);
-        return catpo;
+        if(catpo.isEmpty()){
+            throw  new ProductNotFoundException();
+        }
+        else {
+            return catpo;
+        }
     }
 }
 

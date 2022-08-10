@@ -2,6 +2,7 @@ package com.stackroute.recommendationservice.repository;
 
 import com.stackroute.recommendationservice.model.Category;
 import com.stackroute.recommendationservice.model.IncomingProductData;
+import com.stackroute.recommendationservice.model.Location;
 import org.springframework.data.neo4j.repository.Neo4jRepository;
 import org.springframework.data.neo4j.repository.query.Query;
 import org.springframework.stereotype.Repository;
@@ -11,7 +12,8 @@ import java.util.List;
 
 @Repository
 public interface ProductDataRepository extends Neo4jRepository<IncomingProductData, Integer>  {
-	 @Query("MATCH (n:) {productId: $productId} DELETE DETACH n;")
+
+	@Query("MATCH (n:) {productId: $productId} DELETE DETACH n;")
 	 void deleteProductNode(int productId);
         @Query("MATCH (a:IncomingProductData{productId:$productId}),(b:Category{category:$category}) MERGE (a)-[r:category]->(b)")
 		public void createCategoryRelationshipWithProduct(int productId,String category);

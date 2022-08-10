@@ -1,14 +1,16 @@
 package com.stackroute.recommendationservice.controller;
 
 import com.stackroute.recommendationservice.model.IncomingProductData;
+import com.stackroute.recommendationservice.exception.ProductNotFoundException;
 import com.stackroute.recommendationservice.service.RecommendationService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.HashSet;
-
+@Slf4j
 @RestController
 public class RecommendationController {
     private RecommendationService recommendationService;
@@ -24,18 +26,28 @@ public class RecommendationController {
 
     @GetMapping("/recommend/{city}")
     public ResponseEntity<?> getProductRecommendationsByLocation(@PathVariable String city){
-        HashSet<IncomingProductData> recommendations = this.recommendationService.getProductRecommendationsByLocation(city);
-        return new ResponseEntity<>(recommendations, HttpStatus.OK);
+        try{
+            HashSet<IncomingProductData> recommendations = this.recommendationService.getProductRecommendationsByLocation(city);
+            return new ResponseEntity<>(recommendations, HttpStatus.OK);
+        }
+        catch (ProductNotFoundException e){
+            return new ResponseEntity("Product Not Exits",HttpStatus.CONFLICT);
+        }
     }
     @GetMapping("/recommendCategory")
     public ResponseEntity<?> getProductRecommendationByCityAndCategory(@RequestParam("city") String city, @RequestParam("category") String category){
-        System.out.println("City:category" +city+category);
-        HashSet<IncomingProductData> recommendations = this.recommendationService.getProductRecommendationByCityAndCategory(city,category);
-        return new ResponseEntity<>(recommendations, HttpStatus.OK);
+        log.debug("City:category" +city+category);
+        try {
+            HashSet<IncomingProductData> recommendations = this.recommendationService.getProductRecommendationByCityAndCategory(city, category);
+            return new ResponseEntity<>(recommendations, HttpStatus.OK);
+        }
+        catch (ProductNotFoundException e){
+            return new ResponseEntity("Product Not Exits",HttpStatus.CONFLICT);
+        }
     }
     @PostMapping("add")
     public ResponseEntity<?> addIncomingData(@RequestBody IncomingProductData incomingData){
-        System.out.println("data:"+incomingData);
+        log.debug("data:"+incomingData);
         this.recommendationService.createNode(incomingData);
         return new ResponseEntity<>("Added data to neo4j successfully!", HttpStatus.OK);
     }
@@ -46,8 +58,14 @@ public class RecommendationController {
     }
    @GetMapping("/Product")
     public  ResponseEntity<?> getProductByCategory(@RequestParam("category") String category){
-       System.out.println("category" +category);
+       log.debug("category" +category);
+       try{
        HashSet<IncomingProductData> recommendations= this.recommendationService.getProductByCategory(category);
        return new ResponseEntity<>(recommendations, HttpStatus.OK);
+   }
+       catch (ProductNotFoundException e)
+       {
+           return new ResponseEntity("Product Not Exits",HttpStatus.CONFLICT);
+       }
    }
 }
