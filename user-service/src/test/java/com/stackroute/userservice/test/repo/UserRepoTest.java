@@ -21,7 +21,7 @@ public class UserRepoTest {
 
 	    @Test
 	    public void givenNewUserWhenSavedThenReturnUser(){
-	    	UserRegistration user = new UserRegistration("hello@gmail.com","Welcome","English",24,"male",90607,"rt12");
+	    	UserRegistration user = new UserRegistration("hello@gmail.com","Welcome","English",24,"male",90607,"rt12","rt12");
 	    	UserRegistration adddeduser = Repository.save(user);
 	        assertEquals(user.getEmail(), adddeduser.getEmail(), "New User should be saved and the same should be returned");
 	    }
@@ -34,7 +34,7 @@ public class UserRepoTest {
 
 	    @Test
 	    public void givenValidUserIdThenReturnUserOptional(){
-	    	UserRegistration user = new UserRegistration("hello@gmail.com","Welcome","English",24,"male",90607,"rt12");
+	    	UserRegistration user = new UserRegistration("hello@gmail.com","Welcome","English",24,"male",90607,"rt12","rt12");
 	        Repository.save(user);
 	        assertTrue(Repository.findById("hello@gmail.com").isPresent());
 	    }
