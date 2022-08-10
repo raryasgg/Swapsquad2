@@ -11,7 +11,8 @@ import { MatNativeDateModule } from '@angular/material/core';
 import {MatIconModule} from '@angular/material/icon';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatChipsModule} from '@angular/material/chips';
-
+import {MatRadioModule} from '@angular/material/radio';
+import { ReactiveFormsModule } from '@angular/forms';  
 
 const MaterialComponents = [
   MatButtonModule,
@@ -25,13 +26,15 @@ const MaterialComponents = [
   MatNativeDateModule,
   MatIconModule,
   MatCheckboxModule,
-  MatChipsModule
+  MatChipsModule,
+  MatRadioModule,
+
 ];
 
 
 @NgModule({
   declarations: [],
-  imports: [MaterialComponents],
+  imports: [MaterialComponents,ReactiveFormsModule],
   exports: [MaterialComponents],
 
 })

@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, Observer } from 'rxjs';
 import { UserRegistration } from './user-registration';
+
 @Injectable({
   providedIn: 'root'
 })

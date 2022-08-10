@@ -1,6 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -11,7 +10,7 @@ import { Material1Module } from './component/productdetails/material1/material1.
 import { ProductdetailsComponent } from './component/productdetails/productdetails.component';
 import { RegisterUserComponent } from './register-user/register-user.component';
 import {HttpClientModule} from '@angular/common/http';
-
+import { ProductDetailsService } from './component/productdetails/product-details.service';
 
 @NgModule({
   declarations: [
@@ -20,6 +19,7 @@ import {HttpClientModule} from '@angular/common/http';
     ProductdetailsComponent,
     RegisterUserComponent
   ],
+  
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -31,7 +31,7 @@ import {HttpClientModule} from '@angular/common/http';
     HttpClientModule
 
   ],
-  providers: [],
+  providers: [ProductDetailsService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

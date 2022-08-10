@@ -86,6 +86,7 @@ public class ProductServiceImpl implements ProductService {
     	}
 		
 	}
+<<<<<<< HEAD
     
     public Product setstatus(int id) throws NoProductExistsInTheRepository{
     	Optional<Product> prod = repo.findById(id);
@@ -98,6 +99,14 @@ public class ProductServiceImpl implements ProductService {
 	    	Product savedprod = repo.save(as);
 			return savedprod;
 		}
+=======
+
+    public Product setstatus(String abc){
+    	Product ab = repo.findByPname(abc);
+    	Status z = Status.NOTAVAILABLE;
+    	ab.setPstatus(z);
+		return ab;
+>>>>>>> b614eefdd8ee964d27f7bc0d21adfb74ac252701
 	}
     
 //    public Product update(Product prod) {
