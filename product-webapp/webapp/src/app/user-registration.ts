@@ -7,6 +7,7 @@ export class UserRegistration {
   email:String;
   mobile:String;
   password:String;
+  cpassword:String;
   constructor() {
     this.firstname = "";
     this.lastname = "";
@@ -14,5 +15,6 @@ export class UserRegistration {
     this.gender = "";
     this.mobile = "";
     this.password = "";
+    this.cpassword="";
 }
 }

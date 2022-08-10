@@ -25,5 +25,6 @@ import lombok.Setter;
 		private String   gender;
 		private int  mobile;
 		private String  password;
+		private String  cpassword;
 		
 }

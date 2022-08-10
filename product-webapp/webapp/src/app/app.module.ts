@@ -11,7 +11,7 @@ import { Material1Module } from './component/productdetails/material1/material1.
 import { ProductdetailsComponent } from './component/productdetails/productdetails.component';
 import { RegisterUserComponent } from './register-user/register-user.component';
 import {HttpClientModule} from '@angular/common/http';
-
+import { Material3Module } from './register-user/material3/material3.module';
 
 @NgModule({
   declarations: [
@@ -28,7 +28,8 @@ import {HttpClientModule} from '@angular/common/http';
     FormsModule,
     ReactiveFormsModule,
     Material1Module,
-    HttpClientModule
+    HttpClientModule,
+    Material3Module
 
   ],
   providers: [],
