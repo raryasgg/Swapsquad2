@@ -30,7 +30,7 @@ public class UserRegistrationServiceImplTest {
 
     @Test
     public void givenValidUserIDThenShouldReturnUser() throws UserNotFoundException {
-    	UserRegistration user = new UserRegistration("hello@gmail.com","Welcome","English",24,"male",90607,"rt12");
+    	UserRegistration user = new UserRegistration("hello@gmail.com","Welcome","English",24,"male",90607,"rt12","rt12");
         Optional<UserRegistration> optionalUser = Optional.of(user);
         when(Repository.findById("hello@gmail.com")).thenReturn(optionalUser);
         UserRegistration retreivedUser = Service.getById("hello@gmail.com");
@@ -47,7 +47,7 @@ public class UserRegistrationServiceImplTest {
     
     @Test
     public void givenNewUserWhenSavedShouldReturnUser() throws UserAlreadyExistException {
-    	UserRegistration user = new UserRegistration("hello@gmail.com","Welcome","English",24,"male",90607,"rt12");
+    	UserRegistration user = new UserRegistration("hello@gmail.com","Welcome","English",24,"male",90607,"rt12","rt12");
         Optional<UserRegistration> optionalUser = Optional.empty();
         when(Repository.findById("hello@gmail.com")).thenReturn(optionalUser);
         UserRegistration addedUser = Service.addNew(user);
@@ -57,7 +57,7 @@ public class UserRegistrationServiceImplTest {
 
     @Test
     public void givenDuplicateUserWhenSavedShouldThrowException() throws UserAlreadyExistException {
-    	UserRegistration user = new UserRegistration("hello@gmail.com","Welcome","English",24,"male",90607,"rt12");
+    	UserRegistration user = new UserRegistration("hello@gmail.com","Welcome","English",24,"male",90607,"rt12","rt12");
         Optional<UserRegistration> optionalUser = Optional.of(user);
         when(Repository.findById("hello@gmail.com")).thenReturn(optionalUser);
         assertThrows(UserAlreadyExistException.class,()->{
