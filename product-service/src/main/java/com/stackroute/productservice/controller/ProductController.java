@@ -39,27 +39,35 @@ import com.stackroute.productservice.service.ProductService;
 import com.stackroute.productservice.service.ProductServiceImpl;
 import com.stackroute.productservice.service.SequenceGeneratorService;
 
+import lombok.extern.slf4j.Slf4j;
+
 
 @RestController
 @RequestMapping("/api/v1")
+@Slf4j
+//@CrossOrigin(origins = "http://localhost:4200")
 public class ProductController {
 	
-	@Autowired
 	private ProductRepository prepository;
-	
-	@Autowired
 	private ProductServiceImpl pservice;
+	private SequenceGeneratorService sequenceGeneratorService;
 	
 	@Autowired
-	private SequenceGeneratorService sequenceGeneratorService;
+	public ProductController(ProductRepository prepository,ProductServiceImpl pservice,SequenceGeneratorService sequenceGeneratorService) {
+		log.debug("Inside the ProductController -- constructor");
+		this.prepository=prepository;
+		this.pservice=pservice;
+		this.sequenceGeneratorService=sequenceGeneratorService;
+	}
 	
 	
 	@GetMapping("/product")
 	public ResponseEntity<List<Product>> getAllProducts(){
 		try {
+			log.debug("Inside the ProductController -- getAllProducts methods");
 			return new ResponseEntity<List<Product>>(pservice.findallrepository(), HttpStatus.CREATED); 
 		} catch (NoProductExistsInTheRepository e) {
-			// TODO Auto-generated catch block
+			log.error("Product not found",e);
 			return new ResponseEntity("List not found", HttpStatus.CONFLICT);
 		}
 	}
@@ -67,10 +75,10 @@ public class ProductController {
 	@PostMapping("/product")
 	public ResponseEntity<Product> createproduct(@RequestBody Product product) throws IOException {
 		try {
-			
+			log.debug("Inside the ProductController -- createproduct methods");
 			return new ResponseEntity<Product>(pservice.addProd(product), HttpStatus.CREATED);
 		} catch (ProductAlreadyExistException e) {
-			// TODO Auto-generated catch block
+			log.error("Product already exists.",e);
 			return new ResponseEntity("Product already Exist", HttpStatus.CONFLICT);
 		}
 	}
@@ -78,20 +86,22 @@ public class ProductController {
 	@GetMapping("/product/{id}")
 	public ResponseEntity<Product> getProductById(@PathVariable int id) {
 		try {
+			log.debug("Inside the ProductController -- getProductById methods");
 			return new ResponseEntity<Product>(pservice.getById(id), HttpStatus.OK);
 		} catch (ProductNotFoundException e) {
-			// TODO Auto-generated catch block
+			log.error("Product not found.",e);
 			return new ResponseEntity("Product Not found", HttpStatus.NOT_FOUND);
 		}
 	}
 	
 	
-	@GetMapping("/producte/{id}")
-	public ResponseEntity<List<Product>> getProductByEmail(@PathVariable String id) {
+	@GetMapping("/producte/{emailid}")
+	public ResponseEntity<List<Product>> getProductByEmail(@PathVariable String emailid) {
 		try {
-			return new ResponseEntity<List<Product>>(pservice.getByEmail(id), HttpStatus.OK);
+			log.debug("Inside the ProductController -- getProductByEmail methods");
+			return new ResponseEntity<List<Product>>(pservice.getByEmail(emailid), HttpStatus.OK);
 		} catch (ProductNotFoundException e) {
-			// TODO Auto-generated catch block
+			log.error("Product not found.",e);
 			return new ResponseEntity("Product Not found", HttpStatus.NOT_FOUND);
 		}
 	}
@@ -104,9 +114,10 @@ public class ProductController {
 	@GetMapping("/product/a")
 	public ResponseEntity<List<Product>> getProductByStatus() {
 		try {
+			log.debug("Inside the ProductController -- getProductByStatus methods");
 			return new ResponseEntity<List<Product>>(pservice.getAllUserAvailable() , HttpStatus.FOUND);
 		} catch (NoProductAvailableInTheRepository e) {
-			// TODO Auto-generated catch block
+			log.error("No product is available",e);
 			return new ResponseEntity("List not found", HttpStatus.CONFLICT);
 		}
 	}
@@ -114,11 +125,12 @@ public class ProductController {
 	
 	
 	@GetMapping("/products/{id}")
-	public ResponseEntity<Product> getsetProductById(@PathVariable int id) {
+	public ResponseEntity<Product> setNotAvailableProductById(@PathVariable int id) {
 		try {
+			log.debug("Inside the ProductController -- setNotAvailableProductById methods");
 			return new ResponseEntity<Product>(pservice.setstatus(id), HttpStatus.OK);
 		} catch (NoProductExistsInTheRepository e) {
-			// TODO Auto-generated catch block
+			log.error("No product is available by the given id",e);
 			return new ResponseEntity("product is not there in repository", HttpStatus.NOT_FOUND);
 		}
 	}
@@ -134,10 +146,11 @@ public class ProductController {
 	public ResponseEntity<Product> updateProducts(@RequestBody Product prod){
 		Product prodSaved;
 		try {
+			log.debug("Inside the ProductController -- updateProducts methods");
 			prodSaved = pservice.update(prod);
 			return new ResponseEntity<Product>(prodSaved, HttpStatus.OK);
 		} catch (ProductNotFoundInRepository e) {
-			// TODO Auto-generated catch block
+			log.error("Product not found",e);
 			return new ResponseEntity("Product is not there so cant be updated",HttpStatus.BAD_GATEWAY);
 		}
 	}	
@@ -174,16 +187,37 @@ public class ProductController {
 //		
 //	}
 	
+//	@PostMapping("/product/add")
+//	public ResponseEntity<Product> createproduct(@RequestParam(value="str") String str, @RequestParam(value="file") MultipartFile[] file) throws IOException  {
+//		try {
+//			log.debug("Inside the ProductController -- createproduct methods");
+//			return new ResponseEntity<Product>(pservice.addprod(str,file),org.springframework.http.HttpStatus.OK);
+//		} catch (JsonMappingException e) {
+//			log.error("JsonMappingException",e);
+//			return new ResponseEntity("Json Mapping Exception",org.springframework.http.HttpStatus.OK);
+//		} catch (JsonProcessingException e) {
+//			log.error("JsonProcessingException",e);
+//			return new ResponseEntity("Json Processing Exception",org.springframework.http.HttpStatus.OK);
+//		} catch (ProvideProperProductDetails e) {
+//			log.error("Give product details",e);
+//			return new ResponseEntity("Provice proper details",org.springframework.http.HttpStatus.OK);
+//		}
+//		
+//	}
+	
 	@PostMapping("/product/add")
-	public ResponseEntity<Product> createproduct(@RequestParam(value="str") String str, @RequestParam(value="file") MultipartFile[] file) throws IOException  {
+	public ResponseEntity<Product> createproduct(@RequestParam(value="str") String str, @RequestParam(value="file") MultipartFile file) throws IOException  {
 		try {
+			log.debug("Inside the ProductController -- createproduct methods");
 			return new ResponseEntity<Product>(pservice.addprod(str,file),org.springframework.http.HttpStatus.OK);
 		} catch (JsonMappingException e) {
-			// TODO Auto-generated catch block
+			log.error("JsonMappingException",e);
 			return new ResponseEntity("Json Mapping Exception",org.springframework.http.HttpStatus.OK);
 		} catch (JsonProcessingException e) {
+			log.error("JsonProcessingException",e);
 			return new ResponseEntity("Json Processing Exception",org.springframework.http.HttpStatus.OK);
 		} catch (ProvideProperProductDetails e) {
+			log.error("Give product details",e);
 			return new ResponseEntity("Provice proper details",org.springframework.http.HttpStatus.OK);
 		}
 		

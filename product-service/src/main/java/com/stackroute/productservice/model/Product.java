@@ -45,7 +45,7 @@ public class Product {
 	private double pcoin;
 	private Exchange pexchangetype;
 	private String desc;
-	private List<byte[]> image;
+	private byte[] image;
 	public Product(int pid, String pemail, String pname, String plocation, String desc) {
 		super();
 		this.pid = pid;
