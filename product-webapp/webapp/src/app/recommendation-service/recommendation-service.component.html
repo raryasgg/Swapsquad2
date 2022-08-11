@@ -1,494 +1,106 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
-    />
-    <link href="styles.css" rel="stylesheet" media="all and (max-width: 1024px)">
-    <link rel="stylesheet" href="recommendation-service.component.css" />
-    <title></title>
-  </head>
+<body>
+  <div class="total-content">
+    <div class="row nav-items" >
+      <div class="col-lg-2 col-md-2 col-sm-2 col-2 title">
+        <h1>SWAPSQUAD</h1>
+      </div>
 
-  <body>
-    <!-- =============================== * navbar * ============================================ -->
-   <!-- <h2>JSON DATA</h2>
-   <p id ="data" *ngFor ="Let cites of cityvalues">{cites.id}{cites.firstName}</p>
-   <br>
-   <br>
-   <br> -->
-   <mat-form-field appearance="fill">
-    <mat-label>List length</mat-label>
-    <input matInput [(ngModel)]="length" type="number">
-  </mat-form-field>
+      <div class="col-lg-9 col-md-9 col-sm-8 col-8">
+        <div class="row">
+          <div class="col-lg-3 col-md-3 col-sm-3 col-3 location-dropdown" >
+
+            <div class="dropdown">
+              <button class="btn btn-outline-primary dropdown-toggle" type="button" data-toggle="dropdown"
+                aria-expanded="false">
+                Select Your Location
+              </button>
+              <div class="dropdown-menu">
+                <a class="dropdown-item" href="/"><i class="fa-solid fa-location-dot"></i>Andhra Pradesh</a>
+                <a class="dropdown-item" href="/"><i class="fa-solid fa-location-dot"></i>Arunachal Pradesh</a>
+                <a class="dropdown-item" href="/">Something else here</a>
+              </div>
+            </div>
+
+          </div>
+          <div class="col-lg-7 col-md-7 col-sm-7 col-6" >
+            <mat-grid-list cols="1" rowHeight="85px">
+              <mat-grid-tile>
+                <mat-form-field class="example-form-field" appearance="outline" style="width: 35rem;">
+                  <mat-label>
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    Find Cars, mobile phone and More....</mat-label>
+                  <input matInput type="text" [(ngModel)]="value">
+                  <button *ngIf="value" matSuffix mat-icon-button aria-label="Clear" (click)="value=''">
+                    <mat-icon>close</mat-icon>
+                  </button>
+                </mat-form-field>
+              </mat-grid-tile>
+            </mat-grid-list>
+          </div>
+         
+         
+            <div class="col-lg-2 col-md-2 col-sm-2 col-2 category-dropdown" style="font-size: 5px;">
+
+              <div class="dropdown">
+                <button class="btn btn-outline-dark dropdown-toggle" type="button" data-toggle="dropdown"
+                  aria-expanded="false">
+                  Category
+                </button>
+                <div class="dropdown-menu">
+                  <a class="dropdown-item" href="/">Electronics</a>
+                  <a class="dropdown-item" href="/">Automobiles</a>
+                  <a class="dropdown-item" href="/">Houses & Apartments</a>
+                  <a class="dropdown-item" href="/">Clothings</a>
+                  <a class="dropdown-item" href="/">House Hold</a>
+                  <a class="dropdown-item" href="/">Daily Uses</a>
+                </div>
+              </div>
   
-  <mat-form-field appearance="fill">
-    <mat-label>Page size</mat-label>
-    <input matInput [(ngModel)]="pageSize" type="number">
-  </mat-form-field>
-  <mat-form-field appearance="fill">
-    <mat-label>Page size options</mat-label>
-    <input matInput [ngModel]="pageSizeOptions" (ngModelChange)="setPageSizeOptions($event)"
-           [ngModelOptions]="{updateOn: 'blur'}" placeholder="Ex. 10,25,50">
-  </mat-form-field>
-  
-  <mat-paginator [length]="length"
-                 [pageSize]="pageSize"
-                 [pageSizeOptions]="pageSizeOptions"
-                 (page)="pageEvent = $event"
-                 aria-label="Select page">
-  </mat-paginator>
-  
-  <div *ngIf="pageEvent">
-    <h5>Page Change Event Properties</h5>
-    <div>List length: {{pageEvent.length}}</div>
-    <div>Page size: {{pageEvent.pageSize}}</div>
-    <div>Page index: {{pageEvent.pageIndex}}</div>
+            </div>
+          
+        </div>
+      </div>
+      <div class="col-lg-1 col-md-1 col-sm-1 col-1"></div>
+
+    </div>
+
+
+
+<!-- Body below navbar starts -->
+<div class="product-grid" >
+  <div class="row first-product-grid">
+  <div class="col-lg-3 col-md-3" style="background: red;">s </div>
+  <div class="col-lg-3 col-md-3" style="background: blue;"> </div>
+  <div class="col-lg-3 col-md-3" style="background: red;"> </div>
+  <div class="col-lg-3 col-md-3" style="background: black;"> </div>
+</div>
+
+<div class="row second-product-grid">
+  <div class="col-lg-3 col-md-3" style="background: black;"> </div>
+  <div class="col-lg-3 col-md-3" style="background: red;">s </div>
+  <div class="col-lg-3 col-md-3" style="background: blue;"> </div>
+  <div class="col-lg-3 col-md-3" style="background: red;"> </div>
+
+</div>
+
+
+
+</div>
+
+
+<!-- Body below navbar ends-->
+<div >
+  <nav aria-label="Page navigation example">
+    <ul class="pagination justify-content-end">
+      <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+      <li class="page-item"><a class="page-link" href="#">1</a></li>
+      <li class="page-item"><a class="page-link" href="#">2</a></li>
+      <li class="page-item"><a class="page-link" href="#">3</a></li>
+      <li class="page-item"><a class="page-link" href="#">Next</a></li>
+    </ul>
+  </nav>
+</div>
+
+
   </div>
-    <div class="hedder">
-      <div class="navbar">
-        <img src="/src/assets/barter.jpg" />
-
-        <div class="contry_select" id="contry">
-          <div class="select">
-            <p id="text">Select Your Location</p>
-            <i class="fa-solid fa-chevron-down" id="moving"></i>
-          </div>
-          <ul class="option_box" id="list">
-            <li class="option" onclick="myfunction('Andhra Pradesh')">
-              <i class="fa-solid fa-location-dot"></i>
-              <p>Andhra Pradesh</p>
-            </li>
-            <li class="option" onclick="myfunction('Arunachal Pradesh')">
-              <i class="fa-solid fa-location-dot"></i>
-              <p>Arunachal Pradesh</p>
-            </li>
-            <li class="option" onclick="myfunction('Assam')">
-              <i class="fa-solid fa-location-dot"></i>
-              <p>Assam</p>
-            </li>
-            <li class="option" onclick="myfunction('Bihar')">
-              <i class="fa-solid fa-location-dot"></i>
-              <p>Bihar</p>
-            </li>
-            <li class="option" onclick="myfunction('Chhattisgarh')">
-              <i class="fa-solid fa-location-dot"></i>
-              <p>Chhattisgarh</p>
-            </li>
-            <li class="option" onclick="myfunction('Goa')">
-              <i class="fa-solid fa-location-dot"></i>
-              <p>Goa</p>
-            </li>
-            <li class="option" onclick="myfunction('Gujarat')">
-              <i class="fa-solid fa-location-dot"></i>
-              <p>Gujarat</p>
-            </li>
-            <li class="option" onclick="myfunction('Haryana')">
-              <i class="fa-solid fa-location-dot"></i>
-              <p>Haryana</p>
-            </li>
-            <li class="option" onclick="myfunction('Himachal Pradesh')">
-              <i class="fa-solid fa-location-dot"></i>
-              <p>Himachal Pradesh</p>
-            </li>
-            <li class="option" onclick="myfunction('Jharkhand')">
-              <i class="fa-solid fa-location-dot"></i>
-              <p>Jharkhand</p>
-            </li>
-            <li class="option" onclick="myfunction('Jammu and Kashmir')">
-              <i class="fa-solid fa-location-dot"></i>
-              <p>Jammu and Kashmir</p>
-            </li>
-            <li class="option" onclick="myfunction('Karnataka')">
-              <i class="fa-solid fa-location-dot"></i>
-              <p>Karnataka</p>
-            </li>
-            <li class="option" onclick="myfunction('Kerala')">
-              <i class="fa-solid fa-location-dot"></i>
-              <p>Kerala</p>
-            </li>
-            <li class="option" onclick="myfunction('Madhya Pradesh')">
-              <i class="fa-solid fa-location-dot"></i>
-              <p>Madhya Pradesh</p>
-            </li>
-            <li class="option" onclick="myfunction('Maharashtra')">
-              <i class="fa-solid fa-location-dot"></i>
-              <p>Maharashtra</p>
-            </li>
-            <li class="option" onclick="myfunction('Meghalaya')">
-              <i class="fa-solid fa-location-dot"></i>
-              <p>Meghalaya</p>
-            </li>
-            <li class="option" onclick="myfunction('Manipur')">
-              <i class="fa-solid fa-location-dot"></i>
-              <p>Manipur</p>
-            </li>
-            <li class="option" onclick="myfunction('Mizoram')">
-              <i class="fa-solid fa-location-dot"></i>
-              <p>Mizoram</p>
-            </li>
-            <li class="option" onclick="myfunction('Nagaland')">
-              <i class="fa-solid fa-location-dot"></i>
-              <p>Nagaland</p>
-            </li>
-            <li class="option" onclick="myfunction('Odisha')">
-              <i class="fa-solid fa-location-dot"></i>
-              <p>Odisha</p>
-            </li>
-            <li class="option" onclick="myfunction('Punjab')">
-              <i class="fa-solid fa-location-dot"></i>
-              <p>Punjab</p>
-            </li>
-            <li class="option" onclick="myfunction('Rajasthan')">
-              <i class="fa-solid fa-location-dot"></i>
-              <p>Rajasthan</p>
-            </li>
-            <li class="option" onclick="myfunction('Uttar Pradesh')">
-              <i class="fa-solid fa-location-dot"></i>
-              <p>Uttar Pradesh</p>
-            </li>
-            <li class="option" onclick="myfunction('West Bengal')">
-              <i class="fa-solid fa-location-dot"></i>
-              <p>West Bengal</p>
-            </li>
-          </ul>
-        </div>
-        <div class="search_box">
-          <input
-            type="text"
-            class="searchclass"
-            id="searchid"
-            placeholder="Find Cars, mobile phone and More...."
-          />
-          <p><i class="fa-solid fa-magnifying-glass"></i></p>
-        </div>
-        <div class="dropdown">
-            <button onclick="myFunction()" class="dropbtn">Category</button>
-            <div id="myDropdown" class="dropdown-content">
-              <a href="#">Electronics</a>
-              <a href="#">Automobiles</a>
-              <a href="#">Houses & Apartments</a>
-              <a href="#">Clothings</a>
-              <a href="#">House Hold</a>
-              <a href="#">Daily Uses</a>
-            </div>
-          </div>
-      </div>
-    </div>
-        <!-- =============================== * product * ============================================ -->
-        <mat-paginator [length]="100"
-        [pageSize]="10"
-        [pageSizeOptions]="[5, 10, 25, 100]"
-        aria-label="Select page">
-    </mat-paginator>
-        <div class="product">
-         <div class="First_row">
-        <div class="box">
-          <a href="">
-            <img src="/src/assets/product-1.jpg" />
-            <h4>Mode Of Exchange</h4>
-            <p>Mi TV Stick</p>
-            <div class="addres_data">
-              <p>Bandra East, Mumbai</p>
-              <p>Today</p>
-            </div>
-          </a>
-        </div>
-        <div class="box">
-          <img src="/src/assets/product-2.jpg" />
-          <h4>Mode Of Exchange</h4>
-          <p>xbox one s</p>
-          <div class="addres_data">
-            <p>CHEMBUR, MUMBAI</p>
-            <p>JUL 27</p>
-          </div>
-        </div>
-        <div class="box">
-          <img src="/src/assets/product-3.jpg" />
-          <h4>Mode Of Exchange</h4>
-          <p>Refrigerator</p>
-          <div class="addres_data">
-            <p>DHARAVI, MUMBAI</p>
-            <p>Today</p>
-          </div>
-        </div>
-        <div class="box">
-          <img src="/src/assets/product-4.jpg" />
-          <h4>Mode Of Exchange</h4>
-          <p>Mitsubishi Pajero (2012)</p>
-          <div class="addres_data">
-            <p>VERSOVA, MUMBAI</p>
-            <p>Today</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="First_row">
-        <div class="box">
-          <img src="/src/assets/product-5.jpg" />
-          <h4>Mode Of Exchange</h4>
-          <p>Black Jeans for man</p>
-          <div class="addres_data">
-            <p>BORIVALI WEST, MUMBAI</p>
-            <p>DEC 24</p>
-          </div>
-        </div>
-        <div class="box">
-          <img src="/src/assets/product-6.jpg" />
-          <h4>Mode Of Exchange</h4>
-          <p>Pricise corrom board</p>
-          <div class="addres_data">
-            <p>IC COLONY, MUMBAI</p>
-            <p>JAN 29</p>
-          </div>
-        </div>
-        <div class="box">
-          <img src="/src/assets/product-7.jpg" />
-          <h4>Mode Of Exchange</h4>
-          <p>CrossBeat Torq Buds</p>
-          <div class="addres_data">
-            <p>DHARAVI, MUMBAI</p>
-            <p>Today</p>
-          </div>
-        </div>
-        <div class="box">
-          <img src="/src/assets/product-8.jpg" />
-          <h4>Mode Of Exchange</h4>
-          <p>Nikon D7000 DSLR camera</p>
-          <div class="addres_data">
-            <p>ANDHERI WEST, MUMBAI</p>
-            <p>FEB 02</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="First_row">
-        <div class="box">
-          <img src="/src/assets/product-9.jpg" />
-          <h4>Mode Of Exchange</h4>
-          <p>Black jacket</p>
-          <div class="addres_data">
-            <p>KANDIVALI WEST, MUMBAI</p>
-            <p>FEB 11</p>
-          </div>
-        </div>
-        <div class="box">
-          <img src="/src/assets/product-10.jpg" />
-          <h4>Mode Of Exchange</h4>
-          <p>LG Washing machine</p>
-          <div class="addres_data">
-            <p>SANTACRUZ EAST, MUMBAI</p>
-            <p>Today</p>
-          </div>
-        </div>
-        <div class="box">
-          <img src="/src/assets/product-11.jpg" />
-          <h4>Mode Of Exchange</h4>
-          <p>Running Shoe (athletes)</p>
-          <div class="addres_data">
-            <p>BANDRA EAST, MUMBAI</p>
-            <p>FEB 25</p>
-          </div>
-        </div>
-        <div class="box">
-          <img src="/src/assets/product-12.jpg" />
-          <h4>Mode Of Exchange</h4>
-          <p>Antique teak wood Sofa set</p>
-          <div class="addres_data">
-            <p>Bandra East, Mumbai</p>
-            <p>Today</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="First_row">
-        <div class="box">
-          <img src="/src/assets/product-13.jpg" />
-          <h4>Mode Of Exchange</h4>
-          <p>Hyundai I20 (2010)</p>
-          <div class="addres_data">
-            <p>KHAR EAST, MUMBAI</p>
-            <p>JAN 14</p>
-          </div>
-        </div>
-        <div class="box">
-          <img src="/src/assets/product-14.jpg" />
-          <h4>Mode Of Exchange</h4>
-          <p>dining table</p>
-          <div class="addres_data">
-            <p>DADAR WEST, MUMBAI</p>
-            <p>JUN 10</p>
-          </div>
-        </div>
-        <div class="box">
-          <img src="/src/assets/product-15.jpg" />
-          <h4>Mode Of Exchange</h4>
-          <p>Mens fastrack watch</p>
-          <div class="addres_data">
-            <p>KURLA EAST, MUMBAI</p>
-            <p>JAN 7</p>
-          </div>
-        </div>
-        <div class="box">
-          <img src="/src/assets/product-16.jpg" />
-          <h4>Mode Of Exchange</h4>
-          <p>Pure Metal Dumbbells</p>
-          <div class="addres_data">
-            <p>Bandra East, Mumbai</p>
-            <p>Today</p>
-          </div>
-        </div> 
-      
-      </div>
-    </div>
-
-    <!-- =============================== * LOde more * ============================================ -->
-
-    <div class="LOde_more">
-      <button id="Lode_more_id">Lode More</button>
-
-      <div class="lode-More_products" id="lode_more_products_id">
-        <div class="First_row">
-          <div class="box">
-            <a href="#"></a>
-            <img src="/src/assets/product-1.jpg" />
-            <h4>Mode Of Exchange</h4>
-            <p>Mi TV Stick</p>
-            <div class="addres_data">
-              <p>Bandra East, Mumbai</p>
-              <p>Today</p>
-            </div>
-          </div>
-          <div class="box">
-            <img src="/src/assets/product-2.jpg" />
-            <h4>Mode Of Exchange</h4>
-            <p>xbox one s</p>
-            <div class="addres_data">
-              <p>CHEMBUR, MUMBAI</p>
-              <p>JUL 27</p>
-            </div>
-          </div>
-          <div class="box">
-            <img src="/src/assets/product-3.jpg" />
-            <h4>Mode Of Exchange</h4>
-            <p>Refrigerator</p>
-            <div class="addres_data">
-              <p>DHARAVI, MUMBAI</p>
-              <p>Today</p>
-            </div>
-          </div>
-          <div class="box">
-            <img src="/src/assets/product-4.jpg" />
-            <h4>Mode Of Exchange</h4>
-            <p>Mitsubishi Pajero (2012)</p>
-            <div class="addres_data">
-              <p>VERSOVA, MUMBAI</p>
-              <p>Today</p>
-            </div>
-          </div>
-        </div>
-
-        <div class="First_row">
-          <div class="box">
-            <img src="/src/assets/product-5.jpg" />
-            <h4>Mode Of Exchange</h4>
-            <p>Black Jeans for man</p>
-            <div class="addres_data">
-              <p>BORIVALI WEST, MUMBAI</p>
-              <p>DEC 24</p>
-            </div>
-          </div>
-          <div class="box">
-            <img src="/src/assets/product-6.jpg" />
-            <h4>Mode Of Exchange</h4>
-            <p>Pricise corrom board</p>
-            <div class="addres_data">
-              <p>IC COLONY, MUMBAI</p>
-              <p>JAN 29</p>
-            </div>
-          </div>
-          <div class="box">
-            <img src="/src/assets/product-7.jpg" />
-            <h4>Mode Of Exchange</h4>
-            <p>CrossBeat Torq Buds</p>
-            <div class="addres_data">
-              <p>DHARAVI, MUMBAI</p>
-              <p>Today</p>
-            </div>
-          </div>
-          <div class="box">
-            <img src="/src/assets/product-8.jpg" />
-            <h4>Mode Of Exchange</h4>
-            <p>Nikon D7000 DSLR camera</p>
-            <div class="addres_data">
-              <p>ANDHERI WEST, MUMBAI</p>
-              <p>FEB 02</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <script>
-      //  =============================== * navbar * ============================================
-
-      let contry = document.getElementById("contry");
-      let moving = document.getElementById("moving");
-      let text = document.getElementById("text");
-      let list = document.getElementById("list");
-
-      contry.addEventListener("click", () => {
-        list.classList.toggle("hidden");
-        moving.classList.toggle("roted");
-      });
-      function myfunction(name) {
-        text.innerHTML = name;
-      }
- /* When the user clicks on the button,
-toggle between hiding and showing the dropdown content */
-function myFunction() {
-  document.getElementById("myDropdown").classList.toggle("show");
-}
-
-// Close the dropdown menu if the user clicks outside of it
-window.onclick = function(event) {
-  if (!event.target.matches('.dropbtn')) {
-    var dropdowns = document.getElementsByClassName("dropdown-content");
-    var i;
-    for (i = 0; i < dropdowns.length; i++) {
-      var openDropdown = dropdowns[i];
-      if (openDropdown.classList.contains('show')) {
-        openDropdown.classList.remove('show');
-      }
-    }
-  }
-}
-          //  =============================== * lode more * ============================================
-
-      let Lode_more_id = document.getElementById("Lode_more_id");
-      let lode_more_products_id = document.getElementById(
-        "lode_more_products_id"
-      );
-
-      Lode_more_id.addEventListener("click", () => {
-        lode_more_products_id.style = "display:block";
-        Lode_more_id.style = "display:none";
-      });
-      // fetch("./city.json")
-      // .then(function (response){
-      //   return response.json();
-      //     })
-      // .then(function (data) {
-      //   for(var i=0;i<data.length;i++){
-      //     document.getElementsById("data").innerHTML +=
-      //     data[i].id + "=>" + data[i].firstName + " " + data[i].lastName +  "<br/>";
-      //   }
-      // })
-      // .catch(function (err){
-      //   console.log(err);
-      // });
-    </script>
-  </body>
-</html>
+</body>

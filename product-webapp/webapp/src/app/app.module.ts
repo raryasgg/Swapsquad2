@@ -18,8 +18,7 @@ import {MatPaginatorModule} from '@angular/material/paginator';
 import { Material3Module } from './register-user/material3/material3.module';
 
 import { ProductDetailsService } from './component/productdetails/product-details.service';
-
-
+import { SweetAlertGrow } from 'sweetalert2';
 
 @NgModule({
   declarations: [
@@ -27,7 +26,8 @@ import { ProductDetailsService } from './component/productdetails/product-detail
     RegisterProductComponent,
     ProductdetailsComponent,
     RegisterUserComponent,
-     RecommendationServiceComponent
+     RecommendationServiceComponent,
+     
   ],
   
   imports: [
@@ -39,10 +39,9 @@ import { ProductDetailsService } from './component/productdetails/product-detail
     ReactiveFormsModule,
     Material1Module,
     HttpClientModule,
-
     MatPaginatorModule,
-
     Material3Module,
+    
 
 
   ],
