@@ -41,7 +41,7 @@ public class Product {
 	private Status pstatus = Status.AVAILABLE;
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date pdate = new Date(System.currentTimeMillis());
-	private List<String[]> pexchange;
+	private List<String> pexchange;
 	private double pcoin;
 	private Exchange pexchangetype;
 	private String desc;
