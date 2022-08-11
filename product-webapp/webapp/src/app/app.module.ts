@@ -11,13 +11,15 @@ import { Material1Module } from './component/productdetails/material1/material1.
 import { ProductdetailsComponent } from './component/productdetails/productdetails.component';
 import { RegisterUserComponent } from './register-user/register-user.component';
 import {HttpClientModule} from '@angular/common/http';
-
+import { RecommendationServiceComponent } from './recommendation-service/recommendation-service.component';
+import {MatPaginatorModule} from '@angular/material/paginator';
 @NgModule({
   declarations: [
     AppComponent,
     RegisterProductComponent,
     ProductdetailsComponent,
-    RegisterUserComponent
+    RegisterUserComponent,
+     RecommendationServiceComponent
   ],
   imports: [
     BrowserModule,
@@ -27,7 +29,8 @@ import {HttpClientModule} from '@angular/common/http';
     FormsModule,
     ReactiveFormsModule,
     Material1Module,
-    HttpClientModule
+    HttpClientModule,
+    MatPaginatorModule
 
   ],
   providers: [],
