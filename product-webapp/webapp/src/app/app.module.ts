@@ -11,9 +11,14 @@ import { ProductdetailsComponent } from './component/productdetails/productdetai
 import { RegisterUserComponent } from './register-user/register-user.component';
 import {HttpClientModule} from '@angular/common/http';
 
+import { RecommendationServiceComponent } from './recommendation-service/recommendation-service.component';
+import {MatPaginatorModule} from '@angular/material/paginator';
+
+
 import { Material3Module } from './register-user/material3/material3.module';
 
 import { ProductDetailsService } from './component/productdetails/product-details.service';
+
 
 
 @NgModule({
@@ -21,7 +26,8 @@ import { ProductDetailsService } from './component/productdetails/product-detail
     AppComponent,
     RegisterProductComponent,
     ProductdetailsComponent,
-    RegisterUserComponent
+    RegisterUserComponent,
+     RecommendationServiceComponent
   ],
   
   imports: [
@@ -33,7 +39,11 @@ import { ProductDetailsService } from './component/productdetails/product-detail
     ReactiveFormsModule,
     Material1Module,
     HttpClientModule,
-    Material3Module
+
+    MatPaginatorModule,
+
+    Material3Module,
+
 
   ],
   providers: [ProductDetailsService],
