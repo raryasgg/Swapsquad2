@@ -12,7 +12,7 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatChipsModule} from '@angular/material/chips';
 import {MatRadioModule} from '@angular/material/radio';
-
+import { ReactiveFormsModule } from '@angular/forms';  
 
 const MaterialComponents = [
   MatButtonModule,
@@ -34,7 +34,7 @@ const MaterialComponents = [
 
 @NgModule({
   declarations: [],
-  imports: [MaterialComponents],
+  imports: [MaterialComponents,ReactiveFormsModule],
   exports: [MaterialComponents],
 
 })

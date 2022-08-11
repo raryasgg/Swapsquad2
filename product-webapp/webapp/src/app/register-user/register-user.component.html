@@ -1,0 +1,62 @@
+
+<mat-grid-list cols="2" rowHeight="2:2" >
+  <mat-grid-tile>
+<img mat-card-image src="assets/r1.jpg" alt="img" width="90%" height="80%">
+</mat-grid-tile>
+<mat-grid-tile  style="background-color:rgb(248, 252, 252); ">
+
+
+   
+
+<div class="container col-md-6"  style="background-color:rgb(252, 250, 250); ">
+  <h1>Create Account</h1> 
+     <form (ngSubmit)="userRegister()" #myform="ngForm">
+   
+       
+       <div class="mb-3">
+        <label for="exampleFormControlInput1" class="form-label">Email</label>
+        <input type="email" class="form-control" required="required" id="email" name="email" [(ngModel)]="user.email" #fname="ngModel" [pattern]="emailPattern"  placeholder="Enter Email ">
+        
+        <div *ngIf="fname.invalid && (fname.touched || fname.dirty)" style="color:red;">
+          <span *ngIf="fname.errors?.required"> *Email Id is required</span>
+          <span *ngIf="fname.errors?.pattern">Please enter a valid Email </span>
+
+      </div>
+      </div>
+
+      
+       <div class="mb-3">
+         <label for="exampleFormControlInput1" class="form-label">Password</label>
+         <input type="password" class="form-control"  required="required" id="password" name="password" [(ngModel)]="user.password" #fpassword="ngModel" [pattern]="passwordPattern" placeholder="Enter Password " >
+         <div *ngIf="fpassword.invalid && (fpassword.touched || fpassword.dirty)" style="color:red;">
+          <span *ngIf="fpassword.errors?.required">*Password is required</span>
+          <span *ngIf="fpassword.errors?.pattern">This field should have min of 5 char and 1 alphabet, 1 numeric and atleast 1 special char</span>
+      </div>
+       </div>
+    
+   
+       <div class="mb-3">
+        <label for="exampleFormControlInput1" class="form-label">Confirm Password</label>
+         <input type="password" class="form-control" id="cpassword" required="required" name="cpassword" [(ngModel)]="user.cpassword" #password="ngModel" [pattern]="passwordPattern"  placeholder="Enter confirm password "> 
+         <div *ngIf="password.invalid && (password.touched || password.dirty)" style="color:red;">
+          <span *ngIf="password.errors?.required">*Confirm Password is required</span>
+          <span *ngIf="password.errors?.pattern">This field should have min of 5 char and 1 alphabet, 1 numeric and atleast 1 special char</span>
+          <span>{{ errorMessage }}</span>
+      </div>
+         </div>
+
+       
+         <div class="form-check d-flex justify-content-center mb-5">
+                  <input class="form-check-input me-2" type="checkbox" value="" id="form2Example3cg" />
+                  <p class="form-group">By creating an account, you agree to our <a href="#">Terms of Use</a> and our <a href="#">Privacy Policy</a>.</p>
+                </div>
+                
+        <div class="form-group">
+          <input class="btn btn-success width:100px" type="submit" name="submit_reg" value="Sign Up">
+      </div>
+      <p>Already have an account? <a href="#">Sign in</a></p>
+     </form>
+   </div>
+  </mat-grid-tile>
+</mat-grid-list>
+

@@ -25,8 +25,8 @@ import com.stackroute.userservice.service.UserRegistrationService;
 
 
 	@RestController
-@RequestMapping("/users")
-	//@CrossOrigin(origins="http://localhost:4200")
+//@RequestMapping("/users")
+@CrossOrigin(origins="http://localhost:4200")
 	public class UserRegistrationController {
 		
  

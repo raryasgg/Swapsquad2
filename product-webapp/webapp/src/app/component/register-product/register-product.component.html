@@ -1,155 +1,107 @@
 <body>
+  <form [formGroup]="productForm" (ngSubmit)="onClickSubmitForm()">
   <mat-horizontal-stepper class="body">
-
     <!-- ===================Step 1 start here======================== -->
 
     <mat-step label="Step 1" state="phone">
-
-      <div class="row">
-        <div class="col-lg-1 col-md-1 col-sm-1 col-1"></div>
-        <div class="col-lg-10 col-md-10 col-sm-10 col-10">
-          <mat-card class="mat-custom-card">
-            <div class="card-header card-custom-header">
-              <!-- <h1 class="card-title card-category">Register Your Product</h1> -->
-              <p class="card-category card-title h1 header-card-text">Register Your Product</p>
-            </div>
-
-            <form class="form-horizontal horizontal-card-form">
-              <!-- style="background:blue" -->
-              <!-- style="background:red" -->
-
-              <div class="row">
-                <label class="col-lg-2 col-md-2 labelname">Product Name</label>
-                <mat-form-field class="col-lg-9 col-md-9">
-                  <mat-label>Product Name</mat-label>
-                  <input matInput />
-                </mat-form-field>
-                <div class="col-lg-1 col-md-1"></div>
+      <!-- <form > -->
+        <div class="row">
+          <div class="col-lg-1 col-md-1 col-sm-1 col-1"></div>
+          <div class="col-lg-10 col-md-10 col-sm-10 col-10">
+            <mat-card class="mat-custom-card">
+              <div class="card-header card-custom-header">
+                <!-- <h1 class="card-title card-category">Register Your Product</h1> -->
+                <p class="card-category card-title h1 header-card-text">Register Your Product</p>
               </div>
 
-              <div class="row">
-                <label class="col-md-2 labelname">Category</label>
+              <div class="form-horizontal horizontal-card-form">
+                <div class="row">
+                  <label class="col-lg-2 col-md-2 labelname">Product Name</label>
+                  <mat-form-field class="col-lg-9 col-md-9">
+                    <mat-label>Product Name</mat-label>
+                    <!-- <input matInput formControlName="pname"> -->
+                    <input matInput formControlName="pname">
+                  </mat-form-field>
+                  <div class="col-lg-1 col-md-1"></div>
+                </div>
 
-                <mat-form-field class="col-md-3">
-                  <mat-label>Select</mat-label>
-                  <mat-select>
-                    <div (click)="show(1)">
-                    <mat-option value="one">Mobile, Tablet & Accessories</mat-option>
-                    <mat-option value="two">Cars & Bikes</mat-option>
-                    <mat-option value="three">Books & Sports</mat-option>
-                    <mat-option value="four">Pets & Pet Care</mat-option>
-                    <mat-option value="five">Electronics & Appliances</mat-option>
-                    <mat-option value="six">Home & Life Styles</mat-option>
-                  </div>
-                    <mat-option value="seven" (click)="show(2)">Others</mat-option>
-                  </mat-select>
-                </mat-form-field>
-                <div class="col-lg-1 col-md-1 col-sm-1 col-1"></div>
+                <div class="row">
+                  <label class="col-md-2 labelname">Category</label>
 
-                <label class="col-md-2 labelname" *ngIf="othercatergory">If Other</label>
-                <mat-form-field class="col-md-3" *ngIf="othercatergory">
-                  <mat-label>Any</mat-label>
-                  <input matInput />
-                </mat-form-field>
+                  <mat-form-field class="col-md-3">
+                    <mat-label>Select</mat-label>
+                    <mat-select>
+                      <div (click)="show(1)">
+                        <mat-option value="one">Mobile, Tablet & Accessories</mat-option>
+                        <mat-option value="two">Cars & Bikes</mat-option>
+                        <mat-option value="three">Books & Sports</mat-option>
+                        <mat-option value="four">Pets & Pet Care</mat-option>
+                        <mat-option value="five">Electronics & Appliances</mat-option>
+                        <mat-option value="six">Home & Life Styles</mat-option>
+                      </div>
+                      <mat-option value="seven" (click)="show(2)">Others</mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                  <div class="col-lg-1 col-md-1 col-sm-1 col-1"></div>
 
-                <div class="col-md-1"></div>
+                  <label class="col-md-2 labelname" *ngIf="othercatergory">If Other</label>
+                  <mat-form-field class="col-md-3" *ngIf="othercatergory">
+                    <mat-label>Any</mat-label>
+                    <input matInput />
+                  </mat-form-field>
+
+                  <div class="col-md-1"></div>
+                </div>
+
+                <div class="row">
+                  <div class="col-md-0"></div>
+                  <label class="col-md-2 labelname">Purchase Date</label>
+
+                  <mat-form-field class="col-md-3">
+                    <mat-label>Choose a date</mat-label>
+                    <input matInput [matDatepicker]="picker" />
+                    <mat-hint>MM/DD/YYYY</mat-hint>
+                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-datepicker #picker></mat-datepicker>
+                  </mat-form-field>
+
+                  <div class="col-md-7"></div>
+                </div>
+
+                <div class="row">
+                  <div class="col-md-0"></div>
+                  <label class="col-md-2 labelname">Description</label>
+                  <div class="col-md-10"></div>
+                </div>
+
+                <div class="row">
+                  <div class="col-md-1"></div>
+
+                  <mat-form-field class="col-md-10">
+                    <!-- <mat-label>Description</mat-label> -->
+                    <!-- <textarea matInput formControlName="desc"></textarea> -->
+                      <textarea matInput formControlName="desc"></textarea>
+                 
+                  </mat-form-field>
+                  <div class="col-md-1"></div>
+                </div>
               </div>
-
-              <div class="row">
-                <div class="col-md-0"></div>
-                <label class="col-md-2 labelname">Purchase Date</label>
-
-                <mat-form-field class="col-md-3">
-                  <mat-label>Choose a date</mat-label>
-                  <input matInput [matDatepicker]="picker" />
-                  <mat-hint>MM/DD/YYYY</mat-hint>
-                  <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-                  <mat-datepicker #picker></mat-datepicker>
-                </mat-form-field>
-
-                <div class="col-md-7"></div>
-              </div>
-
-              <div class="row">
-                <div class="col-md-0"></div>
-                <label class="col-md-2 labelname">Description</label>
-                <div class="col-md-10"></div>
-              </div>
-
-              <div class="row">
-                <div class="col-md-1"></div>
-
-                <mat-form-field class="col-md-10">
-                  <!-- <mat-label>Description</mat-label> -->
-                  <textarea matInput></textarea>
-                </mat-form-field>
-                <div class="col-md-1"></div>
-              </div>
-            </form>
-          </mat-card>
+            </mat-card>
+          </div>
+          <div class="col-lg-1 col-md-1 col-sm-1 col-1"></div>
         </div>
-        <div class="col-lg-1 col-md-1 col-sm-1 col-1"></div>
-      </div>
 
-      <!-- For Photo Update -->
+        <!--
       <div class="row">
         <div class="col-lg-1 col-md-1 col-sm-1 col-1"></div>
         <div class="col-lg-10 col-md-10 col-sm-10 col-10">
 
           <mat-card class="step3-mat-custom-card">
             <div class="card-header step3-card-custom-header col-md-2">
-              <!-- <h1 class="card-title card-category">Register Your Product</h1> -->
+             
               <p class="card-category card-title h6 step3-header-card-text">Upload Photos</p>
             </div>
-
-
-            <div class="form">
-              <div class="grid">
-                <div class="form-element">
-                  <input type="file" id="file-1" accept="image/*">
-                  <label for="file-1" id="file-1-preview">
-                    <img src="https://bit.ly/3ubuq5o" alt="">
-                    <div>
-                      <span>+</span>
-                    </div>
-                  </label>
-                </div>
-                <div class="form-element">
-                  <input type="file" id="file-2" accept="image/*">
-                  <label for="file-2" id="file-2-preview">
-                    <img src="https://bit.ly/3ubuq5o" alt="">
-                    <div>
-                      <span>+</span>
-                    </div>
-                  </label>
-                </div>
-                <div class="form-element">
-                  <input type="file" id="file-3" accept="image/*">
-                  <label for="file-3" id="file-3-preview">
-                    <img src="https://bit.ly/3ubuq5o" alt="">
-                    <div>
-                      <span>+</span>
-                    </div>
-                  </label>
-                </div>
-                <div class="form-element">
-                  <input type="file" id="file-3" accept="image/*">
-                  <label for="file-3" id="file-3-preview">
-                    <img src="https://bit.ly/3ubuq5o" alt="">
-                    <div>
-                      <span>+</span>
-                    </div>
-                  </label>
-                </div>
-                <div class="form-element">
-                  <input type="file" id="file-3" accept="image/*">
-                  <label for="file-3" id="file-3-preview">
-                    <img src="https://bit.ly/3ubuq5o" alt="">
-                    <div>
-                      <span>+</span>
-                    </div>
-                  </label>
-                </div>
+                         
                 <div class="form-element">
                   <input type="file" id="file-3" accept="image/*">
                   <label for="file-3" id="file-3-preview">
@@ -160,27 +112,62 @@
                   </label>
                 </div>
               </div>
-            </div>  
-
-
-          </mat-card>
-
-          
+            </div>
+         </mat-card>
+  
         </div>
         <div class="col-lg-1 col-md-1 col-sm-1 col-1"></div>
       </div>
-      <!-- Button setion -->
-      <div class="row">
-        <div class="col-lg-1 col-md-1 col-sm-1 col-1"></div>
+
+        -->
+        <!-- For Photo Update -->
         <div class="row">
-          <div class="col-md-1"></div>
-          <div class="col-lg-10 col-md-10 col-sm-10 col-10 step-one-next-btn">
-            <button mat-raised-button matStepperNext color="primary">Next</button>
+          <div class="col-lg-1 col-md-1 col-sm-1 col-1"></div>
+          <div class="col-lg-10 col-md-10 col-sm-10 col-10">
+
+            <mat-card class="step3-mat-custom-card">
+              <div class="card-header step3-card-custom-header col-md-2">
+                <!-- <h1 class="card-title card-category">Register Your Product</h1> -->
+                <p class="card-category card-title h6 step3-header-card-text">Upload Photos</p>
+              </div>
+
+              <div class="form-horizontal horizontal-card-form">
+
+                <div class="container col-md-12">
+
+                  <input type="file" multiple value="select" #selectFile (change)="onFileSelected($event)">
+                </div>
+
+                <div class="row">
+                  <mat-grid-list cols="8" rowHeight="1:1">
+                    <mat-grid-tile *ngFor="let file of registerProduct.image; let i=index;">
+                      <div style="position: relative;">
+                        <span class="btn-remove-image " (click)="removeImages(i)">x</span>
+                        <img [src]="file.url" width="100px" height="100px">
+                      </div>
+                    </mat-grid-tile>
+                  </mat-grid-list>
+                </div>
+              </div>
+
+            </mat-card>
           </div>
-          <div class="col-md-1"></div>
+          <div class="col-lg-1 col-md-1 col-sm-1 col-1"></div>
         </div>
-        <div class="col-lg-1 col-md-1 col-sm-1 col-1"></div>
-      </div>
+        <!-- Button setion starts-->
+        <div class="row">
+          <div class="col-lg-1 col-md-1 col-sm-1 col-1"></div>
+          <div class="row">
+            <div class="col-md-1"></div>
+            <div class="col-lg-10 col-md-10 col-sm-10 col-10 step-one-next-btn">
+              <button mat-raised-button matStepperNext color="primary">Next</button>
+            </div>
+            <div class="col-md-1"></div>
+          </div>
+          <div class="col-lg-1 col-md-1 col-sm-1 col-1"></div>
+        </div>
+         <!-- Button setion ends-->
+     <!-- </form> -->
     </mat-step>
 
     <!-- ===================Step 1 ends here======================== -->
@@ -188,7 +175,6 @@
     <!-- ===================Step 2 start here======================== -->
 
     <mat-step label="Step 2" state="chat">
-
 
 
       <!-- For Exchange Mode  -->
@@ -202,11 +188,12 @@
               <p class="card-category card-title h6 step3-header-card-text">Exchange</p>
             </div>
 
-            <form class="form-horizontal horizontal-card-form">
+            <div class="form-horizontal horizontal-card-form">
               <div class="row">
                 <label class="col-md-2 step2-labelname">Exchange Mode</label>
                 <div class="col-md-1"></div>
                 <mat-radio-group aria-label="Select an option" class="col-md-7">
+                  <!-- class="form-control" id="pexchange" name="pexchange [(ngModel)]="product.pexchange" -->
                   <mat-radio-button value="1" class="col-md-4" (click)="text(0)">
 
                     <i class="fa-solid fa-coins" style="margin-right: 0.5rem; margin-left: 0.5rem;"></i>
@@ -229,20 +216,29 @@
                 <label class="col-md-2 labelname" *ngIf="coin">Coin</label>
                 <mat-form-field class="col-md-3" *ngIf="coin">
                   <mat-label>Amount</mat-label>
-                  <input matInput />
+                  <input matInput formControlName="pcoin"/>
+
                 </mat-form-field>
 
                 <div class="col-md-1" *ngIf="blankspace"></div>
 
                 <label class="col-md-2 labelname" *ngIf="preference">Preference</label>
-                <mat-form-field class="col-md-3" *ngIf="preference">
-                  <mat-label></mat-label>
-                  <input matInput />
+                <mat-form-field class="example-chip-list" class="col-md-3" *ngIf="preference">
+                  <mat-chip-list #chipList aria-label="Fruit selection">
+                    <mat-chip *ngFor="let fruit of fruits" [selectable]="selectable" [removable]="removable"
+                      (removed)="remove(fruit)">
+                      {{fruit.name}}
+                      <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+                    </mat-chip>
+                    <input placeholder="" [matChipInputFor]="chipList"
+                      [matChipInputSeparatorKeyCodes]="separatorKeysCodes" [matChipInputAddOnBlur]="addOnBlur"
+                      (matChipInputTokenEnd)="add($event)">
+                  </mat-chip-list>
                 </mat-form-field>
 
                 <div class="col-md-1"></div>
               </div>
-            </form>
+            </div>
 
 
           </mat-card>
@@ -262,13 +258,13 @@
               <p class="card-category card-title h6 step3-header-card-text">Your Detail</p>
             </div>
 
-            <form class="form-horizontal horizontal-card-form">
+            <div class="form-horizontal horizontal-card-form">
               <div class="row">
                 <label class="col-md-2 labelname">Confirm Email</label>
 
                 <mat-form-field class="col-md-3">
                   <mat-label>Email</mat-label>
-                  <input matInput />
+                  <input matInput formControlName="pemail"/>
                 </mat-form-field>
 
                 <div class="col-md-1"></div>
@@ -276,32 +272,51 @@
                 <label class="col-md-2 labelname">Location</label>
                 <mat-form-field class="col-md-3">
                   <mat-label>Place</mat-label>
-                  <input matInput />
+                  <input matInput formControlName="plocation"/>
                 </mat-form-field>
 
                 <div class="col-md-1"></div>
               </div>
-            </form>
+            </div>
           </mat-card>
         </div>
         <div class="col-lg-1 col-md-1 col-sm-1 col-1"></div>
       </div>
-      <!-- Button setion -->
+      <!-- Button setion starts-->
       <div class="row">
         <div class="col-lg-1 col-md-1 col-sm-1 col-1"></div>
         <div class="col-lg-5 col-md-5 col-sm-5 col-5 step-one-back-btn">
           <button mat-raised-button matStepperPrevious color="primary">Back</button>
         </div>
         <div class="col-lg-5 col-md-5 col-sm-5 col-5 step-one-next-btn">
-          <button mat-raised-button matStepperNext style="background: #43DB52;">Finish</button>
+          <button mat-raised-button style="background: #43DB52;" type="submit">Finish</button>
         </div>
         <div class="col-lg-1 col-md-1 col-sm-1 col-1"></div>
       </div>
+          <!-- Button setion ends-->
     </mat-step>
     <!-- ===================Step 2 ends here======================== -->
-
+ 
   </mat-horizontal-stepper>
+
   <div class="alert alert-primary" role="alert">
     A simple primary alert with <a href="#" class="alert-link">an example link</a>. Give it a click if you like.
   </div>
+
+</form>
+  
+   <!-- <div> 
+    <form [formGroup]="productForm" (ngSubmit)="onClickSubmitForm()">
+    <input type="text" formControlName="desc">
+   
+    </form>
+
+  <form [formGroup]="productForm" (ngSubmit)="onClickSubmitForm()">
+  
+    <input type="text" formControlName="pname">
+    <button type="submit">chek kr</button>
+  </form>
+</div> -->
+
+>>>>>>> fced815aee4471d50190bc97414eae77c3330dfa
 </body>

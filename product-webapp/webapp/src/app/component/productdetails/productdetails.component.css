@@ -58,6 +58,7 @@ img{
     border: 1px solid black;
     margin-top: 3rem;
     border-radius: 3px;
+    width: 20rem;
 }
 
 .user-profile-box-review{
@@ -115,7 +116,9 @@ table {
 
   .description-text-box{
     border: 0.5px solid black;
-    margin-top: 4rem;
+    margin-top: 1rem;
     border-radius: 6px;
   }
-  
+  .exchange-button{
+    margin-top: 1rem;
+  }
