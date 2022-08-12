@@ -28,7 +28,7 @@ export class RegisterProductComponent implements OnInit {
     private sanitizer: DomSanitizer, private fb: FormBuilder
   ) {
     this.productForm = new FormGroup({
-      pcategory: new FormControl(),
+      pcategory: new FormControl("", [Validators.required]),
       pname: new FormControl(),
       pdatepost: new FormControl(),
       desc: new FormControl(),
@@ -93,7 +93,6 @@ export class RegisterProductComponent implements OnInit {
 
   onClickSubmitForm() {
 
-    console.log('SUCCESSFULLY');
     console.log(this.productForm.value);
     // this.productService.
     this.productObj.pcategory = this.productForm.value.pcategory;

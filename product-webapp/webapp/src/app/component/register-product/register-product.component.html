@@ -41,6 +41,8 @@
                       </div>
                       <mat-option value="seven" (click)="show(2)">Others</mat-option>
                     </mat-select>
+                    <div *ngIf="productForm.controls['pcategory'].touched && productForm.controls['pcategory']" style="color:red;">*Please Select
+      </div>
                   </mat-form-field>
                   <div class="col-lg-1 col-md-1 col-sm-1 col-1"></div>
 
