@@ -1,0 +1,39 @@
+.total-content{
+   
+}
+
+.nav-items{
+    display: flex;
+    border: 0.5px solid grey;
+    padding-bottom: -1rem;
+    padding-top: 1rem;
+    background-color: azure;
+}
+
+.title{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    justify-items: center;
+}
+.location-dropdown{
+    display: flex;
+    padding-top: 1rem;
+}
+.category-dropdown{
+    display: flex;
+    padding-top: 1rem;
+}
+.product-grid{
+
+    margin-top: -1rem;
+   
+}
+.first-product-grid{
+
+    height: 15rem;
+}
+.second-product-grid{
+    height: 15rem;
+}
+

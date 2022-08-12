@@ -20,6 +20,7 @@ export class ProductdetailsComponent implements OnInit {
   pstatus="Available";
   pdate="";
   pcoin=20000;
+
   pexchange="car, fan table";
   pexchangetype="coin"
   desc="this is description of the product";
@@ -32,12 +33,13 @@ export class ProductdetailsComponent implements OnInit {
   
   // img1="assets/1.jpg"
 
+
   
   
   public productdata:any;
  
   constructor(private _productdetailsService: ProductDetailsService, private domSanitizer: DomSanitizer ) {
-   
+
     
    }
   
@@ -48,6 +50,7 @@ ngOnInit(): void {
   // .subscribe(data => this.productdata =data)
 
   this._productdetailsService.getProductDetailsById(7).subscribe(data =>{
+
     this.productdata =data;
     console.log(this.productdata)
     this.pname=this.productdata.pname
@@ -59,7 +62,9 @@ ngOnInit(): void {
     this.pexchange=this.productdata.pexchange
     this.desc=this.productdata.desc
     this.img=this.domSanitizer.bypassSecurityTrustResourceUrl(
+
       "data:img/" + "jpg" + ";base64," + this.productdata.image
+
     );
 
     var t=this.pdate;
@@ -73,5 +78,5 @@ ngOnInit(): void {
 
   }
  
- 
+
   }
