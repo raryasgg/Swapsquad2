@@ -5,11 +5,12 @@ export class Product {
     pname?:String;
     desc?:String;
     pdatepost?:String;
-    pexchange:String;
+    pexchangetype:String;
     pcoin?:Number;
-    exchangeList:[String];
+    pexchange:[String];
     pemail?:String;
     plocation?:String;
+   
     
     // image:[byte];
     
@@ -19,9 +20,9 @@ constructor(){
     this.pname="";
     this.desc="";
     this.pdatepost= "";
-    this.pexchange="";
+    this.pexchangetype="";
     this.pcoin=0;
-    this.exchangeList=[""];
+    this.pexchange=[""];
     this.pemail="";
     this.plocation="";
 }

@@ -45,7 +45,7 @@ import static org.mockito.Mockito.any;
 	    }
 	    @Test
 	    public void givenNewUserWhenPostThenReturnUserJSON() throws Exception {
-	    	UserRegistration user = new UserRegistration("hello@gmail.com","Raju","Kumar",24,"male",90607,"123");
+	    	UserRegistration user = new UserRegistration("hello@gmail.com","Raju","Kumar",24,"male",90607,"123","123");
 	        when(Service.addNew(any())).thenReturn(user);
 	        mockMvc.perform(post("/users/user")
 	                .contentType(MediaType.APPLICATION_JSON)
