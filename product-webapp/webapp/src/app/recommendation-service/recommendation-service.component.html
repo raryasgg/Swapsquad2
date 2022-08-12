@@ -1,0 +1,106 @@
+<body>
+  <div class="total-content">
+    <div class="row nav-items" >
+      <div class="col-lg-2 col-md-2 col-sm-2 col-2 title">
+        <h1>SWAPSQUAD</h1>
+      </div>
+
+      <div class="col-lg-9 col-md-9 col-sm-8 col-8">
+        <div class="row">
+          <div class="col-lg-3 col-md-3 col-sm-3 col-3 location-dropdown" >
+
+            <div class="dropdown">
+              <button class="btn btn-outline-primary dropdown-toggle" type="button" data-toggle="dropdown"
+                aria-expanded="false">
+                Select Your Location
+              </button>
+              <div class="dropdown-menu">
+                <a class="dropdown-item" href="/"><i class="fa-solid fa-location-dot"></i>Andhra Pradesh</a>
+                <a class="dropdown-item" href="/"><i class="fa-solid fa-location-dot"></i>Arunachal Pradesh</a>
+                <a class="dropdown-item" href="/">Something else here</a>
+              </div>
+            </div>
+
+          </div>
+          <div class="col-lg-7 col-md-7 col-sm-7 col-6" >
+            <mat-grid-list cols="1" rowHeight="85px">
+              <mat-grid-tile>
+                <mat-form-field class="example-form-field" appearance="outline" style="width: 35rem;">
+                  <mat-label>
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    Find Cars, mobile phone and More....</mat-label>
+                  <input matInput type="text" [(ngModel)]="value">
+                  <button *ngIf="value" matSuffix mat-icon-button aria-label="Clear" (click)="value=''">
+                    <mat-icon>close</mat-icon>
+                  </button>
+                </mat-form-field>
+              </mat-grid-tile>
+            </mat-grid-list>
+          </div>
+         
+         
+            <div class="col-lg-2 col-md-2 col-sm-2 col-2 category-dropdown" style="font-size: 5px;">
+
+              <div class="dropdown">
+                <button class="btn btn-outline-dark dropdown-toggle" type="button" data-toggle="dropdown"
+                  aria-expanded="false">
+                  Category
+                </button>
+                <div class="dropdown-menu">
+                  <a class="dropdown-item" href="/">Electronics</a>
+                  <a class="dropdown-item" href="/">Automobiles</a>
+                  <a class="dropdown-item" href="/">Houses & Apartments</a>
+                  <a class="dropdown-item" href="/">Clothings</a>
+                  <a class="dropdown-item" href="/">House Hold</a>
+                  <a class="dropdown-item" href="/">Daily Uses</a>
+                </div>
+              </div>
+  
+            </div>
+          
+        </div>
+      </div>
+      <div class="col-lg-1 col-md-1 col-sm-1 col-1"></div>
+
+    </div>
+
+
+
+<!-- Body below navbar starts -->
+<div class="product-grid" >
+  <div class="row first-product-grid">
+  <div class="col-lg-3 col-md-3" style="background: red;">s </div>
+  <div class="col-lg-3 col-md-3" style="background: blue;"> </div>
+  <div class="col-lg-3 col-md-3" style="background: red;"> </div>
+  <div class="col-lg-3 col-md-3" style="background: black;"> </div>
+</div>
+
+<div class="row second-product-grid">
+  <div class="col-lg-3 col-md-3" style="background: black;"> </div>
+  <div class="col-lg-3 col-md-3" style="background: red;">s </div>
+  <div class="col-lg-3 col-md-3" style="background: blue;"> </div>
+  <div class="col-lg-3 col-md-3" style="background: red;"> </div>
+
+</div>
+
+
+
+</div>
+
+
+<!-- Body below navbar ends-->
+<div >
+  <nav aria-label="Page navigation example">
+    <ul class="pagination justify-content-end">
+      <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+      <li class="page-item"><a class="page-link" href="#">1</a></li>
+      <li class="page-item"><a class="page-link" href="#">2</a></li>
+      <li class="page-item"><a class="page-link" href="#">3</a></li>
+      <li class="page-item"><a class="page-link" href="#">Next</a></li>
+    </ul>
+  </nav>
+</div>
+
+
+  </div>
+</body>
