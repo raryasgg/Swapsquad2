@@ -53,9 +53,8 @@ public class ProductController {
 	private ProductServiceImpl pservice;
 	private SequenceGeneratorService sequenceGeneratorService;
 	
-	@Autowired
-    @GetMapping("/product")
-
+	
+    @Autowired
 	public ProductController(ProductRepository prepository,ProductServiceImpl pservice,SequenceGeneratorService sequenceGeneratorService) {
 		log.debug("Inside the ProductController -- constructor");
 		this.prepository=prepository;
@@ -63,7 +62,8 @@ public class ProductController {
 		this.sequenceGeneratorService=sequenceGeneratorService;
 	}
 	
-
+	@Autowired
+    @GetMapping("/product")
 	public ResponseEntity<List<Product>> getAllProducts(){
 		try {
 			log.debug("Inside the ProductController -- getAllProducts methods");
@@ -212,22 +212,15 @@ public class ProductController {
 		try {
 			log.debug("Inside the ProductController -- createproduct methods");
 			return new ResponseEntity<Product>(pservice.addprod(str,file),org.springframework.http.HttpStatus.OK);
-
-//		} catch (JsonMappingException e) {
-//			// TODO Auto-generated catch block
-//			return new ResponseEntity("Json Mapping Exception",org.springframework.http.HttpStatus.OK);
-//		} catch (JsonProcessingException e) {
-//			return new ResponseEntity("Json Processing Exception",org.springframework.http.HttpStatus.OK);
-
 		} catch (JsonMappingException e) {
 			log.error("JsonMappingException",e);
-			return new ResponseEntity("Json Mapping Exception",org.springframework.http.HttpStatus.OK);
+			return new ResponseEntity("Json Mapping Exception",org.springframework.http.HttpStatus.BAD_REQUEST);
 		} catch (JsonProcessingException e) {
 			log.error("JsonProcessingException",e);
-			return new ResponseEntity("Json Processing Exception",org.springframework.http.HttpStatus.OK);
+			return new ResponseEntity("Json Processing Exception",org.springframework.http.HttpStatus.CONFLICT);
 		} catch (ProvideProperProductDetails e) {
 			log.error("Give product details",e);
-			return new ResponseEntity("Provice proper details",org.springframework.http.HttpStatus.OK);
+			return new ResponseEntity("Provice proper details",org.springframework.http.HttpStatus.CONFLICT);
 		}
 		
 	}
