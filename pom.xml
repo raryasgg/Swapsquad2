@@ -30,6 +30,7 @@
         <module>user-service</module>
         <module>recommendation-service</module>
         <module>product-service</module>
+        <module>authentication-service</module>
     </modules>
 
     <dependencies>

@@ -1,16 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>com.javainuse</groupId>
-	<artifactId>spring-boot-jwt-tr</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
-
 	<parent>
-		<groupId>org.springframework.boot</groupId>
-		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>2.1.1.RELEASE</version>
-		<relativePath /> <!-- lookup parent from repository -->
+		<groupId>com.stackroute</groupId>
+		<artifactId>product-boilerplate</artifactId>
+		<version>1.0.0</version>
+		<relativePath> ../pom.xml</relativePath>
 	</parent>
+
+	<groupId>com.javainuse</groupId>
+	<artifactId>authentication-service</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<name>authentication-service</name>
+
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>

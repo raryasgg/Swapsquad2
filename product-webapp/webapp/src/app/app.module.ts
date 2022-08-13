@@ -30,6 +30,7 @@ import { MatGridListModule } from "@angular/material/grid-list";
 import { MatButtonToggleModule } from "@angular/material/button-toggle";
 import { MatProgressBarModule } from "@angular/material/progress-bar";
 import { FlexLayoutModule } from "@angular/flex-layout";
+import { UpdateDetailsComponent } from './update-details/update-details.component';
 
 
 @NgModule({
@@ -38,7 +39,9 @@ import { FlexLayoutModule } from "@angular/flex-layout";
     RegisterProductComponent,
     ProductdetailsComponent,
     RegisterUserComponent,
-    RecommendationServiceComponent,
+     RecommendationServiceComponent,
+     UpdateDetailsComponent,
+
   ],
 
   imports: [

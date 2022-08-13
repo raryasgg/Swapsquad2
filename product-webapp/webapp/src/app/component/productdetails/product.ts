@@ -8,6 +8,7 @@ export class Product {
     plocation:string;
     pstatus:string;
     pdate:string;
+    pexchange:[]
     pexchangetype:string;
     pcoin:number;
     desc:string;

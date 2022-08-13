@@ -5,6 +5,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.stackroute.userservice.model.UserRating;
 import com.stackroute.userservice.model.UserRegistration;
 import com.stackroute.userservice.repo.UserRepo;
 @Service
@@ -44,7 +45,15 @@ public class UserRegistrationServiceImpl implements UserRegistrationService{
 		return savedEmployee;
 	}
 
-
+	/*
+	 * @Override public UserRegistration addNew(UserRating user) { return
+	 * repo.save(null); }
+	 */
+	@Override
+	public UserRegistration rate(UserRegistration user) {
+	
+		return repo.save(user);
+	}
 		
 		
 }
