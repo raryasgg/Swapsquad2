@@ -8,6 +8,7 @@ export class UserRegistration {
   mobile:String;
   password:String;
   cpassword:String;
+  accept:String;
 
   constructor() {
     this.firstname = "";

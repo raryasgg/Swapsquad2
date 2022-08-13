@@ -1,3 +1,4 @@
+
 .body{
      position: relative;
      background: #F0ECEC;
@@ -151,4 +152,18 @@ mat-grid-tile{
    border-radius: 50%;
    width: 20px;
    text-align: center;
+}
+
+.payment-mode-message{
+  display: flex;
+  color: red;
+  text-align: center;
+  justify-content: right;
+}
+
+.user-detail{
+  display: flex;
+  color: red;
+  text-align: center;
+  justify-content: right;
 }
