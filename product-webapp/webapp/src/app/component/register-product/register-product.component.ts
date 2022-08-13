@@ -1,12 +1,13 @@
 import { HttpErrorResponse } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup, NgForm, Validators } from '@angular/forms';
 import { MatChipInputEvent } from '@angular/material/chips';
 import { DomSanitizer } from '@angular/platform-browser';
 import { RegisterProductService } from '../../services/register-product-service/register-product.service';
-import { COMMA, ENTER } from '@angular/cdk/keycodes';
+import { COMMA, E, ENTER } from '@angular/cdk/keycodes';
 import { FormControl } from '@angular/forms';
 import { Product } from '../../models/register-product/Product';
+import Swal from 'sweetalert2';
 
 
 
@@ -29,15 +30,15 @@ export class RegisterProductComponent implements OnInit {
   ) {
     this.productForm = new FormGroup({
       pcategory: new FormControl("", [Validators.required]),
-      pname: new FormControl(),
-      pdatepost: new FormControl(),
-      desc: new FormControl(),
+      pname: new FormControl("", [Validators.required, Validators.minLength(2)]),
+      pdatepost: new FormControl("", [Validators.required]),
+      desc: new FormControl("", [Validators.required, Validators.minLength(10),Validators.maxLength(150)]),
       pexchangetype: new FormControl(),
-      pcoin: new FormControl(),
+      pcoin: new FormControl("",[Validators.required,Validators.pattern("^[0-9]*$"),Validators.maxLength(8)]),
       pexchange: this.fb.array([], Validators.required),
       pemail: new FormControl(),
       plocation: new FormControl(),
-
+      image:new FormControl([], Validators.required)
     });
   }
 
@@ -92,9 +93,10 @@ export class RegisterProductComponent implements OnInit {
   }
 
   onClickSubmitForm() {
-
     console.log(this.productForm.value);
-    // this.productService.
+  
+    Swal.fire({ icon: 'success', title: 'Successfully Registered !!', text: 'Your Product Posted Succesfully !', })
+
     this.productObj.pcategory = this.productForm.value.pcategory;
     this.productObj.pname = this.productForm.value.pname;
     this.productObj.pdatepost = this.productForm.value.pdatepost;
@@ -107,6 +109,9 @@ export class RegisterProductComponent implements OnInit {
     this.productService.addProduct(this.productObj, this.file[0]).subscribe(data =>
       console.log(data)
     )
+
+    this.productForm.reset();
+ 
   }
 
 
@@ -181,8 +186,6 @@ export class RegisterProductComponent implements OnInit {
   }
 
   // end for chips
-
-
 
 
 

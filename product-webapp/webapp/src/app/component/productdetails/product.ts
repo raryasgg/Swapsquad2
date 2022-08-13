@@ -7,7 +7,7 @@ export class Product {
     pcategory:string;
     plocation:string;
     pstatus:string;
-    pdate:Date;
+    pdate:string;
     pexchangetype:string;
     pcoin:number;
     desc:string;
