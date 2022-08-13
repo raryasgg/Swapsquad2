@@ -1,14 +1,12 @@
-
-
 <body class="main-content">
 
     <!-- Scroll Image -->
     <div class="row">
         <div class="col-lg-2 col-md-4 col-sm-4 col-4 lft-scroll-box">
-            <div class="image-scroll-box">
+            <!-- <div class="image-scroll-box" >
                 <table>
-                    <tr>
-                        <img mat-card-image src="{{img3}}" alt="img" width="40rem" height="40rem" (click)="doZoom3()">
+                    <tr  >
+                        <img mat-card-image src="{{img3}}" alt="img" width="40rem" height="40rem" (click)="doZoom3()" >
                     </tr>
                     <tr>
                         <img mat-card-image src="{{img4}}" alt="img" width="40rem" height="40rem"  (click)="doZoom4()">
@@ -20,13 +18,13 @@
                         <img mat-card-image src="{{img6}}" alt="img" width="40rem" height="40rem"  (click)="doZoom6()">
                     </tr>
                     <tr>
-                        <img mat-card-image src="assets/2.jpg" alt="img" width="40rem" height="40rem"  (click)="doZoom2()">
+                        <img mat-card-image src="{{img2}}" alt="img" width="40rem" height="40rem"  (click)="doZoom2()">
                     </tr>
                 </table>
 
 
             </div>
-           
+            -->
             
 
         </div>
@@ -35,13 +33,9 @@
         <div class="col-lg-4 col-md-8 col-sm-8 col-8">
             <div class="row">
 
-                <div class="col-lg-9 col-md-6 col-sm-12">
-                    <img mat-card-image src="{{img1}}" alt="img" width="300rem" height="300rem" *ngIf="showmainimg">
-                    <img mat-card-image src="{{img3}}" alt="img" width="300rem" height="300rem" *ngIf="showimg3">
-                    <img mat-card-image src="{{img4}}" alt="img" width="300rem" height="300rem" *ngIf="showimg4">
-            <img mat-card-image src="{{img5}}" alt="img" width="300rem" height="300rem" *ngIf="showimg5">
-            <img mat-card-image src="{{img6}}" alt="img" width="300rem" height="300rem" *ngIf="showimg6">
-            <img mat-card-image src="{{img2}}" alt="img" width="300rem" height="300rem" *ngIf="showimg2">
+                <div class="col-lg-9 col-md-6 col-sm-4"  >
+                    <img mat-card-image [src]="img" alt="img" width="300rem" height="300rem">
+                   
            
                 </div>
 
@@ -80,7 +74,7 @@
 
                                         
                                         <td>
-                                            <div class="product-owner-details col-lg-12 col-md-4 col-sm-12">
+                                            <div class="product-owner-details ">
                                                 <mat-icon style="color:blue">grade</mat-icon>
                                                 <mat-icon style="color:blue">grade</mat-icon>
                                                 <mat-icon style="color:blue">grade</mat-icon>
@@ -113,7 +107,7 @@
             </div>
         </div>
 
-        <div class="col-lg-6 col-md-12 col-sm-12 col-12">
+        <div class="col-lg-6 col-md-12 col-sm-12 col-12 " >
             <div class="row">
                 <div class="col-lg-11">
                     <!-- Product Name -->
@@ -129,7 +123,7 @@
                         </div>
                         
                        <div class="col-lg-6 col-md-4 col-sm-6 post-date ">
-                            <p>{{pdate}}</p>
+                            <p>Time : {{time}}</p>
                         </div>
                     </div>
                     <div class="row">
@@ -146,7 +140,9 @@
                             <p>{{pexchange}}</p>
                         </div> 
                         <div class="col-lg-6 col-md-4 col-sm-6 post-date ">
-                            <p>Year of purchase</p>
+
+                            <p>  Year Of Purchase {{dateofpurchase}}</p>
+
                         </div>
 
                         
@@ -154,36 +150,9 @@
                     <!-- Preferences -->
 
                     <div class="preference" >
-                        <p >Preferences</p>
+                        <p >Preferences : {{pexchange}}</p>
 
-                        <div>
-                            <table>
-                                <tr>
-                                    <td>
-                                        <div class="preference-chip">
-                                            <button mat-raised-button>Book</button>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <div class="preference-chip">
-                                            <button mat-raised-button>Vivo Phone</button>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <div class="preference-chip">
-                                            <button mat-raised-button>Heater</button>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <div class="preference-chip">
-                                            <button mat-raised-button>Headphone</button>
-                                        </div>
-                                    </td>
-                                </tr>
-                            </table>
-
-
-                        </div>
+                        
 
                     </div>
 
@@ -191,9 +160,7 @@
 
                     <div>
                         <div class="description-text-box">
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint maiores sunt, excepturi cum
-                                non, ullam rem vel sed optio ducimus, atque reprehenderit sequi odit architecto
-                                sapiente. Ex minima eaque illum?
+                            <p>{{desc}}
                             </p>
                            </div>
                            <div class="exchange-button " align="end">
@@ -214,6 +181,3 @@
  </div>
 
 </body>
-
-
-
