@@ -28,6 +28,7 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatRadioModule } from '@angular/material/radio';
 import { SweetAlertGrow } from 'sweetalert2';
+import { UpdateDetailsComponent } from './update-details/update-details.component';
 
 
 @NgModule({
@@ -37,6 +38,7 @@ import { SweetAlertGrow } from 'sweetalert2';
     ProductdetailsComponent,
     RegisterUserComponent,
      RecommendationServiceComponent,
+     UpdateDetailsComponent,
      
   ],
 
