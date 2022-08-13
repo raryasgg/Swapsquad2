@@ -16,7 +16,7 @@ export class RegisterUserComponent implements OnInit {
  passwordPattern = new RegExp(/(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{5,10}/);
 
  
- // errorMessage: String = "";
+ 
 
 
   constructor(private registerService: RegisterService) { }
@@ -33,6 +33,7 @@ export class RegisterUserComponent implements OnInit {
      Swal.fire({icon: 'error',title: 'Oops...',text: 'Fields cannot be empty!', })
     }
      else if(this.user.password != this.user.cpassword){
+      Swal.fire({icon: 'error',title: 'Oops...',text: 'Password Must Be Same', })
         this.errorMessage="Password Must Be Same"
       }
     
