@@ -20,6 +20,7 @@ export class ProductdetailsComponent implements OnInit {
   pstatus="Available";
   pdate="";
   pcoin=20000;
+ pdatepost=""
 
   pexchange="car, fan table";
   pexchangetype="coin"
@@ -30,6 +31,7 @@ export class ProductdetailsComponent implements OnInit {
   time:String;
   product:any
   img:any
+  dateofposting:any
   
   // img1="assets/1.jpg"
 
@@ -49,7 +51,9 @@ ngOnInit(): void {
   // this._productdetailsService.getProductdetailsById(1)
   // .subscribe(data => this.productdata =data)
 
+
   this._productdetailsService.getProductDetailsById(7).subscribe(data =>{
+
 
     this.productdata =data;
     console.log(this.productdata)
@@ -58,8 +62,10 @@ ngOnInit(): void {
     this.pcategory=this.productdata.pcategory
     this.plocation=this.productdata.plocation
     this.pdate=this.productdata.pdate
+    this.pdatepost=this.productdata.pdatepost
     this.pcoin=this.productdata.pcoin
     this.pexchange=this.productdata.pexchange
+    this.pexchangetype=this.productdata.pexchangetype
     this.desc=this.productdata.desc
     this.img=this.domSanitizer.bypassSecurityTrustResourceUrl(
 
@@ -67,10 +73,13 @@ ngOnInit(): void {
 
     );
 
-    var t=this.pdate;
+
+    var t=this.pdatepost;
  
  this.dateofpurchase=t.substring(0,10);
-   this.time=t.substring(12,20);
+  // 
+  var t2=this.pdate;
+  this.dateofposting=t2.substring(0,10)
 
 
   });
