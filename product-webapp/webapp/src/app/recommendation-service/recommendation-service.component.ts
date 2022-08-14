@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormGroup } from '@angular/forms';
 
 
 
@@ -8,7 +9,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./recommendation-service.component.css']
 })
 export class RecommendationServiceComponent implements OnInit {  
-
+  recommendationForm: FormGroup;
   constructor() { }
 
   ngOnInit(): void {
