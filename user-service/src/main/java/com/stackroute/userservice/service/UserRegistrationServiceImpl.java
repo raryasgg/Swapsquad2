@@ -1,14 +1,23 @@
 package com.stackroute.userservice.service;
 
+import java.io.IOException;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
+
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.JsonMappingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 import com.stackroute.userservice.model.UserRating;
 import com.stackroute.userservice.model.UserRegistration;
 import com.stackroute.userservice.repo.UserRepo;
+
+import lombok.extern.slf4j.Slf4j;
 @Service
+@Slf4j
 public class UserRegistrationServiceImpl implements UserRegistrationService{
 	
 	@Autowired
@@ -54,6 +63,21 @@ public class UserRegistrationServiceImpl implements UserRegistrationService{
 	
 		return repo.save(user);
 	}
+
+	@Override
+	public UserRegistration addprod(String str, MultipartFile file) throws JsonMappingException, JsonProcessingException {
+		log.debug("Inside the ProductServiceImpl -- addprod methods");
+		ObjectMapper objectMapper = new ObjectMapper();
+		UserRegistration prod = objectMapper.readValue(str,UserRegistration.class);
 		
+		try {
+			prod.setImage(file.getBytes());
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		repo.save(prod);
+		return prod;
+	}
 		
 }

@@ -9,6 +9,7 @@
     padding-top: 0rem;
     background-color: azure;
     max-width: 100%;
+
     
 }
 
@@ -20,13 +21,14 @@
 }
 .location-dropdown{
     display: flex;
+
     /* padding-top: 1rem; */
    
 }
 .category-dropdown{
     display: flex;
     /* padding-top: 2rem; */
-    
+
 }
 .product-grid{
 
@@ -51,9 +53,11 @@
 .box img{
 width: 250px;
 }
+
 .box image:hover{
     border: 2px solid rgb(233, 80, 10);
 }
+
 .box{
     border: 1px solid rgb(8, 236, 236);
     width: 260px;
@@ -107,3 +111,5 @@ width: 250px;
     box-sizing: border-box;
     font-family: Arial, Helvetica, sans-serif;
 }
+
+

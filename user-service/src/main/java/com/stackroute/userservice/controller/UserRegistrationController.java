@@ -1,5 +1,7 @@
 package com.stackroute.userservice.controller;
 
+import java.io.IOException;
+
 import org.apache.commons.httpclient.HttpStatus;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -14,8 +16,12 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.JsonMappingException;
 import com.stackroute.userservice.UserServiceApplication;
 import com.stackroute.userservice.model.CustomMessage;
 import com.stackroute.userservice.model.UserRating;
@@ -33,21 +39,22 @@ import lombok.extern.slf4j.Slf4j;
 @RestController
 @RequestMapping("/users")
 @CrossOrigin(origins="http://localhost:4200")
+@Slf4j
 public class UserRegistrationController {
 
+	
 	@Autowired
 	private UserRegistrationService userservice;
 
 	@Autowired
 	private Publisher publisher;
-
-
+	
 
 	@PostMapping("/user")
 	public ResponseEntity<UserRegistration> registerUser(@RequestBody UserRegistration user) {
 
 		try {
-		
+			log.debug("registerUser");
 			CustomMessage messages = new CustomMessage(user.getEmail(), user.getPassword());
 
 			publisher.publishMessage(messages);
@@ -56,7 +63,7 @@ public class UserRegistrationController {
 					org.springframework.http.HttpStatus.CREATED);
 		} catch (UserAlreadyExistException e) {
 			// TODO Auto-generated catch block
-
+			log.error("(UserAlreadyExist",e);
 			return new ResponseEntity("User already Exist", org.springframework.http.HttpStatus.CONFLICT);
 		}
 	}
@@ -91,7 +98,16 @@ public class UserRegistrationController {
 		return new ResponseEntity<UserRegistration>(userservice.rate(user), org.springframework.http.HttpStatus.OK);
 
 	}
-
+	
+	
+	@PostMapping("/product/add")
+	public ResponseEntity<UserRegistration> createproduct(@RequestParam(value="str") String str, @RequestParam(value="file") MultipartFile file) throws JsonMappingException, JsonProcessingException   {
+	 
+			log.debug("Inside the ProductController -- createproduct methods");
+			return new ResponseEntity<UserRegistration>(userservice.addprod(str,file),org.springframework.http.HttpStatus.OK);
+		
+		
+	}
 
 	 
 }
