@@ -29,4 +29,5 @@ import lombok.Setter;
 		private String  password;
 		private String  cpassword;
 		List<UserRating> ratings;
+		private byte[] image;
 }

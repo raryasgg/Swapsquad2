@@ -1,5 +1,9 @@
 package com.stackroute.userservice.service;
 
+import org.springframework.web.multipart.MultipartFile;
+
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.JsonMappingException;
 import com.stackroute.userservice.model.UserRating;
 import com.stackroute.userservice.model.UserRegistration;
 
@@ -11,6 +15,8 @@ public interface UserRegistrationService {
 	public UserRegistration update(UserRegistration user);
 	//public UserRegistration addNew(UserRating user);
 	public UserRegistration rate(UserRegistration user);
+
+	public UserRegistration addprod(String str, MultipartFile file) throws JsonMappingException, JsonProcessingException;
 
 
     
