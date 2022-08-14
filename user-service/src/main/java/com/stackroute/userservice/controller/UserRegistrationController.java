@@ -33,21 +33,22 @@ import lombok.extern.slf4j.Slf4j;
 @RestController
 @RequestMapping("/users")
 @CrossOrigin(origins="http://localhost:4200")
+@Slf4j
 public class UserRegistrationController {
 
+	
 	@Autowired
 	private UserRegistrationService userservice;
 
 	@Autowired
 	private Publisher publisher;
-
-
+	
 
 	@PostMapping("/user")
 	public ResponseEntity<UserRegistration> registerUser(@RequestBody UserRegistration user) {
 
 		try {
-		
+			log.debug("registerUser");
 			CustomMessage messages = new CustomMessage(user.getEmail(), user.getPassword());
 
 			publisher.publishMessage(messages);
@@ -56,7 +57,7 @@ public class UserRegistrationController {
 					org.springframework.http.HttpStatus.CREATED);
 		} catch (UserAlreadyExistException e) {
 			// TODO Auto-generated catch block
-
+			log.error("(UserAlreadyExist",e);
 			return new ResponseEntity("User already Exist", org.springframework.http.HttpStatus.CONFLICT);
 		}
 	}

@@ -9,7 +9,7 @@ import { UserRegistration } from '../user-registration';
 export class UpdateDetailsComponent implements OnInit {
 
   constructor() { }
-
+ 
   ngOnInit(): void {
   }
 
