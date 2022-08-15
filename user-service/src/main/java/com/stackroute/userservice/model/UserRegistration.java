@@ -1,5 +1,7 @@
 package com.stackroute.userservice.model;
 
+import java.util.List;
+
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -26,5 +28,6 @@ import lombok.Setter;
 		private int  mobile;
 		private String  password;
 		private String  cpassword;
-		
+		List<UserRating> ratings;
+		private byte[] image;
 }

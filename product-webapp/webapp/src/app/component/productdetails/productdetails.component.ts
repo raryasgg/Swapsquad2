@@ -22,7 +22,7 @@ export class ProductdetailsComponent implements OnInit {
   pdate="";
   pcoin=20000;
  pdatepost=""
-  pexchange="car, fan table";
+
   pexchangetype="coin"
   desc="this is description of the product";
   pcategory="";
@@ -33,10 +33,12 @@ export class ProductdetailsComponent implements OnInit {
   img:any
   dateofposting:any
 
+
   //user rating
  rate:any;
  review:any
  userId:""
+
   
   // img1="assets/1.jpg"
 
@@ -57,7 +59,9 @@ ngOnInit(): void {
   // this._productdetailsService.getProductdetailsById(1)
   // .subscribe(data => this.productdata =data)
 
+
   this._productdetailsService.getProductDetailsById(7).subscribe(data =>{
+
 
     this.productdata =data;
     console.log(this.productdata)
@@ -77,12 +81,16 @@ ngOnInit(): void {
 
     );
 
-    var t=this.pdate;
+
+    var t=this.pdatepost;
  
  this.dateofpurchase=t.substring(0,10);
   // 
-  var t2=this.pdatepost
+
+  var t2=this.pdate;
   this.dateofposting=t2.substring(0,10)
+
+
 
   });
 
