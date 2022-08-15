@@ -13,6 +13,6 @@ export class UserratingService {
 
   //get method for obtainig user ratings and reviews
   getUserRatingByEmail(email:any){
-    return this.httpClient.get<UserRating[]>(this.baseurl +"/rate" + email)
+    return this.httpClient.get<UserRating[]>(this.baseurl +"/users/user/" + email)
   }
 }
