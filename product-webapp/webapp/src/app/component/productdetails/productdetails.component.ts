@@ -61,7 +61,7 @@ ngOnInit(): void {
   // .subscribe(data => this.productdata =data)
 
 
-  this._productdetailsService.getProductDetailsById(7).subscribe(data =>{
+  this._productdetailsService.getProductDetailsById(24).subscribe(data =>{
 
 
     this.productdata =data;
