@@ -1,23 +1,33 @@
-
+<form [formGroup]="recommendationForm">
 <div class="total-content">
   <div class="row nav-items">
-
+   
     <div class="col-lg-4 col-md-4 col-sm-4 col-4">
       <div class="row">
         <div class="col-lg-3 col-md-3 col-sm-3 col-3"></div>
         <div class="col-lg-7 col-md-7 col-sm-7 col-7 location-dropdown">
           <mat-form-field appearance="outline" style="inline-size: auto;">
             <mat-label><i class="fa-solid fa-location-dot" style="margin-right: 0.5rem;"> </i>Location</mat-label>
-            <mat-select>
-              <mat-option value="one">Andhra Pradesh</mat-option>
-              <mat-option value="two">Arunachal Pradesh</mat-option>
-              <mat-option value="two">Arunachal Pradesh</mat-option>
-              <mat-option value="two">Arunachal Pradesh</mat-option>
-              <mat-option value="two">Arunachal Pradesh</mat-option>
-              <mat-option value="two">Arunachal Pradesh</mat-option>
-              <mat-option value="two">Arunachal Pradesh</mat-option>
-              <mat-option value="two">Arunachal Pradesh</mat-option>
-
+            <mat-select formControlName="state">
+              <mat-option value="Andhra Pradesh">Andhra Pradesh</mat-option>
+                        <mat-option value="Arunachal Pradesh">Arunachal Pradesh</mat-option>
+                        <mat-option value="Assam">Assam</mat-option>
+                        <mat-option value="Arunachal Pradesh">Arunachal Pradesh</mat-option>
+                        <mat-option value="Bihar">Bihar</mat-option>
+                        <mat-option value="Chhattisgarh">Chhattisgarh</mat-option>
+                        <mat-option value="Goa">Goa</mat-option>
+                        <mat-option value="Gujarat">Gujarat</mat-option>
+                        <mat-option value="Haryana">Haryana</mat-option>
+                        <mat-option value="Himachal Pradesh">Himachal Pradesh</mat-option>
+                        <mat-option value="Jharkhand">Jharkhand</mat-option>
+                        <mat-option value="Karnataka">Karnataka</mat-option>
+                        <mat-option value="Kerala">Kerala</mat-option>
+                        <mat-option value="Madhya Pradesh">Madhya Pradesh</mat-option>
+                        <mat-option value="Maharashtra">Maharashtra</mat-option>
+                        <mat-option value="Manipur">Manipur</mat-option>
+                        <mat-option value="Meghalaya">Meghalaya</mat-option>
+                        <mat-option value="Nagaland">Nagaland</mat-option>
+                        <mat-option value="Nagaland">Odisha</mat-option>
             </mat-select>
           </mat-form-field>
           <!-- <div class="dropdown">
@@ -61,7 +71,7 @@
                 <mat-label>
                   <i class="fa-solid fa-magnifying-glass"></i>
                   Find Cars, mobile phone and More....</mat-label>
-                <input matInput type="text" [(ngModel)]="value" />
+                <input matInput type="text" formControlName="searchbar"/>
                 <button *ngIf="value" matSuffix mat-icon-button aria-label="Clear" (click)="value = ''">
                   <mat-icon>close</mat-icon>
                 </button>
@@ -74,13 +84,13 @@
         <div class="col-lg-3 col-md-3 col-sm-3 col-3 category-dropdown">
           <mat-form-field appearance="outline">
             <mat-label>Category</mat-label>
-            <mat-select>
-              <mat-option value="one">Electronics</mat-option>
-              <mat-option value="two">Automobiles</mat-option>
-              <mat-option value="two">Houses & Apartments</mat-option>
-              <mat-option value="two">Clothings</mat-option>
-              <mat-option value="two">House Hold</mat-option>
-              <mat-option value="two">Daily Uses</mat-option>
+            <mat-select formControlName="category">
+              <mat-option value="Mobile, Tablet & Accessories">Mobile, Tablet & Accessories</mat-option>
+              <mat-option value="Cars & Bikes">Cars & Bikes</mat-option>
+              <mat-option value="Books & Sports">Books & Sports</mat-option>
+              <mat-option value="Pets & Pet Care">Pets & Pet Care</mat-option>
+              <mat-option value="Electronics & Appliances">Electronics & Appliances</mat-option>
+              <mat-option value="Home & Life Styles">Home & Life Styles</mat-option>
             </mat-select>
           </mat-form-field>
         </div>
@@ -89,7 +99,7 @@
 
   </div>
 </div>
-
+</form>
 <!-- =============================== * product * ============================================ -->
 <div class="product">
   <div class="First_row">

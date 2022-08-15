@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup } from '@angular/forms';
+import { FormControl, FormGroup } from '@angular/forms';
 
 
 
@@ -8,13 +8,20 @@ import { FormGroup } from '@angular/forms';
   templateUrl: './recommendation-service.component.html',
   styleUrls: ['./recommendation-service.component.css']
 })
-export class RecommendationServiceComponent implements OnInit {  
+export class RecommendationServiceComponent implements OnInit {
   recommendationForm: FormGroup;
-  constructor() { }
+
+  constructor() {
+    this.recommendationForm = new FormGroup({
+      state: new FormControl(),
+      category: new FormControl(),
+      searchbar: new FormControl(),
+    });
+  }
 
   ngOnInit(): void {
   }
-// for Search bar 
+  // for Search bar 
   value = '';
 
 }
