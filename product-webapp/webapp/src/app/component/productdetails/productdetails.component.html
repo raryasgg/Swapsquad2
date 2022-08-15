@@ -3,7 +3,29 @@
     <!-- Scroll Image -->
     <div class="row">
         <div class="col-lg-2 col-md-4 col-sm-4 col-4 lft-scroll-box">
-          
+            <!-- <div class="image-scroll-box" >
+                <table>
+                    <tr  >
+                        <img mat-card-image src="{{img3}}" alt="img" width="40rem" height="40rem" (click)="doZoom3()" >
+                    </tr>
+                    <tr>
+                        <img mat-card-image src="{{img4}}" alt="img" width="40rem" height="40rem"  (click)="doZoom4()">
+                    </tr>
+                    <tr>
+                        <img mat-card-image src="{{img5}}" alt="img" width="40rem" height="40rem"  (click)="doZoom5()">
+                    </tr>
+                    <tr>
+                        <img mat-card-image src="{{img6}}" alt="img" width="40rem" height="40rem"  (click)="doZoom6()">
+                    </tr>
+                    <tr>
+                        <img mat-card-image src="{{img2}}" alt="img" width="40rem" height="40rem"  (click)="doZoom2()">
+                    </tr>
+                </table>
+
+
+            </div>
+            -->
+            
 
         </div>
 
@@ -57,7 +79,7 @@
                                                     {{rate}
                                                     
                                                     <div *ngFor="let num of [1,2,3,4,5]">
-                                                        <span class="star on" *ngIf="rate- num > 0.5"></span>
+                                                        <span class="star on" *ngIf="rate - num > 0.5"></span>
                                                         <span class="star half" *ngIf="rate - num == 0.5"></span>
                                                         <span class="star" *ngIf="rate == 0 "></span>
                                                     </div>
@@ -122,17 +144,10 @@
 
                         <div class="col-lg-6 col-md-4 col-sm-12">
 
-                            <mat-chip-list aria-label="preference selection">
-                                <mat-chip *ngFor="let item of pexchange">
-                                  
-                                 {{item}}
-                                </mat-chip>
-                               
-                               
-                              </mat-chip-list>
+                           <p>{{pexchangetype}}</p>
 
-                            <p>{{pexchangetype}}</p>
 
+                         
                         </div> 
                         <div class="col-lg-6 col-md-4 col-sm-6 post-date ">
 
@@ -145,7 +160,16 @@
                     <!-- Preferences -->
 
                     <div class="preference" >
-                        <p >Preferences : {{pexchange}}</p>
+                        <p >Preferences :
+                            <mat-chip-list aria-label="preference selection">
+                                <mat-chip *ngFor="let item of pexchange">
+                                  
+                                 {{item}}
+                                </mat-chip>
+                               
+                               
+                              </mat-chip-list>
+                        </p>
 
                         
 
