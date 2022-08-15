@@ -12,7 +12,7 @@ export class UserratingService {
   constructor(private httpClient: HttpClient) { }
 
   //get method for obtainig user ratings and reviews
-  getUserRatingByEmai(userId:any){
-    return this.httpClient.get<UserRating[]>(this.baseurl +"/rate" + userId)
+  getUserRatingByEmail(email:any){
+    return this.httpClient.get<UserRating[]>(this.baseurl +"/rate" + email)
   }
 }

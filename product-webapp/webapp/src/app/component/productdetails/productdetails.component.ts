@@ -47,6 +47,7 @@ export class ProductdetailsComponent implements OnInit {
   
   public productdata:any;
   public userratingdata:any;
+  pexchange: any;
  
   constructor(private _productdetailsService: ProductDetailsService, private domSanitizer: DomSanitizer,private userratingservice:UserratingService ) {
 
@@ -94,7 +95,7 @@ ngOnInit(): void {
 
   });
 
-  this.userratingservice.getUserRatingByEmai(userId).subscribe(dataofrating =>{
+  this.userratingservice.getUserRatingByEmail(gmail).subscribe(dataofrating =>{
     this.userratingdata=dataofrating
     console.log(this.userratingdata)
     this.rate=this.userratingdata.rate
@@ -111,6 +112,8 @@ ngOnInit(): void {
 
   }
 
-function userId(userId: any) {
+
+function gmail(gmail: any) {
   throw new Error('Function not implemented.');
 }
+
