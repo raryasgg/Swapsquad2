@@ -70,9 +70,10 @@ import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
     MatButtonToggleModule,
     MatProgressBarModule,
     FlexLayoutModule,
-
   ],
   providers: [ProductDetailsService],
   bootstrap: [AppComponent],
 })
-export class AppModule { }
+
+export class AppModule {}
+

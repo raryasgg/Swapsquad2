@@ -1,14 +1,18 @@
+
 <form [formGroup]="recommendationForm">
+<div>
+  <h4>My IP Address {{userIP}}</h4>
+</div>
 <div class="total-content">
   <div class="row nav-items">
-   
+
     <div class="col-lg-4 col-md-4 col-sm-4 col-4">
       <div class="row">
         <div class="col-lg-3 col-md-3 col-sm-3 col-3"></div>
         <div class="col-lg-7 col-md-7 col-sm-7 col-7 location-dropdown">
           <mat-form-field appearance="outline" style="inline-size: auto;">
             <mat-label><i class="fa-solid fa-location-dot" style="margin-right: 0.5rem;"> </i>Location</mat-label>
-            <mat-select formControlName="state">
+            <mat-select formControlName="state" (click)="onSelect()">
               <mat-option value="Andhra Pradesh">Andhra Pradesh</mat-option>
                         <mat-option value="Arunachal Pradesh">Arunachal Pradesh</mat-option>
                         <mat-option value="Assam">Assam</mat-option>
@@ -30,34 +34,6 @@
                         <mat-option value="Nagaland">Odisha</mat-option>
             </mat-select>
           </mat-form-field>
-          <!-- <div class="dropdown">
-            <button class="btn btn-outline-primary dropdown-toggle" type="button" data-toggle="dropdown"
-              aria-expanded="false">
-              Select Your Location
-            </button>
-            <div class="dropdown-menu">
-              <a class="dropdown-item"><i class="fa-solid fa-location-dot"></i>Andhra Pradesh</a>
-              <a class="dropdown-item" href="/"><i class="fa-solid fa-location-dot"></i>Arunachal Pradesh</a>
-              <a class="dropdown-item" href="/"><i class="fa-solid fa-location-dot"></i>Assam</a>
-              <a class="dropdown-item" href="/"><i class="fa-solid fa-location-dot"></i>Bihar</a>
-              <a class="dropdown-item" href="/"><i class="fa-solid fa-location-dot"></i>Chhattisgarh</a>
-              <a class="dropdown-item" href="/"><i class="fa-solid fa-location-dot"></i>Goa</a>
-              <a class="dropdown-item" href="/"><i class="fa-solid fa-location-dot"></i>Gujarat</a>
-              <a class="dropdown-item" href="/"><i class="fa-solid fa-location-dot"></i>Haryana</a>
-              <a class="dropdown-item" href="/"><i class="fa-solid fa-location-dot"></i>Himachal Pradesh</a>
-              <a class="dropdown-item" href="/"><i class="fa-solid fa-location-dot"></i>Jharkhand</a>
-              <a class="dropdown-item" href="/"><i class="fa-solid fa-location-dot"></i>Karnataka</a>
-              <a class="dropdown-item" href="/"><i class="fa-solid fa-location-dot"></i>Kerala</a>
-              <a class="dropdown-item" href="/"><i class="fa-solid fa-location-dot"></i>Madhya Pradesh</a>
-              <a class="dropdown-item" href="/"><i class="fa-solid fa-location-dot"></i>Maharashtra</a>
-              <a class="dropdown-item" href="/"><i class="fa-solid fa-location-dot"></i>Manipur</a>
-              <a class="dropdown-item" href="/"><i class="fa-solid fa-location-dot"></i>Meghalaya</a>
-              <a class="dropdown-item" href="/"><i class="fa-solid fa-location-dot"></i>Mizoram</a>
-              <a class="dropdown-item" href="/"><i class="fa-solid fa-location-dot"></i>Nagaland</a>
-              <a class="dropdown-item" href="/"><i class="fa-solid fa-location-dot"></i>Odisha</a>
-              <a class="dropdown-item" href="/">Something else here</a>
-            </div>
-          </div> -->
           <div class="col-lg-2 col-md-2 col-sm-2 col-2"></div>
         </div>
       </div>
@@ -84,7 +60,7 @@
         <div class="col-lg-3 col-md-3 col-sm-3 col-3 category-dropdown">
           <mat-form-field appearance="outline">
             <mat-label>Category</mat-label>
-            <mat-select formControlName="category">
+            <mat-select formControlName="productCategory" (click)="onSelect()">
               <mat-option value="Mobile, Tablet & Accessories">Mobile, Tablet & Accessories</mat-option>
               <mat-option value="Cars & Bikes">Cars & Bikes</mat-option>
               <mat-option value="Books & Sports">Books & Sports</mat-option>
@@ -348,4 +324,3 @@
     </div>
   </div>
 </div>
-
