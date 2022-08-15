@@ -29,8 +29,12 @@ userIP:'';
   }
 
 recommendObj: IncomingProductData = new IncomingProductData();
+
   onSelect(){
     console.log(this.recommendationForm.value)
+
+    this.recommendObj.state = this.recommendationForm.value.state;
+    this.recommendObj.productCategory = this.recommendationForm.value.productCategory;
   }
 
   // for Search bar 

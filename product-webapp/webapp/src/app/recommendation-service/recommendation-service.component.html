@@ -12,7 +12,7 @@
         <div class="col-lg-7 col-md-7 col-sm-7 col-7 location-dropdown">
           <mat-form-field appearance="outline" style="inline-size: auto;">
             <mat-label><i class="fa-solid fa-location-dot" style="margin-right: 0.5rem;"> </i>Location</mat-label>
-            <mat-select formControlName="state" (click)="onSelect()">
+            <mat-select formControlName="state" (change)="onSelect()">
               <mat-option value="Andhra Pradesh">Andhra Pradesh</mat-option>
                         <mat-option value="Arunachal Pradesh">Arunachal Pradesh</mat-option>
                         <mat-option value="Assam">Assam</mat-option>
@@ -60,7 +60,7 @@
         <div class="col-lg-3 col-md-3 col-sm-3 col-3 category-dropdown">
           <mat-form-field appearance="outline">
             <mat-label>Category</mat-label>
-            <mat-select formControlName="productCategory" (click)="onSelect()">
+            <mat-select formControlName="productCategory" (change)="onSelect()">
               <mat-option value="Mobile, Tablet & Accessories">Mobile, Tablet & Accessories</mat-option>
               <mat-option value="Cars & Bikes">Cars & Bikes</mat-option>
               <mat-option value="Books & Sports">Books & Sports</mat-option>
