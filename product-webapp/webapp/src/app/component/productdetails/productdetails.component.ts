@@ -3,6 +3,7 @@ import { pid } from 'process';
 import { Product } from './product';
 import { ProductDetailsService } from './product-details.service';
 import { DomSanitizer } from '@angular/platform-browser';
+import { UserratingService } from './userrating.service';
 
 
 @Component({
@@ -20,7 +21,7 @@ export class ProductdetailsComponent implements OnInit {
   pstatus="Available";
   pdate="";
   pcoin=20000;
-
+ pdatepost=""
   pexchange="car, fan table";
   pexchangetype="coin"
   desc="this is description of the product";
@@ -30,6 +31,12 @@ export class ProductdetailsComponent implements OnInit {
   time:String;
   product:any
   img:any
+  dateofposting:any
+
+  //user rating
+ rate:any;
+ review:any
+ userId:""
   
   // img1="assets/1.jpg"
 
@@ -37,8 +44,9 @@ export class ProductdetailsComponent implements OnInit {
   
   
   public productdata:any;
+  public userratingdata:any;
  
-  constructor(private _productdetailsService: ProductDetailsService, private domSanitizer: DomSanitizer ) {
+  constructor(private _productdetailsService: ProductDetailsService, private domSanitizer: DomSanitizer,private userratingservice:UserratingService ) {
 
     
    }
@@ -58,8 +66,10 @@ ngOnInit(): void {
     this.pcategory=this.productdata.pcategory
     this.plocation=this.productdata.plocation
     this.pdate=this.productdata.pdate
+    this.pdatepost=this.productdata.pdatepost
     this.pcoin=this.productdata.pcoin
     this.pexchange=this.productdata.pexchange
+    this.pexchangetype=this.productdata.pexchangetype
     this.desc=this.productdata.desc
     this.img=this.domSanitizer.bypassSecurityTrustResourceUrl(
 
@@ -70,13 +80,29 @@ ngOnInit(): void {
     var t=this.pdate;
  
  this.dateofpurchase=t.substring(0,10);
-   this.time=t.substring(12,20);
-
+  // 
+  var t2=this.pdatepost
+  this.dateofposting=t2.substring(0,10)
 
   });
+
+  this.userratingservice.getUserRatingByEmai(userId).subscribe(dataofrating =>{
+    this.userratingdata=dataofrating
+    console.log(this.userratingdata)
+    this.rate=this.userratingdata.rate
+    this.review=this.userratingdata.review
+    
+
+  })
+
+
   
 
   }
  
 
   }
+
+function userId(userId: any) {
+  throw new Error('Function not implemented.');
+}
