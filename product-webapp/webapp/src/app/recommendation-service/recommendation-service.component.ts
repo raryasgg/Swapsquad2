@@ -1,7 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup } from '@angular/forms';
+<<<<<<< HEAD
 import {HttpClient} from '@angular/common/http';
 import { switchMap} from 'rxjs/operators'
+=======
+
+>>>>>>> 687952eb2f2d7694deb9653c7ec2945da63a1ad2
 
 
 @Component({
@@ -10,11 +14,17 @@ import { switchMap} from 'rxjs/operators'
   styleUrls: ['./recommendation-service.component.css']
 })
 export class RecommendationServiceComponent implements OnInit {  
+<<<<<<< HEAD
 value:any;
 recommendationForm:FormGroup;
 title = 'Ip-geolocation';
 userIP:'';
   constructor(private httpClient:HttpClient) { }
+=======
+  recommendationForm: FormGroup;
+  constructor() { }
+
+>>>>>>> 687952eb2f2d7694deb9653c7ec2945da63a1ad2
   ngOnInit(): void {
     throw new Error('Method not imlemented.')
   }

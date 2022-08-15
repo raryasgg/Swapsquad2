@@ -39,8 +39,8 @@ import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
     RegisterProductComponent,
     ProductdetailsComponent,
     RegisterUserComponent,
-     RecommendationServiceComponent,
-     UpdateDetailsComponent,
+    RecommendationServiceComponent,
+    UpdateDetailsComponent,
 
   ],
 
@@ -70,9 +70,17 @@ import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
     MatButtonToggleModule,
     MatProgressBarModule,
     FlexLayoutModule,
+<<<<<<< HEAD
     
+=======
+
+>>>>>>> 687952eb2f2d7694deb9653c7ec2945da63a1ad2
   ],
   providers: [ProductDetailsService],
   bootstrap: [AppComponent],
 })
+<<<<<<< HEAD
 export class AppModule {}
+=======
+export class AppModule { }
+>>>>>>> 687952eb2f2d7694deb9653c7ec2945da63a1ad2

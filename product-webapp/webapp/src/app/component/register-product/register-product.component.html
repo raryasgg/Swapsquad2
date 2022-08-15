@@ -68,7 +68,7 @@
                   <label class="col-md-2 labelname">Category</label>
                   <mat-form-field class="col-md-3" appearance="outline">
                     <mat-label>Select</mat-label>
-                    <mat-select formControlName="pcategory">
+                    <mat-select formControlName="pcategory" ngDefaultControl>
                       <div (click)="show(1)">
                         <mat-option value="Mobile, Tablet & Accessories">Mobile, Tablet & Accessories</mat-option>
                         <mat-option value="Cars & Bikes">Cars & Bikes</mat-option>
@@ -77,7 +77,7 @@
                         <mat-option value="Electronics & Appliances">Electronics & Appliances</mat-option>
                         <mat-option value="Home & Life Styles">Home & Life Styles</mat-option>
                       </div>
-                      <mat-option value="seven" (click)="show(2)">Others</mat-option>
+                      <!-- <mat-option value="Others" (click)="show(2)">Others</mat-option> -->
                     </mat-select>
                   </mat-form-field>
                   <div class="col-lg-1 col-md-1 col-sm-1 col-1"></div>
@@ -190,7 +190,7 @@
           <div class="row">
             <div class="col-md-1"></div>
             <div class="col-lg-10 col-md-10 col-sm-10 col-10 step-one-next-btn">
-              <button mat-raised-button color="primary" matStepperNext>             
+              <button mat-raised-button color="primary" matStepperNext>
                 Next
               </button>
             </div>
@@ -222,7 +222,7 @@
               <div class="form-horizontal horizontal-card-form">
                 <div class="row">
                   <div class="col-lg-2 payment-mode-message">
-                     <span class="small">
+                    <span class="small">
                       Mandatory*
                     </span></div>
                   <!-- <span class="small" *ngIf="
@@ -237,7 +237,7 @@
 
                   <label class="col-md-2 step2-labelname">Exchange Mode</label>
                   <div class="col-md-1"></div>
-                  <mat-radio-group aria-label="Select an option" class="col-md-7" formControlName="pexchangetype">
+                  <mat-radio-group aria-label="Select an option" class="col-md-7" formControlName="pexchangetype" ngDefaultControl>
                     <!-- class="form-control" id="pexchange" name="pexchange [(ngModel)]="product.pexchange" -->
                     <mat-radio-button value="COIN" class="col-md-4" (click)="text(0)">
                       <i class="fa-solid fa-coins" style="margin-right: 0.5rem; margin-left: 0.5rem"></i>
@@ -296,10 +296,10 @@
                   <label class="col-md-2 labelname" *ngIf="preference">Preference</label>
                   <div class="col-md-3" *ngIf="preference">
                     <div class="col-md-12">
-                      <span  class="small" *ngIf="
+                      <span class="small" *ngIf="
                     productForm.controls['pcoin'].touched &&
                     productForm.controls['pcoin'].invalid &&
-                    productForm.controls['pcoin'].errors?.required", style="color: red">Required*
+                    productForm.controls['pcoin'].errors?.required" , style="color: red">Required*
                       </span>
                     </div>
                     <mat-form-field class="example-chip-list" class="col-md-12" *ngIf="preference" appearance="outline">
@@ -337,12 +337,12 @@
 
               <div class="form-horizontal horizontal-card-form">
                 <div class="row">
-                  <div class="col-lg-11">
-                    <span class="small user-detail">
-                      Read Section Only*
-                    </span>
+                  <div class="col-lg-2">
+
                   </div>
-                  <div class="col-lg-1"></div>
+                  <div class="col-lg-10"> <span class="small user-detail">
+                      Read Section Only
+                    </span></div>
                   <div></div>
                   <label class="col-md-2 labelname">Confirm Email</label>
 
@@ -356,11 +356,42 @@
                   <div class="col-md-1"></div>
 
                   <label class="col-md-2 labelname">Location</label>
-                  <mat-form-field class="col-md-3" appearance="outline">
+                  <!-- <mat-form-field class="col-md-3" appearance="outline">
                     <mat-label>Jharkhand</mat-label>
                     <input matInput formControlName="plocation" readonly />
-                  </mat-form-field>
-
+                  </mat-form-field> -->
+                  <div class="col-md-3">
+                    <span class="small" *ngIf="
+                    productForm.controls['plocation'].touched &&
+                    productForm.controls['plocation'].invalid &&
+                    productForm.controls['plocation'].errors?.required" , style="color: red">Required*
+                    </span>
+                    <mat-form-field class="col-md-12" appearance="outline">
+                      <mat-label><i class="fa-solid fa-location-dot" style="margin-right: 0.5rem;"> </i>Place
+                      </mat-label>
+                      <mat-select formControlName="plocation" ngDefaultControl>
+                        <mat-option value="Andhra Pradesh">Andhra Pradesh</mat-option>
+                        <mat-option value="Arunachal Pradesh">Arunachal Pradesh</mat-option>
+                        <mat-option value="two">Assam</mat-option>
+                        <mat-option value="Arunachal Pradesh">Arunachal Pradesh</mat-option>
+                        <mat-option value="Bihar">Bihar</mat-option>
+                        <mat-option value="Chhattisgarh">Chhattisgarh</mat-option>
+                        <mat-option value="Goa">Goa</mat-option>
+                        <mat-option value="Gujarat">Gujarat</mat-option>
+                        <mat-option value="Haryana">Haryana</mat-option>
+                        <mat-option value="Himachal Pradesh">Himachal Pradesh</mat-option>
+                        <mat-option value="Jharkhand">Jharkhand</mat-option>
+                        <mat-option value="Karnataka">Karnataka</mat-option>
+                        <mat-option value="Kerala">Kerala</mat-option>
+                        <mat-option value="Madhya Pradesh">Madhya Pradesh</mat-option>
+                        <mat-option value="Maharashtra">Maharashtra</mat-option>
+                        <mat-option value="Manipur">Manipur</mat-option>
+                        <mat-option value="Meghalaya">Meghalaya</mat-option>
+                        <mat-option value="Nagaland">Nagaland</mat-option>
+                        <mat-option value="Nagaland">Odisha</mat-option>
+                      </mat-select>
+                    </mat-form-field>
+                  </div>
                   <div class="col-md-1"></div>
                 </div>
               </div>
@@ -377,7 +408,7 @@
             </button>
           </div>
           <div class="col-lg-5 col-md-5 col-sm-5 col-5 step-one-next-btn">
-            <button mat-raised-button style="background: #43db52" type="submit" [disabled]="!productForm.valid"
+            <button mat-raised-button style="background: #43db52" type="submit" 
               (click)="onClickSubmitForm()">
               Finish
             </button>
