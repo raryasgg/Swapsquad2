@@ -1,11 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup } from '@angular/forms';
-
+import { FormControl, FormGroup } from '@angular/forms';
 import {HttpClient} from '@angular/common/http';
 import { switchMap} from 'rxjs/operators'
-
-
-
+import { IncomingProductData } from '../models/recommendation/incoming-product-data';
 
 
 @Component({
@@ -13,26 +10,38 @@ import { switchMap} from 'rxjs/operators'
   templateUrl: './recommendation-service.component.html',
   styleUrls: ['./recommendation-service.component.css']
 })
-export class RecommendationServiceComponent implements OnInit {  
+export class RecommendationServiceComponent implements OnInit {
 
 value:any;
 recommendationForm:FormGroup;
 title = 'Ip-geolocation';
 userIP:'';
-  constructor(private httpClient:HttpClient) { }
-
- 
-
+  constructor(private httpClient:HttpClient) {
+    this.recommendationForm = new FormGroup({
+      state: new FormControl(),
+      productCategory: new FormControl(),
+      searchbar: new FormControl(),
+    });
+   }
 
   ngOnInit(): void {
-    throw new Error('Method not imlemented.')
+    
   }
+
+recommendObj: IncomingProductData = new IncomingProductData();
+  onSelect(){
+    console.log(this.recommendationForm.value)
+  }
+
+  // for Search bar 
+
  loadUserInfo(){
    
    this.httpClient.get('https://jsonip.com/')
    .pipe(
      switchMap((value:any)=>{
       this.userIP =value.ip;
+
 
 
 

@@ -47,6 +47,7 @@ export class ProductdetailsComponent implements OnInit {
   
   public productdata:any;
   public userratingdata:any;
+  pexchange: any;
  
   constructor(private _productdetailsService: ProductDetailsService, private domSanitizer: DomSanitizer,private userratingservice:UserratingService ) {
 

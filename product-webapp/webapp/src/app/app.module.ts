@@ -70,11 +70,14 @@ import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
     MatButtonToggleModule,
     MatProgressBarModule,
     FlexLayoutModule,
+<<<<<<< HEAD
 
     
 
 
 
+=======
+>>>>>>> 398018fe71fb00bcd060b0790da42c646f993d06
   ],
   providers: [ProductDetailsService],
   bootstrap: [AppComponent],
@@ -82,5 +85,8 @@ import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
 export class AppModule {}
 
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> 398018fe71fb00bcd060b0790da42c646f993d06
