@@ -31,7 +31,7 @@ import { MatButtonToggleModule } from "@angular/material/button-toggle";
 import { MatProgressBarModule } from "@angular/material/progress-bar";
 import { FlexLayoutModule } from "@angular/flex-layout";
 import { UpdateDetailsComponent } from './update-details/update-details.component';
-
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
 @NgModule({
   declarations: [
@@ -70,6 +70,7 @@ import { UpdateDetailsComponent } from './update-details/update-details.componen
     MatButtonToggleModule,
     MatProgressBarModule,
     FlexLayoutModule,
+    
   ],
   providers: [ProductDetailsService],
   bootstrap: [AppComponent],
