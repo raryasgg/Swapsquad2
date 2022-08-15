@@ -1,327 +1,326 @@
- <div class="total-content">
-   <div class="row nav-items">
-     <div class="col-lg-4 col-md-4 col-sm-2 col-2">
-       <div class="row">
-         <div class="col-lg-3 col-md-3 col-sm-3 col-3"></div>
-         <div class="col-lg-7 col-md-3 col-sm-3 col-3 location-dropdown">
-           <div class="dropdown">
-             <button class="btn btn-outline-primary dropdown-toggle" type="button" data-toggle="dropdown"
-               aria-expanded="false">
-               Select Your Location
-             </button>
-             <div class="dropdown-menu">
-               <a class="dropdown-item"><i class="fa-solid fa-location-dot"></i>Andhra Pradesh</a>
-               <a class="dropdown-item" href="/"><i class="fa-solid fa-location-dot"></i>Arunachal Pradesh</a>
-               <a class="dropdown-item" href="/"><i class="fa-solid fa-location-dot"></i>Assam</a>
-               <a class="dropdown-item" href="/"><i class="fa-solid fa-location-dot"></i>Bihar</a>
-               <a class="dropdown-item" href="/"><i class="fa-solid fa-location-dot"></i>Chhattisgarh</a>
-               <a class="dropdown-item" href="/"><i class="fa-solid fa-location-dot"></i>Goa</a>
-               <a class="dropdown-item" href="/"><i class="fa-solid fa-location-dot"></i>Gujarat</a>
-               <a class="dropdown-item" href="/"><i class="fa-solid fa-location-dot"></i>Haryana</a>
-               <a class="dropdown-item" href="/"><i class="fa-solid fa-location-dot"></i>Himachal Pradesh</a>
-               <a class="dropdown-item" href="/"><i class="fa-solid fa-location-dot"></i>Jharkhand</a>
-               <a class="dropdown-item" href="/"><i class="fa-solid fa-location-dot"></i>Karnataka</a>
-               <a class="dropdown-item" href="/"><i class="fa-solid fa-location-dot"></i>Kerala</a>
-               <a class="dropdown-item" href="/"><i class="fa-solid fa-location-dot"></i>Madhya Pradesh</a>
-               <a class="dropdown-item" href="/"><i class="fa-solid fa-location-dot"></i>Maharashtra</a>
-               <a class="dropdown-item" href="/"><i class="fa-solid fa-location-dot"></i>Manipur</a>
-               <a class="dropdown-item" href="/"><i class="fa-solid fa-location-dot"></i>Meghalaya</a>
-               <a class="dropdown-item" href="/"><i class="fa-solid fa-location-dot"></i>Mizoram</a>
-               <a class="dropdown-item" href="/"><i class="fa-solid fa-location-dot"></i>Nagaland</a>
-               <a class="dropdown-item" href="/"><i class="fa-solid fa-location-dot"></i>Odisha</a>
-               <a class="dropdown-item" href="/">Something else here</a>
-             </div>
-           </div>
-           <div class="col-lg-2 col-md-2 col-sm-3 col-3"></div>
-         </div>
-       </div>
-     </div>
-     <div class="col-lg-8 col-md-8 col-sm-8 col-8">
-       <div class="row">
-         <div class="col-lg-8 col-md-8 col-sm-7 col-6">
-           <mat-grid-list cols="1" rowHeight="85px">
-             <mat-grid-tile>
-               <mat-form-field class="example-form-field" appearance="outline" style="width: 35rem">
-                 <mat-label>
-                   <i class="fa-solid fa-magnifying-glass"></i>
-                   Find Cars, mobile phone and More....</mat-label>
-                 <input matInput type="text" [(ngModel)]="value" />
-                 <button *ngIf="value" matSuffix mat-icon-button aria-label="Clear" (click)="value = ''">
-                   <mat-icon>close</mat-icon>
-                 </button>
-               </mat-form-field>
-             </mat-grid-tile>
-           </mat-grid-list>
-         </div>
 
-         <div class="col-lg-1 col-md-2 col-sm-2 col-2 "></div>
-         <div class="col-lg-3 col-md-2 col-sm-2 col-2 category-dropdown" style="font-size: 5px">
-           <div class="dropdown">
-             <button class="btn btn-outline-dark dropdown-toggle" type="button" data-toggle="dropdown"
-               aria-expanded="false">
-               Category
-             </button>
-             <div class="dropdown-menu">
-               <a class="dropdown-item" href="/">Electronics</a>
-               <a class="dropdown-item" href="/">Automobiles</a>
-               <a class="dropdown-item" href="/">Houses & Apartments</a>
-               <a class="dropdown-item" href="/">Clothings</a>
-               <a class="dropdown-item" href="/">House Hold</a>
-               <a class="dropdown-item" href="/">Daily Uses</a>
-             </div>
-           </div>
-         </div>
-       </div>
-     </div>
-   </div>
-   <!-- <div class="col-lg-1 col-md-1 col-sm-1 col-1"></div> -->
- </div>
- <br>
- <!-- =============================== * product * ============================================ -->
- <div class="product">
-   <div class="First_row">
-     <div class="box">
-       <a href="">
-         <img src="assets/product-1.jpg" />
-         <h4>Mode Of Exchange</h4>
-         <p>Mi TV Stick</p>
-         <div class="addres_data">
-           <p>Bandra East, Mumbai</p>
-           <p>Today</p>
-         </div>
-       </a>
-     </div>
-     <div class="box">
-       <img src="assets/product-2.jpg" />
-       <h4>Mode Of Exchange</h4>
-       <p>xbox one s</p>
-       <div class="addres_data">
-         <p>CHEMBUR, MUMBAI</p>
-         <p>JUL 27</p>
-       </div>
-     </div>
-     <div class="box">
-       <img src="assets/product-3.jpg" />
-       <h4>Mode Of Exchange</h4>
-       <p>Refrigerator</p>
-       <div class="addres_data">
-         <p>DHARAVI, MUMBAI</p>
-         <p>Today</p>
-       </div>
-     </div>
-     <div class="box">
-       <img src="/assets/product-4.jpg" />
-       <h4>Mode Of Exchange</h4>
-       <p>Mitsubishi Pajero (2012)</p>
-       <div class="addres_data">
-         <p>VERSOVA, MUMBAI</p>
-         <p>Today</p>
-       </div>
-     </div>
-   </div>
+<form [formGroup]="recommendationForm">
+<div>
+  <h4>My IP Address {{userIP}}</h4>
+</div>
+<div class="total-content">
+  <div class="row nav-items">
 
-   <div class="First_row">
-     <div class="box">
-       <img src="assets/product-5.jpg" />
-       <h4>Mode Of Exchange</h4>
-       <p>Black Jeans for man</p>
-       <div class="addres_data">
-         <p>BORIVALI WEST, MUMBAI</p>
-         <p>DEC 24</p>
-       </div>
-     </div>
-     <div class="box">
-       <img src="assets/product-6.jpg" />
-       <h4>Mode Of Exchange</h4>
-       <p>Pricise corrom board</p>
-       <div class="addres_data">
-         <p>IC COLONY, MUMBAI</p>
-         <p>JAN 29</p>
-       </div>
-     </div>
-     <div class="box">
-       <img src="assets/product-7.jpg" />
-       <h4>Mode Of Exchange</h4>
-       <p>CrossBeat Torq Buds</p>
-       <div class="addres_data">
-         <p>DHARAVI, MUMBAI</p>
-         <p>Today</p>
-       </div>
-     </div>
-     <div class="box">
-       <img src="assets/product-8.jpg" />
-       <h4>Mode Of Exchange</h4>
-       <p>Nikon D7000 DSLR camera</p>
-       <div class="addres_data">
-         <p>ANDHERI WEST, MUMBAI</p>
-         <p>FEB 02</p>
-       </div>
-     </div>
-   </div>
+    <div class="col-lg-4 col-md-4 col-sm-4 col-4">
+      <div class="row">
+        <div class="col-lg-3 col-md-3 col-sm-3 col-3"></div>
+        <div class="col-lg-7 col-md-7 col-sm-7 col-7 location-dropdown">
+          <mat-form-field appearance="outline" style="inline-size: auto;">
+            <mat-label><i class="fa-solid fa-location-dot" style="margin-right: 0.5rem;"> </i>Location</mat-label>
+            <mat-select formControlName="state" (click)="onSelect()">
+              <mat-option value="Andhra Pradesh">Andhra Pradesh</mat-option>
+                        <mat-option value="Arunachal Pradesh">Arunachal Pradesh</mat-option>
+                        <mat-option value="Assam">Assam</mat-option>
+                        <mat-option value="Arunachal Pradesh">Arunachal Pradesh</mat-option>
+                        <mat-option value="Bihar">Bihar</mat-option>
+                        <mat-option value="Chhattisgarh">Chhattisgarh</mat-option>
+                        <mat-option value="Goa">Goa</mat-option>
+                        <mat-option value="Gujarat">Gujarat</mat-option>
+                        <mat-option value="Haryana">Haryana</mat-option>
+                        <mat-option value="Himachal Pradesh">Himachal Pradesh</mat-option>
+                        <mat-option value="Jharkhand">Jharkhand</mat-option>
+                        <mat-option value="Karnataka">Karnataka</mat-option>
+                        <mat-option value="Kerala">Kerala</mat-option>
+                        <mat-option value="Madhya Pradesh">Madhya Pradesh</mat-option>
+                        <mat-option value="Maharashtra">Maharashtra</mat-option>
+                        <mat-option value="Manipur">Manipur</mat-option>
+                        <mat-option value="Meghalaya">Meghalaya</mat-option>
+                        <mat-option value="Nagaland">Nagaland</mat-option>
+                        <mat-option value="Nagaland">Odisha</mat-option>
+            </mat-select>
+          </mat-form-field>
+          <div class="col-lg-2 col-md-2 col-sm-2 col-2"></div>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-8 col-md-8 col-sm-8 col-8">
+      <div class="row">
+        <div class="col-lg-8 col-md-8 col-sm-8 col-8">
+          <mat-grid-list cols="1" rowHeight="85px">
+            <mat-grid-tile>
+              <mat-form-field class="example-form-field" appearance="outline" style="width: 35rem">
+                <mat-label>
+                  <i class="fa-solid fa-magnifying-glass"></i>
+                  Find Cars, mobile phone and More....</mat-label>
+                <input matInput type="text" formControlName="searchbar"/>
+                <button *ngIf="value" matSuffix mat-icon-button aria-label="Clear" (click)="value = ''">
+                  <mat-icon>close</mat-icon>
+                </button>
+              </mat-form-field>
+            </mat-grid-tile>
+          </mat-grid-list>
+        </div>
 
-   <div class="First_row">
-     <div class="box">
-       <img src="assets/product-9.jpg" />
-       <h4>Mode Of Exchange</h4>
-       <p>Black jacket</p>
-       <div class="addres_data">
-         <p>KANDIVALI WEST, MUMBAI</p>
-         <p>FEB 11</p>
-       </div>
-     </div>
-     <div class="box">
-       <img src="assets/product-10.jpg" />
-       <h4>Mode Of Exchange</h4>
-       <p>LG Washing machine</p>
-       <div class="addres_data">
-         <p>SANTACRUZ EAST, MUMBAI</p>
-         <p>Today</p>
-       </div>
-     </div>
-     <div class="box">
-       <img src="assets/product-11.jpg" />
-       <h4>Mode Of Exchange</h4>
-       <p>Running Shoe (athletes)</p>
-       <div class="addres_data">
-         <p>BANDRA EAST, MUMBAI</p>
-         <p>FEB 25</p>
-       </div>
-     </div>
-     <div class="box">
-       <img src="assets/product-12.jpg" />
-       <h4>Mode Of Exchange</h4>
-       <p>Antique teak wood Sofa set</p>
-       <div class="addres_data">
-         <p>Bandra East, Mumbai</p>
-         <p>Today</p>
-       </div>
-     </div>
-   </div>
+        <!-- <div class="col-lg-1 col-md-1 col-sm-1 col-1 "></div> -->
+        <div class="col-lg-3 col-md-3 col-sm-3 col-3 category-dropdown">
+          <mat-form-field appearance="outline">
+            <mat-label>Category</mat-label>
+            <mat-select formControlName="productCategory" (click)="onSelect()">
+              <mat-option value="Mobile, Tablet & Accessories">Mobile, Tablet & Accessories</mat-option>
+              <mat-option value="Cars & Bikes">Cars & Bikes</mat-option>
+              <mat-option value="Books & Sports">Books & Sports</mat-option>
+              <mat-option value="Pets & Pet Care">Pets & Pet Care</mat-option>
+              <mat-option value="Electronics & Appliances">Electronics & Appliances</mat-option>
+              <mat-option value="Home & Life Styles">Home & Life Styles</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+      </div>
+    </div>
 
-   <div class="First_row">
-     <div class="box">
-       <img src="assets/product-13.jpg" />
-       <h4>Mode Of Exchange</h4>
-       <p>Hyundai I20 (2010)</p>
-       <div class="addres_data">
-         <p>KHAR EAST, MUMBAI</p>
-         <p>JAN 14</p>
-       </div>
-     </div>
-     <div class="box">
-       <img src="assets/product-14.jpg" />
-       <h4>Mode Of Exchange</h4>
-       <p>dining table</p>
-       <div class="addres_data">
-         <p>DADAR WEST, MUMBAI</p>
-         <p>JUN 10</p>
-       </div>
-     </div>
-     <div class="box">
-       <img src="assets/product-15.jpg" />
-       <h4>Mode Of Exchange</h4>
-       <p>Mens fastrack watch</p>
-       <div class="addres_data">
-         <p>KURLA EAST, MUMBAI</p>
-         <p>JAN 7</p>
-       </div>
-     </div>
-     <div class="box">
-       <img src="assets/product-16.jpg" />
-       <h4>Mode Of Exchange</h4>
-       <p>Pure Metal Dumbbells</p>
-       <div class="addres_data">
-         <p>Bandra East, Mumbai</p>
-         <p>Today</p>
-       </div>
-     </div>
+  </div>
+</div>
+</form>
+<!-- =============================== * product * ============================================ -->
+<div class="product">
+  <div class="First_row">
+    <div class="box">
+      <a href="">
+        <img src="assets/product-1.jpg" />
+        <h4>Mode Of Exchange</h4>
+        <p>Mi TV Stick</p>
+        <div class="addres_data">
+          <p>Bandra East, Mumbai</p>
+          <p>Today</p>
+        </div>
+      </a>
+    </div>
+    <div class="box">
+      <img src="assets/product-2.jpg" />
+      <h4>Mode Of Exchange</h4>
+      <p>xbox one s</p>
+      <div class="addres_data">
+        <p>CHEMBUR, MUMBAI</p>
+        <p>JUL 27</p>
+      </div>
+    </div>
+    <div class="box">
+      <img src="assets/product-3.jpg" />
+      <h4>Mode Of Exchange</h4>
+      <p>Refrigerator</p>
+      <div class="addres_data">
+        <p>DHARAVI, MUMBAI</p>
+        <p>Today</p>
+      </div>
+    </div>
+    <div class="box">
+      <img src="/assets/product-4.jpg" />
+      <h4>Mode Of Exchange</h4>
+      <p>Mitsubishi Pajero (2012)</p>
+      <div class="addres_data">
+        <p>VERSOVA, MUMBAI</p>
+        <p>Today</p>
+      </div>
+    </div>
+  </div>
 
-   </div>
- </div>
+  <div class="First_row">
+    <div class="box">
+      <img src="assets/product-5.jpg" />
+      <h4>Mode Of Exchange</h4>
+      <p>Black Jeans for man</p>
+      <div class="addres_data">
+        <p>BORIVALI WEST, MUMBAI</p>
+        <p>DEC 24</p>
+      </div>
+    </div>
+    <div class="box">
+      <img src="assets/product-6.jpg" />
+      <h4>Mode Of Exchange</h4>
+      <p>Pricise corrom board</p>
+      <div class="addres_data">
+        <p>IC COLONY, MUMBAI</p>
+        <p>JAN 29</p>
+      </div>
+    </div>
+    <div class="box">
+      <img src="assets/product-7.jpg" />
+      <h4>Mode Of Exchange</h4>
+      <p>CrossBeat Torq Buds</p>
+      <div class="addres_data">
+        <p>DHARAVI, MUMBAI</p>
+        <p>Today</p>
+      </div>
+    </div>
+    <div class="box">
+      <img src="assets/product-8.jpg" />
+      <h4>Mode Of Exchange</h4>
+      <p>Nikon D7000 DSLR camera</p>
+      <div class="addres_data">
+        <p>ANDHERI WEST, MUMBAI</p>
+        <p>FEB 02</p>
+      </div>
+    </div>
+  </div>
 
- <!-- =============================== * LOde more * ============================================ -->
+  <div class="First_row">
+    <div class="box">
+      <img src="assets/product-9.jpg" />
+      <h4>Mode Of Exchange</h4>
+      <p>Black jacket</p>
+      <div class="addres_data">
+        <p>KANDIVALI WEST, MUMBAI</p>
+        <p>FEB 11</p>
+      </div>
+    </div>
+    <div class="box">
+      <img src="assets/product-10.jpg" />
+      <h4>Mode Of Exchange</h4>
+      <p>LG Washing machine</p>
+      <div class="addres_data">
+        <p>SANTACRUZ EAST, MUMBAI</p>
+        <p>Today</p>
+      </div>
+    </div>
+    <div class="box">
+      <img src="assets/product-11.jpg" />
+      <h4>Mode Of Exchange</h4>
+      <p>Running Shoe (athletes)</p>
+      <div class="addres_data">
+        <p>BANDRA EAST, MUMBAI</p>
+        <p>FEB 25</p>
+      </div>
+    </div>
+    <div class="box">
+      <img src="assets/product-12.jpg" />
+      <h4>Mode Of Exchange</h4>
+      <p>Antique teak wood Sofa set</p>
+      <div class="addres_data">
+        <p>Bandra East, Mumbai</p>
+        <p>Today</p>
+      </div>
+    </div>
+  </div>
 
- <div class="LOde_more">
-   <button id="Lode_more_id">Lode More</button>
+  <div class="First_row">
+    <div class="box">
+      <img src="assets/product-13.jpg" />
+      <h4>Mode Of Exchange</h4>
+      <p>Hyundai I20 (2010)</p>
+      <div class="addres_data">
+        <p>KHAR EAST, MUMBAI</p>
+        <p>JAN 14</p>
+      </div>
+    </div>
+    <div class="box">
+      <img src="assets/product-14.jpg" />
+      <h4>Mode Of Exchange</h4>
+      <p>dining table</p>
+      <div class="addres_data">
+        <p>DADAR WEST, MUMBAI</p>
+        <p>JUN 10</p>
+      </div>
+    </div>
+    <div class="box">
+      <img src="assets/product-15.jpg" />
+      <h4>Mode Of Exchange</h4>
+      <p>Mens fastrack watch</p>
+      <div class="addres_data">
+        <p>KURLA EAST, MUMBAI</p>
+        <p>JAN 7</p>
+      </div>
+    </div>
+    <div class="box">
+      <img src="assets/product-16.jpg" />
+      <h4>Mode Of Exchange</h4>
+      <p>Pure Metal Dumbbells</p>
+      <div class="addres_data">
+        <p>Bandra East, Mumbai</p>
+        <p>Today</p>
+      </div>
+    </div>
 
-   <div class="lode-More_products" id="lode_more_products_id">
-     <div class="First_row">
-       <div class="box">
-         <a href="#"></a>
-         <img src="assets/product-1.jpg" />
-         <h4>Mode Of Exchange</h4>
-         <p>Mi TV Stick</p>
-         <div class="addres_data">
-           <p>Bandra East, Mumbai</p>
-           <p>Today</p>
-         </div>
-       </div>
-       <div class="box">
-         <img src="assets/product-2.jpg" />
-         <h4>Mode Of Exchange</h4>
-         <p>xbox one s</p>
-         <div class="addres_data">
-           <p>CHEMBUR, MUMBAI</p>
-           <p>JUL 27</p>
-         </div>
-       </div>
-       <div class="box">
-         <img src="assets/product-3.jpg" />
-         <h4>Mode Of Exchange</h4>
-         <p>Refrigerator</p>
-         <div class="addres_data">
-           <p>DHARAVI, MUMBAI</p>
-           <p>Today</p>
-         </div>
-       </div>
-       <div class="box">
-         <img src="assets/product-4.jpg" />
-         <h4>Mode Of Exchange</h4>
-         <p>Mitsubishi Pajero (2012)</p>
-         <div class="addres_data">
-           <p>VERSOVA, MUMBAI</p>
-           <p>Today</p>
-         </div>
-       </div>
-     </div>
+  </div>
+</div>
 
-     <div class="First_row">
-       <div class="box">
-         <img src="/src/assets/product-5.jpg" />
-         <h4>Mode Of Exchange</h4>
-         <p>Black Jeans for man</p>
-         <div class="addres_data">
-           <p>BORIVALI WEST, MUMBAI</p>
-           <p>DEC 24</p>
-         </div>
-       </div>
-       <div class="box">
-         <img src="assets/product-6.jpg" />
-         <h4>Mode Of Exchange</h4>
-         <p>Pricise corrom board</p>
-         <div class="addres_data">
-           <p>IC COLONY, MUMBAI</p>
-           <p>JAN 29</p>
-         </div>
-       </div>
-       <div class="box">
-         <img src="assets/product-7.jpg" />
-         <h4>Mode Of Exchange</h4>
-         <p>CrossBeat Torq Buds</p>
-         <div class="addres_data">
-           <p>DHARAVI, MUMBAI</p>
-           <p>Today</p>
-         </div>
-       </div>
-       <div class="box">
-         <img src="assets/product-8.jpg" />
-         <h4>Mode Of Exchange</h4>
-         <p>Nikon D7000 DSLR camera</p>
-         <div class="addres_data">
-           <p>ANDHERI WEST, MUMBAI</p>
-           <p>FEB 02</p>
-         </div>
-       </div>
-     </div>
-   </div>
- </div>
+<!-- =============================== * LOde more * ============================================ -->
+
+<div class="LOde_more">
+  <button id="Lode_more_id">Lode More</button>
+
+  <div class="lode-More_products" id="lode_more_products_id">
+    <div class="First_row">
+      <div class="box">
+        <a href="#"></a>
+        <img src="assets/product-1.jpg" />
+        <h4>Mode Of Exchange</h4>
+        <p>Mi TV Stick</p>
+        <div class="addres_data">
+          <p>Bandra East, Mumbai</p>
+          <p>Today</p>
+        </div>
+      </div>
+      <div class="box">
+        <img src="assets/product-2.jpg" />
+        <h4>Mode Of Exchange</h4>
+        <p>xbox one s</p>
+        <div class="addres_data">
+          <p>CHEMBUR, MUMBAI</p>
+          <p>JUL 27</p>
+        </div>
+      </div>
+      <div class="box">
+        <img src="assets/product-3.jpg" />
+        <h4>Mode Of Exchange</h4>
+        <p>Refrigerator</p>
+        <div class="addres_data">
+          <p>DHARAVI, MUMBAI</p>
+          <p>Today</p>
+        </div>
+      </div>
+      <div class="box">
+        <img src="assets/product-4.jpg" />
+        <h4>Mode Of Exchange</h4>
+        <p>Mitsubishi Pajero (2012)</p>
+        <div class="addres_data">
+          <p>VERSOVA, MUMBAI</p>
+          <p>Today</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="First_row">
+      <div class="box">
+        <img src="/src/assets/product-5.jpg" />
+        <h4>Mode Of Exchange</h4>
+        <p>Black Jeans for man</p>
+        <div class="addres_data">
+          <p>BORIVALI WEST, MUMBAI</p>
+          <p>DEC 24</p>
+        </div>
+      </div>
+      <div class="box">
+        <img src="assets/product-6.jpg" />
+        <h4>Mode Of Exchange</h4>
+        <p>Pricise corrom board</p>
+        <div class="addres_data">
+          <p>IC COLONY, MUMBAI</p>
+          <p>JAN 29</p>
+        </div>
+      </div>
+      <div class="box">
+        <img src="assets/product-7.jpg" />
+        <h4>Mode Of Exchange</h4>
+        <p>CrossBeat Torq Buds</p>
+        <div class="addres_data">
+          <p>DHARAVI, MUMBAI</p>
+          <p>Today</p>
+        </div>
+      </div>
+      <div class="box">
+        <img src="assets/product-8.jpg" />
+        <h4>Mode Of Exchange</h4>
+        <p>Nikon D7000 DSLR camera</p>
+        <div class="addres_data">
+          <p>ANDHERI WEST, MUMBAI</p>
+          <p>FEB 02</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

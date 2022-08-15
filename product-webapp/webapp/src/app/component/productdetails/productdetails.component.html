@@ -75,10 +75,16 @@
                                         
                                         <td>
                                             <div class="product-owner-details ">
-                                                <mat-icon style="color:blue">grade</mat-icon>
-                                                <mat-icon style="color:blue">grade</mat-icon>
-                                                <mat-icon style="color:blue">grade</mat-icon>
-                                                <mat-icon style="color:blue">grade</mat-icon>
+                                                <ion-list *ngFor="let item of rate">
+                                                    {{rate}
+                                                    
+                                                    <div *ngFor="let num of [1,2,3,4,5]">
+                                                        <span class="star on" *ngIf="rate - num > 0.5"></span>
+                                                        <span class="star half" *ngIf="rate - num == 0.5"></span>
+                                                        <span class="star" *ngIf="rate == 0 "></span>
+                                                    </div>
+                                                    </ion-list>
+                                               
                                             </div>
                                         </td>
                                     </tr>
@@ -137,7 +143,11 @@
                     <div class="row" style="margin-bottom:-1rem ;">
 
                         <div class="col-lg-6 col-md-4 col-sm-12">
-                            <p>{{pexchangetype}}</p>
+
+                           <p>{{pexchangetype}}</p>
+
+
+                         
                         </div> 
                         <div class="col-lg-6 col-md-4 col-sm-6 post-date ">
 
@@ -150,7 +160,16 @@
                     <!-- Preferences -->
 
                     <div class="preference" >
-                        <p >Preferences : {{pexchange}}</p>
+                        <p >Preferences :
+                            <mat-chip-list aria-label="preference selection">
+                                <mat-chip *ngFor="let item of pexchange">
+                                  
+                                 {{item}}
+                                </mat-chip>
+                               
+                               
+                              </mat-chip-list>
+                        </p>
 
                         
 
@@ -168,8 +187,8 @@
                         </div>
                         <div class="user-profile-box-review col-lg-9">
                             <p>Review</p>
-                            <p>username</p>
-                            <p>Review Message</p>
+                            <p>{{userId}}</p>
+                            <p>{{review}}</p>
                         </div>
                     </div>
 

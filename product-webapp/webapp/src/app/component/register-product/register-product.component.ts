@@ -8,7 +8,7 @@ import { COMMA, E, ENTER } from '@angular/cdk/keycodes';
 import { FormControl } from '@angular/forms';
 import { Product } from '../../models/register-product/Product';
 import Swal from 'sweetalert2';
-
+import { Router } from '@angular/router';
 
 
 export interface Fruit {
@@ -23,22 +23,25 @@ export interface Fruit {
 
 export class RegisterProductComponent implements OnInit {
 
-  pexchange: any;
+  // pexchange: any;
   productForm: FormGroup;
+
   constructor(private productService: RegisterProductService,
-    private sanitizer: DomSanitizer, private fb: FormBuilder
+    private sanitizer: DomSanitizer, private fb: FormBuilder, private router: Router
   ) {
     this.productForm = new FormGroup({
       pcategory: new FormControl("", [Validators.required]),
       pname: new FormControl("", [Validators.required, Validators.minLength(2)]),
       pdatepost: new FormControl("", [Validators.required]),
-      desc: new FormControl("", [Validators.required, Validators.minLength(10),Validators.maxLength(150)]),
+      desc: new FormControl("", [Validators.required, Validators.minLength(10), Validators.maxLength(150)]),
       pexchangetype: new FormControl(),
-      pcoin: new FormControl("",[Validators.required,Validators.pattern("^[0-9]*$"),Validators.maxLength(8)]),
-      pexchange: this.fb.array([], Validators.required),
+      // pcoin: new FormControl("",[Validators.required,Validators.pattern("^[0-9]*$"),Validators.maxLength(8)]),
+      // pexchange: this.fb.array([], Validators.required),
+      pcoin: new FormControl("", [Validators.pattern("^[0-9]*$"), Validators.maxLength(8)]),
+      pexchange: this.fb.array([]),
       pemail: new FormControl(),
-      plocation: new FormControl(),
-      image:new FormControl([], Validators.required)
+      plocation: new FormControl("", [Validators.required]),
+      image: new FormControl([], Validators.required)
     });
   }
 
@@ -93,33 +96,35 @@ export class RegisterProductComponent implements OnInit {
   }
 
   onClickSubmitForm() {
-    console.log(this.productForm.value);
-  
-    Swal.fire({ icon: 'success', title: 'Successfully Registered !!', text: 'Your Product Posted Succesfully !', })
 
-    this.productObj.pcategory = this.productForm.value.pcategory;
-    this.productObj.pname = this.productForm.value.pname;
-    this.productObj.pdatepost = this.productForm.value.pdatepost;
-    this.productObj.desc = this.productForm.value.desc;
-    this.productObj.pexchangetype = this.productForm.value.pexchangetype;
-    this.productObj.pexchange = this.productForm.value.pexchange;
-    this.productObj.pemail = this.productForm.value.pemail;
-    this.productObj.plocation = this.productForm.value.plocation;
-    this.productObj.pcoin = this.productForm.value.pcoin;
-    this.productService.addProduct(this.productObj, this.file[0]).subscribe(data =>
-      console.log(data)
-    )
+if (!this.productForm.invalid){
+  console.log(this.productForm.value);
 
-    this.productForm.reset();
- 
+  this.productObj.pcategory = this.productForm.value.pcategory;
+  this.productObj.pname = this.productForm.value.pname;
+  this.productObj.pdatepost = this.productForm.value.pdatepost;
+  this.productObj.desc = this.productForm.value.desc;
+  this.productObj.pexchangetype = this.productForm.value.pexchangetype;
+  this.productObj.pexchange = this.productForm.value.pexchange;
+  this.productObj.pemail = this.productForm.value.pemail;
+  this.productObj.plocation = this.productForm.value.plocation;
+  this.productObj.pcoin = this.productForm.value.pcoin;
+  this.productService.addProduct(this.productObj, this.file[0]).subscribe(data =>
+    console.log(data)
+  )
+// To reset the form
+  this.productForm.reset();
+  Swal.fire({ icon: 'success', title: 'Successfully Registered !!', text: 'Your Product Posted Succesfully !', })
+
+  //To navigate to home page
+  this.router.navigateByUrl('');
+
+}else{
+  Swal.fire({ icon: 'error', title: 'Oops...Empty Feild !!', text: 'Please fill all sections the to continue !', })
+}
   }
 
 
-
-
-  // resetForm(){
-  //   this.productForm.reset();
-  // }
 
   // For adding the category
   othercatergory = false;

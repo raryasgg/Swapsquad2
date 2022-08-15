@@ -3,6 +3,7 @@ import { pid } from 'process';
 import { Product } from './product';
 import { ProductDetailsService } from './product-details.service';
 import { DomSanitizer } from '@angular/platform-browser';
+import { UserratingService } from './userrating.service';
 
 
 @Component({
@@ -22,7 +23,6 @@ export class ProductdetailsComponent implements OnInit {
   pcoin=20000;
  pdatepost=""
 
-  pexchange="car, fan table";
   pexchangetype="coin"
   desc="this is description of the product";
   pcategory="";
@@ -32,6 +32,13 @@ export class ProductdetailsComponent implements OnInit {
   product:any
   img:any
   dateofposting:any
+
+
+  //user rating
+ rate:any;
+ review:any
+ userId:""
+
   
   // img1="assets/1.jpg"
 
@@ -39,8 +46,10 @@ export class ProductdetailsComponent implements OnInit {
   
   
   public productdata:any;
+  public userratingdata:any;
+  pexchange: any;
  
-  constructor(private _productdetailsService: ProductDetailsService, private domSanitizer: DomSanitizer ) {
+  constructor(private _productdetailsService: ProductDetailsService, private domSanitizer: DomSanitizer,private userratingservice:UserratingService ) {
 
     
    }
@@ -78,14 +87,33 @@ ngOnInit(): void {
  
  this.dateofpurchase=t.substring(0,10);
   // 
+
   var t2=this.pdate;
   this.dateofposting=t2.substring(0,10)
 
 
+
   });
+
+  this.userratingservice.getUserRatingByEmail(gmail).subscribe(dataofrating =>{
+    this.userratingdata=dataofrating
+    console.log(this.userratingdata)
+    this.rate=this.userratingdata.rate
+    this.review=this.userratingdata.review
+    
+
+  })
+
+
   
 
   }
  
 
   }
+
+
+function gmail(gmail: any) {
+  throw new Error('Function not implemented.');
+}
+

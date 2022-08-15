@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-
+import { FormControl, FormGroup } from '@angular/forms';
+import {HttpClient} from '@angular/common/http';
+import { switchMap} from 'rxjs/operators'
+import { IncomingProductData } from '../models/recommendation/incoming-product-data';
 
 
 @Component({
@@ -7,13 +10,58 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './recommendation-service.component.html',
   styleUrls: ['./recommendation-service.component.css']
 })
-export class RecommendationServiceComponent implements OnInit {  
+export class RecommendationServiceComponent implements OnInit {
 
-  constructor() { }
+value:any;
+recommendationForm:FormGroup;
+title = 'Ip-geolocation';
+userIP:'';
+  constructor(private httpClient:HttpClient) {
+    this.recommendationForm = new FormGroup({
+      state: new FormControl(),
+      productCategory: new FormControl(),
+      searchbar: new FormControl(),
+    });
+   }
 
   ngOnInit(): void {
+    
   }
-// for Search bar 
-  value = '';
 
+recommendObj: IncomingProductData = new IncomingProductData();
+  onSelect(){
+    console.log(this.recommendationForm.value)
+  }
+
+  // for Search bar 
+
+ loadUserInfo(){
+   
+   this.httpClient.get('https://jsonip.com/')
+   .pipe(
+     switchMap((value:any)=>{
+      this.userIP =value.ip;
+
+
+
+
+      let url ='http://api.ipstack.com/${value.ip}?access_key=3def43850ecd7df03e512b3e1164df75';
+
+       return this.httpClient.get('url');
+     })
+   )
+   .subscribe(
+     (response:any) =>{
+       console.log(response)
+     }, 
+     (error)=>{
+       console.log(error)
+     }
+   )
+ }
+  
+  
+  
+  
+  
 }
