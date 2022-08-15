@@ -26,8 +26,10 @@
 
       <div class="mb-3">
         <label for="exampleFormControlInput1" class="form-label">Password</label>
+        
         <input type="password" class="form-control" required="required" id="password" name="password"
           [(ngModel)]="user.password" #fpassword="ngModel" [pattern]="passwordPattern" placeholder="Enter Password ">
+        
         <div *ngIf="fpassword.invalid && (fpassword.touched || fpassword.dirty)" style="color:red;">
           <span *ngIf="fpassword.errors?.required">*Password is required</span>
           <span *ngIf="fpassword.errors?.pattern">This field should have min of 5 char and 1 alphabet, 1 numeric and

@@ -30,4 +30,19 @@ import lombok.Setter;
 		private String  cpassword;
 		List<UserRating> ratings;
 		private byte[] image;
+		
+		public UserRegistration(String email, String firstname, String lastname, int age, String gender, int mobile,
+				String password, String cpassword) {
+			super();
+			this.email = email;
+			this.firstname = firstname;
+			this.lastname = lastname;
+			this.age = age;
+			this.gender = gender;
+			this.mobile = mobile;
+			this.password = password;
+			this.cpassword = cpassword;
+		}
+		
+		
 }
