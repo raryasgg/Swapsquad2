@@ -1,10 +1,9 @@
 package com.stackroute.userservice.controller;
 
-import java.io.IOException;
+
 
 import org.apache.commons.httpclient.HttpStatus;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -100,11 +99,11 @@ public class UserRegistrationController {
 	}
 	
 	
-	@PostMapping("/product/add")
-	public ResponseEntity<UserRegistration> createproduct(@RequestParam(value="str") String str, @RequestParam(value="file") MultipartFile file) throws JsonMappingException, JsonProcessingException   {
+	@PostMapping("/update/add")
+	public ResponseEntity<UserRegistration> Updateuser(@RequestParam(value="str") String str, @RequestParam(value="file") MultipartFile file) throws JsonMappingException, JsonProcessingException   {
 	 
-			log.debug("Inside the ProductController -- createproduct methods");
-			return new ResponseEntity<UserRegistration>(userservice.addprod(str,file),org.springframework.http.HttpStatus.OK);
+			log.debug("Inside the UserRegistrationController -- Updateuser methods");
+			return new ResponseEntity<UserRegistration>(userservice.adduser(str,file),org.springframework.http.HttpStatus.OK);
 		
 		
 	}
