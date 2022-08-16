@@ -1,178 +1,205 @@
 <body class="main-content">
 
     <!-- Scroll Image -->
-    <div class="row">
-        <div class="col-lg-2 col-md-4 col-sm-4 col-4 lft-scroll-box">
-          
+    <div class="row product-content">
+        <div class="col-lg-1 col-md-1 col-sm-2 col-2 lft-scroll-box">
+            <!-- <div class="image-scroll-box" >
+                <table>
+                    <tr  >
+                        <img mat-card-image src="{{img3}}" alt="img" width="40rem" height="40rem" (click)="doZoom3()" >
+                    </tr>
+                    <tr>
+                        <img mat-card-image src="{{img4}}" alt="img" width="40rem" height="40rem"  (click)="doZoom4()">
+                    </tr>
+                    <tr>
+                        <img mat-card-image src="{{img5}}" alt="img" width="40rem" height="40rem"  (click)="doZoom5()">
+                    </tr>
+                    <tr>
+                        <img mat-card-image src="{{img6}}" alt="img" width="40rem" height="40rem"  (click)="doZoom6()">
+                    </tr>
+                    <tr>
+                        <img mat-card-image src="{{img2}}" alt="img" width="40rem" height="40rem"  (click)="doZoom2()">
+                    </tr>
+                </table>
+
+
+            </div>
+            -->
+
 
         </div>
 
         <!-- Main Image of the product -->
-        <div class="col-lg-4 col-md-8 col-sm-8 col-8">
+        <div class="col-lg-4 col-md-4 col-sm-8   col-8">
             <div class="row">
 
-                <div class="col-lg-9 col-md-6 col-sm-4"  >
-                    <img mat-card-image [src]="img" alt="img" width="300rem" height="300rem">
-                   
-           
+                <div class="col-lg-9 col-md-9 col-sm-9 main-image" >
+                    <!-- <img mat-card-image [src]="img" alt="img" width="300rem" height="300rem"> -->
+                    <mat-grid-list cols="1" rowHeight="1:1">
+                        <mat-grid-tile>
+                            <img mat-card-image src="assets/1.jpg" alt="img" >
+                        </mat-grid-tile>
+                    </mat-grid-list>
                 </div>
 
                 <div class="col-lg-3">
 
                 </div>
+            </div>
+        </div>
 
+        <div class="col-lg-6 col-md-6 col-sm-10 col-10 ">
+            <div class="row">
+
+                <!-- Product Name -->
+                <div>
+                    <h1 style="font-size: 3.2vw;">{{pname}}</h1>
+                </div>
+
+                <!--post date -->
+                <div class="row" style="font-size: 1.2vw;">
+
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-6">
+                        <p>{{plocation}}</p>
+                    </div>
+
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-6 post-date ">
+                        <p>Date of Posting : {{dateofposting}}</p>
+                    </div>
+                </div>
+
+                <div class="row" style="font-size: 1.2vw;" style="margin-top:1rem">
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-6">
+                        <span class="coin-box"><i class="fa-solid fa-coins "></i> {{pcoin}}</span>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-6"></div>
+                </div>
+
+                <div class="row" style="margin-bottom:0rem ; margin-top:2rem; font-size: 1.2vw;">
+
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-6">
+
+                        <p>Exchange Mode : {{pexchangetype}}</p>
+
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-6 post-date ">
+
+                        <p> Year Of Purchase : {{dateofpurchase}}</p>
+
+                    </div>
+
+
+                </div>
+
+                <!-- Preferences -->
+                <!-- Check to notepad if not work -->
+                <div class="preference">
+                    <p style="margin-right: 0.5rem;">Preferences :</p>
+                        <mat-chip-list aria-label="preference selection" *ngFor="let item of pexchange" style="float:left">
+                            <mat-chip>
+                                {{item}}
+                            </mat-chip>
+                        </mat-chip-list>
+                    
+                </div>
 
             </div>
+        </div>
+        <div class="col-lg-1 col-md-1"></div>
+    </div>
+    <!--==========================================================First row end here================================================== -->
 
-             <!-- User Profile -->
-             <div class="row">
-               
+    <!-- Row for description -->
+
+    <div class="row">
+        <div class="col-lg-1 col-md-1 col-sm-1 col-1"></div>
+        <div class="col-lg-4 col-md-4 col-sm-10 col-10">
+            <div class="row">
+
                 <div class="user-profile-box col-lg-9 col-md-6 col-sm-12">
                     <mat-card class="example-card">
                         <mat-card-subtitle>Product Owner Details</mat-card-subtitle>
-                        
+
                         <mat-card-content>
-                           <div class="product-owner">
-                            <div>
-                                <table>
-                                    <tr>
-                                        <td>
-                                            <div class="product-owner-details col-sm-12">
-                                                <mat-icon >account_circle</mat-icon>
-                                            </div>
-                                        </td>
-                                        <td>
+                            <div class="product-owner">
+                                <div>
+                                    <table>
+                                        <tr>
+                                            <td>
+                                                <div class="product-owner-details col-sm-12">
+                                                    <mat-icon>account_circle</mat-icon>
+                                                </div>
+                                            </td>
+                                            <td>
 
-                                            <div class="product-ownerss">
-                                                <p >{{pmail}}</p>
-                                            </div>
-                                            
-                                        </td>
-                                       
+                                                <div class="product-ownerss">
+                                                    <p>{{pmail}}</p>
+                                                </div>
 
-                                        
-                                        <td>
-                                            <div class="product-owner-details ">
-                                                <ion-list *ngFor="let item of rate">
-                                                    {{rate}
-                                                    
-                                                    <div *ngFor="let num of [1,2,3,4,5]">
-                                                        <span class="star on" *ngIf="rate- num > 0.5"></span>
-                                                        <span class="star half" *ngIf="rate - num == 0.5"></span>
-                                                        <span class="star" *ngIf="rate == 0 "></span>
-                                                    </div>
+                                            </td>
+
+
+
+                                            <td>
+                                                <div class="product-owner-details ">
+                                                    <ion-list *ngFor="let item of rate">
+                                                        {{rate}
+
+                                                        <div *ngFor="let num of [1,2,3,4,5]">
+                                                            <span class="star on" *ngIf="rate - num > 0.5"></span>
+                                                            <span class="star half" *ngIf="rate - num == 0.5"></span>
+                                                            <span class="star" *ngIf="rate == 0 "></span>
+                                                        </div>
                                                     </ion-list>
-                                               
-                                            </div>
-                                        </td>
-                                    </tr>
-                                </table>
+
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
                             </div>
-                           </div>
-                           <div class="produuct-owners">
-                            
-                           </div>
+                            <div class="produuct-owners">
+
+                            </div>
                         </mat-card-content>
-                        
-                        <mat-card-actions align="end" >
+
+                        <mat-card-actions align="end">
                             <button mat-raised-button color="primary">Add to Wishlist</button>
-                            <button mat-raised-button  style="background: #43DB52; color:white">Chat</button>
-                         
+                            <button mat-raised-button style="background: #43DB52; color:white">Chat</button>
+
                         </mat-card-actions>
-                        
-                      </mat-card>
+
+                    </mat-card>
                 </div>
                 <div class="col-lg-3"></div>
             </div>
-            <!-- User Profile -->
-            <div class="row">
-               
-                <div class="col-lg-3"></div>
-            </div>
         </div>
-
-        <div class="col-lg-6 col-md-12 col-sm-12 col-12 " >
-            <div class="row">
-                <div class="col-lg-11">
-                    <!-- Product Name -->
-                    <div>
-                        <h1>{{pname}}</h1>
-                    </div>
-
-                    <!-- Address and post date -->
-                    <div class="row">
-
-                        <div class="col-lg-6 col-md-4 col-sm-6">
-                            <p>{{plocation}}</p>
-                        </div>
-                        
-                       <div class="col-lg-6 col-md-4 col-sm-6 post-date ">
-                            <p>Date of Posting : {{dateofposting}}</p>
-                        </div>
-                    </div>
-                    <div class="row">
-
-                        <div class="col-lg-6 col-md-4 col-sm-6">
-                            <p><i class="fa-solid fa-coins "></i> {{pcoin}}</p>
-                        </div>
-
-                       
-                    </div>
-                    <div class="row" style="margin-bottom:-1rem ;">
-
-                        <div class="col-lg-6 col-md-4 col-sm-12">
-
-                            <mat-chip-list aria-label="preference selection">
-                                <mat-chip *ngFor="let item of pexchange">
-                                  
-                                 {{item}}
-                                </mat-chip>
-                               
-                               
-                              </mat-chip-list>
-
-                            <p>{{pexchangetype}}</p>
-
-                        </div> 
-                        <div class="col-lg-6 col-md-4 col-sm-6 post-date ">
-
-                            <p>  Year Of Purchase {{dateofpurchase}}</p>
-
-                        </div>
-
-                        
-                    </div>
-                    <!-- Preferences -->
-
-                    <div class="preference" >
-                        <p >Preferences : {{pexchange}}</p>
-
-                        
-
-                    </div>
-
-                    <!-- Description box -->
-
-                    <div>
-                        <div class="description-text-box">
-                            <p>{{desc}}
-                            </p>
-                           </div>
-                           <div class="exchange-button " align="end">
-                            <button mat-raised-button color="primary">Exchange</button>
-                        </div>
-                        <div class="user-profile-box-review col-lg-9">
-                            <p>Review</p>
-                            <p>{{userId}}</p>
-                            <p>{{review}}</p>
-                        </div>
-                    </div>
-
-                </div>
-               
+        <div class="col-lg-6 col-md-6 col-sm-10 col-10">
+            <div class="description-text-box">
+                <p>{{desc}}
+                </p>
             </div>
 
+            <div class="exchange-button " align="end">
+                <button mat-raised-button color="primary">Exchange</button>
+            </div>
         </div>
- </div>
+        <div class="col-lg-1 col-md-1"></div>
+    </div>
 
+
+
+    <div class="row" style="padding:0rem 1rem 0rem 1.5rem">
+        <div class="col-lg-1 col-md-1 col-sm-1 col-1"></div>
+        <div class="col-lg-4 col-md-4">
+        </div>
+        <!-- Description box -->
+        <div class="col-lg-6 col-md-6 col-sm-10 col-10 user-profile-box-review">
+
+            <p>Review</p>
+            <p>{{userId}}</p>
+            <p>{{review}}</p>
+        </div>
+        <div class="col-lg-1 col-md-1"></div>
+    </div>
 </body>

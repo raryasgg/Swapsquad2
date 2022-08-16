@@ -61,7 +61,7 @@ ngOnInit(): void {
   // .subscribe(data => this.productdata =data)
 
 
-  this._productdetailsService.getProductDetailsById(7).subscribe(data =>{
+  this._productdetailsService.getProductDetailsById(24).subscribe(data =>{
 
 
     this.productdata =data;
@@ -95,7 +95,7 @@ ngOnInit(): void {
 
   });
 
-  this.userratingservice.getUserRatingByEmai(userId).subscribe(dataofrating =>{
+  this.userratingservice.getUserRatingByEmail(gmail).subscribe(dataofrating =>{
     this.userratingdata=dataofrating
     console.log(this.userratingdata)
     this.rate=this.userratingdata.rate
@@ -112,6 +112,8 @@ ngOnInit(): void {
 
   }
 
-function userId(userId: any) {
+
+function gmail(gmail: any) {
   throw new Error('Function not implemented.');
 }
+
