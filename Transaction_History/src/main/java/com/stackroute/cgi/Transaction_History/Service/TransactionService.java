@@ -3,6 +3,7 @@ package Service;
 
 import java.util.Objects;
 
+import com.stackroute.cgi.Transaction_History.Model.DatabaseSequence;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.data.mongodb.core.FindAndModifyOptions;
@@ -15,7 +16,6 @@ import org.springframework.stereotype.Service;
 
 import com.stackroute.cgi.Transaction_History.TransactionHistoryApplication;
 
-import Model.DatabaseSequence;
 @Service
 
 public class TransactionService<DbSequence> {

@@ -1,4 +1,4 @@
-package Model;
+package com.stackroute.cgi.Transaction_History.Model;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;

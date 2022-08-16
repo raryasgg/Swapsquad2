@@ -1,7 +1,8 @@
-package Controller;
+package com.stackroute.cgi.Transaction_History.Controller;
 
 import java.util.Optional;
 
+import com.stackroute.cgi.Transaction_History.Repository.TransactionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -11,9 +12,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import Exception.TransactionNotFOund;
 import Model.Transaction;
-import Repository.TransactionRepository;
 import Service.TransactionService;
 @RestController
 
@@ -36,8 +35,8 @@ public class TransactionController {
     public Optional<Transaction> getTransactionbyId(@PathVariable int transactionId){
     return repositry.findById(transactionId);
     }	
-   //Find by SellerMail
-    @SuppressWarnings("unchecked")
+//   //Find by SellerMail
+//    @SuppressWarnings("unchecked")
 //	@GetMapping("/findBySellerEmail/{sellerEmail}")
 //    public ResponseEntity<Transaction> getTransactionBysellerEmail(@PathVariable String sellerEmail)
 //    {
@@ -57,13 +56,13 @@ public class TransactionController {
 //        try{
 //			return new ResponseEntity<Transaction>(repositry.getBybuyerEmail(buyerEmail),
 //					org.springframework.http.HttpStatus.OK);
-//		} 
-//        catch (TransactionNotFOund e) {
+//		}
+//       catch (TransactionNotFOund e) {
 //			// TODO Auto-generated catch block
 //			return new ResponseEntity("No Data Found", org.springframework.http.HttpStatus.NOT_FOUND);
 //		}
 //		}
-        
+//
         //for deleting Transaction
     @DeleteMapping("/delete/{transactionId}")
     public  String deleteTransaction(@PathVariable int transactionId){

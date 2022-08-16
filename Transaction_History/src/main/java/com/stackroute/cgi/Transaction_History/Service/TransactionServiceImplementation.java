@@ -1,12 +1,13 @@
-package Service;
+package com.stackroute.cgi.Transaction_History.Service;
 
 import java.util.Optional;
 
+import com.stackroute.cgi.Transaction_History.Exception.TransactionNotFound;
+import com.stackroute.cgi.Transaction_History.Repository.TransactionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import Exception.TransactionNotFOund;
 import Model.Transaction;
-import Repository.TransactionRepository;
+
 
 public class TransactionServiceImplementation  {
 	@Autowired
@@ -14,22 +15,22 @@ public class TransactionServiceImplementation  {
 	private TransactionRepository repositry;
 
 
-	public  Transaction getBysellerEmail(String sellerEmail) throws TransactionNotFOund {
+	public  Transaction getBysellerEmail(String sellerEmail) throws TransactionNotFound {
     	Optional<Transaction> sE =  repositry.findOne(sellerEmail);
 		if (sE.isPresent()) {
 			return sE.get();
 		} else {
-			throw new TransactionNotFOund ();
+			throw new TransactionNotFound();
 		}
     }
 	
 	
-public  Transaction getBybuyerEmail(String buyerEmail) throws TransactionNotFOund {
+public  Transaction getBybuyerEmail(String buyerEmail) throws TransactionNotFound {
     	Optional<Transaction> bE = repositry.findOne(buyerEmail);
 		if (bE.isPresent()) {
 			return bE.get();
 		} else {
-			throw new TransactionNotFOund ();
+			throw new TransactionNotFound();
 		}
     }
 	
