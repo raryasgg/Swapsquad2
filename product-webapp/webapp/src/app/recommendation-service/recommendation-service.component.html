@@ -11,7 +11,7 @@
           <div class="col-lg-7 col-md-7 col-sm-7 col-7 location-dropdown">
             <mat-form-field appearance="outline" style="inline-size: auto;">
               <mat-label><i class="fa-solid fa-location-dot" style="margin-right: 0.5rem;"> </i>Location</mat-label>
-              <mat-select formControlName="state" (click)="onSelect()">
+              <mat-select formControlName="city" (click)="onSelect()">
                 <mat-option value="Andhra Pradesh">Andhra Pradesh</mat-option>
                           <mat-option value="Arunachal Pradesh">Arunachal Pradesh</mat-option>
                           <mat-option value="Assam">Assam</mat-option>
@@ -31,6 +31,7 @@
                           <mat-option value="Meghalaya">Meghalaya</mat-option>
                           <mat-option value="Nagaland">Nagaland</mat-option>
                           <mat-option value="Nagaland">Odisha</mat-option>
+                          <mat-option value="UP">UP</mat-option>
               </mat-select>
             </mat-form-field>
             <div class="col-lg-2 col-md-2 col-sm-2 col-2"></div>
@@ -46,8 +47,8 @@
                   <mat-label>
                     <i class="fa-solid fa-magnifying-glass"></i>
                     Find Cars, mobile phone and More....</mat-label>
-                  <input matInput type="text" formControlName="searchbar"/>
-                  <button *ngIf="value" matSuffix mat-icon-button aria-label="Clear" (click)="value = ''">
+                  <input matInput type="text" />
+                  <button *ngIf="value" matSuffix mat-icon-button aria-label="Clear" (click)="onSelect()">
                     <mat-icon>close</mat-icon>
                   </button>
                 </mat-form-field>
@@ -82,9 +83,9 @@
         <a href="">
           <img src="assets/product-1.jpg" />
           <h4>Mode Of Exchange</h4>
-          <p>Mi TV Stick</p>
+          <p>{{productName}}</p>
           <div class="addres_data">
-            <p>Bandra East, Mumbai</p>
+            <p>{{city}} {{state}}</p>
             <p>Today</p>
           </div>
         </a>
