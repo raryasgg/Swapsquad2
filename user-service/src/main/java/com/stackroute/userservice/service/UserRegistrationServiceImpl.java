@@ -65,19 +65,19 @@ public class UserRegistrationServiceImpl implements UserRegistrationService{
 	}
 
 	@Override
-	public UserRegistration addprod(String str, MultipartFile file) throws JsonMappingException, JsonProcessingException {
-		log.debug("Inside the ProductServiceImpl -- addprod methods");
+	public UserRegistration adduser(String str, MultipartFile file) throws JsonMappingException, JsonProcessingException {
+		log.debug("Inside the UserRegistrationServiceImpl -- adduser methods");
 		ObjectMapper objectMapper = new ObjectMapper();
-		UserRegistration prod = objectMapper.readValue(str,UserRegistration.class);
+		UserRegistration update = objectMapper.readValue(str,UserRegistration.class);
 		
 		try {
-			prod.setImage(file.getBytes());
+			update.setImage(file.getBytes());
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		repo.save(prod);
-		return prod;
+		repo.save(update);
+		return update;
 	}
 		
 }
