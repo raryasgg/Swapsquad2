@@ -7,6 +7,7 @@ import { RegisterProductComponent } from './component/register-product/register-
 import { RecommendationServiceComponent } from './recommendation-service/recommendation-service.component';
 import { RegisterUserComponent } from './register-user/register-user.component';
 import { UpdateDetailsComponent } from './update-details/update-details.component';
+import { TranscationsComponent } from './transcations/transcations.component';
 const routes: Routes = [
 
   { path: 'registerUser', component: RegisterUserComponent },
@@ -15,6 +16,7 @@ const routes: Routes = [
   { path: 'recommendation-service', component: RecommendationServiceComponent },
   { path: 'updateDetails', component: UpdateDetailsComponent },
   { path: 'home', component: AppComponent },
+  {path:'transcations', component:TranscationsComponent}
 
 
 ];
