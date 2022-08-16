@@ -12,17 +12,19 @@ export class RegisterUserComponent implements OnInit {
 
   user:UserRegistration =new UserRegistration();
   errorMessage: String = "";
- emailPattern = new RegExp(/^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/);
- passwordPattern = new RegExp(/(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{5,10}/);
+  emailPattern = new RegExp(/^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/);
+  passwordPattern = new RegExp(/(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{5,10}/);
 
  
- // errorMessage: String = "";
+ 
 
 
   constructor(private registerService: RegisterService) { }
 
   ngOnInit(): void {
+ 
   }
+  
 
    userRegister(){
     
@@ -33,6 +35,7 @@ export class RegisterUserComponent implements OnInit {
      Swal.fire({icon: 'error',title: 'Oops...',text: 'Fields cannot be empty!', })
     }
      else if(this.user.password != this.user.cpassword){
+      Swal.fire({icon: 'error',title: 'Oops...',text: 'Password Must Be Same', })
         this.errorMessage="Password Must Be Same"
       }
     

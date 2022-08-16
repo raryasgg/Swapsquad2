@@ -42,17 +42,18 @@ import com.stackroute.productservice.service.SequenceGeneratorService;
 import lombok.extern.slf4j.Slf4j;
 
 
+@CrossOrigin(origins = "http://localhost:4200")
 @RestController
 @RequestMapping("/api/v1")
 @Slf4j
-//@CrossOrigin(origins = "http://localhost:4200")
 public class ProductController {
 	
 	private ProductRepository prepository;
 	private ProductServiceImpl pservice;
 	private SequenceGeneratorService sequenceGeneratorService;
 	
-	@Autowired
+	
+    @Autowired
 	public ProductController(ProductRepository prepository,ProductServiceImpl pservice,SequenceGeneratorService sequenceGeneratorService) {
 		log.debug("Inside the ProductController -- constructor");
 		this.prepository=prepository;
@@ -60,8 +61,8 @@ public class ProductController {
 		this.sequenceGeneratorService=sequenceGeneratorService;
 	}
 	
-	
-	@GetMapping("/product")
+	@Autowired
+    @GetMapping("/product")
 	public ResponseEntity<List<Product>> getAllProducts(){
 		try {
 			log.debug("Inside the ProductController -- getAllProducts methods");
@@ -106,10 +107,7 @@ public class ProductController {
 		}
 	}
 	
-//	@GetMapping("/product/a")
-//	public List<Product> getProductByStatus() {
-//		return pservice.getAllUserAvailable();
-//	}
+
 	
 	@GetMapping("/product/a")
 	public ResponseEntity<List<Product>> getProductByStatus() {
@@ -136,11 +134,7 @@ public class ProductController {
 	}
 	
 
-//	@PutMapping("/update")
-//	public ResponseEntity<Product> updateProduct(@RequestBody Product prod){
-//		Product prodSaved = pservice.update(prod);
-//		return new ResponseEntity<Product>(prodSaved,org.springframework.http.HttpStatus.OK);
-//	}
+
 	
 	@PutMapping("/update")
 	public ResponseEntity<Product> updateProducts(@RequestBody Product prod){
@@ -155,55 +149,7 @@ public class ProductController {
 		}
 	}	
 
-//	@PostMapping("/product/add")
-//	public Product createproducts(@RequestParam(value="str") String str, @RequestParam(value="file") MultipartFile file) throws IOException  {
-//		ObjectMapper objectMapper = new ObjectMapper();
-//		Product prod = objectMapper.readValue(str,Product.class);
-//		prod.setPid(sequenceGeneratorService.generateSequence(Product.SEQUENCE_NAME));
-//		prod.setImage(file.getBytes());
-//
-//		prepository.save(prod);
-//		return prod;
-//
-//
-//	}
-	
-//	@PostMapping("/product/add")
-//	public Product createproducts(@RequestParam(value="str") String str, @RequestParam(value="file") MultipartFile[] file) throws IOException  {
-//		ObjectMapper objectMapper = new ObjectMapper();
-//		Product prod = objectMapper.readValue(str,Product.class);
-//		prod.setPid(sequenceGeneratorService.generateSequence(Product.SEQUENCE_NAME));
-//		List<byte[]> imagelist = new ArrayList<>();
-//		Arrays.asList(file).stream().forEach(files -> {
-//		   try {
-//		      byte[] bytes = files.getBytes();
-//		      imagelist.add(bytes);
-//		   } catch (IOException e) {
-//		   }
-//		});
-//		prod.setImage(imagelist);
-//		prepository.save(prod);
-//		return prod;
-//		
-//	}
-	
-//	@PostMapping("/product/add")
-//	public ResponseEntity<Product> createproduct(@RequestParam(value="str") String str, @RequestParam(value="file") MultipartFile[] file) throws IOException  {
-//		try {
-//			log.debug("Inside the ProductController -- createproduct methods");
-//			return new ResponseEntity<Product>(pservice.addprod(str,file),org.springframework.http.HttpStatus.OK);
-//		} catch (JsonMappingException e) {
-//			log.error("JsonMappingException",e);
-//			return new ResponseEntity("Json Mapping Exception",org.springframework.http.HttpStatus.OK);
-//		} catch (JsonProcessingException e) {
-//			log.error("JsonProcessingException",e);
-//			return new ResponseEntity("Json Processing Exception",org.springframework.http.HttpStatus.OK);
-//		} catch (ProvideProperProductDetails e) {
-//			log.error("Give product details",e);
-//			return new ResponseEntity("Provice proper details",org.springframework.http.HttpStatus.OK);
-//		}
-//		
-//	}
+
 	
 	@PostMapping("/product/add")
 	public ResponseEntity<Product> createproduct(@RequestParam(value="str") String str, @RequestParam(value="file") MultipartFile file) throws IOException  {
@@ -212,13 +158,13 @@ public class ProductController {
 			return new ResponseEntity<Product>(pservice.addprod(str,file),org.springframework.http.HttpStatus.OK);
 		} catch (JsonMappingException e) {
 			log.error("JsonMappingException",e);
-			return new ResponseEntity("Json Mapping Exception",org.springframework.http.HttpStatus.OK);
+			return new ResponseEntity("Json Mapping Exception",org.springframework.http.HttpStatus.BAD_REQUEST);
 		} catch (JsonProcessingException e) {
 			log.error("JsonProcessingException",e);
-			return new ResponseEntity("Json Processing Exception",org.springframework.http.HttpStatus.OK);
+			return new ResponseEntity("Json Processing Exception",org.springframework.http.HttpStatus.CONFLICT);
 		} catch (ProvideProperProductDetails e) {
 			log.error("Give product details",e);
-			return new ResponseEntity("Provice proper details",org.springframework.http.HttpStatus.OK);
+			return new ResponseEntity("Provice proper details",org.springframework.http.HttpStatus.CONFLICT);
 		}
 		
 	}

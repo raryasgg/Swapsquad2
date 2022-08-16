@@ -1,0 +1,30 @@
+<div class="drop">
+    <form>
+      <mat-form-field appearance="fill" style="width: 400px;">
+        <mat-label>Transcation Type</mat-label>
+        <mat-select [(ngModel)]="selectedValue" name="food">
+          <mat-option *ngFor="let tran of transcations" [value]="tran.value">
+            {{tran.value}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </form>
+    </div>
+    <div class="x col-xl-9 col-lg-9 col-md-12 col-sm-6 col-12">
+      <div *ngFor="let item of empList">
+        <div class="a">
+      
+          <p style="padding: 40px 0px 10px 180px; position: absolute;"><u>A Car of Ghost Rider version</u></p>
+          <img style="padding: 20px 0px 0px 20px;" src="../assets/download.jfif" alt="abc" sizes="10px">
+          <p style="padding: 80px 0px 10px 180px; position: absolute;" ><b>Category:-</b>{{car}}</p>
+          <p style="padding: 40px 5px 0px 600px; position: absolute;"><b>Exchanger Details</b></p>
+          <p style="padding: 40px 5px 0px 400px; position: absolute;"><b>Exchanged items/coins</b></p>
+          <p style="padding: 80px 5px 0px 400px; position: absolute;">5000 Coins</p>
+      
+          <p style="padding: 80px 5px 0px 600px; position: absolute;"><b>Name:</b>{{item.a}}</p>
+          <p style="padding: 100px 5px 0px 600px; position: absolute;"><b>Email::</b>{{item.b}}</p>
+          
+        </div>
+        </div>
+    </div>
+      

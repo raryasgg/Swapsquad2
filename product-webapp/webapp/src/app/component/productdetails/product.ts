@@ -7,11 +7,13 @@ export class Product {
     pcategory:string;
     plocation:string;
     pstatus:string;
-    pdate:Date;
+    pdate:string;
+    pexchange:[]
     pexchangetype:string;
     pcoin:number;
     desc:string;
     img:any;
+    pdatepost:string
 
     // constructor(pid:number,pemail:string, pname:string,pcategory:string,plocation:string,pstatus:string, pdate:Date,pexchange:string,pcoin:number,desc:string,img:any){
     // this.pid=pid;

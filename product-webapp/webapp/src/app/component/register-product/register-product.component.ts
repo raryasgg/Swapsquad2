@@ -1,14 +1,14 @@
 import { HttpErrorResponse } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, NgForm, Validators } from '@angular/forms';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { FormArray, FormBuilder, FormGroup, NgForm, Validators } from '@angular/forms';
 import { MatChipInputEvent } from '@angular/material/chips';
 import { DomSanitizer } from '@angular/platform-browser';
-import { FileHandle } from './class/file-handle';
-import { RegisterProduct } from './class/register-product';
-import { RegisterProductService } from './service/register-product.service';
-import { COMMA, ENTER } from '@angular/cdk/keycodes';
+import { RegisterProductService } from '../../services/register-product-service/register-product.service';
+import { COMMA, E, ENTER } from '@angular/cdk/keycodes';
 import { FormControl } from '@angular/forms';
-import { Product } from './class/Product';
+import { Product } from '../../models/register-product/Product';
+import Swal from 'sweetalert2';
+import { Router } from '@angular/router';
 
 
 export interface Fruit {
@@ -22,42 +22,109 @@ export interface Fruit {
 })
 
 export class RegisterProductComponent implements OnInit {
-  firstFormGroup: FormGroup;
-  secondFormGroup: FormGroup;
-  constructor(private formBuilder: FormBuilder, private registerProductService: RegisterProductService,
-    private sanitizer: DomSanitizer
+
+  // pexchange: any;
+  productForm: FormGroup;
+
+  constructor(private productService: RegisterProductService,
+    private sanitizer: DomSanitizer, private fb: FormBuilder, private router: Router
   ) {
-
-
-    // 
+    this.productForm = new FormGroup({
+      pcategory: new FormControl("", [Validators.required]),
+      pname: new FormControl("", [Validators.required, Validators.minLength(2)]),
+      pdatepost: new FormControl("", [Validators.required]),
+      desc: new FormControl("", [Validators.required, Validators.minLength(10), Validators.maxLength(150)]),
+      pexchangetype: new FormControl(),
+      // pcoin: new FormControl("",[Validators.required,Validators.pattern("^[0-9]*$"),Validators.maxLength(8)]),
+      // pexchange: this.fb.array([], Validators.required),
+      pcoin: new FormControl("", [Validators.pattern("^[0-9]*$"), Validators.maxLength(8)]),
+      pexchange: this.fb.array([]),
+      pemail: new FormControl(),
+      plocation: new FormControl("", [Validators.required]),
+      image: new FormControl([], Validators.required)
+    });
   }
-
-
-  // for Product form
-  productForm = new FormGroup({
-    pname: new FormControl(),
-    desc: new FormControl(),
-    pcoin: new FormControl(),
-    pemail: new FormControl(),
-    plocation: new FormControl(),
-  });
 
 
   ngOnInit(): void {
-    this.firstFormGroup = this.formBuilder.group({
-      firstCtrl: ['', Validators.required],
-    });
-    this.secondFormGroup = this.formBuilder.group({
-      secondCtrl: ['', Validators.required],
-    });
 
+  }
 
+  productObj: Product = new Product();
+
+  file = [];
+  // onselect(e) {
+  //   if (e.target.files) {
+  //     for (var i = 0; i < File.length; i++) {
+  //       var reader = new FileReader();
+  //       reader.readAsDataURL(e.target.files[i]);
+  //       console.log(reader);
+  //       reader.onload = (e: any) => {
+  //         this.urls.push(e.target.result);
+
+  //       }
+  //     }
+  //   }
+  //   console.log(this.urls)
+  // }
+
+  handleFileInput(files) {
+    this.prepareFilesList(files);
+  }
+  prepareFilesList(files: Array<any>) {
+    for (const item of files) {
+      item.progress = 0;
+      this.file.push(item);
+    }
+    this.uploadFilesSimulator(0);
+  }
+  uploadFilesSimulator(index: number) {
+    setTimeout(() => {
+      if (index === this.file.length) {
+        return;
+      } else {
+        const progressInterval = setInterval(() => {
+          if (this.file[index].progress === 100) {
+            clearInterval(progressInterval);
+            this.uploadFilesSimulator(index + 1);
+          } else {
+            this.file[index].progress += 5;
+          }
+        }, 200);
+      }
+    }, 1000);
   }
 
   onClickSubmitForm() {
-    console.log('successfully');
-    console.log(this.productForm.value)
+
+if (!this.productForm.invalid){
+  console.log(this.productForm.value);
+
+  this.productObj.pcategory = this.productForm.value.pcategory;
+  this.productObj.pname = this.productForm.value.pname;
+  this.productObj.pdatepost = this.productForm.value.pdatepost;
+  this.productObj.desc = this.productForm.value.desc;
+  this.productObj.pexchangetype = this.productForm.value.pexchangetype;
+  this.productObj.pexchange = this.productForm.value.pexchange;
+  this.productObj.pemail = this.productForm.value.pemail;
+  this.productObj.plocation = this.productForm.value.plocation;
+  this.productObj.pcoin = this.productForm.value.pcoin;
+  this.productService.addProduct(this.productObj, this.file[0]).subscribe(data =>
+    console.log(data)
+  )
+// To reset the form
+  this.productForm.reset();
+  Swal.fire({ icon: 'success', title: 'Successfully Registered !!', text: 'Your Product Posted Succesfully !', })
+
+  //To navigate to home page
+  this.router.navigateByUrl('');
+
+}else{
+  Swal.fire({ icon: 'error', title: 'Oops...Empty Feild !!', text: 'Please fill all sections the to continue !', })
+}
   }
+
+
 
   // For adding the category
   othercatergory = false;
@@ -89,109 +156,51 @@ export class RegisterProductComponent implements OnInit {
   }
 
   // for chips
+
   visible = true;
   selectable = true;
   removable = true;
   addOnBlur = true;
   readonly separatorKeysCodes: number[] = [ENTER, COMMA];
-  fruits: Fruit[] = [];
+
+
+  get fruitControls(): FormArray {
+    return this.productForm.controls.pexchange as FormArray;
+  }
 
   add(event: MatChipInputEvent): void {
     const input = event.input;
     const value = event.value;
 
-    // Add our fruit
-    if ((value || '').trim()) {
-      this.fruits.push({ name: value.trim() });
+    // Add our product
+    if ((value || "").trim()) {
+      this.fruitControls.push(this.fb.control(value));
     }
 
     // Reset the input value
     if (input) {
-      input.value = '';
+      input.value = "";
     }
   }
 
-  remove(fruit: Fruit): void {
-    const index = this.fruits.indexOf(fruit);
-
+  remove(fruit: string): void {
+    const index = this.fruitControls.value.indexOf(fruit);
     if (index >= 0) {
-      this.fruits.splice(index, 1);
+      this.fruitControls.removeAt(index);
     }
   }
+
   // end for chips
-
-
-  registerProduct: RegisterProduct = {
-    pemail: "",
-    pname: "",
-    image: []
-  }
-
-  addProduct(registerProductForm: NgForm) {
-    const productFormData = this.prepareFormData(this.registerProduct);
-
-    console.log(this.registerProduct);
-    console.log(productFormData);
-
-    this.registerProductService.addProduct(this.registerProduct).subscribe(
-      // this.registerProductService.addProduct(productFormData).subscribe(
-      (response: RegisterProduct) => {
-        console.log(response);
-      },
-      (error: HttpErrorResponse) => {
-        console.log(error);
-      }
-    );
-  }
-
-  prepareFormData(registerProduct: RegisterProduct): FormData {
-    const formData = new FormData();
-    formData.append(
-      'product',
-      new Blob([JSON.stringify(registerProduct)], { type: 'application/json' })
-    );
-
-    for (var i = 0; i < registerProduct.image.length; i++) {
-      formData.append(
-        'image',
-        registerProduct.image[i].file,
-        registerProduct.image[i].file.name
-      );
-    }
-    return formData;
-  }
-
-  onFileSelected(event) {
-    console.log(event);
-    if (event.target.files) {
-      const file = event.target.files[0];
-
-      const fileHandle: FileHandle = {
-        file: file,
-        url: this.sanitizer.bypassSecurityTrustUrl(
-          window.URL.createObjectURL(file)
-        )
-      }
-      this.registerProduct.image.push(fileHandle);
-    }
-  }
-
-  removeImages(i: number) {
-    this.registerProduct.image.splice(i, 1);
-  }
-
-  // ====================>
-
-
-
-
-  // ====================>
 
 
 
 }
 
+function value(value: any) {
+  throw new Error('Function not implemented.');
+}
 
-
-
+function index(index: any, arg1: number) {
+  throw new Error('Function not implemented.');
+}
 

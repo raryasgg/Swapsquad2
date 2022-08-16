@@ -43,24 +43,26 @@ import static org.mockito.Mockito.any;
 	    public void setUp(){
 	        mockMvc = MockMvcBuilders.standaloneSetup(Controller).build();
 	    }
-	    @Test
-	    public void givenNewUserWhenPostThenReturnUserJSON() throws Exception {
-	    	UserRegistration user = new UserRegistration("hello@gmail.com","Raju","Kumar",24,"male",90607,"123","123");
-	        when(Service.addNew(any())).thenReturn(user);
-	        mockMvc.perform(post("/users/user")
-	                .contentType(MediaType.APPLICATION_JSON)
-	                .content("{\"email\":\"hello@gmail.com\",\"firstname\":\"Raju\",\"lastname\":\"Kumar\",\"age\":24,\"gender\":\"male\",\"mobile\":90607,\"password\":\"123\"}"))
-	                .andExpect(status().isCreated())
-	                .andExpect(jsonPath("$.email").value("hello@gmail.com"));
-	    }
 
-	    @Test
-	    public void givenDuplicateUserWhenPostThenReturnErrorMessage() throws Exception {
-	        when(Service.addNew(any())).thenThrow(UserAlreadyExistException.class);
-	        mockMvc.perform(post("/users/user")
-	                .contentType(MediaType.APPLICATION_JSON)
-	                .content("{\"email\":\"hello@gmail.com\",\"firstname\":\"Raju\",\"lastname\":\"Kumar\",\"age\":24,\"gender\":\"male\",\"mobile\":90607,\"password\":\"123\"}"))
-	                .andExpect(status().isConflict())
-	                .andExpect(content().string("User already Exist"));
-	    }
+		
+		  @Test public void givenNewUserWhenPostThenReturnUserJSON() throws Exception {
+		  UserRegistration user = new
+		  UserRegistration("hello@gmail.com","Raju","Kumar",24,"male",90607,"123","123"
+		  ); when(Service.addNew(any())).thenReturn(user);
+		  mockMvc.perform(post("/users/user") .contentType(MediaType.APPLICATION_JSON)
+		  .content(
+		  "{\"email\":\"hello@gmail.com\",\"firstname\":\"Raju\",\"lastname\":\"Kumar\",\"age\":24,\"gender\":\"male\",\"mobile\":90607,\"password\":\"123\"}"
+		  )) .andExpect(status().isCreated())
+		  .andExpect(jsonPath("$.email").value("hello@gmail.com")); }
+		 
+		
+		  @Test public void givenDuplicateUserWhenPostThenReturnErrorMessage() throws
+		  Exception {
+		  when(Service.addNew(any())).thenThrow(UserAlreadyExistException.class);
+		  mockMvc.perform(post("/users/user") .contentType(MediaType.APPLICATION_JSON)
+		  .content(
+		  "{\"email\":\"hello@gmail.com\",\"firstname\":\"Raju\",\"lastname\":\"Kumar\",\"age\":24,\"gender\":\"male\",\"mobile\":90607,\"password\":\"123\"}"
+		  )) .andExpect(status().isConflict())
+		  .andExpect(content().string("User already Exist")); }
+		 
 	}

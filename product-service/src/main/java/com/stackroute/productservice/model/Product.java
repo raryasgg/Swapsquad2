@@ -8,6 +8,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -41,6 +42,10 @@ public class Product {
 	private Status pstatus = Status.AVAILABLE;
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date pdate = new Date(System.currentTimeMillis());
+
+	private Date pdatepost;
+	@JsonFormat(with = JsonFormat.Feature.ACCEPT_SINGLE_VALUE_AS_ARRAY)
+
 	private List<String> pexchange;
 	private double pcoin;
 	private Exchange pexchangetype;

@@ -18,6 +18,7 @@ export class ProductDetailsService {
    
   // }
    getProductDetailsById(pid:any){
-   return this.httpClient.get<Product[]>(this.url+ "api/v1/product/" + pid)
+   return this.httpClient.get<Product[]>(this.url+ "/api/v1/product/" + pid)
   }
+  
 }
