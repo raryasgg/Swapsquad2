@@ -5,13 +5,16 @@ import {ProductdetailsComponent} from './component/productdetails/productdetails
 import {RegisterProductComponent} from './component/register-product/register-product.component';
 import { RecommendationServiceComponent } from './recommendation-service/recommendation-service.component';
 import { RegisterUserComponent } from './register-user/register-user.component';
+import { LoginComponent } from 'src/login/login.component';
 
 const routes: Routes = [
 
   {path : 'registerUser', component : RegisterUserComponent},
   {path : 'registerProduct', component : RegisterProductComponent},
   {path : 'productDetail', component : ProductdetailsComponent},
-  {path:'recommendation-service', component:RecommendationServiceComponent}
+  {path:'recommendation-service', component:RecommendationServiceComponent},
+  // {path :'login',component:LoginComponent},
+
 
 
 ];
@@ -20,3 +23,4 @@ const routes: Routes = [
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
+

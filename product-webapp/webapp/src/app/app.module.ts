@@ -19,6 +19,9 @@ import { Material3Module } from './register-user/material3/material3.module';
 
 import { ProductDetailsService } from './component/productdetails/product-details.service';
 import { SweetAlertGrow } from 'sweetalert2';
+import { LoginComponent } from 'src/login/login.component';
+import { MatButtonModule } from '@angular/material/button';
+import { MatInputModule } from '@angular/material/input';
 
 @NgModule({
   declarations: [
@@ -27,6 +30,7 @@ import { SweetAlertGrow } from 'sweetalert2';
     ProductdetailsComponent,
     RegisterUserComponent,
      RecommendationServiceComponent,
+     LoginComponent,
      
   ],
   
@@ -37,6 +41,8 @@ import { SweetAlertGrow } from 'sweetalert2';
     MaterialModule,
     FormsModule,
     ReactiveFormsModule,
+    MatButtonModule,
+    MatInputModule,
     Material1Module,
     HttpClientModule,
     MatPaginatorModule,
@@ -49,3 +55,8 @@ import { SweetAlertGrow } from 'sweetalert2';
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+
+
+
+
+
