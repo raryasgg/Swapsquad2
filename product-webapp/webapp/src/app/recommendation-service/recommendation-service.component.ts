@@ -78,25 +78,21 @@ productCategory:String;
 
 
 recommendObj: IncomingProductData = new IncomingProductData();
-<<<<<<< HEAD
-  
+
     onSelect(){
       console.log(this.recommendationForm.value)
   
       this.recommendObj.city = this.recommendationForm.value.city;
       this.recommendObj.productCategory = this.recommendationForm.value.productCategory;
+      this.recommendObj.state = this.recommendationForm.value.state;
+    this.recommendObj.productCategory = this.recommendationForm.value.productCategory;
       
     }
   
-=======
 
-  onSelect(){
-    console.log(this.recommendationForm.value)
 
-    this.recommendObj.state = this.recommendationForm.value.state;
-    this.recommendObj.productCategory = this.recommendationForm.value.productCategory;
-  }
->>>>>>> f59012c8074cecfbf7836a2b09090c186bbfe63e
+  
+
 
   // for Search bar 
 
