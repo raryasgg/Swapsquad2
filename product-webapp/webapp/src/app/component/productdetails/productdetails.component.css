@@ -139,7 +139,7 @@ table {
 @media screen and (min-width: 1250px) and (max-width: 1450px){
     .description-text-box {
         border:1px solid rgb(58, 10, 134);
-        margin-top: -2rem;
+        margin-top: -1rem;
         border-radius: 6px;
         min-height: 7rem; 
         max-height:10px
@@ -202,5 +202,19 @@ table {
 }
 
 @media screen and (min-width: 300px) and (max-width: 500px){
+    .description-text-box {
+        border:1px solid rgb(58, 10, 134);
+        margin-top: 1rem;
+        border-radius: 6px;
+        min-height: 6rem; 
+        max-height:9px
+    }
+    .user-profile-box-review {
+        border: 1px solid black;
+        margin-top: 1rem;
+        border-radius: 3px;
+        min-height: 6rem;
+        max-height: 10rem;
+    }
     
     }

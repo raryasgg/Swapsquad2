@@ -1,5 +1,5 @@
 export class Category {
-    category:"String"
+    productCategory:"String"
     constructor(){
 
     }
