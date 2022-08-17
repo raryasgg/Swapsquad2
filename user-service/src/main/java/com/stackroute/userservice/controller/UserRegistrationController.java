@@ -37,7 +37,7 @@ import lombok.extern.slf4j.Slf4j;
 
 @RestController
 @RequestMapping("/users")
-@CrossOrigin(origins="http://localhost:4200")
+//@CrossOrigin(origins="http://localhost:4200")
 @Slf4j
 public class UserRegistrationController {
 
@@ -96,6 +96,10 @@ public class UserRegistrationController {
 
 		return new ResponseEntity<UserRegistration>(userservice.rate(user), org.springframework.http.HttpStatus.OK);
 
+	}
+	@PutMapping("/rate/{email}")
+	public void addrating(@RequestBody UserRegistration add , @PathVariable String email) {
+		userservice.addrating(add,email);
 	}
 	
 	

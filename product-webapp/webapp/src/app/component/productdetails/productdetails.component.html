@@ -134,6 +134,7 @@
 
                                                 <div class="product-ownerss">
                                                     <p>{{pmail}}</p>
+                                                    
                                                 </div>
 
                                             </td>
@@ -142,15 +143,8 @@
 
                                             <td>
                                                 <div class="product-owner-details ">
-                                                    <ion-list *ngFor="let item of rate">
-                                                        {{rate}
-
-                                                        <div *ngFor="let num of [1,2,3,4,5]">
-                                                            <span class="star on" *ngIf="rate - num > 0.5"></span>
-                                                            <span class="star half" *ngIf="rate - num == 0.5"></span>
-                                                            <span class="star" *ngIf="rate == 0 "></span>
-                                                        </div>
-                                                    </ion-list>
+                                                    <star-rating value={{avgRating}} totalstars={{totalstar}} checkedcolor="red" uncheckedcolor="black" size="24px"
+                                                    readonly="false" ></star-rating>
 
                                                 </div>
                                             </td>
@@ -196,9 +190,16 @@
         <!-- Description box -->
         <div class="col-lg-6 col-md-6 col-sm-10 col-10 user-profile-box-review">
 
-            <p>Review</p>
-            <p>{{userId}}</p>
-            <p>{{review}}</p>
+            <table class="table">
+                <thead>
+    
+            <p *ngFor="let ratin of ratings" >
+           <tr> UserId: {{ratin.userId}}</tr> 
+           <tr>Rating: {{ratin.rating}}</tr>
+               <tr> Reviews: {{ratin.reviews}}</tr>
+                </p>
+                </thead> 
+                </table> 
         </div>
         <div class="col-lg-1 col-md-1"></div>
     </div>

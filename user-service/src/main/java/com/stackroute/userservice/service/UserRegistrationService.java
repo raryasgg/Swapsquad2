@@ -17,6 +17,7 @@ public interface UserRegistrationService {
 	public UserRegistration rate(UserRegistration user);
 
 	public UserRegistration adduser(String str, MultipartFile file) throws JsonMappingException, JsonProcessingException;
+	public void addrating(UserRegistration add, String email);
 
 
     
