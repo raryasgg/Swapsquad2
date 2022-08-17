@@ -6,9 +6,14 @@ import { ProductdetailsComponent } from './component/productdetails/productdetai
 import { RegisterProductComponent } from './component/register-product/register-product.component';
 import { RecommendationServiceComponent } from './recommendation-service/recommendation-service.component';
 import { RegisterUserComponent } from './register-user/register-user.component';
+
+
+//import { LoginComponent } from 'src/login/login.component';
+
 import { UpdateDetailsComponent } from './update-details/update-details.component';
 import { TranscationsComponent } from './transcations/transcations.component';
 
+<<<<<<< HEAD
 
 
 
@@ -17,8 +22,12 @@ import { TranscationsComponent } from './transcations/transcations.component';
 
 
 
+=======
+>>>>>>> 4bb0106f0631a299eb8e12b1519137126e27a81c
 const routes: Routes = [
 
+  
+  // {path :'login',component:LoginComponent},
   { path: 'registerUser', component: RegisterUserComponent },
   { path: 'registerProduct', component: RegisterProductComponent },
   { path: 'productDetail', component: ProductdetailsComponent },
