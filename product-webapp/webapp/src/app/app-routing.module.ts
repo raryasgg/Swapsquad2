@@ -8,14 +8,15 @@ import { RecommendationServiceComponent } from './recommendation-service/recomme
 import { RegisterUserComponent } from './register-user/register-user.component';
 import { UpdateDetailsComponent } from './update-details/update-details.component';
 import { TranscationsComponent } from './transcations/transcations.component';
-<<<<<<< HEAD
 
 
 
 
 
-=======
->>>>>>> d18d53106d3d7af48740101addc1f1cc86ec0248
+
+
+
+
 const routes: Routes = [
 
   { path: 'registerUser', component: RegisterUserComponent },

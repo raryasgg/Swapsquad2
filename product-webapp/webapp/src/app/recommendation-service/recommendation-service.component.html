@@ -1,28 +1,38 @@
 <form [formGroup]="recommendationForm">
-<<<<<<< HEAD
-  <div>
-    <h4>My IP Address {{userIP}}</h4>
-  </div>
-=======
->>>>>>> d18d53106d3d7af48740101addc1f1cc86ec0248
-  <div class="total-content">
-    <div class="row nav-items">
 
+  <!-- <div>
+    <h4>My IP Address {{userIP}}</h4>
+  </div> -->
+
+
+  <div class="total-content">
+    
+    <div class="row nav-items">
       <div class="col-lg-4 col-md-4 col-sm-4 col-4">
         <div class="row">
           <div class="col-lg-3 col-md-3 col-sm-3 col-3"></div>
           <div class="col-lg-7 col-md-7 col-sm-7 col-7 location-dropdown">
-            <mat-form-field appearance="outline" style="inline-size: auto;">
+            <mat-form-field appearance="fill">
+              <mat-label>Favorite Car</mat-label>
+              <select matNativeControl (change)="selectCar($event)">
+                <option value=""></option>
+                <option *ngFor="let option of cars" [value]="option.value"
+                        [selected]="selectedCar === option.value">{{ option.viewValue }}</option>
+              </select>
+            </mat-form-field>
+            <p>You selected: {{selectedCar}}</p>
+            
+            <!-- <mat-form-field appearance="outline" style="inline-size: auto;">
               <mat-label><i class="fa-solid fa-location-dot" style="margin-right: 0.5rem;"> </i>Location</mat-label>
-              <mat-select formControlName="state" (change)="onSelect()">
-                <mat-option value="Andhra Pradesh">Andhra Pradesh</mat-option>
-                <mat-option value="Arunachal Pradesh">Arunachal Pradesh</mat-option>
-                <mat-option value="Assam">Assam</mat-option>
-                <mat-option value="Arunachal Pradesh">Arunachal Pradesh</mat-option>
-                <mat-option value="Bihar">Bihar</mat-option>
-                <mat-option value="Chhattisgarh">Chhattisgarh</mat-option>
-                <mat-option value="Goa">Goa</mat-option>
-                <mat-option value="Gujarat">Gujarat</mat-option>
+              <mat-select formControlName="city" (change)="onSelect()">
+                <mat-option value="Lucknow">Lucknow</mat-option>
+                <mat-option value="Raebareli">Raebareli</mat-option>
+                <mat-option value="Jhansi">Jhansi</mat-option>
+                <mat-option value="Varanasi">Varanasi</mat-option>
+                <mat-option value="Agara">Agara</mat-option>
+                <mat-option value="Barabanki">Barabanki</mat-option>
+                <mat-option value="Sultanpur">Sultanpur</mat-option> -->
+            <!-- <mat-option value="Gujarat">Gujarat</mat-option>
                 <mat-option value="Haryana">Haryana</mat-option>
                 <mat-option value="Himachal Pradesh">Himachal Pradesh</mat-option>
                 <mat-option value="Jharkhand">Jharkhand</mat-option>
@@ -34,9 +44,10 @@
                 <mat-option value="Meghalaya">Meghalaya</mat-option>
                 <mat-option value="Nagaland">Nagaland</mat-option>
                 <mat-option value="Odisha">Odisha</mat-option>
-              </mat-select>
+                <mat-option value="UP">UP</mat-option> -->
+            <!-- </mat-select>
             </mat-form-field>
-            <div class="col-lg-2 col-md-2 col-sm-2 col-2"></div>
+            <div class="col-lg-2 col-md-2 col-sm-2 col-2"></div> -->
           </div>
         </div>
       </div>
@@ -60,7 +71,16 @@
 
           <!-- <div class="col-lg-1 col-md-1 col-sm-1 col-1 "></div> -->
           <div class="col-lg-3 col-md-3 col-sm-3 col-3 category-dropdown">
-            <mat-form-field appearance="outline">
+            <mat-form-field appearance="fill">
+              <mat-label>category</mat-label>
+              <select matNativeControl (change)="selectCategory($event)">
+                <option value=""></option>
+                <option *ngFor="let option of categories" [value]="option.value"
+               [selected]="selectedCategory === option.value1">{{ option.viewValue1 }}</option>
+              </select>
+            </mat-form-field>
+            <p>You selected: {{selectedCategory}}</p>
+            <!-- <mat-form-field appearance="outline">
               <mat-label>Category</mat-label>
               <mat-select formControlName="productCategory" (change)="onSelect()">
                 <mat-option value="Mobile, Tablet & Accessories">Mobile, Tablet & Accessories</mat-option>
@@ -70,7 +90,7 @@
                 <mat-option value="Electronics & Appliances">Electronics & Appliances</mat-option>
                 <mat-option value="Home & Life Styles">Home & Life Styles</mat-option>
               </mat-select>
-            </mat-form-field>
+            </mat-form-field> -->
           </div>
         </div>
       </div>
@@ -78,15 +98,30 @@
   </div>
 </form>
 <!-- =============================== * product * ============================================ -->
+<div >
+  <!-- <div *ngFor ="let a of abc">
+  <div class="box" >
+        <a href="">
+        <h4>{{a.productId}}</h4>
+        <p>{{a.productName}}</p>
+        <div class="addres_data">
+          <p>{{city}} {{state}}</p>
+          <p>Today</p>
+        </div>
+      </a>
+    </div>
+  </div>
+</div>
+<div><p>{{abc[0].productName}}</p></div>
+<div><p>{{abc[0].productId}}</p></div> -->
 <div class="product">
+  <div *ngFor ="let a of abc">
   <div class="First_row">
     <div class="box">
       <a href="">
-        <img src="assets/product-1.jpg" />
-        <h4>Mode Of Exchange</h4>
-        <p>{{productName}}</p>
+        <p>{{a.productName}}</p>
         <div class="addres_data">
-          <p>{{city}} {{state}}</p>
+          <p>{{a.city}} {{a.state}}</p>
           <p>Today</p>
         </div>
       </a>
@@ -119,6 +154,7 @@
       </div>
     </div>
   </div>
+</div>
 
   <div class="First_row">
     <div class="box">

@@ -5,7 +5,14 @@ import { switchMap} from 'rxjs/operators'
 import { IncomingProductData } from '../models/recommendation/incoming-product-data';
 import { RecommedationService } from '../services/recommendation-service/recommedation.service';
 
-
+interface Car {
+  value: string;
+  viewValue: string;
+}
+interface Category {
+  value1: string;
+  viewValue1: string;
+}
 @Component({
   selector: 'app-recommendation-service',
   templateUrl: './recommendation-service.component.html',
@@ -20,34 +27,67 @@ title = 'Ip-geolocation';
 userIP:'';
   
   productId:number;
-   productOwnerEmail:String;
-   productName:String;
-   state:String;
-  city:String;
-productCategory:String;
+  productOwnerEmail:String;
+  productName:String;
+  state:String;
+  city:any;
+  productCategory:String;
   productImage:any; 
 
 
   public IncomingProductData:any;
   public category:any;
   public location:any;
+  public abc:Array<IncomingProductData>=[];
 
   constructor(private httpClient:HttpClient,private _recommendationService: RecommedationService ) {
     this.recommendationForm = new FormGroup({
       city: new FormControl(),
-      productCategory: new FormControl(),
+      category: new FormControl(),
       
     });
    }
+  
+   
+   cars: Car[] = [
+    {value: 'Lucknow', viewValue: 'Lucknow'},
+    {value: 'Raebareli', viewValue: 'Raebareli'},
+    {value: 'Varanasi', viewValue: 'Varanasi'},
+  ];
+  
+  selectedCar = this.cars[0].value;
+
+  selectCar(event: Event) {
+    this.selectedCar = (event.target as HTMLSelectElement).value;
+    this._recommendationService.getProductRecommendationsByLocation(this.selectedCar).subscribe(data =>{
+     
+      this.abc=data;
+      console.log(this.abc);
+    })
+  }
+  categories: Category[]=[
+    {value1: 'Electronics', viewValue1: 'Electronics'},
+    {value1: 'AutoMobiles', viewValue1: 'AutoMoblies'},
+    {value1: 'Clothing', viewValue1: 'Clothing'},
+  ];
+   selectedCategory = this.categories[0].value1;
+   selectCategory(event:Event) {
+    this.selectedCategory = (event.target as HTMLSelectElement).value;
+    this._recommendationService.getgetProductByCategory(this.selectedCategory).subscribe(data =>{
+      this.abc=data;
+      console.log(this.abc);
+   })
+   }
   ngOnInit(): void {
-    this._recommendationService.getProductRecommendationsByLocation("Raebareli").subscribe(data =>{
+    this._recommendationService.getProductRecommendationsByLocation(this.city).subscribe(data =>{
+      this.abc=data;
       this.location=data;
-      console.log(this.location)
+      console.log("data[]",this.abc)
       this.city=this.location.city
       this.state=this.location.state
       
     });
-    this._recommendationService.getgetProductRecommendationByCityAndCategory("Jhansi","Automobiles").subscribe(lo =>{
+    this._recommendationService.getgetProductRecommendationByCityAndCategory(this.city,this.category).subscribe(lo =>{
      this.IncomingProductData=lo;
      console.log(this.IncomingProductData)
       this.productId=this.IncomingProductData.productId
@@ -58,13 +98,14 @@ productCategory:String;
       this.productCategory=this.IncomingProductData.productCategory
      this.productImage=this.domSanitizer.bypassSecurityTrustResourceUrl(
 
-      "data:img/" + "jpg" + ";base64," + this.IncomingProductData.image
+      "data:img/" + "jpg" + ";base64," + this.IncomingProductData.productImage
      );
     
     });
-    this._recommendationService.getgetProductByCategory("Automobiles").subscribe(cat =>{
-      this.category=cat;
-      console.log(this.category)
+    this._recommendationService.getgetProductByCategory(this.category).subscribe(data =>{
+      this.abc=data;
+      this.category=data;
+      console.log("data[]",this.abc)
       this.category=this.category.category;
     })
 

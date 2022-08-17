@@ -1,10 +1,10 @@
 export class IncomingProductData {
     productId:number;
-     productOwnerEmail:String;
-     productName:String;
-     state:String;
+    productOwnerEmail:String;
+    productName:String;
+    state:String;
     city:String;
-  productCategory:String;
+    productCategory:String;
     productImage:any;
     constructor(){
 
