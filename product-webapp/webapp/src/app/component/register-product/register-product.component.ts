@@ -23,7 +23,8 @@ export interface Fruit {
 
 export class RegisterProductComponent implements OnInit {
 
-  // pexchange: any;
+  // pexchange: "";
+  // pcoin:0;
   productForm: FormGroup;
 
   constructor(private productService: RegisterProductService,
@@ -47,7 +48,7 @@ export class RegisterProductComponent implements OnInit {
 
 
   ngOnInit(): void {
-
+this.futureDateDisable();
   }
 
   productObj: Product = new Product();
@@ -119,9 +120,10 @@ if (!this.productForm.invalid){
   //To navigate to home page
   this.router.navigateByUrl('');
 
-}else{
-  Swal.fire({ icon: 'error', title: 'Oops...Empty Feild !!', text: 'Please fill all sections the to continue !', })
 }
+// else{
+//   Swal.fire({ icon: 'error', title: 'Oops...Empty Feild !!', text: 'Please fill all sections the to continue !', })
+// }
   }
 
 
@@ -144,16 +146,20 @@ if (!this.productForm.invalid){
     if (x == 0) {
       this.coin = true;
       this.preference = false;
+      this.productForm.controls['pexchange'].reset();
     } else if (x == 1) {
       this.preference = true;
       this.coin = false;
       this.blankspace = false;
+      this.productForm.controls['pcoin'].reset();
     } else if (x == 2) {
       this.coin = true;
       this.preference = true;
       this.blankspace = true;
     }
   }
+
+ 
 
   // for chips
 
@@ -191,8 +197,30 @@ if (!this.productForm.invalid){
   }
 
   // end for chips
+// MM-DD-YYYY
+maxDate:any;
 
+futureDateDisable(){
+  var date:any=new Date();
+  var todayDate:any=date.getDate();
+  var month:any=date.getMonth() +1;
+  console.log(todayDate);
+  console.log(month);
+  var year:any=date.getFullYear();
 
+  if(todayDate<10){
+    // '0' +9=09
+   todayDate='0' + todayDate;  
+  }
+  if(month<10){
+    month = '0' + month;
+  }
+  console.log(year);
+ this.maxDate=year + "-" + month + "-" + todayDate ;
+
+ console.log(this.maxDate);
+
+}
 
 }
 

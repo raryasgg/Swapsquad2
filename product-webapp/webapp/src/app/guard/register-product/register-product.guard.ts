@@ -22,7 +22,7 @@ export class RegisterProductGuard implements CanDeactivate<RegisterProductCompon
 
       return confirm('are u sure to navigate away');
 
-    // return false;
+    // return  false;
   }
   
 }
