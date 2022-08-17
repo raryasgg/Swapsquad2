@@ -79,5 +79,13 @@ public class UserRegistrationServiceImpl implements UserRegistrationService{
 		repo.save(update);
 		return update;
 	}
+
+
+
+//	@Override
+//	public void addrating(UserRating add, String email) {
+//		repo.saveAll((Iterable<UserRating>) add);
+//
+//	}
 		
 }

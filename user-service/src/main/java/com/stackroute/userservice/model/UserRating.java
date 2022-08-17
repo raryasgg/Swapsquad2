@@ -2,6 +2,7 @@ package com.stackroute.userservice.model;
 
 import java.util.List;
 
+import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import lombok.AllArgsConstructor;
@@ -16,7 +17,7 @@ import lombok.Setter;
 @Getter
 @Setter
 public class UserRating {
-	
+	@Id
 	 private String userId;
 	    private double rating;
 	    private String reviews;
