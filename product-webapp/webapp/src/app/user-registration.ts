@@ -9,6 +9,7 @@ export class UserRegistration {
   password: String;
   cpassword: String;
   accept: String;
+  address:any;
 
   constructor() {
     this.firstname = "";

@@ -1,5 +1,6 @@
 package com.stackroute.userservice.service;
 
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
@@ -17,7 +18,7 @@ public interface UserRegistrationService {
 	public UserRegistration rate(UserRegistration user);
 
 	public UserRegistration adduser(String str, MultipartFile file) throws JsonMappingException, JsonProcessingException;
-	public void addrating(UserRating add, String email);
+	public UserRegistration addrating(UserRating add, String email);
 
 
     

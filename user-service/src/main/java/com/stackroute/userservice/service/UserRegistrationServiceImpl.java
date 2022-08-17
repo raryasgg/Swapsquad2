@@ -1,9 +1,12 @@
 package com.stackroute.userservice.service;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -83,9 +86,27 @@ public class UserRegistrationServiceImpl implements UserRegistrationService{
 
 
 	@Override
-	public void addrating(UserRating add, String email) {
-		repo.saveAll((Iterable<UserRating>) add);
+	public UserRegistration addrating(UserRating add, String email) {
+		Optional<UserRegistration> user= repo.findById(email);
+		UserRegistration abc=user.get();
+		if(abc.getRatings()==null) {
+			List<UserRating> rate=new ArrayList<>();
+			rate.add(add);
+			abc.setRatings(rate);	
+			return repo.save(abc);
+		}
+		else
+		{
+			List<UserRating> rates=abc.getRatings();
+			rates.add(add);
+			abc.setRatings(rates);
+			return repo.save(abc);
+		}
+		
+
 		
 	}
 		
+	
+	
 }
