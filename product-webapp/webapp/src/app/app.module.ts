@@ -32,7 +32,11 @@ import { MatProgressBarModule } from "@angular/material/progress-bar";
 import { FlexLayoutModule } from "@angular/flex-layout";
 import { UpdateDetailsComponent } from './update-details/update-details.component';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+
 import { RatingModule } from 'ng-starrating';
+
+import { TranscationsComponent } from "./transcations/transcations.component";
+
 
 @NgModule({
   declarations: [
@@ -42,6 +46,7 @@ import { RatingModule } from 'ng-starrating';
     RegisterUserComponent,
     RecommendationServiceComponent,
     UpdateDetailsComponent,
+    TranscationsComponent
 
   ],
 

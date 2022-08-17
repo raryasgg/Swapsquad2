@@ -7,7 +7,9 @@ import { RegisterProductComponent } from './component/register-product/register-
 import { RecommendationServiceComponent } from './recommendation-service/recommendation-service.component';
 import { RegisterUserComponent } from './register-user/register-user.component';
 
+
 //import { LoginComponent } from 'src/login/login.component';
+
 import { UpdateDetailsComponent } from './update-details/update-details.component';
 import { TranscationsComponent } from './transcations/transcations.component';
 

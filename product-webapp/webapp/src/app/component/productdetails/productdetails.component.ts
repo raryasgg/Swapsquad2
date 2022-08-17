@@ -38,7 +38,7 @@ export class ProductdetailsComponent implements OnInit {
 rate:any;
  review:any
  userId:""
- totalstars='5'
+ //totalstars='5'
 
   
   // img1="assets/1.jpg"
@@ -64,7 +64,7 @@ ngOnInit(): void {
   // .subscribe(data => this.productdata =data)
 
 
-  this._productdetailsService.getProductDetailsById(24).subscribe(data =>{
+  this._productdetailsService.getProductDetailsById(28).subscribe(data =>{
 
 
     this.productdata =data;

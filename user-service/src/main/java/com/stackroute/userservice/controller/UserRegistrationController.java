@@ -98,7 +98,7 @@ public class UserRegistrationController {
 
 	}
 	@PutMapping("/rate/{email}")
-	public void addrating(@RequestBody UserRegistration add , @PathVariable String email) {
+	public void addrating(@RequestBody UserRating add , @PathVariable String email) {
 		userservice.addrating(add,email);
 	}
 	

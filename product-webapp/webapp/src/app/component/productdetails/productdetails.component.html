@@ -37,7 +37,7 @@
                     <!-- <img mat-card-image [src]="img" alt="img" width="300rem" height="300rem"> -->
                     <mat-grid-list cols="1" rowHeight="1:1">
                         <mat-grid-tile>
-                            <img mat-card-image src="assets/1.jpg" alt="img" >
+                            <img mat-card-image [src]="img" alt="img" >
                         </mat-grid-tile>
                     </mat-grid-list>
                 </div>
@@ -143,8 +143,8 @@
 
                                             <td>
                                                 <div class="product-owner-details ">
-                                                    <star-rating value={{avgRating}} totalstars={{totalstar}} checkedcolor="red" uncheckedcolor="black" size="24px"
-                                                    readonly="false" ></star-rating>
+                                                    <!-- <star-rating value={{avgRating}} totalstars={{totalstar}} checkedcolor="red" uncheckedcolor="black" size="24px"
+                                                    readonly="false" ></star-rating> -->
 
                                                 </div>
                                             </td>

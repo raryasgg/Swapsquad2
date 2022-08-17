@@ -80,9 +80,11 @@ public class UserRegistrationServiceImpl implements UserRegistrationService{
 		return update;
 	}
 
+
+
 	@Override
-	public void addrating(UserRegistration add, String email) {
-		repo.save(add);
+	public void addrating(UserRating add, String email) {
+		repo.saveAll((Iterable<UserRating>) add);
 		
 	}
 		
