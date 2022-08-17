@@ -37,7 +37,8 @@
                     <!-- <img mat-card-image [src]="img" alt="img" width="300rem" height="300rem"> -->
                     <mat-grid-list cols="1" rowHeight="1:1">
                         <mat-grid-tile>
-                            <img mat-card-image [src]="img" alt="img" >
+                            <!-- <img mat-card-image [src]="img" alt="img" > -->
+                            <img mat-card-image src="assets/1.jpg" alt="img" >
                         </mat-grid-tile>
                     </mat-grid-list>
                 </div>
@@ -60,11 +61,11 @@
                 <div class="row" style="font-size: 1.2vw;">
 
                     <div class="col-lg-6 col-md-6 col-sm-6 col-6">
-                        <p>{{plocation}}</p>
+                        <p><span class="material-icons" >location_on</span>{{plocation}}</p>
                     </div>
 
                     <div class="col-lg-6 col-md-6 col-sm-6 col-6 post-date ">
-                        <p>Date of Posting : {{dateofposting}}</p>
+                        <p><b> Date of Posting :</b> {{dateofposting}}</p>
                     </div>
                 </div>
 
@@ -79,12 +80,12 @@
 
                     <div class="col-lg-6 col-md-6 col-sm-6 col-6">
 
-                        <p>Exchange Mode : {{pexchangetype}}</p>
+                        <p><b> Exchange Mode : </b>{{pexchangetype}}</p>
 
                     </div>
                     <div class="col-lg-6 col-md-6 col-sm-6 col-6 post-date ">
 
-                        <p> Year Of Purchase : {{dateofpurchase}}</p>
+                        <p><b> Year Of Purchase :</b> {{dateofpurchase}}</p>
 
                     </div>
 
@@ -94,7 +95,7 @@
                 <!-- Preferences -->
                 <!-- Check to notepad if not work -->
                 <div class="preference">
-                    <p style="margin-right: 0.5rem;">Preferences :</p>
+                    <p style="margin-right: 0.5rem;"><b>Preferences :</b></p>
                         <mat-chip-list aria-label="preference selection" *ngFor="let item of pexchange" style="float:left">
                             <mat-chip>
                                 {{item}}
@@ -124,7 +125,7 @@
                             <div class="product-owner">
                                 <div>
                                     <table>
-                                        <tr>
+                                       
                                             <td>
                                                 <div class="product-owner-details col-sm-12">
                                                     <mat-icon>account_circle</mat-icon>
@@ -133,22 +134,23 @@
                                             <td>
 
                                                 <div class="product-ownerss">
-                                                    <p>{{pmail}}</p>
+                                                    <p><b>{{pmail}}</b></p>
                                                     
                                                 </div>
 
                                             </td>
-
-
-
-                                            <td>
-                                                <div class="product-owner-details ">
-                                                    <!-- <star-rating value={{avgRating}} totalstars={{totalstar}} checkedcolor="red" uncheckedcolor="black" size="24px"
-                                                    readonly="false" ></star-rating> -->
-
+                                            <td >
+                                                <div class="product-owner-details " >
+                                                    <star-rating value={{avgRating}} totalstars={{totalstar}} checkedcolor="blue" uncheckedcolor="black" size="15px"
+                                                    readonly="false" ></star-rating>
+    
                                                 </div>
                                             </td>
-                                        </tr>
+
+
+
+                                            
+                                        
                                     </table>
                                 </div>
                             </div>
@@ -170,6 +172,7 @@
         </div>
         <div class="col-lg-6 col-md-6 col-sm-10 col-10">
             <div class="description-text-box">
+                <p><b>Description of the product</b></p>
                 <p>{{desc}}
                 </p>
             </div>
@@ -190,14 +193,23 @@
         <!-- Description box -->
         <div class="col-lg-6 col-md-6 col-sm-10 col-10 user-profile-box-review">
 
-            <table class="table">
+            <table *ngFor="let ratin of ratings" >
                 <thead>
     
-            <p *ngFor="let ratin of ratings" >
-           <tr> UserId: {{ratin.userId}}</tr> 
-           <tr>Rating: {{ratin.rating}}</tr>
-               <tr> Reviews: {{ratin.reviews}}</tr>
-                </p>
+            <!-- <p *ngFor="let ratin of ratings" > -->
+           
+               <tr>
+                <td>
+                    <b>{{ratin.userId }}</b>
+                </td>
+                <td style="padding-left:0.5rem;">
+                    <star-rating value={{ratin.rating}} totalstars={{totalstar}} checkedcolor="blue" uncheckedcolor="black" size="15px"
+                                                    readonly="false" ></star-rating>
+    
+                </td>
+               </tr >
+               <span  >{{ratin.reviews}}</span>
+                <!-- </p> -->
                 </thead> 
                 </table> 
         </div>

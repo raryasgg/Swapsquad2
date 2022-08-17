@@ -14,11 +14,12 @@ public interface UserRegistrationService {
 	public UserRegistration getById(String emp) throws UserNotFoundException;
 	public void deleteEmailById(String emp);
 	public UserRegistration update(UserRegistration user);
-	//public UserRegistration addNew(UserRating user);
-	public UserRegistration rate(UserRegistration user);
+
 
 	public UserRegistration adduser(String str, MultipartFile file) throws JsonMappingException, JsonProcessingException;
+
 	public UserRegistration addrating(UserRating add, String email);
+
 
 
     

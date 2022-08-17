@@ -57,15 +57,6 @@ public class UserRegistrationServiceImpl implements UserRegistrationService{
 		return savedEmployee;
 	}
 
-	/*
-	 * @Override public UserRegistration addNew(UserRating user) { return
-	 * repo.save(null); }
-	 */
-	@Override
-	public UserRegistration rate(UserRegistration user) {
-	
-		return repo.save(user);
-	}
 
 	@Override
 	public UserRegistration adduser(String str, MultipartFile file) throws JsonMappingException, JsonProcessingException {
@@ -82,6 +73,7 @@ public class UserRegistrationServiceImpl implements UserRegistrationService{
 		repo.save(update);
 		return update;
 	}
+
 
 
 
@@ -106,7 +98,6 @@ public class UserRegistrationServiceImpl implements UserRegistrationService{
 
 		
 	}
-		
-	
+
 	
 }

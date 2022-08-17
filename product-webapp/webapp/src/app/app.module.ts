@@ -76,7 +76,8 @@ import { TranscationsComponent } from "./transcations/transcations.component";
     MatButtonToggleModule,
     MatProgressBarModule,
     FlexLayoutModule,
-    RatingModule
+    RatingModule,
+  
   ],
   providers: [ProductDetailsService],
   bootstrap: [AppComponent],

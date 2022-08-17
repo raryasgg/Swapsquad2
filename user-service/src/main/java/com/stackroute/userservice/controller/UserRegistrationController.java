@@ -37,7 +37,7 @@ import lombok.extern.slf4j.Slf4j;
 
 @RestController
 @RequestMapping("/users")
-//@CrossOrigin(origins="http://localhost:4200")
+@CrossOrigin(origins="http://localhost:4200")
 @Slf4j
 public class UserRegistrationController {
 
@@ -91,12 +91,14 @@ public class UserRegistrationController {
 		return new ResponseEntity<Void>(org.springframework.http.HttpStatus.ACCEPTED);
 	}
 
+
 	@PutMapping("/rate/{email}")
 	public ResponseEntity<UserRegistration> addrating(@RequestBody UserRating add , @PathVariable String email) {
 		
 		return new ResponseEntity<UserRegistration>(userservice.addrating(add,email), org.springframework.http.HttpStatus.OK);
 	}
 	
+
 	
 	@PostMapping("/update/add")
 	public ResponseEntity<UserRegistration> Updateuser(@RequestParam(value="str") String str, @RequestParam(value="file") MultipartFile file) throws JsonMappingException, JsonProcessingException   {

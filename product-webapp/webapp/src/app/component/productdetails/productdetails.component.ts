@@ -38,7 +38,9 @@ export class ProductdetailsComponent implements OnInit {
 rate:any;
  review:any
  userId:""
- //totalstars='5'
+ totalstar='5'
+
+
 
   
   // img1="assets/1.jpg"
@@ -98,7 +100,7 @@ ngOnInit(): void {
 
   });
 
-  this.userratingservice.getUserRatingByEmail("pgk@gmail.com").subscribe(dataofrating =>{
+  this.userratingservice.getUserRatingByEmail("devika@gmail.com").subscribe(dataofrating =>{
     this.userratingdata=dataofrating
     console.log(this.userratingdata)
     this.ratings=this.userratingdata.ratings

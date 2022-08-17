@@ -13,6 +13,5 @@ import com.stackroute.userservice.model.UserRegistration;
 @Transactional
 public interface UserRepo extends MongoRepository<UserRegistration, String> {
 
-	
 
 }
