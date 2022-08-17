@@ -17,7 +17,7 @@ import lombok.Setter;
 @Getter
 @Setter
 public class UserRating {
-	@Id
+	
 	 private String userId;
 	    private double rating;
 	    private String reviews;
