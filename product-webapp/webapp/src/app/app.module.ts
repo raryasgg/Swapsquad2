@@ -32,7 +32,13 @@ import { MatProgressBarModule } from "@angular/material/progress-bar";
 import { FlexLayoutModule } from "@angular/flex-layout";
 import { UpdateDetailsComponent } from './update-details/update-details.component';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+
+
+
 import { TranscationsComponent } from "./transcations/transcations.component";
+import { CommonModule } from "@angular/common";
+
+
 
 @NgModule({
   declarations: [
@@ -72,6 +78,11 @@ import { TranscationsComponent } from "./transcations/transcations.component";
     MatButtonToggleModule,
     MatProgressBarModule,
     FlexLayoutModule,
+    CommonModule,
+
+    
+  
+
   ],
   providers: [ProductDetailsService],
   bootstrap: [AppComponent],

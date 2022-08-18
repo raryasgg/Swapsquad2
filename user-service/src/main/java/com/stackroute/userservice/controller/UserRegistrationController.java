@@ -91,13 +91,14 @@ public class UserRegistrationController {
 		return new ResponseEntity<Void>(org.springframework.http.HttpStatus.ACCEPTED);
 	}
 
-	@PostMapping("/rate")
-	public ResponseEntity<UserRegistration> rating(@RequestBody UserRegistration user) {
 
-		return new ResponseEntity<UserRegistration>(userservice.rate(user), org.springframework.http.HttpStatus.OK);
-
+	@PutMapping("/rate/{email}")
+	public ResponseEntity<UserRegistration> addrating(@RequestBody UserRating add , @PathVariable String email) {
+		
+		return new ResponseEntity<UserRegistration>(userservice.addrating(add,email), org.springframework.http.HttpStatus.OK);
 	}
 	
+
 	
 	@PostMapping("/update/add")
 	public ResponseEntity<UserRegistration> Updateuser(@RequestParam(value="str") String str, @RequestParam(value="file") MultipartFile file) throws JsonMappingException, JsonProcessingException   {
