@@ -15,6 +15,13 @@ interface transcation {
 
 export class TranscationsComponent implements OnInit {
   selectedValue: string= "Coin";
+  public stars: boolean[] = [false,false,false,false,false]
+
+  public rate(rating: number) {
+    console.log('rating', rating);
+    this.stars = this.stars.map((_, i) => rating > i);
+    console.log('stars', this.stars);
+  }
 
   transcations: transcation[] = [
     {value: 'Sold Products'},

@@ -14,18 +14,22 @@ export class RecommedationService {
   private url: string ="http://localhost:8080"
 
   constructor(private httpClient: HttpClient) { }
-  IncomingProductData(city:Location,category:Category): Observable<Object> {
-    console.log(city,category);
-    return this.httpClient.post(`${this.url}`,"city" + "category");
- }
+//   IncomingProductData(city:Location,category:Category): Observable<Object> {
+//     console.log(city,category);
+//     return this.httpClient.post(`${this.url}`,"city" + "category");
+//  }
 
   getProductRecommendationsByLocation(city:String){
    return this.httpClient.get<IncomingProductData[]>(this.url+ "/recommend/" +  city)
   }
   getgetProductRecommendationByCityAndCategory(city:String,category:String){
-    return this.httpClient.get<IncomingProductData[]>(this.url+ "/recommendCategory" +  city + category)
+    return this.httpClient.get<IncomingProductData[]>(this.url+ "/recommendCategory" + '?city='+city+'&category='+category)
    }
    getgetProductByCategory(category:String){
-    return this.httpClient.get<IncomingProductData[]>(this.url+ "/Product" +  category)
+    return this.httpClient.get<IncomingProductData[]>(this.url+ "/Product" + '?category=' + category )
+   }
+   getAllProduct(){
+    return this.httpClient.get<IncomingProductData[]>(this.url+ "/getAllProduct")
    }
 }
+

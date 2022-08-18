@@ -13,6 +13,17 @@ import { RegisterUserComponent } from './register-user/register-user.component';
 import { UpdateDetailsComponent } from './update-details/update-details.component';
 import { TranscationsComponent } from './transcations/transcations.component';
 
+
+
+
+
+
+
+
+
+
+
+
 const routes: Routes = [
 
   
