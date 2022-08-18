@@ -12,8 +12,8 @@
         <div class="row">
           <div class="col-lg-3 col-md-3 col-sm-3 col-3"></div>
           <div class="col-lg-7 col-md-7 col-sm-7 col-7 location-dropdown">
-            <mat-form-field appearance="fill">
-              <mat-label>Favorite Car</mat-label>
+            <mat-form-field appearance="outline" style="inline-size: auto;">
+              <mat-label><i class="fa-solid fa-location-dot" style="margin-right: 0.5rem;"> </i>Location</mat-label>
               <select matNativeControl (change)="selectCar($event)">
                 <option value=""></option>
                 <option *ngFor="let option of cars" [value]="option.value"
@@ -77,7 +77,7 @@
 
           <!-- <div class="col-lg-1 col-md-1 col-sm-1 col-1 "></div> -->
           <div class="col-lg-3 col-md-3 col-sm-3 col-3 category-dropdown">
-            <mat-form-field appearance="fill">
+            <mat-form-field appearance="outline">
               <mat-label>category</mat-label>
               <select matNativeControl (change)="selectCategory($event)">
                 <option value=""></option>
@@ -136,8 +136,26 @@
   </div>
 </div>
 </div> -->
-<div *ngFor ="let a of abc">
-<mat-card class="example-card" style="flex-direction: column;">
+<div class="content">
+  <div fxLayout="row" fxLayoutGap="16px grid">
+    <div fxFlex=25% fxFlex.xs="100%" fxFlex.sm="33%" > 
+      <div *ngFor ="let a of abc">
+        <mat-card class="example-card">
+        <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
+          <mat-card-content>
+            <p>{{a.productName}}</p>
+            <div class="addres_data">
+              <p>{{a.city}} , {{a.state}}</p>
+              <p>Today</p>
+            </div>
+          </mat-card-content>
+        </mat-card>
+        </div>
+        </div>
+    </div>
+  </div>
+<!-- <div *ngFor ="let a of abc">
+<mat-card class="example-card" style="flex-direction: row;">
   <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
   <mat-card-content>
     <p>{{a.productName}}</p>
@@ -148,6 +166,7 @@
   </mat-card-content>
 </mat-card>
 </div>
+</div> -->
     <!-- <div class="box">
       <img src="assets/product-2.jpg" />
       <h4>Mode Of Exchange</h4>
