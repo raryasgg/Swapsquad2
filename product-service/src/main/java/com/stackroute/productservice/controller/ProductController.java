@@ -6,6 +6,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
+import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -25,12 +26,14 @@ import org.springframework.web.multipart.MultipartFile;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.stackroute.productservice.config.RabbitMq;
 import com.stackroute.productservice.exception.NoProductAvailableInTheRepository;
 import com.stackroute.productservice.exception.NoProductExistsInTheRepository;
 import com.stackroute.productservice.exception.ProductAlreadyExistException;
 import com.stackroute.productservice.exception.ProductNotFoundException;
 import com.stackroute.productservice.exception.ProductNotFoundInRepository;
 import com.stackroute.productservice.exception.ProvideProperProductDetails;
+import com.stackroute.productservice.model.IncomingProductData;
 import com.stackroute.productservice.model.Product;
 
 import com.stackroute.productservice.reprository.ProductRepository;
@@ -51,6 +54,9 @@ public class ProductController {
 	private ProductRepository prepository;
 	private ProductServiceImpl pservice;
 	private SequenceGeneratorService sequenceGeneratorService;
+	
+	@Autowired
+    private RabbitTemplate template;
 	
 	
     @Autowired
@@ -155,7 +161,10 @@ public class ProductController {
 	public ResponseEntity<Product> createproduct(@RequestParam(value="str") String str, @RequestParam(value="file") MultipartFile file) throws IOException  {
 		try {
 			log.debug("Inside the ProductController -- createproduct methods");
-			return new ResponseEntity<Product>(pservice.addprod(str,file),org.springframework.http.HttpStatus.OK);
+			Product pro = pservice.addprod(str,file);
+			IncomingProductData indata = pservice.outmodel(pro);
+			template.convertAndSend(RabbitMq.EXCHANGE, RabbitMq.ROUTING_KEY, indata);
+			return new ResponseEntity<Product>(pro,org.springframework.http.HttpStatus.OK);
 		} catch (JsonMappingException e) {
 			log.error("JsonMappingException",e);
 			return new ResponseEntity("Json Mapping Exception",org.springframework.http.HttpStatus.BAD_REQUEST);
