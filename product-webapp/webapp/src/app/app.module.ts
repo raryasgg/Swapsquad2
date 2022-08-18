@@ -33,7 +33,7 @@ import { FlexLayoutModule } from "@angular/flex-layout";
 import { UpdateDetailsComponent } from './update-details/update-details.component';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
-import { RatingModule } from 'ng-starrating';
+
 
 import { TranscationsComponent } from "./transcations/transcations.component";
 import { CommonModule } from "@angular/common";
@@ -78,12 +78,11 @@ import { CommonModule } from "@angular/common";
     MatButtonToggleModule,
     MatProgressBarModule,
     FlexLayoutModule,
-<<<<<<< HEAD
     CommonModule,
-=======
-    RatingModule,
+
+    
   
->>>>>>> 4bb0106f0631a299eb8e12b1519137126e27a81c
+
   ],
   providers: [ProductDetailsService],
   bootstrap: [AppComponent],

@@ -4,14 +4,15 @@ import {HttpClient} from '@angular/common/http';
 import { switchMap} from 'rxjs/operators'
 import { IncomingProductData } from '../models/recommendation/incoming-product-data';
 import { RecommedationService } from '../services/recommendation-service/recommedation.service';
+import { DomSanitizer } from '@angular/platform-browser';
 
 interface Car {
   value: string;
   viewValue: string;
 }
 interface Category {
-  value1: string;
-  viewValue1: string;
+  value: string;
+  viewValue: string;
 }
 @Component({
   selector: 'app-recommendation-service',
@@ -40,7 +41,7 @@ userIP:'';
   public location:any;
   public abc:Array<IncomingProductData>=[];
 
-  constructor(private httpClient:HttpClient,private _recommendationService: RecommedationService ) {
+  constructor(private httpClient:HttpClient,private _recommendationService: RecommedationService ,private domSanitizer:DomSanitizer) {
     this.recommendationForm = new FormGroup({
       city: new FormControl(),
       category: new FormControl(),
@@ -66,11 +67,11 @@ userIP:'';
     })
   }
   categories: Category[]=[
-    {value1: 'Electronics', viewValue1: 'Electronics'},
-    {value1: 'AutoMobiles', viewValue1: 'AutoMoblies'},
-    {value1: 'Clothing', viewValue1: 'Clothing'},
+    {value: 'Electronics', viewValue: 'Electronics'},
+    {value: 'AutoMobiles', viewValue: 'AutoMoblies'},
+    {value: 'Clothing', viewValue: 'Clothing'},
   ];
-   selectedCategory = this.categories[0].value1;
+   selectedCategory = this.categories[0].value;
    selectCategory(event:Event) {
     this.selectedCategory = (event.target as HTMLSelectElement).value;
     this._recommendationService.getgetProductByCategory(this.selectedCategory).subscribe(data =>{
@@ -87,9 +88,17 @@ userIP:'';
       this.state=this.location.state
       
     });
-    this._recommendationService.getgetProductRecommendationByCityAndCategory(this.city,this.category).subscribe(lo =>{
-     this.IncomingProductData=lo;
-     console.log(this.IncomingProductData)
+    this._recommendationService.getgetProductByCategory(this.category).subscribe(data =>{
+      this.abc=data;
+      this.category=data;
+      console.log("data[]",this.abc)
+      this.category=this.category.category;
+    });
+
+    this._recommendationService.getgetProductRecommendationByCityAndCategory(this.city,this.category).subscribe(data =>{
+      this.abc=data;
+      this.IncomingProductData=data;
+      console.log("data[]",this.abc)
       this.productId=this.IncomingProductData.productId
       this.productOwnerEmail=this.IncomingProductData
       this.productName=this.IncomingProductData.productName
@@ -98,25 +107,15 @@ userIP:'';
       this.productCategory=this.IncomingProductData.productCategory
      this.productImage=this.domSanitizer.bypassSecurityTrustResourceUrl(
 
-      "data:img/" + "jpg" + ";base64," + this.IncomingProductData.productImage
+      "data:productImage/" + "jpg" + ";base64," + this.IncomingProductData.productImage
      );
     
     });
-    this._recommendationService.getgetProductByCategory(this.category).subscribe(data =>{
-      this.abc=data;
-      this.category=data;
-      console.log("data[]",this.abc)
-      this.category=this.category.category;
-    })
+   
 
 
     
   }
- 
-
-
-
-
 
 recommendObj: IncomingProductData = new IncomingProductData();
 
@@ -126,7 +125,7 @@ recommendObj: IncomingProductData = new IncomingProductData();
       this.recommendObj.city = this.recommendationForm.value.city;
       this.recommendObj.productCategory = this.recommendationForm.value.productCategory;
       this.recommendObj.state = this.recommendationForm.value.state;
-    this.recommendObj.productCategory = this.recommendationForm.value.productCategory;
+    
       
     }
   
