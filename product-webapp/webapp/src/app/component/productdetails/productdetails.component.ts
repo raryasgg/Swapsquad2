@@ -100,7 +100,7 @@ ngOnInit(): void {
 
   });
 
-  this.userratingservice.getUserRatingByEmail("devika@gmail.com").subscribe(dataofrating =>{
+  this.userratingservice.getUserRatingByEmail("poojitha@gmail.com").subscribe(dataofrating =>{
     this.userratingdata=dataofrating
     console.log(this.userratingdata)
     this.ratings=this.userratingdata.ratings

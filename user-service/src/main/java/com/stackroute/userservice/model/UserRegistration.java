@@ -32,6 +32,7 @@ import lombok.Setter;
 		private double avgRating;
 		private byte[] image;
 		private Address address;
+		private int barterCoins;
 		
 		public UserRegistration(String email, String firstname, String lastname, int age, String gender, int mobile,
 				String password, String cpassword) {
