@@ -78,12 +78,9 @@ import { CommonModule } from "@angular/common";
     MatButtonToggleModule,
     MatProgressBarModule,
     FlexLayoutModule,
-<<<<<<< HEAD
     CommonModule,
-=======
-    RatingModule,
-  
->>>>>>> 4bb0106f0631a299eb8e12b1519137126e27a81c
+    RatingModule
+
   ],
   providers: [ProductDetailsService],
   bootstrap: [AppComponent],

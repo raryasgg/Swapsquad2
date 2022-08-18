@@ -10,8 +10,8 @@ interface Car {
   viewValue: string;
 }
 interface Category {
-  value1: string;
-  viewValue1: string;
+  value: string;
+  viewValue: string;
 }
 @Component({
   selector: 'app-recommendation-service',
@@ -66,11 +66,11 @@ userIP:'';
     })
   }
   categories: Category[]=[
-    {value1: 'Electronics', viewValue1: 'Electronics'},
-    {value1: 'AutoMobiles', viewValue1: 'AutoMoblies'},
-    {value1: 'Clothing', viewValue1: 'Clothing'},
+    {value: 'Electronics', viewValue: 'Electronics'},
+    {value: 'AutoMobiles', viewValue: 'AutoMoblies'},
+    {value: 'Clothing', viewValue: 'Clothing'},
   ];
-   selectedCategory = this.categories[0].value1;
+   selectedCategory = this.categories[0].value;
    selectCategory(event:Event) {
     this.selectedCategory = (event.target as HTMLSelectElement).value;
     this._recommendationService.getgetProductByCategory(this.selectedCategory).subscribe(data =>{
@@ -87,6 +87,13 @@ userIP:'';
       this.state=this.location.state
       
     });
+    this._recommendationService.getgetProductByCategory(this.category).subscribe(data =>{
+      this.abc=data;
+      this.category=data;
+      console.log("data[]",this.abc)
+      this.category=this.category.category;
+    });
+
     this._recommendationService.getgetProductRecommendationByCityAndCategory(this.city,this.category).subscribe(lo =>{
      this.IncomingProductData=lo;
      console.log(this.IncomingProductData)
@@ -102,21 +109,11 @@ userIP:'';
      );
     
     });
-    this._recommendationService.getgetProductByCategory(this.category).subscribe(data =>{
-      this.abc=data;
-      this.category=data;
-      console.log("data[]",this.abc)
-      this.category=this.category.category;
-    })
+   
 
 
     
   }
- 
-
-
-
-
 
 recommendObj: IncomingProductData = new IncomingProductData();
 
@@ -126,7 +123,7 @@ recommendObj: IncomingProductData = new IncomingProductData();
       this.recommendObj.city = this.recommendationForm.value.city;
       this.recommendObj.productCategory = this.recommendationForm.value.productCategory;
       this.recommendObj.state = this.recommendationForm.value.state;
-    this.recommendObj.productCategory = this.recommendationForm.value.productCategory;
+    
       
     }
   

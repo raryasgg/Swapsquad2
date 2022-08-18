@@ -60,7 +60,7 @@
                   <mat-label>
                     <i class="fa-solid fa-magnifying-glass"></i>
                     Find Cars, mobile phone and More....</mat-label>
-                  <input matInput type="text" formControlName="searchbar" />
+                  <input matInput type="text"/>
                   <button *ngIf="value" matSuffix mat-icon-button aria-label="Clear" (click)="value = ''">
                     <mat-icon>close</mat-icon>
                   </button>
@@ -69,14 +69,20 @@
             </mat-grid-list>
           </div>
 
+          <!-- <select matNativeControl (change)="selectCar($event)">
+                <option value=""></option>
+                <option *ngFor="let option of cars" [value]="option.value"
+                        [selected]="selectedCar === option.value">{{ option.viewValue }}</option>
+              </select> -->
+
           <!-- <div class="col-lg-1 col-md-1 col-sm-1 col-1 "></div> -->
           <div class="col-lg-3 col-md-3 col-sm-3 col-3 category-dropdown">
             <mat-form-field appearance="fill">
               <mat-label>category</mat-label>
               <select matNativeControl (change)="selectCategory($event)">
                 <option value=""></option>
-                <option *ngFor="let option of categories" [value]="option.value"
-               [selected]="selectedCategory === option.value1">{{ option.viewValue1 }}</option>
+                <option *ngFor="let option1 of categories" [value]="option1.value"
+               [selected]="selectedCategory === option1.value">{{ option1.viewValue }}</option>
               </select>
             </mat-form-field>
             <p>You selected: {{selectedCategory}}</p>
