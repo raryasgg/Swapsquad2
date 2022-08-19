@@ -36,6 +36,7 @@ import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { RatingModule } from 'ng-starrating';
 
 import { TranscationsComponent } from "./transcations/transcations.component";
+import { MyProfileComponent } from './my-profile/my-profile.component';
 
 
 @NgModule({
@@ -46,7 +47,8 @@ import { TranscationsComponent } from "./transcations/transcations.component";
     RegisterUserComponent,
     RecommendationServiceComponent,
     UpdateDetailsComponent,
-    TranscationsComponent
+    TranscationsComponent,
+    MyProfileComponent
 
   ],
 

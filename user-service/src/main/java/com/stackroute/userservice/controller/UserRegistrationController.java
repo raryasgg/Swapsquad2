@@ -3,7 +3,7 @@ package com.stackroute.userservice.controller;
 
 
 import org.apache.commons.httpclient.HttpStatus;
-
+import org.apache.velocity.exception.ResourceNotFoundException;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -41,6 +41,8 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class UserRegistrationController {
 
+	@Autowired
+	private UserRepo repos;
 	
 	@Autowired
 	private UserRegistrationService userservice;
@@ -67,7 +69,7 @@ public class UserRegistrationController {
 		}
 	}
 
-	@PutMapping("/update")
+	@PutMapping("/update/all")
 	public ResponseEntity<UserRegistration> updateRegistration(@RequestBody UserRegistration user) {
 		UserRegistration employeeSaved = userservice.update(user);
 		return new ResponseEntity<UserRegistration>(employeeSaved, org.springframework.http.HttpStatus.OK);
@@ -100,7 +102,7 @@ public class UserRegistrationController {
 	
 
 	
-	@PostMapping("/update/add")
+	@PutMapping("/update/add")
 	public ResponseEntity<UserRegistration> Updateuser(@RequestParam(value="str") String str, @RequestParam(value="file") MultipartFile file) throws JsonMappingException, JsonProcessingException   {
 	 
 			log.debug("Inside the UserRegistrationController -- Updateuser methods");
@@ -109,5 +111,6 @@ public class UserRegistrationController {
 		
 	}
 
-	 
+
+	
 }

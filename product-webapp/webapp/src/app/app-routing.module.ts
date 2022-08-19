@@ -12,7 +12,7 @@ import { RegisterUserComponent } from './register-user/register-user.component';
 
 import { UpdateDetailsComponent } from './update-details/update-details.component';
 import { TranscationsComponent } from './transcations/transcations.component';
-
+import { MyProfileComponent } from './my-profile/my-profile.component';
 const routes: Routes = [
 
   
@@ -21,10 +21,10 @@ const routes: Routes = [
   { path: 'registerProduct', component: RegisterProductComponent },
   { path: 'productDetail', component: ProductdetailsComponent },
   { path: 'recommendation-service', component: RecommendationServiceComponent },
-  { path: 'updateDetails', component: UpdateDetailsComponent },
+  { path: 'updateDetails/:email', component: UpdateDetailsComponent },
   { path: 'home', component: AppComponent },
-  {path:'transcations', component:TranscationsComponent}
-
+  {path:'transcations', component:TranscationsComponent},
+  {path:'myProfile', component: MyProfileComponent}
 
 
 ];

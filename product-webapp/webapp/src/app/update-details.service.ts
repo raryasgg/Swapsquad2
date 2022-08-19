@@ -7,7 +7,7 @@ import { UserRegistration } from './user-registration';
   providedIn: 'root'
 })
 export class UpdateDetailsService {
-  baseUrl="http://localhost:8080/users/update/add";
+  baseUrl="http://localhost:8080/users/update/";
   constructor(private httpClient: HttpClient) { }
 
 
@@ -15,6 +15,15 @@ export class UpdateDetailsService {
     const dataObj: FormData=new FormData;
     dataObj.append('str',JSON.stringify(registerObject));
     dataObj.append('file',profileImage);
-    return this.httpClient.post<UserRegistration>("http://localhost:8080/users/update/add",dataObj);
+    return this.httpClient.put<UserRegistration>("http://localhost:8080/users/update/add",dataObj);
   }
+
+  getUserDetailByEmail(email:any){
+    return this.httpClient.get<UserRegistration>("http://localhost:8080/users/user/" + email)
+  }
+
+  updateEmployee( employees: UserRegistration,email:any): Observable<Object>{
+    return this.httpClient.put(`${this.baseUrl}/${email}`, employees);
+  }
+
 }
