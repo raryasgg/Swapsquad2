@@ -14,7 +14,6 @@ import { UpdateDetailsComponent } from './update-details/update-details.componen
 import { TranscationsComponent } from './transcations/transcations.component';
 import { MyProfileComponent } from './my-profile/my-profile.component';
 const routes: Routes = [
-
   
   // {path :'login',component:LoginComponent},
   { path: 'registerUser', component: RegisterUserComponent },
@@ -23,11 +22,16 @@ const routes: Routes = [
   { path: 'recommendation-service', component: RecommendationServiceComponent },
   { path: 'updateDetails/:email', component: UpdateDetailsComponent },
   { path: 'home', component: AppComponent },
+
   {path:'transcations', component:TranscationsComponent},
   {path:'myProfile', component: MyProfileComponent}
 
 
+
+  {path:'transcations', component:TranscationsComponent}
+
 ];
+
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]

@@ -18,5 +18,5 @@ public class IncomingProductData {
     private String state;
     private String city;
     private String productCategory;
-    private Byte productImage;
+    private byte[] productImage;
 }

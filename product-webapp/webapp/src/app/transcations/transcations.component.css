@@ -1,5 +1,7 @@
 .a{
     width: 800px;
+    display: inline-block;
+    cursor: pointer;
     height: 250px;
     border: solid black ;
     margin-top: 10px;
@@ -29,4 +31,14 @@
   
   * {
     box-sizing: border-box;
+  }
+
+  span {
+    display: inline-block;
+    cursor: pointer;
+    line-height: 25px;
+    text-align: center;
+    width: 25px;
+    
+    
   }

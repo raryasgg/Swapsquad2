@@ -31,10 +31,15 @@ import lombok.Setter;
 		private List<UserRating> ratings;
 		private double avgRating;
 		private byte[] image;
+
 		private String street;
 		private String city;
 		private String state;
 		private String pincode;
+
+	
+		private int barterCoins;
+
 		
 		public UserRegistration(String email, String firstname, String lastname, int age, String gender, int mobile,
 				String password, String cpassword) {

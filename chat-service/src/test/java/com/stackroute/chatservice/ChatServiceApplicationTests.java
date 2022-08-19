@@ -1,10 +1,10 @@
-package com.stackroute.cgi.Transaction_History;
+package com.stackroute.chatservice;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class TransactionHistoryApplicationTests {
+class ChatServiceApplicationTests {
 
 	@Test
 	void contextLoads() {

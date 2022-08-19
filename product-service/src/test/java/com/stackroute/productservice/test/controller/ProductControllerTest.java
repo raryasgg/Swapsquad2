@@ -50,7 +50,7 @@ public class ProductControllerTest {
         when(Service.addProd(any())).thenReturn(prod);
         mockMvc.perform(post("/api/v1/product")
                 .contentType(MediaType.APPLICATION_JSON)
-                .content("{\"pid\":1,\"pemail\":\"vijay@gmail.com\",\"pname\":\"mobile\",\"plocation\":\"Azamgarh\",\"desc\":\"IT IS A MOBILE\"}"))
+                .content("{\"pid\":1,\"pemail\":\"vijay@gmail.com\",\"pname\":\"mobile\",\"pstate\":\"Azamgarh\",\"desc\":\"IT IS A MOBILE\"}"))
                 .andExpect(status().isCreated())
                 .andExpect(jsonPath("$.pemail").value("vijay@gmail.com"));
     }
@@ -60,7 +60,7 @@ public class ProductControllerTest {
         when(Service.addProd(any())).thenThrow(ProductAlreadyExistException.class);
         mockMvc.perform(post("/api/v1/product")
                 .contentType(MediaType.APPLICATION_JSON)
-                .content("{\"pid\":1,\"pemail\":\"vijay@gmail.com\",\"pname\":\"mobile\",\"plocation\":\"Azamgarh\",\"desc\":\"IT IS A MOBILE\"}"))
+                .content("{\"pid\":1,\"pemail\":\"vijay@gmail.com\",\"pname\":\"mobile\",\"pstate\":\"Azamgarh\",\"desc\":\"IT IS A MOBILE\"}"))
                 .andExpect(status().isConflict())
                 .andExpect(content().string("Product already Exist"));
     }

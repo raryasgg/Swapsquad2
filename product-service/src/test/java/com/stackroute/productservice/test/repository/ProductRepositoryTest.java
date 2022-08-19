@@ -49,7 +49,7 @@ public class ProductRepositoryTest {
     public void givenNewProductWhenSavedThenReturnlocation(){
     	Product pro = new Product(1,"vijay@gmail.com","mobile","Azamgarh","IT IS A MOBILE");
     	Product adddedpro = Repository.save(pro);
-        assertEquals(pro.getPlocation(), adddedpro.getPlocation(), "New Product should be saved and the same should be returned");
+        assertEquals(pro.getPstate(), adddedpro.getPstate(), "New Product should be saved and the same should be returned");
     }
     
     @Test

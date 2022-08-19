@@ -32,11 +32,13 @@ import { MatProgressBarModule } from "@angular/material/progress-bar";
 import { FlexLayoutModule } from "@angular/flex-layout";
 import { UpdateDetailsComponent } from './update-details/update-details.component';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-
-import { RatingModule } from 'ng-starrating';
-
 import { TranscationsComponent } from "./transcations/transcations.component";
+
 import { MyProfileComponent } from './my-profile/my-profile.component';
+
+import { CommonModule } from "@angular/common";
+// If You are getting error then install ( npm i ng-starrating )
+import { RatingModule } from "ng-starrating";
 
 
 @NgModule({
@@ -78,8 +80,9 @@ import { MyProfileComponent } from './my-profile/my-profile.component';
     MatButtonToggleModule,
     MatProgressBarModule,
     FlexLayoutModule,
-    RatingModule,
-  
+    CommonModule,
+    RatingModule
+
   ],
   providers: [ProductDetailsService],
   bootstrap: [AppComponent],

@@ -34,7 +34,7 @@ export class ProductdetailsComponent implements OnInit {
   dateofposting:any
 
 
-  //user rating
+//user rating
 rate:any;
  review:any
  userId:""
@@ -66,7 +66,7 @@ ngOnInit(): void {
   // .subscribe(data => this.productdata =data)
 
 
-  this._productdetailsService.getProductDetailsById(28).subscribe(data =>{
+  this._productdetailsService.getProductDetailsById(5).subscribe(data =>{
 
 
     this.productdata =data;
@@ -100,7 +100,7 @@ ngOnInit(): void {
 
   });
 
-  this.userratingservice.getUserRatingByEmail("devika@gmail.com").subscribe(dataofrating =>{
+  this.userratingservice.getUserRatingByEmail("poojitha@gmail.com").subscribe(dataofrating =>{
     this.userratingdata=dataofrating
     console.log(this.userratingdata)
     this.ratings=this.userratingdata.ratings

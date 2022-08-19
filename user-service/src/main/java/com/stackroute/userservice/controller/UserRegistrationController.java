@@ -112,5 +112,14 @@ public class UserRegistrationController {
 	}
 
 
+
 	
+
+	@PostMapping("/user/new")
+	public ResponseEntity<UserRegistration> register(@RequestBody UserRegistration user) {
+		return new ResponseEntity<UserRegistration>(userservice.add(user),
+				org.springframework.http.HttpStatus.CREATED);
+	}
+	 
+
 }
