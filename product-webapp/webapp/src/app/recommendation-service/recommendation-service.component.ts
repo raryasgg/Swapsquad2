@@ -4,6 +4,7 @@ import {HttpClient} from '@angular/common/http';
 import { switchMap} from 'rxjs/operators'
 import { IncomingProductData } from '../models/recommendation/incoming-product-data';
 import { RecommedationService } from '../services/recommendation-service/recommedation.service';
+import { DomSanitizer } from '@angular/platform-browser';
 
 interface Car {
   value: string;
@@ -27,11 +28,11 @@ title = 'Ip-geolocation';
 userIP:'';
   
   productId:number;
-  productOwnerEmail:String;
-  productName:String;
-  state:String;
+  productOwnerEmail:any;
+  productName:any;
+  state:any;
   city:any;
-  productCategory:String;
+  productCategory:any;
   productImage:any; 
 
 
@@ -39,8 +40,9 @@ userIP:'';
   public category:any;
   public location:any;
   public abc:Array<IncomingProductData>=[];
+  public getproduct:any[]=[];
 
-  constructor(private httpClient:HttpClient,private _recommendationService: RecommedationService ) {
+  constructor(private httpClient:HttpClient,private _recommendationService: RecommedationService ,private domSanitizer:DomSanitizer) {
     this.recommendationForm = new FormGroup({
       city: new FormControl(),
       category: new FormControl(),
@@ -50,6 +52,7 @@ userIP:'';
   
    
    cars: Car[] = [
+    {value: '', viewValue: ''},
     {value: 'Lucknow', viewValue: 'Lucknow'},
     {value: 'Raebareli', viewValue: 'Raebareli'},
     {value: 'Varanasi', viewValue: 'Varanasi'},
@@ -66,6 +69,7 @@ userIP:'';
     })
   }
   categories: Category[]=[
+    {value: '', viewValue: ''},
     {value: 'Electronics', viewValue: 'Electronics'},
     {value: 'AutoMobiles', viewValue: 'AutoMoblies'},
     {value: 'Clothing', viewValue: 'Clothing'},
@@ -77,15 +81,14 @@ userIP:'';
       this.abc=data;
       console.log(this.abc);
    })
-   }
+   } 
   ngOnInit(): void {
-    this._recommendationService.getProductRecommendationsByLocation(this.city).subscribe(data =>{
-      this.abc=data;
-      this.location=data;
-      console.log("data[]",this.abc)
-      this.city=this.location.city
-      this.state=this.location.state
-      
+    this._recommendationService.getAllProduct().subscribe((data:any)=>{
+      console.log("data",data);
+      for (let i = 0; i < data.length; i++) {
+      this.abc.push(data[i]);
+      }
+      console.log(this.abc);
     });
     this._recommendationService.getgetProductByCategory(this.category).subscribe(data =>{
       this.abc=data;
@@ -114,6 +117,47 @@ userIP:'';
 
     
   }
+
+  // }
+      
+     
+    // this._recommendationService.getProductRecommendationsByLocation(this.city).subscribe(data =>{
+    //   this.abc=data;
+    //   this.location=data;
+    //   console.log("data[]",this.abc)
+    //   this.city=this.location.city
+    //   this.state=this.location.state
+      
+    // });
+    // this._recommendationService.getgetProductByCategory(this.category).subscribe(data =>{
+    //   this.abc=data;
+    //   this.category=data;
+    //   console.log("data[]",this.abc)
+    //   this.category=this.category.category;
+    // });
+
+    // this._recommendationService.getgetProductRecommendationByCityAndCategory(this.city,this.category).subscribe(data =>{
+    //   this.abc=data;
+    //   this.IncomingProductData=data;
+    //   console.log("data[]",this.abc)
+    //   this.productId=this.IncomingProductData.productId
+    //   this.productOwnerEmail=this.IncomingProductData
+    //   this.productName=this.IncomingProductData.productName
+    //   this.state=this.IncomingProductData.state
+    //   this.city=this.IncomingProductData.city
+    //   this.productCategory=this.IncomingProductData.productCategory
+    //  this.productImage=this.domSanitizer.bypassSecurityTrustResourceUrl(
+
+    //   "data:productImage/" + "jpg" + ";base64," + this.IncomingProductData.productImage
+    //  );
+    
+    // });
+   
+
+
+    
+  // }
+
 
 recommendObj: IncomingProductData = new IncomingProductData();
 

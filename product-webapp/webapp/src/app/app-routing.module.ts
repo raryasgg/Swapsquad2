@@ -13,9 +13,7 @@ import { RegisterUserComponent } from './register-user/register-user.component';
 import { UpdateDetailsComponent } from './update-details/update-details.component';
 import { TranscationsComponent } from './transcations/transcations.component';
 
-
 const routes: Routes = [
-
   
   // {path :'login',component:LoginComponent},
   { path: 'registerUser', component: RegisterUserComponent },
@@ -25,10 +23,8 @@ const routes: Routes = [
   { path: 'updateDetails', component: UpdateDetailsComponent },
   { path: 'home', component: AppComponent },
   {path:'transcations', component:TranscationsComponent}
-
-
-
 ];
+
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]

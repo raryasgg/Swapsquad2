@@ -19,7 +19,7 @@ import com.stackroute.userservice.model.UserRegistration;
 import com.stackroute.userservice.repo.UserRepo;
 
 import lombok.extern.slf4j.Slf4j;
-@Service
+ @Service
 @Slf4j
 public class UserRegistrationServiceImpl implements UserRegistrationService{
 	
@@ -32,7 +32,9 @@ public class UserRegistrationServiceImpl implements UserRegistrationService{
 		if (movie.isPresent()) {
 			throw new UserAlreadyExistException();
 		} else {
-			return repo.save(emp);
+			UserRegistration userreg=movie.get();
+			userreg.setBarterCoins(50);
+			return repo.save(userreg);
 		}
 	}
 
@@ -99,5 +101,10 @@ public class UserRegistrationServiceImpl implements UserRegistrationService{
 		
 	}
 
-	
+	@Override
+	public UserRegistration add(UserRegistration user) {
+		return repo.save(user);
+	}
+
+
 }

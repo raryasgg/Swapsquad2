@@ -1,11 +1,10 @@
-package com.stackroute.userservice.model.config;
+package com.stackroute.recommendationservice.model.config;
 
 
+import com.stackroute.recommendationservice.model.CustomMessage;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-
-import com.stackroute.userservice.model.CustomMessage;
 
 @Component
 public class Publisher {
