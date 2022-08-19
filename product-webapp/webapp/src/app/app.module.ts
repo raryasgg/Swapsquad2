@@ -32,6 +32,12 @@ import { MatProgressBarModule } from "@angular/material/progress-bar";
 import { FlexLayoutModule } from "@angular/flex-layout";
 import { UpdateDetailsComponent } from './update-details/update-details.component';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { TranscationsComponent } from "./transcations/transcations.component";
+import { CommonModule } from "@angular/common";
+// If You are getting error then install ( npm i ng-starrating )
+import { RatingModule } from "ng-starrating";
+
+
 
 @NgModule({
   declarations: [
@@ -41,6 +47,7 @@ import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
     RegisterUserComponent,
     RecommendationServiceComponent,
     UpdateDetailsComponent,
+    TranscationsComponent
 
   ],
 
@@ -70,6 +77,9 @@ import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
     MatButtonToggleModule,
     MatProgressBarModule,
     FlexLayoutModule,
+    CommonModule,
+    RatingModule
+
   ],
   providers: [ProductDetailsService],
   bootstrap: [AppComponent],

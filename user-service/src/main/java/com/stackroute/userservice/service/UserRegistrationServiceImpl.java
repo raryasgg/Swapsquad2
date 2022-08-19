@@ -1,9 +1,12 @@
 package com.stackroute.userservice.service;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -16,7 +19,7 @@ import com.stackroute.userservice.model.UserRegistration;
 import com.stackroute.userservice.repo.UserRepo;
 
 import lombok.extern.slf4j.Slf4j;
-@Service
+ @Service
 @Slf4j
 public class UserRegistrationServiceImpl implements UserRegistrationService{
 	
@@ -29,7 +32,9 @@ public class UserRegistrationServiceImpl implements UserRegistrationService{
 		if (movie.isPresent()) {
 			throw new UserAlreadyExistException();
 		} else {
-			return repo.save(emp);
+			UserRegistration userreg=movie.get();
+			userreg.setBarterCoins(50);
+			return repo.save(userreg);
 		}
 	}
 
@@ -54,15 +59,6 @@ public class UserRegistrationServiceImpl implements UserRegistrationService{
 		return savedEmployee;
 	}
 
-	/*
-	 * @Override public UserRegistration addNew(UserRating user) { return
-	 * repo.save(null); }
-	 */
-	@Override
-	public UserRegistration rate(UserRegistration user) {
-	
-		return repo.save(user);
-	}
 
 	@Override
 	public UserRegistration adduser(String str, MultipartFile file) throws JsonMappingException, JsonProcessingException {
@@ -79,5 +75,36 @@ public class UserRegistrationServiceImpl implements UserRegistrationService{
 		repo.save(update);
 		return update;
 	}
+
+
+
+
+	@Override
+	public UserRegistration addrating(UserRating add, String email) {
+		Optional<UserRegistration> user= repo.findById(email);
+		UserRegistration abc=user.get();
+		if(abc.getRatings()==null) {
+			List<UserRating> rate=new ArrayList<>();
+			rate.add(add);
+			abc.setRatings(rate);	
+			return repo.save(abc);
+		}
+		else
+		{
+			List<UserRating> rates=abc.getRatings();
+			rates.add(add);
+			abc.setRatings(rates);
+			return repo.save(abc);
+		}
 		
+
+		
+	}
+
+	@Override
+	public UserRegistration add(UserRegistration user) {
+		return repo.save(user);
+	}
+
+
 }

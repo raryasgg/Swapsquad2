@@ -7,12 +7,14 @@ import { UserRegistration } from './user-registration';
   providedIn: 'root'
 })
 export class UpdateDetailsService {
-  baseUrl="http://localhost:8080/user";
+  baseUrl="http://localhost:8080/users/update/add";
   constructor(private httpClient: HttpClient) { }
 
 
-  registerUser(user: UserRegistration): Observable<Object> {
-     console.log(user);
-     return this.httpClient.post(`${this.baseUrl}`,user);
+  public update(registerObject:any, profileImage:File){
+    const dataObj: FormData=new FormData;
+    dataObj.append('str',JSON.stringify(registerObject));
+    dataObj.append('file',profileImage);
+    return this.httpClient.post<UserRegistration>("http://localhost:8080/users/update/add",dataObj);
   }
 }

@@ -34,10 +34,13 @@ export class ProductdetailsComponent implements OnInit {
   dateofposting:any
 
 
-  //user rating
- rate:any;
+//user rating
+rate:any;
  review:any
  userId:""
+ totalstar='5'
+
+
 
   
   // img1="assets/1.jpg"
@@ -48,6 +51,8 @@ export class ProductdetailsComponent implements OnInit {
   public productdata:any;
   public userratingdata:any;
   pexchange: any;
+  ratings: any;
+  avgRating:any;
  
   constructor(private _productdetailsService: ProductDetailsService, private domSanitizer: DomSanitizer,private userratingservice:UserratingService ) {
 
@@ -61,7 +66,7 @@ ngOnInit(): void {
   // .subscribe(data => this.productdata =data)
 
 
-  this._productdetailsService.getProductDetailsById(24).subscribe(data =>{
+  this._productdetailsService.getProductDetailsById(5).subscribe(data =>{
 
 
     this.productdata =data;
@@ -95,11 +100,11 @@ ngOnInit(): void {
 
   });
 
-  this.userratingservice.getUserRatingByEmail(gmail).subscribe(dataofrating =>{
+  this.userratingservice.getUserRatingByEmail("poojitha@gmail.com").subscribe(dataofrating =>{
     this.userratingdata=dataofrating
     console.log(this.userratingdata)
-    this.rate=this.userratingdata.rate
-    this.review=this.userratingdata.review
+    this.ratings=this.userratingdata.ratings
+    this.avgRating=this.userratingdata.avgRating
     
 
   })

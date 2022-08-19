@@ -6,8 +6,8 @@ import { UserRating } from './user-rating';
   providedIn: 'root'
 })
 export class UserratingService {
-  private baseurl: string = "http://localhost:8080"
-  rating: any;
+  private baseurl: string = "http://localhost:9999"
+  email: any;
 
   constructor(private httpClient: HttpClient) { }
 

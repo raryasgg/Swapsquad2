@@ -85,9 +85,10 @@
                   <label class="col-md-2 labelname">Purchase Date</label>
                   <mat-form-field class="col-md-3" appearance="outline">
                     <mat-label>Choose a date</mat-label>
-                    <input matInput [matDatepicker]="picker" formControlName="pdatepost" />
-                    <mat-hint>MM/DD/YYYY</mat-hint>
-                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                    <!-- <input matInput [matDatepicker]="picker" formControlName="pdatepost" /> -->
+                    <input matInput type="date" formControlName="pdatepost" max="{{maxDate}}"/>
+                    <!-- <mat-hint>MM/DD/YYYY</mat-hint> -->
+                    <!-- <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle> -->
                     <mat-datepicker #picker></mat-datepicker>
                   </mat-form-field>
 
@@ -358,18 +359,18 @@
                   <label class="col-md-2 labelname">Location</label>
                   <!-- <mat-form-field class="col-md-3" appearance="outline">
                     <mat-label>Jharkhand</mat-label>
-                    <input matInput formControlName="plocation" readonly />
+                    <input matInput formControlName="pstate" readonly />
                   </mat-form-field> -->
                   <div class="col-md-3">
                     <span class="small" *ngIf="
-                    productForm.controls['plocation'].touched &&
-                    productForm.controls['plocation'].invalid &&
-                    productForm.controls['plocation'].errors?.required" , style="color: red">Required*
+                    productForm.controls['pstate'].touched &&
+                    productForm.controls['pstate'].invalid &&
+                    productForm.controls['pstate'].errors?.required" , style="color: red">Required*
                     </span>
                     <mat-form-field class="col-md-12" appearance="outline">
                       <mat-label><i class="fa-solid fa-location-dot" style="margin-right: 0.5rem;"> </i>Place
                       </mat-label>
-                      <mat-select formControlName="plocation" ngDefaultControl>
+                      <mat-select formControlName="pstate" ngDefaultControl>
                         <mat-option value="Andhra Pradesh">Andhra Pradesh</mat-option>
                         <mat-option value="Arunachal Pradesh">Arunachal Pradesh</mat-option>
                         <mat-option value="Assam">Assam</mat-option>
@@ -409,7 +410,7 @@
           </div>
           <div class="col-lg-5 col-md-5 col-sm-5 col-5 step-one-next-btn">
             <button mat-raised-button style="background: #43db52" type="submit" 
-              (click)="onClickSubmitForm()">
+              (click)="onClickSubmitForm()" [disabled]="!productForm.valid">
               Finish
             </button>
           </div>
@@ -420,4 +421,5 @@
       <!-- ===================Step 2 ends here======================== -->
     </mat-horizontal-stepper>
   </form>
+
 </body>
