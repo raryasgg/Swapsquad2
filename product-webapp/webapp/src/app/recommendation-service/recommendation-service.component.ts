@@ -46,8 +46,7 @@ userIP:'';
     this.recommendationForm = new FormGroup({
       city: new FormControl(),
       category: new FormControl(),
-      
-    });
+          });
    }
   
    
@@ -66,8 +65,8 @@ userIP:'';
      
       this.abc=data;
       console.log(this.abc);
-    })
-  }
+  })
+}
   categories: Category[]=[
     {value: '', viewValue: ''},
     {value: 'Electronics', viewValue: 'Electronics'},
@@ -82,94 +81,29 @@ userIP:'';
       console.log(this.abc);
    })
    } 
+  
   ngOnInit(): void {
     this._recommendationService.getAllProduct().subscribe((data:any)=>{
       console.log("data",data);
       for (let i = 0; i < data.length; i++) {
       this.abc.push(data[i]);
       }
+      this.abc.map(image=>{
+        console.log(image);
+        image.productImage=this.domSanitizer.bypassSecurityTrustResourceUrl(
+          "data:productImage/" + "jpg" + ";base64," +image.productImage
+        );
+      })
       console.log(this.abc);
     });
-    this._recommendationService.getgetProductByCategory(this.category).subscribe(data =>{
-      this.abc=data;
-      this.category=data;
-      console.log("data[]",this.abc)
-      this.category=this.category.category;
-    });
-
-    this._recommendationService.getgetProductRecommendationByCityAndCategory(this.city,this.category).subscribe(lo =>{
-     this.IncomingProductData=lo;
-     console.log(this.IncomingProductData)
-      this.productId=this.IncomingProductData.productId
-      this.productOwnerEmail=this.IncomingProductData
-      this.productName=this.IncomingProductData.productName
-      this.state=this.IncomingProductData.state
-      this.city=this.IncomingProductData.city
-      this.productCategory=this.IncomingProductData.productCategory
-     this.productImage=this.domSanitizer.bypassSecurityTrustResourceUrl(
-
-      "data:img/" + "jpg" + ";base64," + this.IncomingProductData.productImage
-     );
-    
-    });
-   
-
-
-    
   }
-
-  // }
-      
-     
-    // this._recommendationService.getProductRecommendationsByLocation(this.city).subscribe(data =>{
-    //   this.abc=data;
-    //   this.location=data;
-    //   console.log("data[]",this.abc)
-    //   this.city=this.location.city
-    //   this.state=this.location.state
-      
-    // });
-    // this._recommendationService.getgetProductByCategory(this.category).subscribe(data =>{
-    //   this.abc=data;
-    //   this.category=data;
-    //   console.log("data[]",this.abc)
-    //   this.category=this.category.category;
-    // });
-
-    // this._recommendationService.getgetProductRecommendationByCityAndCategory(this.city,this.category).subscribe(data =>{
-    //   this.abc=data;
-    //   this.IncomingProductData=data;
-    //   console.log("data[]",this.abc)
-    //   this.productId=this.IncomingProductData.productId
-    //   this.productOwnerEmail=this.IncomingProductData
-    //   this.productName=this.IncomingProductData.productName
-    //   this.state=this.IncomingProductData.state
-    //   this.city=this.IncomingProductData.city
-    //   this.productCategory=this.IncomingProductData.productCategory
-    //  this.productImage=this.domSanitizer.bypassSecurityTrustResourceUrl(
-
-    //   "data:productImage/" + "jpg" + ";base64," + this.IncomingProductData.productImage
-    //  );
-    
-    // });
-   
-
-
-    
-  // }
-
-
-recommendObj: IncomingProductData = new IncomingProductData();
-
+      recommendObj: IncomingProductData = new IncomingProductData();
     onSelect(){
       console.log(this.recommendationForm.value)
-  
-      this.recommendObj.city = this.recommendationForm.value.city;
+        this.recommendObj.city = this.recommendationForm.value.city;
       this.recommendObj.productCategory = this.recommendationForm.value.productCategory;
       this.recommendObj.state = this.recommendationForm.value.state;
-    
-      
-    }
+             }
   
 
 

@@ -36,7 +36,8 @@ import { TranscationsComponent } from "./transcations/transcations.component";
 import { CommonModule } from "@angular/common";
 // If You are getting error then install ( npm i ng-starrating )
 import { RatingModule } from "ng-starrating";
-
+import { ChatComponent } from './component/chat/chat.component';
+import {MatMenuModule} from '@angular/material/menu';
 
 
 @NgModule({
@@ -47,7 +48,8 @@ import { RatingModule } from "ng-starrating";
     RegisterUserComponent,
     RecommendationServiceComponent,
     UpdateDetailsComponent,
-    TranscationsComponent
+    TranscationsComponent,
+    ChatComponent
 
   ],
 
@@ -78,7 +80,9 @@ import { RatingModule } from "ng-starrating";
     MatProgressBarModule,
     FlexLayoutModule,
     CommonModule,
-    RatingModule
+    RatingModule,
+    MatMenuModule,
+    
 
   ],
   providers: [ProductDetailsService],

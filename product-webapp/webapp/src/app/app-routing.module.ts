@@ -12,6 +12,7 @@ import { RegisterUserComponent } from './register-user/register-user.component';
 
 import { UpdateDetailsComponent } from './update-details/update-details.component';
 import { TranscationsComponent } from './transcations/transcations.component';
+import { ChatComponent } from './component/chat/chat.component';
 
 const routes: Routes = [
   
@@ -22,7 +23,8 @@ const routes: Routes = [
   { path: 'recommendation-service', component: RecommendationServiceComponent },
   { path: 'updateDetails', component: UpdateDetailsComponent },
   { path: 'home', component: AppComponent },
-  {path:'transcations', component:TranscationsComponent}
+  {path:'transcations', component:TranscationsComponent},
+  {path:'chat', component:ChatComponent}
 ];
 
 @NgModule({
