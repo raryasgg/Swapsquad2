@@ -1,19 +1,20 @@
-package com.stackroute.cgi.Transaction_History.Model;
+package com.stackroute.chatservice.model;
 
 import lombok.AllArgsConstructor;
-import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
-import org.springframework.stereotype.Component;
-@Document(collection ="DatabaseSequence")
-@Component
-@Data
+
+@Getter
+@Setter
 @AllArgsConstructor
 @NoArgsConstructor
-
+@Document(collection = "database_sequences")
 public class DatabaseSequence {
+
 	@Id
-	private String transactionId;
-	private int seq;
+    private String id;
+    private int seq;
 }

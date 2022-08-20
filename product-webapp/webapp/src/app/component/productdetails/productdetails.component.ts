@@ -34,7 +34,7 @@ export class ProductdetailsComponent implements OnInit {
   dateofposting:any
 
 
-  //user rating
+//user rating
 rate:any;
  review:any
  userId:""

@@ -359,18 +359,18 @@
                   <label class="col-md-2 labelname">Location</label>
                   <!-- <mat-form-field class="col-md-3" appearance="outline">
                     <mat-label>Jharkhand</mat-label>
-                    <input matInput formControlName="plocation" readonly />
+                    <input matInput formControlName="pstate" readonly />
                   </mat-form-field> -->
                   <div class="col-md-3">
                     <span class="small" *ngIf="
-                    productForm.controls['plocation'].touched &&
-                    productForm.controls['plocation'].invalid &&
-                    productForm.controls['plocation'].errors?.required" , style="color: red">Required*
+                    productForm.controls['pstate'].touched &&
+                    productForm.controls['pstate'].invalid &&
+                    productForm.controls['pstate'].errors?.required" , style="color: red">Required*
                     </span>
                     <mat-form-field class="col-md-12" appearance="outline">
                       <mat-label><i class="fa-solid fa-location-dot" style="margin-right: 0.5rem;"> </i>Place
                       </mat-label>
-                      <mat-select formControlName="plocation" ngDefaultControl>
+                      <mat-select formControlName="pstate" ngDefaultControl>
                         <mat-option value="Andhra Pradesh">Andhra Pradesh</mat-option>
                         <mat-option value="Arunachal Pradesh">Arunachal Pradesh</mat-option>
                         <mat-option value="Assam">Assam</mat-option>

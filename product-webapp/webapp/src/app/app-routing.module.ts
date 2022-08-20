@@ -12,33 +12,26 @@ import { RegisterUserComponent } from './register-user/register-user.component';
 
 import { UpdateDetailsComponent } from './update-details/update-details.component';
 import { TranscationsComponent } from './transcations/transcations.component';
-
-
-
-
-
-
-
-
-
-
-
-
+import { MyProfileComponent } from './my-profile/my-profile.component';
 const routes: Routes = [
-
   
   // {path :'login',component:LoginComponent},
   { path: 'registerUser', component: RegisterUserComponent },
   { path: 'registerProduct', component: RegisterProductComponent },
   { path: 'productDetail', component: ProductdetailsComponent },
   { path: 'recommendation-service', component: RecommendationServiceComponent },
-  { path: 'updateDetails', component: UpdateDetailsComponent },
+  { path: 'updateDetails/:email', component: UpdateDetailsComponent },
   { path: 'home', component: AppComponent },
+
+  {path:'transcations', component:TranscationsComponent},
+  {path:'myProfile', component: MyProfileComponent},
+
+
+
   {path:'transcations', component:TranscationsComponent}
 
-
-
 ];
+
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]

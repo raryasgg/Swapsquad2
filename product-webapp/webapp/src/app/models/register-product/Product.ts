@@ -9,7 +9,7 @@ export class Product {
     pcoin?:Number;
     pexchange:[String];
     pemail?:String;
-    plocation?:String;
+    pstate?:String;
    
     
     // image:[byte];
@@ -24,6 +24,6 @@ constructor(){
     this.pcoin=0;
     this.pexchange=[""];
     this.pemail="";
-    this.plocation="";
+    this.pstate="";
 }
 }

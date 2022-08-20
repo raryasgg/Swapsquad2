@@ -90,7 +90,35 @@ userIP:'';
       }
       console.log(this.abc);
     });
+    this._recommendationService.getgetProductByCategory(this.category).subscribe(data =>{
+      this.abc=data;
+      this.category=data;
+      console.log("data[]",this.abc)
+      this.category=this.category.category;
+    });
+
+    this._recommendationService.getgetProductRecommendationByCityAndCategory(this.city,this.category).subscribe(lo =>{
+     this.IncomingProductData=lo;
+     console.log(this.IncomingProductData)
+      this.productId=this.IncomingProductData.productId
+      this.productOwnerEmail=this.IncomingProductData
+      this.productName=this.IncomingProductData.productName
+      this.state=this.IncomingProductData.state
+      this.city=this.IncomingProductData.city
+      this.productCategory=this.IncomingProductData.productCategory
+     this.productImage=this.domSanitizer.bypassSecurityTrustResourceUrl(
+
+      "data:img/" + "jpg" + ";base64," + this.IncomingProductData.productImage
+     );
+    
+    });
+   
+
+
+    
   }
+
+  // }
       
      
     // this._recommendationService.getProductRecommendationsByLocation(this.city).subscribe(data =>{
@@ -129,6 +157,7 @@ userIP:'';
 
     
   // }
+
 
 recommendObj: IncomingProductData = new IncomingProductData();
 
