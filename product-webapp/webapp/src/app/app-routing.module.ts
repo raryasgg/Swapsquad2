@@ -6,17 +6,13 @@ import { ProductdetailsComponent } from './component/productdetails/productdetai
 import { RegisterProductComponent } from './component/register-product/register-product.component';
 import { RecommendationServiceComponent } from './recommendation-service/recommendation-service.component';
 import { RegisterUserComponent } from './register-user/register-user.component';
-
-
-//import { LoginComponent } from 'src/login/login.component';
-
 import { UpdateDetailsComponent } from './update-details/update-details.component';
 import { TranscationsComponent } from './transcations/transcations.component';
 import { ChatComponent } from './component/chat/chat.component';
+import { MyProfileComponent } from './my-profile/my-profile.component';
 
 const routes: Routes = [
-  
-  // {path :'login',component:LoginComponent},
+
   { path: 'registerUser', component: RegisterUserComponent },
   { path: 'registerProduct', component: RegisterProductComponent },
   { path: 'productDetail', component: ProductdetailsComponent },
@@ -24,7 +20,10 @@ const routes: Routes = [
   { path: 'updateDetails', component: UpdateDetailsComponent },
   { path: 'home', component: AppComponent },
   {path:'transcations', component:TranscationsComponent},
-  {path:'chat', component:ChatComponent}
+  {path:'chat', component:ChatComponent},
+  {path:'transcations', component:TranscationsComponent},
+  {path:'myProfile', component: MyProfileComponent},
+
 ];
 
 @NgModule({

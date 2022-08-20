@@ -33,12 +33,12 @@ import { FlexLayoutModule } from "@angular/flex-layout";
 import { UpdateDetailsComponent } from './update-details/update-details.component';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { TranscationsComponent } from "./transcations/transcations.component";
+import { MyProfileComponent } from './my-profile/my-profile.component';
 import { CommonModule } from "@angular/common";
 // If You are getting error then install ( npm i ng-starrating )
 import { RatingModule } from "ng-starrating";
 import { ChatComponent } from './component/chat/chat.component';
 import {MatMenuModule} from '@angular/material/menu';
-
 
 @NgModule({
   declarations: [
@@ -49,7 +49,9 @@ import {MatMenuModule} from '@angular/material/menu';
     RecommendationServiceComponent,
     UpdateDetailsComponent,
     TranscationsComponent,
-    ChatComponent
+    ChatComponent,
+    MyProfileComponent
+
 
   ],
 

@@ -13,10 +13,26 @@ import java.util.HashSet;
 public interface AccountService {
 
 
-   public AccountDetails add(AccountDetails adduser);
+   public AccountDetails add(AccountDetails adduser)  throws UserAlreadyExistException ;
 
 
-   AccountDetails getById(int accountNumber);
+//   AccountDetails getById(int accountNumber);
 
-//   ArrayList<AccountDetails> getAccountDataByEmail(String email);
+   HashSet<AccountDetails> getAccountDataByEmail(String email) throws UserNotFoundException;
+
+//   HashSet<AccountDetails> getAccountDataByAccNum(int accountNumber) throws UserNotFoundException;
+
+
+
+
+   public String addcoin(int amount, String email);
+
+
+   public String exchange(String buyeremail, String selleremail, int coinOfProduct);
+
+
+   public String withdraw(int amountWithdraw, String email);
+
+
+   AccountDetails getById(int accountNumber) throws UserNotFoundException;
 }
