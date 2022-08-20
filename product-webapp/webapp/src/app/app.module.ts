@@ -39,6 +39,10 @@ import { CommonModule } from "@angular/common";
 import { RatingModule } from "ng-starrating";
 import { ChatComponent } from './component/chat/chat.component';
 import {MatMenuModule} from '@angular/material/menu';
+import { NavbarComponent } from './navbar/navbar.component';
+import {MatListModule} from '@angular/material/list';
+import {MatSidenavModule} from '@angular/material/sidenav';
+import {MatToolbarModule} from '@angular/material/toolbar';
 
 @NgModule({
   declarations: [
@@ -50,7 +54,8 @@ import {MatMenuModule} from '@angular/material/menu';
     UpdateDetailsComponent,
     TranscationsComponent,
     ChatComponent,
-    MyProfileComponent
+    MyProfileComponent,
+    NavbarComponent
 
 
   ],
@@ -84,6 +89,9 @@ import {MatMenuModule} from '@angular/material/menu';
     CommonModule,
     RatingModule,
     MatMenuModule,
+    MatListModule,
+    MatSidenavModule,
+    MatToolbarModule
     
 
   ],
