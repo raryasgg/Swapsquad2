@@ -23,6 +23,7 @@ public interface ChatService {
 
     HashSet<Chat> getChatByOwnerEmailAndBuyerEmail(String ownerEmail, String buyerEmail) throws ChatNotFoundException;
 
+//     Chat getChatByOwnerEmailAndBuyerEmail(String ownerEmail, String buyerEmail) throws ChatNotFoundException;
 
     Chat addMessage(Message add, int chatId);
 }

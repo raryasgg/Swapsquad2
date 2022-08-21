@@ -18,10 +18,13 @@ import java.util.Collection;
 @Document(collection="accountdata")
 public class AccountDetails {
     @Id
-    private String accountNumber;
+    private int accountNumber;
     private String email;
     private String  expiryMonth;
-    private int amount;
+//    private int amount;
     private int cvv;
+
+
+
 
 }

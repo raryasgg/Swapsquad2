@@ -103,7 +103,13 @@ public class UserRegistrationServiceImpl implements UserRegistrationService{
 
 	@Override
 	public UserRegistration add(UserRegistration user) {
-		return repo.save(user);
+
+
+		user.setBarterCoins(50);
+	return repo.save(user);
+
+
+
 	}
 
 
