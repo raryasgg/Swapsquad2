@@ -3,7 +3,6 @@ export class Chat {
     ownerEmail=String;
     buyerEmail=String;
     messageList=[String];
-
     constructor(){
         
     }
