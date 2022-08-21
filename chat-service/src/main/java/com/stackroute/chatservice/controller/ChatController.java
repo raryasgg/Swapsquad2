@@ -21,7 +21,7 @@ import java.io.IOException;
 import java.util.HashSet;
 import java.util.List;
 
-@CrossOrigin(origins = "**")
+@CrossOrigin(origins = "*")
 @RestController
 @RequestMapping("/chats")
 @Slf4j
@@ -97,7 +97,7 @@ public class ChatController {
     }
 
 
-    @GetMapping("/byBoth")
+    @GetMapping("/chatByBothOwnerAndBuyerEmail")
     public ResponseEntity<?> getChatByBuyerEmailAndOwnerEmail(@RequestParam("ownerEmail") String ownerEmail, @RequestParam("buyerEmail") String buyerEmail){
 
         try {

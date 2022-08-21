@@ -4,6 +4,6 @@ export class Message {
     replymessage=String;
 
     constructor(){
-        
+      
     }
 }
