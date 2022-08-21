@@ -14,6 +14,8 @@ export class UserRegistration {
   state:String;
   pincode:string;
   image: any;
+  acoin:any;
+  price:any;
 
   constructor() {
     this.firstname = "";

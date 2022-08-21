@@ -24,7 +24,7 @@ const routes: Routes = [
   { path: 'home', component: AppComponent },
 
   {path:'transcations', component:TranscationsComponent},
-  {path:'myProfile', component: MyProfileComponent}
+  {path:'myProfile', component: MyProfileComponent},
 
 
 

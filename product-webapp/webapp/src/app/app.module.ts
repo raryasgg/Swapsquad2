@@ -39,7 +39,8 @@ import { MyProfileComponent } from './my-profile/my-profile.component';
 import { CommonModule } from "@angular/common";
 // If You are getting error then install ( npm i ng-starrating )
 import { RatingModule } from "ng-starrating";
-
+import {MatDialogModule} from '@angular/material/dialog';
+import { PaymentComponent } from './payment/payment.component';
 
 @NgModule({
   declarations: [
@@ -50,10 +51,11 @@ import { RatingModule } from "ng-starrating";
     RecommendationServiceComponent,
     UpdateDetailsComponent,
     TranscationsComponent,
-    MyProfileComponent
+    MyProfileComponent,
+    PaymentComponent
 
   ],
-
+entryComponents:[PaymentComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -81,7 +83,8 @@ import { RatingModule } from "ng-starrating";
     MatProgressBarModule,
     FlexLayoutModule,
     CommonModule,
-    RatingModule
+    RatingModule,
+    MatDialogModule
 
   ],
   providers: [ProductDetailsService],
