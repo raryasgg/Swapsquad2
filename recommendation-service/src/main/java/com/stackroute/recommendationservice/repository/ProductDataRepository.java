@@ -6,11 +6,13 @@ import com.stackroute.recommendationservice.model.Location;
 import org.springframework.data.neo4j.repository.Neo4jRepository;
 import org.springframework.data.neo4j.repository.query.Query;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.HashSet;
 import java.util.List;
 
 @Repository
+@Transactional
 public interface ProductDataRepository extends Neo4jRepository<IncomingProductData, Integer>  {
 
 	@Query("MATCH (n:) {productId: $productId} DELETE DETACH n;")
