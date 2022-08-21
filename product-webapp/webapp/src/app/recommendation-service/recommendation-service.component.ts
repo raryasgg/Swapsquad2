@@ -65,6 +65,7 @@ userIP:'';
     return this._recommendationService.getProductRecommendationsByLocation(this.selectedCity).subscribe(data=>{
       this.abc=data;
       console.log(this.abc);
+
      })
    }
    else{
@@ -74,7 +75,10 @@ userIP:'';
        })
    }
   
-}
+
+ 
+
+  }
   categories: Category[]=[
     {value: '', viewValue: ''},
     {value: 'Electronics', viewValue: 'Electronics'},
@@ -97,6 +101,7 @@ userIP:'';
          })
      }
    } 
+  
   ngOnInit(): void {
     this._recommendationService.getAllProduct().subscribe((data:any)=>{
       console.log("data",data);

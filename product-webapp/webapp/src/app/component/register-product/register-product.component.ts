@@ -41,7 +41,7 @@ export class RegisterProductComponent implements OnInit {
       pcoin: new FormControl("", [Validators.pattern("^[0-9]*$"), Validators.maxLength(8)]),
       pexchange: this.fb.array([]),
       pemail: new FormControl(),
-      plocation: new FormControl("", [Validators.required]),
+      pstate: new FormControl("", [Validators.required]),
       image: new FormControl([], Validators.required)
     });
   }
@@ -108,7 +108,7 @@ if (!this.productForm.invalid){
   this.productObj.pexchangetype = this.productForm.value.pexchangetype;
   this.productObj.pexchange = this.productForm.value.pexchange;
   this.productObj.pemail = this.productForm.value.pemail;
-  this.productObj.plocation = this.productForm.value.plocation;
+  this.productObj.pstate = this.productForm.value.pstate;
   this.productObj.pcoin = this.productForm.value.pcoin;
   this.productService.addProduct(this.productObj, this.file[0]).subscribe(data =>
     console.log(data)
