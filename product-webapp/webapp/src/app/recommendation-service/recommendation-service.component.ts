@@ -6,7 +6,7 @@ import { IncomingProductData } from '../models/recommendation/incoming-product-d
 import { RecommedationService } from '../services/recommendation-service/recommedation.service';
 import { DomSanitizer } from '@angular/platform-browser';
 
-interface Car {
+interface City {
   value: string;
   viewValue: string;
 }
@@ -46,28 +46,35 @@ userIP:'';
     this.recommendationForm = new FormGroup({
       city: new FormControl(),
       category: new FormControl(),
-      
-    });
+          });
    }
   
    
-   cars: Car[] = [
+   cities: City[] = [
     {value: '', viewValue: ''},
     {value: 'Lucknow', viewValue: 'Lucknow'},
     {value: 'Raebareli', viewValue: 'Raebareli'},
     {value: 'Varanasi', viewValue: 'Varanasi'},
   ];
   
-  selectedCar = this.cars[0].value;
+  selectedCity = this.cities[0].value;
 
-  selectCar(event: Event) {
-    this.selectedCar = (event.target as HTMLSelectElement).value;
-    this._recommendationService.getProductRecommendationsByLocation(this.selectedCar).subscribe(data =>{
-     
+  selectCity(event: Event) {
+    this.selectedCity = (event.target as HTMLSelectElement).value;
+   if(this.selectedCategory==null){
+    return this._recommendationService.getProductRecommendationsByLocation(this.selectedCity).subscribe(data=>{
       this.abc=data;
       console.log(this.abc);
-    })
-  }
+     })
+   }
+   else{
+    this._recommendationService.getgetProductRecommendationByCityAndCategory(this.selectedCity,this.selectedCategory).subscribe(data=>{
+        this.abc=data;
+        console.log(this.abc);
+       })
+   }
+  
+}
   categories: Category[]=[
     {value: '', viewValue: ''},
     {value: 'Electronics', viewValue: 'Electronics'},
@@ -77,10 +84,18 @@ userIP:'';
    selectedCategory = this.categories[0].value;
    selectCategory(event:Event) {
     this.selectedCategory = (event.target as HTMLSelectElement).value;
-    this._recommendationService.getgetProductByCategory(this.selectedCategory).subscribe(data =>{
-      this.abc=data;
-      console.log(this.abc);
-   })
+    if(this.selectedCity==null){
+      return this._recommendationService.getgetProductByCategory(this.selectedCategory).subscribe(data=>{
+        this.abc=data;
+        console.log(this.abc);
+       })
+     }
+     else{
+      this._recommendationService.getgetProductRecommendationByCityAndCategory(this.selectedCity,this.selectedCategory).subscribe(data=>{
+          this.abc=data;
+          console.log(this.abc);
+         })
+     }
    } 
   ngOnInit(): void {
     this._recommendationService.getAllProduct().subscribe((data:any)=>{
@@ -88,59 +103,22 @@ userIP:'';
       for (let i = 0; i < data.length; i++) {
       this.abc.push(data[i]);
       }
+      this.abc.map(image=>{
+        console.log(image);
+        image.productImage=this.domSanitizer.bypassSecurityTrustResourceUrl(
+          "data:productImage/" + "jpg" + ";base64," +image.productImage
+        );
+      })
       console.log(this.abc);
     });
   }
-      
-     
-    // this._recommendationService.getProductRecommendationsByLocation(this.city).subscribe(data =>{
-    //   this.abc=data;
-    //   this.location=data;
-    //   console.log("data[]",this.abc)
-    //   this.city=this.location.city
-    //   this.state=this.location.state
-      
-    // });
-    // this._recommendationService.getgetProductByCategory(this.category).subscribe(data =>{
-    //   this.abc=data;
-    //   this.category=data;
-    //   console.log("data[]",this.abc)
-    //   this.category=this.category.category;
-    // });
-
-    // this._recommendationService.getgetProductRecommendationByCityAndCategory(this.city,this.category).subscribe(data =>{
-    //   this.abc=data;
-    //   this.IncomingProductData=data;
-    //   console.log("data[]",this.abc)
-    //   this.productId=this.IncomingProductData.productId
-    //   this.productOwnerEmail=this.IncomingProductData
-    //   this.productName=this.IncomingProductData.productName
-    //   this.state=this.IncomingProductData.state
-    //   this.city=this.IncomingProductData.city
-    //   this.productCategory=this.IncomingProductData.productCategory
-    //  this.productImage=this.domSanitizer.bypassSecurityTrustResourceUrl(
-
-    //   "data:productImage/" + "jpg" + ";base64," + this.IncomingProductData.productImage
-    //  );
-    
-    // });
-   
-
-
-    
-  // }
-
-recommendObj: IncomingProductData = new IncomingProductData();
-
+      recommendObj: IncomingProductData = new IncomingProductData();
     onSelect(){
       console.log(this.recommendationForm.value)
-  
-      this.recommendObj.city = this.recommendationForm.value.city;
+        this.recommendObj.city = this.recommendationForm.value.city;
       this.recommendObj.productCategory = this.recommendationForm.value.productCategory;
       this.recommendObj.state = this.recommendationForm.value.state;
-    
-      
-    }
+             }
   
 
 
