@@ -10,7 +10,11 @@ import { UpdateDetailsComponent } from './update-details/update-details.componen
 import { TranscationsComponent } from './transcations/transcations.component';
 import { ChatComponent } from './component/chat/chat.component';
 import { MyProfileComponent } from './my-profile/my-profile.component';
+
+import { AccountdataComponent } from './component/accountdata/accountdata.component';
+
 import { NavbarComponent } from './navbar/navbar.component';
+
 
 const routes: Routes = [
 
@@ -23,6 +27,7 @@ const routes: Routes = [
   {path:'transcations', component:TranscationsComponent},
 
   {path:'myProfile', component: MyProfileComponent},
+  {path:'payment',component:AccountdataComponent},
 
 
 

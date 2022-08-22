@@ -37,6 +37,8 @@ import { MyProfileComponent } from './my-profile/my-profile.component';
 import { CommonModule } from "@angular/common";
 // If You are getting error then install ( npm i ng-starrating )
 import { RatingModule } from "ng-starrating";
+import { AccountdataComponent } from './component/accountdata/accountdata.component';
+
 
 import {MatDialogModule} from '@angular/material/dialog';
 import { PaymentComponent } from './payment/payment.component';
@@ -62,6 +64,10 @@ import { Payment3Component } from './payment3/payment3.component';
     TranscationsComponent,
 
     MyProfileComponent,
+    AccountdataComponent,
+
+
+    
     PaymentComponent,
 
     ChatComponent,
@@ -73,7 +79,7 @@ import { Payment3Component } from './payment3/payment3.component';
 
 
   ],
-entryComponents:[PaymentComponent,Payment2Component],
+entryComponents:[PaymentComponent,Payment2Component,Payment3Component],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -103,6 +109,7 @@ entryComponents:[PaymentComponent,Payment2Component],
     CommonModule,
     RatingModule,
 
+
     MatDialogModule,
 
     MatMenuModule,
@@ -110,6 +117,7 @@ entryComponents:[PaymentComponent,Payment2Component],
     MatSidenavModule,
     MatToolbarModule
     
+
 
 
   ],
