@@ -13,6 +13,7 @@ import { RegisterUserComponent } from './register-user/register-user.component';
 import { UpdateDetailsComponent } from './update-details/update-details.component';
 import { TranscationsComponent } from './transcations/transcations.component';
 import { MyProfileComponent } from './my-profile/my-profile.component';
+import { AccountdataComponent } from './component/accountdata/accountdata.component';
 const routes: Routes = [
   
   // {path :'login',component:LoginComponent},
@@ -25,6 +26,7 @@ const routes: Routes = [
 
   {path:'transcations', component:TranscationsComponent},
   {path:'myProfile', component: MyProfileComponent},
+  {path:'payment',component:AccountdataComponent},
 
 
 

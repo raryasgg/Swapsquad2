@@ -41,6 +41,8 @@ import { MyProfileComponent } from './my-profile/my-profile.component';
 import { CommonModule } from "@angular/common";
 // If You are getting error then install ( npm i ng-starrating )
 import { RatingModule } from "ng-starrating";
+import { AccountdataComponent } from './component/accountdata/accountdata.component';
+
 
 
 @NgModule({
@@ -52,7 +54,8 @@ import { RatingModule } from "ng-starrating";
     RecommendationServiceComponent,
     UpdateDetailsComponent,
     TranscationsComponent,
-    MyProfileComponent
+    MyProfileComponent,
+    AccountdataComponent
 
   ],
 
@@ -83,7 +86,8 @@ import { RatingModule } from "ng-starrating";
     MatProgressBarModule,
     FlexLayoutModule,
     CommonModule,
-    RatingModule
+    RatingModule,
+
 
   ],
   providers: [ProductDetailsService],
