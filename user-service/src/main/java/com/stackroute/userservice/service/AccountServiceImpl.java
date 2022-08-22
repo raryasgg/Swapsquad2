@@ -41,13 +41,13 @@ public class AccountServiceImpl implements AccountService{
     }
 
     @Override
-     public String addcoin(int amount, String email) {
+     public UserRegistration addcoin(int amount, String email) {
         UserRegistration ad = userrep.findById(email).get();
         int coin= amount/10;
         int newTotalCoin = ad.getBarterCoins() + coin;
         ad.setBarterCoins(newTotalCoin);
-        userrep.save(ad);
-        return "coin is added";
+       return userrep.save(ad);
+
 
 
     }

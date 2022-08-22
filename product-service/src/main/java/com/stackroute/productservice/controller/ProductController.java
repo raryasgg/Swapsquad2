@@ -178,6 +178,17 @@ public class ProductController {
 		
 	}
 	
+	@GetMapping("/productavailablebyemail/{emailid}")
+	public ResponseEntity<List<Product>> getProductByEmailAvailable(@PathVariable String emailid) {
+		try {
+			log.debug("Inside the ProductController -- getProductByEmail methods");
+			return new ResponseEntity<List<Product>>(pservice.getByEmailAvailable(emailid), HttpStatus.OK);
+		} catch (ProductNotFoundException e) {
+			log.error("Product not found.",e);
+			return new ResponseEntity("Product Not found", HttpStatus.NOT_FOUND);
+		}
+	}
+	
 	
 
 }

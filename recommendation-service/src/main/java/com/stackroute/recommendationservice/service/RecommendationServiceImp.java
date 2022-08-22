@@ -2,6 +2,7 @@ package com.stackroute.recommendationservice.service;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.stackroute.recommendationservice.exception.ProductAlreadyExistException;
 import com.stackroute.recommendationservice.exception.ProductNotFoundException;
 import com.stackroute.recommendationservice.model.Category;
 import com.stackroute.recommendationservice.model.IncomingProductData;
@@ -102,32 +103,56 @@ public class RecommendationServiceImp implements RecommendationService {
         return (ArrayList<IncomingProductData>) repo.findAll();
     }
 
-    @Override
-    public void createImageNode(IncomingProductData Data,MultipartFile file) throws IOException {
-        if (repo.findById(Data.getProductId()).isEmpty()) {
-            repo.save(Data);
-        }
-        if (categoryRepository.findById(Data.getProductCategory()).isEmpty()) {
-            Category category2 = new Category(Data.getProductCategory());
-            categoryRepository.save(category2);
-        }
-        if (locationRepository.findById(Data.getCity()).isEmpty()) {
-            Location location2 = new Location(Data.getCity(), Data.getState());
-            locationRepository.save(location2);
-        }
-        ObjectMapper objectMapper = new ObjectMapper();
-           IncomingProductData update = objectMapper.readValue(Data.getProductImage(),IncomingProductData.class);
-        try {
-                update.setProductImage(file.getBytes());
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-            repo.save(update);
-
-        }
+//    @Override
+//    public IncomingProductData data1(IncomingProductData user) {
+//        return null;
+//    }
 
 
+    public IncomingProductData getById(int i) throws ProductNotFoundException {Optional<IncomingProductData> pro = repo.findById(i);
+        if (pro.isPresent()) {
+            return pro.get();
+        } else {
+            throw new ProductNotFoundException();
         }
+    }
+
+    public IncomingProductData addNew(IncomingProductData data) throws ProductAlreadyExistException {
+        Optional<IncomingProductData> movie = repo.findById(data.getProductId());
+        if (movie.isPresent()) {
+            throw new ProductAlreadyExistException();
+        } else {
+            return repo.save(data);
+        }
+    }
+}
+
+//    @Override
+//    public void createImageNode(IncomingProductData Data,MultipartFile file) throws IOException {
+//        if (repo.findById(Data.getProductId()).isEmpty()) {
+//            repo.save(Data);
+//        }
+//        if (categoryRepository.findById(Data.getProductCategory()).isEmpty()) {
+//            Category category2 = new Category(Data.getProductCategory());
+//            categoryRepository.save(category2);
+//        }
+//        if (locationRepository.findById(Data.getCity()).isEmpty()) {
+//            Location location2 = new Location(Data.getCity(), Data.getState());
+//            locationRepository.save(location2);
+//        }
+//        ObjectMapper objectMapper = new ObjectMapper();
+//           IncomingProductData update = objectMapper.readValue(Data.getProductImage(),IncomingProductData.class);
+//        try {
+//                update.setProductImage(file.getBytes());
+//            } catch (IOException e) {
+//                e.printStackTrace();
+//            }
+//            repo.save(update);
+
+
+
+
+
 
 
 

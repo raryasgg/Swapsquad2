@@ -37,6 +37,9 @@ import { MyProfileComponent } from './my-profile/my-profile.component';
 import { CommonModule } from "@angular/common";
 // If You are getting error then install ( npm i ng-starrating )
 import { RatingModule } from "ng-starrating";
+import { AccountdataComponent } from './component/accountdata/accountdata.component';
+import {MatDialogModule} from '@angular/material/dialog';
+import { PaymentComponent } from './payment/payment.component';
 import { ChatComponent } from './component/chat/chat.component';
 import {MatMenuModule} from '@angular/material/menu';
 import { NavbarComponent } from './navbar/navbar.component';
@@ -44,6 +47,8 @@ import {MatListModule} from '@angular/material/list';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import { FilterPipe } from './component/chat/filter.pipe';
+import { Payment2Component } from './payment2/payment2.component';
+import { Payment3Component } from './payment3/payment3.component';
 
 @NgModule({
   declarations: [
@@ -54,13 +59,19 @@ import { FilterPipe } from './component/chat/filter.pipe';
     RecommendationServiceComponent,
     UpdateDetailsComponent,
     TranscationsComponent,
+    MyProfileComponent,
+    AccountdataComponent,
+    PaymentComponent,
     ChatComponent,
     MyProfileComponent,
     NavbarComponent,
-    FilterPipe
-
-
+    FilterPipe,
+    Payment2Component,
+    Payment3Component
   ],
+
+
+entryComponents:[PaymentComponent,Payment2Component,Payment3Component,AccountdataComponent],
 
   imports: [
     BrowserModule,
@@ -90,11 +101,17 @@ import { FilterPipe } from './component/chat/filter.pipe';
     FlexLayoutModule,
     CommonModule,
     RatingModule,
+
+
+    MatDialogModule,
+
     MatMenuModule,
     MatListModule,
     MatSidenavModule,
     MatToolbarModule
     
+
+
 
   ],
   providers: [ProductDetailsService],

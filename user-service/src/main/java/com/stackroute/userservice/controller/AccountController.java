@@ -15,14 +15,15 @@ import java.util.ArrayList;
 import java.util.HashSet;
 
 @RestController
-@RequestMapping("")
+@RequestMapping("/users")
+@CrossOrigin(origins="*")
 @Slf4j
 public class AccountController {
     @Autowired
     private AccountService accservice;
 
 
-  @PostMapping("/user")
+  @PostMapping("/addaccount")
    public ResponseEntity<AccountDetails> saveuser (@RequestBody AccountDetails adduser){
       try {
           log.debug("saveUser");
@@ -45,7 +46,7 @@ public class AccountController {
         }
     }
 
-@GetMapping("/user/{email}")
+@GetMapping("/account/{email}")
   public ResponseEntity<?> getAccountDataByEmail (@PathVariable String email){
       try {
           log.debug("Inside the AccountController -- ById methods");

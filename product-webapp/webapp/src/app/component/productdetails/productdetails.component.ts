@@ -5,7 +5,10 @@ import { ProductDetailsService } from './product-details.service';
 import { DomSanitizer } from '@angular/platform-browser';
 import { UserratingService } from './userrating.service';
 import { Router } from '@angular/router';
-
+import { MatDialog } from '@angular/material/dialog';
+import { PaymentComponent } from '../../payment/payment.component';
+import { Payment2Component } from '../../payment2/payment2.component';
+import { Payment3Component } from '../../payment3/payment3.component';
 
 @Component({
   selector: 'app-productdetails',
@@ -22,7 +25,7 @@ export class ProductdetailsComponent implements OnInit {
   pcoin = 20000;
   pdatepost = ""
 
-  pexchangetype = "coin"
+  pexchangetype = "exchange"
   desc = "this is description of the product";
   pcategory = "";
   year: any;
@@ -38,18 +41,19 @@ export class ProductdetailsComponent implements OnInit {
   review: any
   userId: ""
   totalstar = '5'
-
+  
   // img1="assets/1.jpg"
 
   public productdata: any;
   public userratingdata: any;
   pexchange: any;
   ratings: any;
-  avgRating: any;
+  avgRating:any;
+ 
+  constructor(private _productdetailsService: ProductDetailsService, private domSanitizer: DomSanitizer,private userratingservice:UserratingService, private router: Router,public dialog:MatDialog) {
 
-  constructor(private _productdetailsService: ProductDetailsService, private domSanitizer: DomSanitizer, private userratingservice: UserratingService, private router: Router) {
-
-  }
+    
+   }
 
   ngOnInit(): void {
     // console.log("working...")
@@ -99,11 +103,25 @@ export class ProductdetailsComponent implements OnInit {
   // Chat Service Starts Here
   goToChat() {
     this.router.navigate(['chat']);  // define your component where you want to go
-  }
-
 
 }
 
+openDialog(){
+  if(this.pexchangetype="coin"){
+  this.dialog.open(PaymentComponent);
+  }
+
+  if(this.pexchangetype="exchange"){
+    this.dialog.open(Payment2Component); 
+  }
+
+if(this.pexchangetype="both"){
+  this.dialog.open(Payment3Component); 
+}
+}
+
+
+  }
 
 function gmail(gmail: any) {
   throw new Error('Function not implemented.');
