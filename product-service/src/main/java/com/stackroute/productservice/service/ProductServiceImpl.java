@@ -213,6 +213,21 @@ public class ProductServiceImpl implements ProductService {
 		return prod;
 	}
 
-	
+	public List<Product> getByEmailAvailable(String id) throws ProductNotFoundException {
+    	if(repo.findAllByPemail(id).isEmpty()) {
+    		log.error("Product not exists in the repository");
+    		throw new ProductNotFoundException();
+    	} else {
+    		List<Product> abc = repo.findAllByPemail(id);
+    		List<Product> email = new ArrayList();
+    		for(int i=0;i<abc.size();i++) {
+    			if(abc.get(i).getPstatus()==Status.AVAILABLE) {
+    				email.add(abc.get(i));
+    				
+    			}
+    		}
+    		return email;
+    	}
+    }
 	
 }
