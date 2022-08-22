@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
-import { PaymentComponent } from './payment/payment.component';
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -8,11 +7,9 @@ import { PaymentComponent } from './payment/payment.component';
 })
 export class AppComponent {
   title = 'webapp';
-constructor(public dialog:MatDialog ){}
+constructor( ){}
 
-openDialog(){
-  this.dialog.open(PaymentComponent);
-}
+
 
 }
 
