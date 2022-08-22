@@ -1,7 +1,7 @@
 export class Message {
-    senderEmail=String;
-    time=String;
-    replymessage=String;
+    senderEmail:string;
+    time:string;
+    replymessage:string;
 
     constructor(){
       

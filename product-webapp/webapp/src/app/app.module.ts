@@ -43,6 +43,7 @@ import { NavbarComponent } from './navbar/navbar.component';
 import {MatListModule} from '@angular/material/list';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatToolbarModule} from '@angular/material/toolbar';
+import { FilterPipe } from './component/chat/filter.pipe';
 
 @NgModule({
   declarations: [
@@ -55,7 +56,8 @@ import {MatToolbarModule} from '@angular/material/toolbar';
     TranscationsComponent,
     ChatComponent,
     MyProfileComponent,
-    NavbarComponent
+    NavbarComponent,
+    FilterPipe
 
 
   ],
