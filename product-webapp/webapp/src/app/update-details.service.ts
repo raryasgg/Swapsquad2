@@ -25,5 +25,7 @@ export class UpdateDetailsService {
   updateEmployee( employees: UserRegistration,email:any): Observable<Object>{
     return this.httpClient.put(`${this.baseUrl}/${email}`, employees);
   }
-
+  update123( updateObj: UserRegistration): Observable<Object>{
+    return this.httpClient.put(`${this.baseUrl}`,  updateObj);
+  }
 }

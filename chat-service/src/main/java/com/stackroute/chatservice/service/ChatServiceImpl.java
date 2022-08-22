@@ -56,6 +56,18 @@ public class ChatServiceImpl implements ChatService {
     }
 
 
+//    @Override
+//    public List<Chat> findallchats() throws NoChatExistsInTheRepository {
+//        if (chatRepository.findAll().isEmpty()) {
+//            log.error("No chat exists in the repository");
+//            throw new NoChatExistsInTheRepository();
+//        } else {
+//            log.debug("Inside the ChatServiceImpl -- findallrepository methods");
+//            return chatRepository.findAll();
+//        }
+//
+//    }
+
     @Override
     public List<Chat> findallchats() throws NoChatExistsInTheRepository {
         if (chatRepository.findAll().isEmpty()) {
@@ -105,17 +117,49 @@ public class ChatServiceImpl implements ChatService {
         }
     }
 
+
     @Override
     public HashSet<Chat> getChatByOwnerEmailAndBuyerEmail(String ownerEmail, String buyerEmail) throws ChatNotFoundException {
+
         HashSet<Chat> chat = chatRepository.getChatByOwnerEmailAndBuyerEmail(ownerEmail, buyerEmail);
-        if (chat.isEmpty()) {
+        HashSet<Chat> chat1 = chatRepository.getChatByBuyerEmailAndOwnerEmail(ownerEmail, buyerEmail);
+        if (chat.isEmpty() && chat1.isEmpty()) {
             log.debug("Chat not exists in the repository");
             throw new ChatNotFoundException();
+        } else if (chat.isEmpty()) {
+            log.debug("Inside the ChatServiceImpl -- getOwnerEmail methods");
+            return chat1;
         } else {
             log.debug("Inside the ChatServiceImpl -- getOwnerEmail methods");
             return chat;
         }
     }
+
+//    @Override
+//    public Chat getChatByOwnerEmailAndBuyerEmail(String ownerEmail, String buyerEmail) throws ChatNotFoundException  {
+//        Optional<Chat> chatid = chatRepository.findById( ownerEmail, buyerEmail);
+//        if (chatid.isPresent()) {
+//            log.debug("Inside the ChatServiceImpl -- getById methods");
+//            return chatid.get();
+//        } else {
+//            log.error("Chat not exists in the repository");
+//            throw new ChatNotFoundException();
+//        }
+//    }
+
+//    @Override
+//    public Chat getById(int chatId) throws ChatNotFoundException {
+//        Optional<Chat> chatid = chatRepository.findById(chatId);
+//        if (chatid.isPresent()) {
+//            log.debug("Inside the ChatServiceImpl -- getById methods");
+//            return chatid.get();
+//        } else {
+//            log.error("Chat not exists in the repository");
+//            throw new ChatNotFoundException();
+//        }
+//    }
+
+
 
     @Override
     public Chat addMessage(Message add, int chatId) {

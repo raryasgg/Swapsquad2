@@ -32,17 +32,23 @@ import { MatProgressBarModule } from "@angular/material/progress-bar";
 import { FlexLayoutModule } from "@angular/flex-layout";
 import { UpdateDetailsComponent } from './update-details/update-details.component';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-
 import { TranscationsComponent } from "./transcations/transcations.component";
-
-
 import { MyProfileComponent } from './my-profile/my-profile.component';
-
 import { CommonModule } from "@angular/common";
 // If You are getting error then install ( npm i ng-starrating )
 import { RatingModule } from "ng-starrating";
 import { AccountdataComponent } from './component/accountdata/accountdata.component';
 
+
+import {MatDialogModule} from '@angular/material/dialog';
+import { PaymentComponent } from './payment/payment.component';
+
+import { ChatComponent } from './component/chat/chat.component';
+import {MatMenuModule} from '@angular/material/menu';
+import { NavbarComponent } from './navbar/navbar.component';
+import {MatListModule} from '@angular/material/list';
+import {MatSidenavModule} from '@angular/material/sidenav';
+import {MatToolbarModule} from '@angular/material/toolbar';
 
 
 @NgModule({
@@ -54,11 +60,22 @@ import { AccountdataComponent } from './component/accountdata/accountdata.compon
     RecommendationServiceComponent,
     UpdateDetailsComponent,
     TranscationsComponent,
+
     MyProfileComponent,
-    AccountdataComponent
+    AccountdataComponent,
+
+
+    
+    PaymentComponent,
+
+    ChatComponent,
+    MyProfileComponent,
+    NavbarComponent
+
+
 
   ],
-
+entryComponents:[PaymentComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -87,6 +104,16 @@ import { AccountdataComponent } from './component/accountdata/accountdata.compon
     FlexLayoutModule,
     CommonModule,
     RatingModule,
+
+
+    MatDialogModule,
+
+    MatMenuModule,
+    MatListModule,
+    MatSidenavModule,
+    MatToolbarModule
+    
+
 
 
   ],

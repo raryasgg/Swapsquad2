@@ -4,6 +4,7 @@ import { Product } from './product';
 import { ProductDetailsService } from './product-details.service';
 import { DomSanitizer } from '@angular/platform-browser';
 import { UserratingService } from './userrating.service';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -54,7 +55,7 @@ rate:any;
   ratings: any;
   avgRating:any;
  
-  constructor(private _productdetailsService: ProductDetailsService, private domSanitizer: DomSanitizer,private userratingservice:UserratingService ) {
+  constructor(private _productdetailsService: ProductDetailsService, private domSanitizer: DomSanitizer,private userratingservice:UserratingService, private router: Router) {
 
     
    }
@@ -113,6 +114,10 @@ ngOnInit(): void {
   
 
   }
+
+  goToChat(){
+    this.router.navigate(['chat']);  // define your component where you want to go
+}
  
 
   }

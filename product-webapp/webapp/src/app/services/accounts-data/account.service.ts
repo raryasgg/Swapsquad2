@@ -8,8 +8,9 @@ import { Account } from 'src/app/models/account-data/account';
 })
 export class AccountService {
 
-  private baseurl="http://localhost:9999/user"
-  private baserurla="http://localhost:9999/"
+  private baseurl="http://localhost:9998/user"
+  private baserurla="http://localhost:9998/"
+ 
 
   constructor(private httpClient: HttpClient) { }
 
@@ -27,5 +28,11 @@ export class AccountService {
   return this.httpClient.get<Account>(this.baserurla + accountNumber)
 
  }
+
+ addAmount(acc:Account,email:any,amount:any){
+  return this.httpClient.put<Account>(this.baserurla + "/addCoin" + '?email='+ email + '&amount='+amount, acc)
+
+ }
+ 
 }
 

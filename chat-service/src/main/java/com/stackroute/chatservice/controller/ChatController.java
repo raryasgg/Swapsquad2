@@ -21,7 +21,7 @@ import java.io.IOException;
 import java.util.HashSet;
 import java.util.List;
 
-@CrossOrigin(origins = "**")
+@CrossOrigin(origins = "*")
 @RestController
 @RequestMapping("/chats")
 @Slf4j
@@ -97,7 +97,7 @@ public class ChatController {
     }
 
 
-    @GetMapping("/byBoth")
+    @GetMapping("/chatByBothOwnerAndBuyerEmail")
     public ResponseEntity<?> getChatByBuyerEmailAndOwnerEmail(@RequestParam("ownerEmail") String ownerEmail, @RequestParam("buyerEmail") String buyerEmail){
 
         try {
@@ -106,9 +106,18 @@ public class ChatController {
         } catch (ChatNotFoundException e) {
             return new ResponseEntity("Chat Not Exits", HttpStatus.CONFLICT);
         }
-
     }
 
+
+//    @GetMapping("/byBoth")
+//    public ResponseEntity<Chat> getChatByBuyerEmailAndOwnerEmail(@RequestParam("ownerEmail") String ownerEmail, @RequestParam("buyerEmail") String buyerEmail){
+//
+//        try {
+//            return new ResponseEntity<Chat>(chatService.getChatByOwnerEmailAndBuyerEmail(ownerEmail, buyerEmail), HttpStatus.OK);
+//        } catch (ChatNotFoundException e) {
+//            return new ResponseEntity("Chat Not Exits", HttpStatus.CONFLICT);
+//        }
+//    }
 
     @PutMapping("/message/{chatId}")
     public ResponseEntity<Chat> addMessage(@RequestBody Message add , @PathVariable int chatId) {
