@@ -47,6 +47,8 @@ import { NavbarComponent } from './navbar/navbar.component';
 import {MatListModule} from '@angular/material/list';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatToolbarModule} from '@angular/material/toolbar';
+import { Payment2Component } from './payment2/payment2.component';
+import { Payment3Component } from './payment3/payment3.component';
 
 
 @NgModule({
@@ -64,12 +66,14 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 
     ChatComponent,
     MyProfileComponent,
-    NavbarComponent
+    NavbarComponent,
+    Payment2Component,
+    Payment3Component
 
 
 
   ],
-entryComponents:[PaymentComponent],
+entryComponents:[PaymentComponent,Payment2Component],
   imports: [
     BrowserModule,
     AppRoutingModule,
