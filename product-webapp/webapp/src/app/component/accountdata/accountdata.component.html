@@ -12,7 +12,7 @@
              
               <div class="d-flex justify-content-center mb-2">
               
-                <button type="button" class="btn btn-outline-primary ms-1" (click)="onclickgetaccount()">accountnumber</button>
+                <div   (click)="onclickgetaccount()">{{accountNumber}}</div>
               </div>
             </div>
           </div>
@@ -39,6 +39,32 @@
                         accountForm.controls['accountHolderName'].touched &&
                         accountForm.controls['accountHolderName'].invalid &&
                         accountForm.controls['accountHolderName'].errors?.required
+                      " style="color: red">Please enter your Name*
+                    </span>
+                  
+                       
+                      </mat-form-field>
+                    
+                     
+                      
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-sm-3" style="padding-top:1rem;">
+                    <label >Email</label>
+                </div>
+                
+                <div class="col-sm-9">
+                    
+                    <mat-form-field class="small" appearance="outline">
+                        
+                        <input matInput type="text" formControlName="email">{{email}}
+                       
+                      <span class="small" *ngIf="
+                        accountForm.controls['email'].touched &&
+                        accountForm.controls['email'].invalid &&
+                        accountForm.controls['email'].errors?.required
                       " style="color: red">Please enter your Name*
                     </span>
                   
@@ -108,7 +134,7 @@
                 </div>
                 <div class="col-sm-9">
                  <mat-form-field appearance="outline">
-                    <input  matInput type="text" formControlName="expiryMonth">{{expiryMonth}}
+                    <input  matInput type="text" formControlName="expiryMonth" style='text-transform:uppercase'>{{expiryMonth}}
                  </mat-form-field>
 
                  

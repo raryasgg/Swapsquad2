@@ -75,7 +75,10 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 
 
   ],
-entryComponents:[PaymentComponent],
+entryComponents:[PaymentComponent,
+  AccountdataComponent
+
+],
   imports: [
     BrowserModule,
     AppRoutingModule,
