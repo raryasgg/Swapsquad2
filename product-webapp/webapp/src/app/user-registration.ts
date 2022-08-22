@@ -9,7 +9,13 @@ export class UserRegistration {
   password: String;
   cpassword: String;
   accept: String;
-  address:any;
+  street:String;
+  city:String;
+  state:String;
+  pincode:string;
+  image: any;
+  acoin:any;
+  price:any;
 
   constructor() {
     this.firstname = "";
@@ -20,5 +26,10 @@ export class UserRegistration {
     this.mobile = "";
     this.password = "";
     this.cpassword = "";
+    this.street = "";
+    this.city = "";
+    this.state = "";
+    this.pincode = "";
+    
   }
 }

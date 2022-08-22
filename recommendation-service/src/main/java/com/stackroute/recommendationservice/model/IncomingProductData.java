@@ -19,4 +19,31 @@ public class IncomingProductData {
     private String city;
     private String productCategory;
     private byte[] productImage;
+
+    public IncomingProductData(int productId, String state, String city, String productCategory) {
+        super();
+        this.productId = productId;
+        this.state = state;
+        this.city = city;
+        this.productCategory = productCategory;
+    }
+
+    public IncomingProductData(int productId, String city, String productCategory) {
+        super();
+        this.productId = productId;
+        this.city = city;
+        this.productCategory = productCategory;
+    }
+
+    public IncomingProductData(int productId, String productOwnerEmail, String productName, String state, String city, String productCategory) {
+        this.productId = productId;
+        this.productOwnerEmail = productOwnerEmail;
+        this.productName = productName;
+        this.state = state;
+        this.city = city;
+        this.productCategory = productCategory;
+    }
+
+
 }
+

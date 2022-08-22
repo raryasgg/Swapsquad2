@@ -21,5 +21,11 @@ public interface UserRegistrationService {
 	public UserRegistration addrating(UserRating add, String email);
 
 
+
+
+
+    
+
 public	UserRegistration add(UserRegistration user);
+
 }
