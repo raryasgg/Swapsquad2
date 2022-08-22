@@ -6,7 +6,7 @@ import { IncomingProductData } from '../models/recommendation/incoming-product-d
 import { RecommedationService } from '../services/recommendation-service/recommedation.service';
 import { DomSanitizer } from '@angular/platform-browser';
 
-interface Car {
+interface City {
   value: string;
   viewValue: string;
 }
@@ -50,23 +50,35 @@ userIP:'';
    }
   
    
-   cars: Car[] = [
+   cities: City[] = [
     {value: '', viewValue: ''},
     {value: 'Lucknow', viewValue: 'Lucknow'},
     {value: 'Raebareli', viewValue: 'Raebareli'},
     {value: 'Varanasi', viewValue: 'Varanasi'},
   ];
   
-  selectedCar = this.cars[0].value;
+  selectedCity = this.cities[0].value;
 
-  selectCar(event: Event) {
-    this.selectedCar = (event.target as HTMLSelectElement).value;
-    this._recommendationService.getProductRecommendationsByLocation(this.selectedCar).subscribe(data =>{
-     
+  selectCity(event: Event) {
+    this.selectedCity = (event.target as HTMLSelectElement).value;
+   if(this.selectedCategory==null){
+    return this._recommendationService.getProductRecommendationsByLocation(this.selectedCity).subscribe(data=>{
       this.abc=data;
       console.log(this.abc);
-  })
-}
+
+     })
+   }
+   else{
+    this._recommendationService.getgetProductRecommendationByCityAndCategory(this.selectedCity,this.selectedCategory).subscribe(data=>{
+        this.abc=data;
+        console.log(this.abc);
+       })
+   }
+  
+
+ 
+
+  }
   categories: Category[]=[
     {value: '', viewValue: ''},
     {value: 'Electronics', viewValue: 'Electronics'},
@@ -76,10 +88,18 @@ userIP:'';
    selectedCategory = this.categories[0].value;
    selectCategory(event:Event) {
     this.selectedCategory = (event.target as HTMLSelectElement).value;
-    this._recommendationService.getgetProductByCategory(this.selectedCategory).subscribe(data =>{
-      this.abc=data;
-      console.log(this.abc);
-   })
+    if(this.selectedCity==null){
+      return this._recommendationService.getgetProductByCategory(this.selectedCategory).subscribe(data=>{
+        this.abc=data;
+        console.log(this.abc);
+       })
+     }
+     else{
+      this._recommendationService.getgetProductRecommendationByCityAndCategory(this.selectedCity,this.selectedCategory).subscribe(data=>{
+          this.abc=data;
+          console.log(this.abc);
+         })
+     }
    } 
   
   ngOnInit(): void {

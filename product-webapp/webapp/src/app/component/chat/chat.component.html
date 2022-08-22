@@ -108,16 +108,18 @@
                         </div>
                     </div>
                     <div class="card-footer">
+                        <form [formGroup]="chatForm">
                         <div class="input-group">
                             <div class="input-group-append">
                                 <span class="input-group-text attach_btn"></span>
                             </div>
                             <textarea name="" class="form-control type_msg"
-                                placeholder="Type your message..."></textarea>
+                                placeholder="Type your message..." formControlName="replymessage"></textarea>
                             <div class="input-group-append">
-                                <span class="input-group-text send_btn"><i class="fa fa-location-arrow"></i></span>
+                                <button mat-raised-button class="input-group-text send_btn" (click)="sendMessage()"> <i class="fa fa-location-arrow"></i> </button>
                             </div>
                         </div>
+                    </form>
                     </div>
                 </div>
             </div>

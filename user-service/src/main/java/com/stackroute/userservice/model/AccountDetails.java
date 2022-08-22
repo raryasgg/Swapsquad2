@@ -23,6 +23,7 @@ public class AccountDetails {
     private String  expiryMonth;
 //    private int amount;
     private int cvv;
+    private String accountHolderName;
 
 
 
