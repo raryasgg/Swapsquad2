@@ -36,13 +36,15 @@ import { TranscationsComponent } from "./transcations/transcations.component";
 import { MyProfileComponent } from './my-profile/my-profile.component';
 import { CommonModule } from "@angular/common";
 // If You are getting error then install ( npm i ng-starrating )
-import { RatingModule } from "ng-starrating";
+// import { RatingModule } from "ng-starrating";
 import { ChatComponent } from './component/chat/chat.component';
 import {MatMenuModule} from '@angular/material/menu';
 import { NavbarComponent } from './navbar/navbar.component';
 import {MatListModule} from '@angular/material/list';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatToolbarModule} from '@angular/material/toolbar';
+import { FilterPipe } from './shared/filter.pipe';
+
 
 @NgModule({
   declarations: [
@@ -55,7 +57,9 @@ import {MatToolbarModule} from '@angular/material/toolbar';
     TranscationsComponent,
     ChatComponent,
     MyProfileComponent,
-    NavbarComponent
+    NavbarComponent,
+    FilterPipe,
+    
 
 
   ],
@@ -87,7 +91,7 @@ import {MatToolbarModule} from '@angular/material/toolbar';
     MatProgressBarModule,
     FlexLayoutModule,
     CommonModule,
-    RatingModule,
+    // RatingModule,
     MatMenuModule,
     MatListModule,
     MatSidenavModule,

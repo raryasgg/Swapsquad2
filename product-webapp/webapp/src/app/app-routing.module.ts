@@ -24,7 +24,8 @@ const routes: Routes = [
   {path:'chat', component:ChatComponent},
   {path:'transcations', component:TranscationsComponent},
   {path:'myProfile', component: MyProfileComponent},
-  {path:'navbar', component:NavbarComponent}
+  {path:'navbar', component:NavbarComponent},
+ 
 
 ];
 

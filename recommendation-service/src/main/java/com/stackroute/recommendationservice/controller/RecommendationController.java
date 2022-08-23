@@ -65,7 +65,7 @@ public class RecommendationController {
             log.debug("data:" + incomingData);
             CustomMessage messages = new CustomMessage(incomingData.getProductId(), incomingData.getProductName(), incomingData.getProductCategory(),
                     incomingData.getState(), incomingData.getCity(), incomingData.getProductOwnerEmail(),
-                    incomingData.getProductImage());
+                    incomingData.getProductImage(),incomingData.getPdatepost(),incomingData.getPexchangetype());
             publisher.publishMessage(messages);
             this.recommendationService.createNode(incomingData);
             return new ResponseEntity<>("Added data to neo4j successfully!", HttpStatus.OK);
@@ -79,7 +79,7 @@ public class RecommendationController {
     @DeleteMapping("/delete/{productId}")
     public ResponseEntity<?> deleteProductNode(@PathVariable int productId) {
         this.recommendationService.deleteProductNode(productId);
-        return new ResponseEntity<>("Deleted location node!", HttpStatus.OK);
+        return new ResponseEntity<>("Product is delete successfully", HttpStatus.OK);
     }
 
     @GetMapping("/Product")
@@ -98,6 +98,7 @@ public class RecommendationController {
         ArrayList<IncomingProductData> rec = this.recommendationService.getAllProduct();
         return new ResponseEntity<>(rec, HttpStatus.OK);
     }
+
 
 //    @PostMapping("/user")
 //    public ResponseEntity<IncomingProductData> registerUser(@RequestBody IncomingProductData user) {
@@ -122,8 +123,8 @@ public class RecommendationController {
 //        log.debug("data:file" + Data + file);
 //
 //        return new ResponseEntity<IncomingProductData>(recommendationService.createImageNode(Data,file),org.springframework.http.HttpStatus.OK);
-
-
+//
+//
 //        ResponseEntity<>("Added in data base",HttpStatus.OK);
 
 

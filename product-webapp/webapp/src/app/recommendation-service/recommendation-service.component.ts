@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import {HttpClient} from '@angular/common/http';
-import { switchMap} from 'rxjs/operators'
+import { switchMap,filter} from 'rxjs/operators';
 import { IncomingProductData } from '../models/recommendation/incoming-product-data';
 import { RecommedationService } from '../services/recommendation-service/recommedation.service';
 import { DomSanitizer } from '@angular/platform-browser';
+
 
 interface City {
   value: string;
@@ -26,6 +27,8 @@ value:any;
 recommendationForm:FormGroup;
 title = 'Ip-geolocation';
 userIP:'';
+searchKey:string="";
+public searchTerm : string='';
   
   productId:number;
   productOwnerEmail:any;
@@ -41,6 +44,7 @@ userIP:'';
   public location:any;
   public abc:Array<IncomingProductData>=[];
   public getproduct:any[]=[];
+  
 
   constructor(private httpClient:HttpClient,private _recommendationService: RecommedationService ,private domSanitizer:DomSanitizer) {
     this.recommendationForm = new FormGroup({
@@ -61,7 +65,7 @@ userIP:'';
 
   selectCity(event: Event) {
     this.selectedCity = (event.target as HTMLSelectElement).value;
-   if(this.selectedCategory==null){
+   if(!this.selectedCategory){
     return this._recommendationService.getProductRecommendationsByLocation(this.selectedCity).subscribe(data=>{
       this.abc=data;
       console.log(this.abc);
@@ -88,7 +92,8 @@ userIP:'';
    selectedCategory = this.categories[0].value;
    selectCategory(event:Event) {
     this.selectedCategory = (event.target as HTMLSelectElement).value;
-    if(this.selectedCity==null){
+    console.log(this.selectedCity);
+    if(!this.selectedCity){
       return this._recommendationService.getgetProductByCategory(this.selectedCategory).subscribe(data=>{
         this.abc=data;
         console.log(this.abc);
@@ -103,6 +108,7 @@ userIP:'';
    } 
   
   ngOnInit(): void {
+   
     this._recommendationService.getAllProduct().subscribe((data:any)=>{
       console.log("data",data);
       for (let i = 0; i < data.length; i++) {
@@ -116,6 +122,7 @@ userIP:'';
       })
       console.log(this.abc);
     });
+   
   }
       recommendObj: IncomingProductData = new IncomingProductData();
     onSelect(){
@@ -124,13 +131,20 @@ userIP:'';
       this.recommendObj.productCategory = this.recommendationForm.value.productCategory;
       this.recommendObj.state = this.recommendationForm.value.state;
              }
+   // for Search bar
+   search(event:any){
+     this.searchTerm = (event.target as HTMLInputElement).value;
+     console.log(this.searchTerm);
+   }
+
+
+  
+   
+
   
 
 
   
-
-
-  // for Search bar 
 
  loadUserInfo(){
    
