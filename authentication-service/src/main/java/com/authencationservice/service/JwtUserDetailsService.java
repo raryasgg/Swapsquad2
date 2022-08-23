@@ -1,5 +1,6 @@
 package com.authencationservice.service;
 
+import com.authencationservice.controller.UserAlreadyExistException;
 import org.springframework.beans.factory.annotation.Autowired;
 //import org.springframework.security.core.userdetails.UserDetails;
 //import org.springframework.security.core.userdetails.UserDetailsService;
@@ -23,13 +24,13 @@ public class JwtUserDetailsService{
 	public UserDao loadUserByUsername(String username) throws UsernameNotFoundException {
 		UserDao user = userDao.findById(username).get();
 		if (user == null) {
-			throw new UsernameNotFoundException("User not found with username: " + username);
+			throw new UsernameNotFoundException(" UsernameNotFoundException: " + username);
 		}
 		return user;
 				
 	}
 
-	public UserDao save(UserDao user) {
+	public UserDao save(UserDao user) throws UserAlreadyExistException {
 		UserDao newUser = new UserDao();
 		newUser.setUsername(user.getUsername());
 		newUser.setPassword(user.getPassword());

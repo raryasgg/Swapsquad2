@@ -13,10 +13,10 @@ html {
 }
 
 .card {
-    height: 650px;
+    height: 630px;
     border-radius: 15px !important; 
-    background: linear-gradient(90deg, rgb(140, 200, 253) 0%, rgb(93, 226, 241) 100%);
-
+    /* background: linear-gradient(90deg, rgb(140, 200, 253) 0%, rgb(93, 226, 241) 100%); */
+    border:1px solid rgb(140, 200, 253);
 }
 
 .contacts_body {
@@ -36,6 +36,7 @@ html {
 .card-header {
     border-radius: 15px 15px 0 0 !important;
     border-bottom: 0 !important;
+    background: linear-gradient(90deg, rgb(140, 200, 253) 0%, rgb(93, 226, 241) 100%);
 }
 
 .card-footer {

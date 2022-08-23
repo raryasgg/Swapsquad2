@@ -7,7 +7,7 @@ import com.stackroute.recommendationservice.exception.ProductAlreadyExistExcepti
 import com.stackroute.recommendationservice.model.CustomMessage;
 import com.stackroute.recommendationservice.model.IncomingProductData;
 import com.stackroute.recommendationservice.exception.ProductNotFoundException;
-import com.stackroute.recommendationservice.model.config.Publisher;
+
 import com.stackroute.recommendationservice.service.RecommendationService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,8 +30,7 @@ public class RecommendationController {
         this.recommendationService = recommendationService;
     }
 
-    @Autowired
-    private Publisher publisher;
+
 
     @GetMapping("test")
     public String test() {
@@ -65,9 +64,9 @@ public class RecommendationController {
             log.debug("data:" + incomingData);
             CustomMessage messages = new CustomMessage(incomingData.getProductId(), incomingData.getProductName(), incomingData.getProductCategory(),
                     incomingData.getState(), incomingData.getCity(), incomingData.getProductOwnerEmail(),
-                    incomingData.getProductImage());
-            publisher.publishMessage(messages);
-            this.recommendationService.createNode(incomingData);
+                    incomingData.getProductImage(),incomingData.getPdatepost(),incomingData.getPexchangetype());
+//            publisher.publishMessage(messages);
+          this.recommendationService.createNode(incomingData);
             return new ResponseEntity<>("Added data to neo4j successfully!", HttpStatus.OK);
         } catch (ProductAlreadyExistException e) {
             // TODO Auto-generated catch block
@@ -79,7 +78,7 @@ public class RecommendationController {
     @DeleteMapping("/delete/{productId}")
     public ResponseEntity<?> deleteProductNode(@PathVariable int productId) {
         this.recommendationService.deleteProductNode(productId);
-        return new ResponseEntity<>("Deleted location node!", HttpStatus.OK);
+        return new ResponseEntity<>("Product is delete successfully", HttpStatus.OK);
     }
 
     @GetMapping("/Product")
@@ -98,6 +97,7 @@ public class RecommendationController {
         ArrayList<IncomingProductData> rec = this.recommendationService.getAllProduct();
         return new ResponseEntity<>(rec, HttpStatus.OK);
     }
+
 
 //    @PostMapping("/user")
 //    public ResponseEntity<IncomingProductData> registerUser(@RequestBody IncomingProductData user) {
@@ -122,8 +122,8 @@ public class RecommendationController {
 //        log.debug("data:file" + Data + file);
 //
 //        return new ResponseEntity<IncomingProductData>(recommendationService.createImageNode(Data,file),org.springframework.http.HttpStatus.OK);
-
-
+//
+//
 //        ResponseEntity<>("Added in data base",HttpStatus.OK);
 
 
