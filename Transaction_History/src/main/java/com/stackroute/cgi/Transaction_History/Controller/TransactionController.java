@@ -19,6 +19,7 @@ import java.util.Optional;
 @RestController
 @RequestMapping
 @Slf4j
+@CrossOrigin(origins = "http://localhost:4200")
 public class TransactionController {
 @Autowired
 	 TransactionRepository repositry;
