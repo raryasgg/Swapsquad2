@@ -92,13 +92,15 @@
                                     class="rounded-circle user_img_msg">
                             </div>
                             <div class="msg_cotainer">
-                                Bye, see you
+                               Ok
                                 <span class="msg_time">9:12 AM, Today</span>
                             </div>
                         </div>
-                        <div class="d-flex justify-content-end mb-4">
+                        <div class="d-flex justify-content-end mb-4" *ngFor="let msg of messageList">
                             <div class="msg_cotainer_send">
-                                Ok, thank you have a good day
+                               <!-- {{msg.replymessage | json}} -->
+                               {{msg.replymessage}}
+                               
                                 <span class="msg_time_send">9:15 AM, Today</span>
                             </div>
                             <div class="img_cont_msg">
@@ -106,6 +108,7 @@
                                     class="rounded-circle user_img" class="rounded-circle user_img_msg">
                             </div>
                         </div>
+                        
                     </div>
                     <div class="card-footer">
                         <form [formGroup]="chatForm">

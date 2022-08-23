@@ -33,4 +33,11 @@ public class Transaction {
     private List<String> exchangeProductList;
 
 
+    public Transaction(int transactionId, String buyerEmail, String sellerEmail, String productSend,
+                       String productObtained, String method_of_Transaction,  double price_of_Product_in_coins, String historyDetails, Object o) {
+    }
+
+    public Transaction() {
+
+    }
 }

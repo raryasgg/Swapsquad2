@@ -7,7 +7,7 @@
         <!-- The following menu items will be hidden on both SM and XS screen sizes -->
         
         <a mat-button [disabled]="isDisabled" style="color: azure; Cursor:text !important; Text-Decoration: None !important;">
-          <span class="material-icons" style="color: white;">
+          <span class="material-icons" style="color: white;" (click)="onClickCoin()">
             radio_button_checked
             </span>
           Coins: {{coin}}
