@@ -39,7 +39,6 @@
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
 		</dependency>
-<<<<<<< HEAD
 			<dependency>
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-amqp</artifactId>
@@ -82,8 +81,5 @@
 		</plugins>
 	</build>
 	
-=======
-	</dependencies>
->>>>>>> 7aff0f777ba25c6e019c096c4b2d30421d537988
 
 </project>

@@ -36,12 +36,17 @@ export class ProductdetailsComponent implements OnInit {
   dateofposting: any
 
 
-  //user rating
-  rate: any;
-  review: any
-  userId: ""
-  totalstar = '5'
-  
+
+
+//user rating
+rate:any;
+ review:any
+ userId:""
+ totalstar='5'
+
+
+
+ 
   // img1="assets/1.jpg"
 
   public productdata: any;
@@ -62,7 +67,11 @@ export class ProductdetailsComponent implements OnInit {
     // .subscribe(data => this.productdata =data)
 
 
-    this._productdetailsService.getProductDetailsById(5).subscribe(data => {
+
+  // this._productdetailsService.getProductDetailsById(12).subscribe(data =>{
+
+    this._productdetailsService.getProductDetailsById(12).subscribe(data => {
+
 
 
       this.productdata = data;
@@ -107,15 +116,16 @@ export class ProductdetailsComponent implements OnInit {
 }
 
 openDialog(){
-  if(this.pexchangetype="coin"){
+  console.log(this.productdata.pexchangetype)
+  if(this.productdata.pexchangetype=="COIN"){
   this.dialog.open(PaymentComponent);
   }
 
-  if(this.pexchangetype="exchange"){
+  else if(this.productdata.pexchangetype=="BARTER"){
     this.dialog.open(Payment2Component); 
   }
 
-if(this.pexchangetype="both"){
+else{
   this.dialog.open(Payment3Component); 
 }
 }

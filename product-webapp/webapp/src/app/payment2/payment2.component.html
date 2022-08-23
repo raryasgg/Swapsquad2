@@ -22,11 +22,21 @@
         <div class="bag-product">
 
             <div class="description">
-                <p class="product-code small muted">Product ID: SS83878947</p>
+                <!-- <p class="product-code small muted">Product ID: SS83878947</p>
                 <h2>Samsung Galaxy A23</h2>
                 <p class="description-text">Galaxy A23 · 50MP Quad Cam with OIS · Powerful Snapdragon processor · 16.72cm (6.6") FHD+ 90Hz Smooth Display. GPU: Adreno 650. RAM: 8GB/12GB.</p>
-                
-
+                 -->
+                 <label class="col-md-5 labelname">Exchange</label>
+                 <i class="fa-solid fa-right-left" style="margin-right: 0.5rem; margin-left: 0.5rem"></i>
+                 <mat-form-field  >
+                 <mat-label>Select</mat-label>
+                    <mat-select >
+                    <mat-option *ngFor="let pro of abc" [value]="pro.pemail">
+                      {{pro.pname}} ,State: {{pro.pstate}} ,Status:{{pro.
+                        pstatus}} 
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
             </div>
         </div>
         <div class="exchange">
@@ -38,8 +48,8 @@
 
             <!-- <button type="button" class="btn btn-success">
                 <span>Request Exchange</span>
-            </button> -->
+            </button> -->  
         </div>
 
     </div>
-</div>
+</div> 
