@@ -7,9 +7,7 @@ import javax.persistence.*;
 @Entity
 @Table(name = "user")
 public class UserDao {
-//    @Id
-//    @GeneratedValue(strategy = GenerationType.IDENTITY)
-//    private long id;
+
 	@Id
     @Column
     private String username;
