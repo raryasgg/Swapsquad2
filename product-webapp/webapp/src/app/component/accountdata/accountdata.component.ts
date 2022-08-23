@@ -3,7 +3,9 @@ import { FormArray, FormBuilder, FormControl, FormGroup, NgForm, Validators } fr
 import { Account } from 'src/app/models/account-data/account';
 import { AccountService } from 'src/app/services/accounts-data/account.service';
 import Swal from 'sweetalert2';
+
 // import * as moment from 'moment';
+
 
 
 
@@ -17,10 +19,12 @@ import Swal from 'sweetalert2';
 export class AccountdataComponent implements OnInit {
   accountForm: FormGroup;
 
+  emaildataobj:any;
+
   accountObj: Account = new Account();
 public accountdata : any;
   accountHolderName: any;
-  accountNumber: any;
+  accountNumber:any;
   expiryMonth: any;
   cvv: any;
   amount:any;
@@ -42,6 +46,7 @@ public accountdata : any;
       accountNumber :new FormControl("",[Validators.required,Validators.pattern('[0-9 ]*')]),
       cvv : new FormControl("",[Validators.required,Validators.pattern('[0-9 ]*')]),
       expiryMonth: new FormControl("",[Validators.required]),
+      email :new FormControl(""),
       
       // accountHolderName : new FormControl (),
       // accountNumber :new FormControl(),
@@ -53,7 +58,11 @@ public accountdata : any;
   }
 
   ngOnInit() {
-    
+    // this.accountService.getAccountDataByEmail("ravi@gmail.com").subscribe(resbyemail=>{
+    //   this.emaildataobj=resbyemail;
+    //   this.accountNumber=this.emaildataobj.accountNumber;
+
+    // })
 
 
 }
@@ -66,6 +75,7 @@ onSave(){
     this.accountObj.accountNumber= this.accountForm.value.accountNumber;
     this.accountObj.cvv=this.accountForm.value.cvv;
     this.accountObj.expiryMonth=this.accountForm.value.expiryMonth;
+    this.accountObj.email=this.accountForm.value.email;
     // this.accountObj.amount=this.accountForm.value.amount;
     this.accountService.addAccount(this.accountObj).subscribe(result =>
       console.log(result)
@@ -78,13 +88,14 @@ onSave(){
 
 
 onclickgetaccount(){
-  this.accountService.getAccountByAccountNumber(23456).subscribe(accresult =>{
+  this.accountService.getAccountByAccountNumber(2222).subscribe(accresult =>{
     this.accountdata=accresult;
     console.log(this.accountdata);
     this.accountHolderName= this.accountdata.accountHolderName;
     this.accountNumber=this.accountdata.accountNumber;
     this.expiryMonth=this.accountdata.expiryMonth;
     this.cvv =  this.accountdata.cvv;
+    this.email= this.accountdata.email;
   })
 
 }
@@ -92,9 +103,7 @@ onclickgetaccount(){
 onAddCoin(){
 console.log(this.accountForm.value)
 this.accountObj.amount=this.accountForm.value.amount;
-
-
-this.accountService.addAmount(this.accountObj,this.email="zz@gmail.com",this.accountObj.amount).subscribe(updateres =>{
+this.accountService.addAmount("ravi@gmail.com",this.accountObj.amount).subscribe(updateres =>{
   console.log(updateres)
 } )
 

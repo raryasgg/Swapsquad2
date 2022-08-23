@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Product } from '../component/productdetails/product';
 import { ProductDetailsService } from '../component/productdetails/product-details.service';
-
+import { MatDialogRef } from '@angular/material/dialog';
 @Component({
   selector: 'app-payment3',
   templateUrl: './payment3.component.html',
@@ -9,7 +9,7 @@ import { ProductDetailsService } from '../component/productdetails/product-detai
 })
 export class Payment3Component implements OnInit {
   public abc:Array<Product>=[];
-  constructor(private _productdetailsService: ProductDetailsService) { }
+  constructor(private _productdetailsService: ProductDetailsService,public dialogRef: MatDialogRef<Payment3Component>) { }
 
   ngOnInit(): void {
     this._productdetailsService.getProductDetailsByEmail("nk@gmail.com").subscribe((data:any)=>{
@@ -22,7 +22,10 @@ export class Payment3Component implements OnInit {
     });
   }
 
-
+  onClose() {
+  
+    this.dialogRef.close();
+  }
 
 
   }

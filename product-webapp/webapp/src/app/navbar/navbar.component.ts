@@ -1,6 +1,8 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatSidenav } from '@angular/material/sidenav';
 import { Route } from '@angular/router';
+import { MatDialog,MatDialogConfig } from '@angular/material/dialog';
+import { AccountdataComponent } from '../component/accountdata/accountdata.component';
 
 @Component({
   selector: 'app-navbar',
@@ -10,7 +12,7 @@ import { Route } from '@angular/router';
 export class NavbarComponent implements OnInit {
   isDisabled:boolean=true
   coin:any=50
-  constructor() { }
+  constructor(private dialog: MatDialog) { }
 
   ngOnInit(): void {
   }
@@ -33,5 +35,16 @@ export class NavbarComponent implements OnInit {
     if (!this.isExpanded) {
       this.isShowing = false;
     }
+  }
+
+  onClickCoin(){
+    const dialogConfig =new MatDialogConfig();
+    dialogConfig.autoFocus = true;
+    dialogConfig.width= "70%"
+    dialogConfig.height = "75%"
+    this.dialog.open(AccountdataComponent,dialogConfig);
+   
+
+
   }
 }
