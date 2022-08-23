@@ -4,24 +4,25 @@
     <h4>My IP Address {{userIP}}</h4>
   </div> -->
 
+ 
 
   <div class="total-content">
-    
+
     <div class="row nav-items">
       <div class="col-lg-4 col-md-4 col-sm-4 col-4">
         <div class="row">
           <div class="col-lg-3 col-md-3 col-sm-3 col-3"></div>
           <div class="col-lg-7 col-md-7 col-sm-7 col-7 location-dropdown">
-            <mat-form-field appearance="fill">
-              <mat-label>Favorite Car</mat-label>
-              <select matNativeControl (change)="selectCar($event)">
+            <mat-form-field appearance="outline" style="inline-size: auto;" >
+              <mat-label><i class="fa-solid fa-location-dot" style="margin-right: 0.5rem;"> </i>Location</mat-label>
+              <select matNativeControl (change)="selectCity($event)">
                 <option value=""></option>
-                <option *ngFor="let option of cars" [value]="option.value"
-                        [selected]="selectedCar === option.value">{{ option.viewValue }}</option>
+                <option *ngFor="let option of cities" [value]="option.value" [selected]="selectedCity === option.value">
+                  {{ option.viewValue }}</option>
               </select>
             </mat-form-field>
             <!-- <p>You selected: {{selectedCar}}</p> -->
-            
+
             <!-- <mat-form-field appearance="outline" style="inline-size: auto;">
               <mat-label><i class="fa-solid fa-location-dot" style="margin-right: 0.5rem;"> </i>Location</mat-label>
               <mat-select formControlName="city" (change)="onSelect()">
@@ -54,15 +55,15 @@
       <div class="col-lg-8 col-md-8 col-sm-8 col-8">
         <div class="row">
           <div class="col-lg-8 col-md-8 col-sm-8 col-8">
-            <mat-grid-list cols="1" rowHeight="85px">
+             <mat-grid-list cols="1" rowHeight="85px">
               <mat-grid-tile>
-                <mat-form-field class="example-form-field" appearance="outline" style="width: 35rem">
+                <mat-form-field class="example-form-field" appearance="outline" style="width: 35rem" >
                   <mat-label>
-                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <i class="fa-solid fa-magnifying-glass"  [(ngModel)]="searchTerm" (keyup)="search($event)"></i>
                     Find Cars, mobile phone and More....</mat-label>
-                  <input matInput type="text"/>
-                  <button *ngIf="value" matSuffix mat-icon-button aria-label="Clear" (click)="value = ''">
-                    <mat-icon>close</mat-icon>
+                  <input matInput type="text">
+                  <button  >
+                    <mat-icon></mat-icon>
                   </button>
                 </mat-form-field>
               </mat-grid-tile>
@@ -77,12 +78,12 @@
 
           <!-- <div class="col-lg-1 col-md-1 col-sm-1 col-1 "></div> -->
           <div class="col-lg-3 col-md-3 col-sm-3 col-3 category-dropdown">
-            <mat-form-field appearance="fill">
+            <mat-form-field appearance="outline">
               <mat-label>category</mat-label>
               <select matNativeControl (change)="selectCategory($event)">
                 <option value=""></option>
                 <option *ngFor="let option1 of categories" [value]="option1.value"
-               [selected]="selectedCategory === option1.value">{{ option1.viewValue }}</option>
+                  [selected]="selectedCategory === option1.value">{{ option1.viewValue }}</option>
               </select>
             </mat-form-field>
             <!-- <p>You selected: {{selectedCategory}}</p> -->
@@ -104,7 +105,7 @@
   </div>
 </form>
 <!-- =============================== * product * ============================================ -->
-<div >
+
   <!-- <div *ngFor ="let a of abc">
   <div class="box" >
         <a href="">
@@ -120,7 +121,7 @@
 </div>
 <div><p>{{abc[0].productName}}</p></div>
 <div><p>{{abc[0].productId}}</p></div> -->
-<!-- <div class="product">
+  <!-- <div class="product">
   <div *ngFor ="let a of abc">
   <div class="First_row">
     <div class="box">
@@ -136,8 +137,27 @@
   </div>
 </div>
 </div> -->
-<div *ngFor ="let a of abc">
-<mat-card class="example-card" style="flex-direction: column;">
+  <div class="content">
+    <div fxLayout="row wrap" fxLayoutAlign="left" fxLayoutGap="2%">
+      <!-- <div fxFlex=25% fxFlex.xs="100%" fxFlex.sm="33%" > -->
+        <!-- <div *ngFor="let a of abc"> -->
+          <mat-card class="example-card" *ngFor="let a of abc | filter:searchKey:'title'" fxFlex="23%" fxLayoutGap="2%">
+            <img mat-card-image [src]="a.productImage">
+              <mat-card-content>
+                <h4>{{a.pexchangetype}}</h4>
+              <p>{{a.productName}}</p>
+              <div class="addres_data">
+                <p>{{a.city}} , {{a.state}}</p>
+                <p>{{a.pdatepost}}</p>
+              </div>
+            </mat-card-content>
+          </mat-card>
+        <!-- </div> -->
+      <!-- </div> -->
+    </div>
+  </div>
+  <!-- <div *ngFor ="let a of abc">
+<mat-card class="example-card" style="flex-direction: row;">
   <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
   <mat-card-content>
     <p>{{a.productName}}</p>
@@ -148,7 +168,8 @@
   </mat-card-content>
 </mat-card>
 </div>
-    <!-- <div class="box">
+</div> -->
+  <!-- <div class="box">
       <img src="assets/product-2.jpg" />
       <h4>Mode Of Exchange</h4>
       <p>xbox one s</p>
@@ -300,7 +321,7 @@
 
  =============================== * LOde more * ============================================ -->
 
-<!-- <div class="LOde_more">
+  <!-- <div class="LOde_more">
   <button id="Lode_more_id">Lode More</button>
 
   <div class="lode-More_products" id="lode_more_products_id">
@@ -383,4 +404,4 @@
       </div>
     </div>
   </div>  -->
-<!-- </div> -->
+  <!-- </div> -->

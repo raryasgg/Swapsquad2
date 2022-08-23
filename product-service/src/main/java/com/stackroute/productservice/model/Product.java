@@ -37,7 +37,8 @@ public class Product {
 	private String pemail;
 	private String pname;
 	private String pcategory;
-	private String plocation;
+	private String pstate;
+	private String pcity;
 	@JsonEnumDefaultValue
 	private Status pstatus = Status.AVAILABLE;
 	@Temporal(TemporalType.TIMESTAMP)
@@ -51,12 +52,12 @@ public class Product {
 	private Exchange pexchangetype;
 	private String desc;
 	private byte[] image;
-	public Product(int pid, String pemail, String pname, String plocation, String desc) {
+	public Product(int pid, String pemail, String pname, String pstate, String desc) {
 		super();
 		this.pid = pid;
 		this.pemail = pemail;
 		this.pname = pname;
-		this.plocation = plocation;
+		this.pstate = pstate;
 		this.desc = desc;
 	}
 	

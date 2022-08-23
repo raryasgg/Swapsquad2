@@ -22,6 +22,7 @@ import com.stackroute.productservice.exception.ProductAlreadyExistException;
 import com.stackroute.productservice.exception.ProductNotFoundException;
 import com.stackroute.productservice.exception.ProductNotFoundInRepository;
 import com.stackroute.productservice.exception.ProvideProperProductDetails;
+import com.stackroute.productservice.model.IncomingProductData;
 import com.stackroute.productservice.model.Product;
 import com.stackroute.productservice.model.Status;
 import com.stackroute.productservice.reprository.ProductRepository;
@@ -197,6 +198,36 @@ public class ProductServiceImpl implements ProductService {
     	
 	}
 
-	
+	public IncomingProductData outmodel(Product pro) {
+		// TODO Auto-generated method stub
+		IncomingProductData prod = new IncomingProductData();
+		prod.setProductId(pro.getPid());
+		prod.setProductOwnerEmail(pro.getPemail());
+		prod.setProductName(pro.getPname());
+		prod.setState(pro.getPstate());
+		prod.setCity(pro.getPcity());
+		prod.setProductCategory(pro.getPcategory());
+		prod.setProductImage(pro.getImage());
+		prod.setPdatepost(pro.getPdatepost());
+		prod.setPexchangetype(pro.getPexchangetype());
+		return prod;
+	}
+
+	public List<Product> getByEmailAvailable(String id) throws ProductNotFoundException {
+    	if(repo.findAllByPemail(id).isEmpty()) {
+    		log.error("Product not exists in the repository");
+    		throw new ProductNotFoundException();
+    	} else {
+    		List<Product> abc = repo.findAllByPemail(id);
+    		List<Product> email = new ArrayList();
+    		for(int i=0;i<abc.size();i++) {
+    			if(abc.get(i).getPstatus()==Status.AVAILABLE) {
+    				email.add(abc.get(i));
+    				
+    			}
+    		}
+    		return email;
+    	}
+    }
 	
 }

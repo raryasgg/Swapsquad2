@@ -1,0 +1,131 @@
+<body>
+    <div class="container-fluid h-100">
+        <div class="row justify-content-center h-100">
+
+            <div class="col-md-10 col-xl-8 chat">
+                <div class="card">
+                    <div class="card-header msg_head">
+                        <div class="d-flex bd-highlight">
+                            <div class="img_cont">
+                                <img src="https://static.turbosquid.com/Preview/001292/481/WV/_D.jpg"
+                                    class="rounded-circle user_img">
+                            </div>
+                            <div class="user_info">
+                                <span>Chat with Khalid</span>
+                                <p>Message</p>
+                            </div>
+                            <div class="video_cam">
+                                <span><i class="fas fa-phone"></i></span>
+                                <span><i class="fas fa-envelope"></i></span>
+                            </div>
+                        </div>
+                        <span id="action_menu_btn">
+                            <i class="fa fa-house" style="margin-right: 1.5rem;"></i>
+                            <i class="fa fa-xmark" style="margin-right: 0.5rem;"></i>
+                        </span>
+                        <!-- <span id="action_menu_btn"><i class="fa-solid fa-xmark"></i></span> -->
+                    </div>
+                    <div class="card-body msg_card_body" >
+                        <div class="d-flex justify-content-start mb-4">
+                            <div class="img_cont_msg">
+                                <img src="https://static.turbosquid.com/Preview/001292/481/WV/_D.jpg"
+                                    class="rounded-circle user_img_msg">
+                            </div>
+                            <div class="msg_cotainer">
+                                Hi, how are you samim?
+                                <span class="msg_time">8:40 AM, Today</span>
+                            </div>
+                        </div>
+                        <div class="d-flex justify-content-end mb-4">
+                            <div class="msg_cotainer_send">
+                                Hi Khalid i am good tnx how about you?
+                                <span class="msg_time_send">8:55 AM, Today</span>
+                            </div>
+                            <div class="img_cont_msg">
+                                <img src="https://static.turbosquid.com/Preview/001214/650/2V/boy-cartoon-3D-model_D.jpg"
+                                    class="rounded-circle user_img" class="rounded-circle user_img_msg">
+                            </div>
+                        </div>
+                        <div class="d-flex justify-content-start mb-4">
+                            <div class="img_cont_msg">
+                                <img src="https://static.turbosquid.com/Preview/001292/481/WV/_D.jpg"
+                                    class="rounded-circle user_img_msg">
+                            </div>
+                            <div class="msg_cotainer">
+                                I am good too, thank you
+                                <span class="msg_time">9:00 AM, Today</span>
+                            </div>
+                        </div>
+                        <div class="d-flex justify-content-end mb-4">
+                            <div class="msg_cotainer_send">
+                                You are welcome
+                                <span class="msg_time_send">9:05 AM, Today</span>
+                            </div>
+                            <div class="img_cont_msg">
+                                <img src="https://static.turbosquid.com/Preview/001214/650/2V/boy-cartoon-3D-model_D.jpg"
+                                    class="rounded-circle user_img" class="rounded-circle user_img_msg">
+                            </div>
+                        </div>
+                        <div class="d-flex justify-content-start mb-4">
+                            <div class="img_cont_msg">
+                                <img src="https://static.turbosquid.com/Preview/001292/481/WV/_D.jpg"
+                                    class="rounded-circle user_img_msg">
+                            </div>
+                            <div class="msg_cotainer">
+                                I am looking for your next goal
+                                <span class="msg_time">9:07 AM, Today</span>
+                            </div>
+                        </div>
+                        <div class="d-flex justify-content-end mb-4">
+                            <div class="msg_cotainer_send">
+                                Ok, thank you have a good day
+                                <span class="msg_time_send">9:10 AM, Today</span>
+                            </div>
+                            <div class="img_cont_msg">
+                                <img src="https://static.turbosquid.com/Preview/001214/650/2V/boy-cartoon-3D-model_D.jpg"
+                                    class="rounded-circle user_img" class="rounded-circle user_img_msg">
+                            </div>
+                        </div>
+                        <div class="d-flex justify-content-start mb-4">
+                            <div class="img_cont_msg">
+                                <img src="https://static.turbosquid.com/Preview/001292/481/WV/_D.jpg"
+                                    class="rounded-circle user_img_msg">
+                            </div>
+                            <div class="msg_cotainer">
+                               Ok
+                                <span class="msg_time">9:12 AM, Today</span>
+                            </div>
+                        </div>
+                        <div class="d-flex justify-content-end mb-4" *ngFor="let msg of messageList">
+                            <div class="msg_cotainer_send">
+                               <!-- {{msg.replymessage | json}} -->
+                               {{msg.replymessage}}
+                               
+                                <span class="msg_time_send">9:15 AM, Today</span>
+                            </div>
+                            <div class="img_cont_msg">
+                                <img src="https://static.turbosquid.com/Preview/001214/650/2V/boy-cartoon-3D-model_D.jpg"
+                                    class="rounded-circle user_img" class="rounded-circle user_img_msg">
+                            </div>
+                        </div>
+                        
+                    </div>
+                    <div class="card-footer">
+                        <form [formGroup]="chatForm">
+                        <div class="input-group">
+                            <div class="input-group-append">
+                                <span class="input-group-text attach_btn"></span>
+                            </div>
+                            <textarea name="" class="form-control type_msg"
+                                placeholder="Type your message..." formControlName="replymessage"></textarea>
+                            <div class="input-group-append">
+                                <button mat-raised-button class="input-group-text send_btn" (click)="sendMessage()"> <i class="fa fa-location-arrow"></i> </button>
+                            </div>
+                        </div>
+                    </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>

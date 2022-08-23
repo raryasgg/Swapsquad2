@@ -1,12 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import {HttpClient} from '@angular/common/http';
-import { switchMap} from 'rxjs/operators'
+import { switchMap,filter} from 'rxjs/operators';
 import { IncomingProductData } from '../models/recommendation/incoming-product-data';
 import { RecommedationService } from '../services/recommendation-service/recommedation.service';
 import { DomSanitizer } from '@angular/platform-browser';
 
-interface Car {
+
+interface City {
   value: string;
   viewValue: string;
 }
@@ -26,13 +27,15 @@ value:any;
 recommendationForm:FormGroup;
 title = 'Ip-geolocation';
 userIP:'';
+searchKey:string="";
+public searchTerm : string='';
   
   productId:number;
-  productOwnerEmail:String;
-  productName:String;
-  state:String;
+  productOwnerEmail:any;
+  productName:any;
+  state:any;
   city:any;
-  productCategory:String;
+  productCategory:any;
   productImage:any; 
 
 
@@ -40,33 +43,48 @@ userIP:'';
   public category:any;
   public location:any;
   public abc:Array<IncomingProductData>=[];
+  public getproduct:any[]=[];
+  
 
   constructor(private httpClient:HttpClient,private _recommendationService: RecommedationService ,private domSanitizer:DomSanitizer) {
     this.recommendationForm = new FormGroup({
       city: new FormControl(),
       category: new FormControl(),
-      
-    });
+          });
    }
   
    
-   cars: Car[] = [
+   cities: City[] = [
+    {value: '', viewValue: ''},
     {value: 'Lucknow', viewValue: 'Lucknow'},
     {value: 'Raebareli', viewValue: 'Raebareli'},
     {value: 'Varanasi', viewValue: 'Varanasi'},
   ];
   
-  selectedCar = this.cars[0].value;
+  selectedCity = this.cities[0].value;
 
-  selectCar(event: Event) {
-    this.selectedCar = (event.target as HTMLSelectElement).value;
-    this._recommendationService.getProductRecommendationsByLocation(this.selectedCar).subscribe(data =>{
-     
+  selectCity(event: Event) {
+    this.selectedCity = (event.target as HTMLSelectElement).value;
+   if(!this.selectedCategory){
+    return this._recommendationService.getProductRecommendationsByLocation(this.selectedCity).subscribe(data=>{
       this.abc=data;
       console.log(this.abc);
-    })
+
+     })
+   }
+   else{
+    this._recommendationService.getgetProductRecommendationByCityAndCategory(this.selectedCity,this.selectedCategory).subscribe(data=>{
+        this.abc=data;
+        console.log(this.abc);
+       })
+   }
+  
+
+ 
+
   }
   categories: Category[]=[
+    {value: '', viewValue: ''},
     {value: 'Electronics', viewValue: 'Electronics'},
     {value: 'AutoMobiles', viewValue: 'AutoMoblies'},
     {value: 'Clothing', viewValue: 'Clothing'},
@@ -74,67 +92,59 @@ userIP:'';
    selectedCategory = this.categories[0].value;
    selectCategory(event:Event) {
     this.selectedCategory = (event.target as HTMLSelectElement).value;
-    this._recommendationService.getgetProductByCategory(this.selectedCategory).subscribe(data =>{
-      this.abc=data;
-      console.log(this.abc);
-   })
-   }
+    console.log(this.selectedCity);
+    if(!this.selectedCity){
+      return this._recommendationService.getgetProductByCategory(this.selectedCategory).subscribe(data=>{
+        this.abc=data;
+        console.log(this.abc);
+       })
+     }
+     else{
+      this._recommendationService.getgetProductRecommendationByCityAndCategory(this.selectedCity,this.selectedCategory).subscribe(data=>{
+          this.abc=data;
+          console.log(this.abc);
+         })
+     }
+   } 
+  
   ngOnInit(): void {
-    this._recommendationService.getProductRecommendationsByLocation(this.city).subscribe(data =>{
-      this.abc=data;
-      this.location=data;
-      console.log("data[]",this.abc)
-      this.city=this.location.city
-      this.state=this.location.state
-      
-    });
-    this._recommendationService.getgetProductByCategory(this.category).subscribe(data =>{
-      this.abc=data;
-      this.category=data;
-      console.log("data[]",this.abc)
-      this.category=this.category.category;
-    });
-
-    this._recommendationService.getgetProductRecommendationByCityAndCategory(this.city,this.category).subscribe(data =>{
-      this.abc=data;
-      this.IncomingProductData=data;
-      console.log("data[]",this.abc)
-      this.productId=this.IncomingProductData.productId
-      this.productOwnerEmail=this.IncomingProductData
-      this.productName=this.IncomingProductData.productName
-      this.state=this.IncomingProductData.state
-      this.city=this.IncomingProductData.city
-      this.productCategory=this.IncomingProductData.productCategory
-     this.productImage=this.domSanitizer.bypassSecurityTrustResourceUrl(
-
-      "data:productImage/" + "jpg" + ";base64," + this.IncomingProductData.productImage
-     );
-    
+   
+    this._recommendationService.getAllProduct().subscribe((data:any)=>{
+      console.log("data",data);
+      for (let i = 0; i < data.length; i++) {
+      this.abc.push(data[i]);
+      }
+      this.abc.map(image=>{
+        console.log(image);
+        image.productImage=this.domSanitizer.bypassSecurityTrustResourceUrl(
+          "data:productImage/" + "jpg" + ";base64," +image.productImage
+        );
+      })
+      console.log(this.abc);
     });
    
-
-
-    
   }
-
-recommendObj: IncomingProductData = new IncomingProductData();
-
+      recommendObj: IncomingProductData = new IncomingProductData();
     onSelect(){
       console.log(this.recommendationForm.value)
-  
-      this.recommendObj.city = this.recommendationForm.value.city;
+        this.recommendObj.city = this.recommendationForm.value.city;
       this.recommendObj.productCategory = this.recommendationForm.value.productCategory;
       this.recommendObj.state = this.recommendationForm.value.state;
-    
-      
-    }
+             }
+   // for Search bar
+   search(event:any){
+     this.searchTerm = (event.target as HTMLInputElement).value;
+     console.log(this.searchTerm);
+   }
+
+
+  
+   
+
   
 
 
   
-
-
-  // for Search bar 
 
  loadUserInfo(){
    

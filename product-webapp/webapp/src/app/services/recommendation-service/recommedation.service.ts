@@ -28,5 +28,8 @@ export class RecommedationService {
    getgetProductByCategory(category:String){
     return this.httpClient.get<IncomingProductData[]>(this.url+ "/Product" + '?category=' + category )
    }
+   getAllProduct(){
+    return this.httpClient.get<IncomingProductData[]>(this.url+ "/getAllProduct")
+   }
 }
 
