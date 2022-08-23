@@ -70,7 +70,7 @@ rate:any;
 
   // this._productdetailsService.getProductDetailsById(12).subscribe(data =>{
 
-    this._productdetailsService.getProductDetailsById(5).subscribe(data => {
+    this._productdetailsService.getProductDetailsById(12).subscribe(data => {
 
 
 

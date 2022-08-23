@@ -128,7 +128,7 @@ public class ProductController {
 	
 	
 	
-	@GetMapping("/products/{id}")
+	@PutMapping("/products/{id}")
 	public ResponseEntity<Product> setNotAvailableProductById(@PathVariable int id) {
 		try {
 			log.debug("Inside the ProductController -- setNotAvailableProductById methods");
