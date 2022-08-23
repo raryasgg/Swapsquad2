@@ -8,11 +8,18 @@
             <div class="card-body text-center">
              
              
-              <p class="text-muted mb-1">Saved Cards</p>
+              <h2 class="save-card text-primary mb-1">Saved Cards</h2>
              
               <div class="d-flex justify-content-center mb-2">
-              
-                <div   (click)="onclickgetaccount()">{{accountNumber}}</div>
+              <div>
+                <table  *ngFor="let num of emaildataobj">
+                    <tr>
+                       
+                <div  class="accountnum-box"  (click)="onclickgetaccount(num.accountNumber)" > {{num.accountNumber}}</div>
+            
+                </tr>
+            </table>
+            </div>
               </div>
             </div>
           </div>
@@ -41,6 +48,7 @@
                         accountForm.controls['accountHolderName'].errors?.required
                       " style="color: red">Please enter your Name*
                     </span>
+                   
                   
                        
                       </mat-form-field>
@@ -50,32 +58,7 @@
                 </div>
               </div>
 
-              <div class="row">
-                <div class="col-sm-3" style="padding-top:1rem;">
-                    <label >Email</label>
-                </div>
-                
-                <div class="col-sm-9">
-                    
-                    <mat-form-field class="small" appearance="outline">
-                        
-                        <input matInput type="text" formControlName="email">{{email}}
-                       
-                      <span class="small" *ngIf="
-                        accountForm.controls['email'].touched &&
-                        accountForm.controls['email'].invalid &&
-                        accountForm.controls['email'].errors?.required
-                      " style="color: red">Please enter your Name*
-                    </span>
-                  
-                       
-                      </mat-form-field>
-                    
-                     
-                      
-                </div>
-              </div>
-             
+              
 
              
 
@@ -98,6 +81,18 @@
                         accountForm.controls['accountNumber'].invalid &&
                         accountForm.controls['accountNumber'].errors?.pattern
                       " style="color: red">Enter Numbers only*
+                    </span>
+                    <span class="small" *ngIf="
+                        accountForm.controls['accountNumber'].touched &&
+                        accountForm.controls['accountNumber'].invalid &&
+                        accountForm.controls['accountNumber'].errors?.minlength
+                      " style="color: red">Minimum should be 9 numbers*
+                    </span>
+                    <span class="small" *ngIf="
+                        accountForm.controls['accountNumber'].touched &&
+                        accountForm.controls['accountNumber'].invalid &&
+                        accountForm.controls['accountNumber'].errors?.maxlength
+                      " style="color: red">Maximmum should be 18 numbers*
                     </span>
                       </mat-form-field>
                   
@@ -124,6 +119,19 @@
                     accountForm.controls['cvv'].errors?.pattern
                   " style="color: red">Enter Numbers only*
                 </span>
+                <span class="small" *ngIf="
+                    accountForm.controls['cvv'].touched &&
+                    accountForm.controls['cvv'].invalid &&
+                    accountForm.controls['cvv'].errors?.minlength
+                  " style="color: red">Minimum should be 3*
+                </span>
+                <span class="small" *ngIf="
+                    accountForm.controls['cvv'].touched &&
+                    accountForm.controls['cvv'].invalid &&
+                    accountForm.controls['cvv'].errors?.maxlength
+                  " style="color: red">Maximmum should be 4*
+                </span>
+                
                   </mat-form-field>
                 </div>
               </div>
@@ -178,7 +186,7 @@
             
               <div class="d-flex justify-content-center mb-2">
                 <button type="button" class="btn btn-outline-primary" style="padding-left: 1rem;" type="submit"(click)="onSave()"  [disabled]="!accountForm.valid">Save Card</button>
-                <button type="button" class="btn btn-primary ms-3" (click)="onAddCoin()">Add Coin</button>
+                <button type="button" class="btn btn-primary ms-3" (click)="onAddCoin()" *ngIf="disablebutton">Add Coin</button>
               </div>
             </form>
             </div>
