@@ -57,6 +57,7 @@ import { FilterPipe } from './shared/filter.pipe';
 
 import { Payment2Component } from './payment2/payment2.component';
 import { Payment3Component } from './payment3/payment3.component';
+import { LoginComponent } from './login/login.component';
 
 
 @NgModule({
@@ -79,7 +80,8 @@ import { Payment3Component } from './payment3/payment3.component';
     
 
     Payment2Component,
-    Payment3Component
+    Payment3Component,
+    LoginComponent
   ],
 
 
