@@ -44,7 +44,7 @@ rate:any;
  userId:""
  totalstar='5'
 
-
+empSelected:Number;
 
   
   // img1="assets/1.jpg"
@@ -70,7 +70,7 @@ ngOnInit(): void {
   // .subscribe(data => this.productdata =data)
 
 
-  this._productdetailsService.getProductDetailsById(5).subscribe(data =>{
+  this._productdetailsService.getProductDetailsById(12).subscribe(data =>{
 
 
     this.productdata =data;
@@ -125,15 +125,16 @@ ngOnInit(): void {
 }
 
 openDialog(){
-  if(this.pexchangetype="coin"){
+  console.log(this.productdata.pexchangetype)
+  if(this.productdata.pexchangetype=="COIN"){
   this.dialog.open(PaymentComponent);
   }
 
-  if(this.pexchangetype="exchange"){
+  else if(this.productdata.pexchangetype=="BARTER"){
     this.dialog.open(Payment2Component); 
   }
 
-if(this.pexchangetype="both"){
+else{
   this.dialog.open(Payment3Component); 
 }
 }
