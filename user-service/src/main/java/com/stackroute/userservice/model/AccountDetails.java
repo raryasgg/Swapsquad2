@@ -18,7 +18,7 @@ import java.util.Collection;
 @Document(collection="accountdata")
 public class AccountDetails {
     @Id
-    private int accountNumber;
+    private long accountNumber;
     private String email;
     private String  expiryMonth;
 //    private int amount;

@@ -46,8 +46,11 @@ import { NavbarComponent } from './navbar/navbar.component';
 import {MatListModule} from '@angular/material/list';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatToolbarModule} from '@angular/material/toolbar';
+import { FilterPipe } from './shared/filter.pipe';
 import { Payment2Component } from './payment2/payment2.component';
 import { Payment3Component } from './payment3/payment3.component';
+import { LoginComponent } from './login/login.component';
+
 
 @NgModule({
   declarations: [
@@ -64,9 +67,12 @@ import { Payment3Component } from './payment3/payment3.component';
     ChatComponent,
     MyProfileComponent,
     NavbarComponent,
+    FilterPipe,
     Payment2Component,
-    Payment3Component
+    Payment3Component,
+    LoginComponent
   ],
+
 
 
 entryComponents:[PaymentComponent,Payment2Component,Payment3Component,AccountdataComponent],
@@ -98,10 +104,14 @@ entryComponents:[PaymentComponent,Payment2Component,Payment3Component,Accountdat
     MatProgressBarModule,
     FlexLayoutModule,
     CommonModule,
-    RatingModule,
+
+     RatingModule,
+
+    
 
 
     MatDialogModule,
+
 
     MatMenuModule,
     MatListModule,

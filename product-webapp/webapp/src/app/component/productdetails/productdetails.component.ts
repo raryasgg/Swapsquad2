@@ -39,12 +39,11 @@ export class ProductdetailsComponent implements OnInit {
   img: any
   dateofposting: any
 
-
-  //user rating
-  rate: any;
-  review: any
-  userId: ""
-  totalstar = '5'
+//user rating
+rate:any;
+ review:any
+ userId:""
+ totalstar='5'
 
   // img1="assets/1.jpg"
 
@@ -67,8 +66,8 @@ export class ProductdetailsComponent implements OnInit {
 
     // commented starts
 
-    this._productdetailsService.getProductDetailsById(7).subscribe(data => {
 
+    this._productdetailsService.getProductDetailsById(12).subscribe(data => {
 
       this.productdata = data;
       console.log(this.productdata)
@@ -169,8 +168,6 @@ export class ProductdetailsComponent implements OnInit {
   //<============================ Chat Service Ends Here=========================>
 
 }
-
-function gmail(gmail: any) {
-  throw new Error('Function not implemented.');
-}
-
+  function gmail(gmail: any) {
+    throw new Error('Function not implemented.');
+  }
