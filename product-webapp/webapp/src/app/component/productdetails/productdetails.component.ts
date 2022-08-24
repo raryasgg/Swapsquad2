@@ -54,6 +54,8 @@ rate:any;
   pexchange: any;
   ratings: any;
   avgRating:any;
+  pstate: any;
+  pcity: any;
  
   constructor(private _productdetailsService: ProductDetailsService, private domSanitizer: DomSanitizer,private userratingservice:UserratingService, private router: Router,public dialog:MatDialog) {
 
@@ -70,7 +72,7 @@ rate:any;
 
   // this._productdetailsService.getProductDetailsById(12).subscribe(data =>{
 
-    this._productdetailsService.getProductDetailsById(12).subscribe(data => {
+    this._productdetailsService.getProductDetailsById(6).subscribe(data => {
 
 
 
@@ -79,7 +81,9 @@ rate:any;
       this.pname = this.productdata.pname
       this.pmail = this.productdata.pemail
       this.pcategory = this.productdata.pcategory
-      this.plocation = this.productdata.plocation
+      // this.plocation = this.productdata.plocation
+      this.pstate =this.productdata.pstate
+      this.pcity= this.productdata.pcity
       this.pdate = this.productdata.pdate
       this.pdatepost = this.productdata.pdatepost
       this.pcoin = this.productdata.pcoin
@@ -100,7 +104,7 @@ rate:any;
       this.dateofposting = t2.substring(0, 10)
     });
 
-    this.userratingservice.getUserRatingByEmail("poojitha@gmail.com").subscribe(dataofrating => {
+    this.userratingservice.getUserRatingByEmail("raju@gmail.com").subscribe(dataofrating => {
       this.userratingdata = dataofrating
       console.log(this.userratingdata)
       this.ratings = this.userratingdata.ratings

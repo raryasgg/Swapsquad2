@@ -45,7 +45,7 @@ import com.stackroute.productservice.service.SequenceGeneratorService;
 import lombok.extern.slf4j.Slf4j;
 
 
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin(origins = "*")
 @RestController
 @RequestMapping("/api/v1")
 @Slf4j

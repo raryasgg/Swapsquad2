@@ -16,3 +16,9 @@ table{
     padding: 4px 4px 4px 4px;
 
 }
+.close:hover{
+    display: flex;
+    align-items: center;
+    background-color: #578893;
+
+}
