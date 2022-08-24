@@ -121,6 +121,6 @@ public class UserRegistrationController {
 		return new ResponseEntity<UserRegistration>(userservice.add(user),
 				org.springframework.http.HttpStatus.CREATED);
 	}
-	 
+
 
 }

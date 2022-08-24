@@ -16,6 +16,7 @@ export class UserRegistration {
   image: any;
   acoin:any;
   price:any;
+  barterCoins:any;
 
   constructor() {
     this.firstname = "";

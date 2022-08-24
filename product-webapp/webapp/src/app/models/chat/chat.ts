@@ -1,10 +1,10 @@
 import { Message } from "./message";
 
 export class Chat {
-    chatId=Number;
+    chatId:Number;
     ownerEmail:string;
     buyerEmail:string;
-    messageList:[];
+    messageList:Message[];
 
     constructor(){
         

@@ -13,12 +13,16 @@
           Coins: {{coin}}
           
         </a>
-        <a href="#" mat-button>
+        <a  mat-button [matMenuTriggerFor]="menu">
           <span class="material-icons">
             account_circle
             </span>
-          My Account
+          {{username}}
         </a>
+        <mat-menu #menu="matMenu" class="customize">
+          <button mat-menu-item style="color: white;">{{usersemail}}</button>
+          <button mat-menu-item style="color: white;">Logout</button>
+        </mat-menu>
       </div>
 </mat-toolbar>
 <mat-sidenav-container class="example-container" autosize>

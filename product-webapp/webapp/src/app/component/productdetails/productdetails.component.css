@@ -83,7 +83,10 @@ img {
     border-radius: 6px;
     margin-top: 0rem;
     padding-top: 0.5rem;
-    background: #E7EEE7
+    background: #E7EEE7;
+    overflow-x: auto;
+    overflow-y: auto;
+    
     
 }
 
@@ -126,6 +129,7 @@ table {
     align-items: center;
     margin-right: 1rem;
     margin-top: -1rem;
+
 }
 
 .description-text-box {

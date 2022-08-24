@@ -23,6 +23,7 @@ export class ProductDetailsService {
   getProductDetailsByEmail(pemail:any){
     return this.httpClient.get<Product[]>(this.url+ "/api/v1/productavailablebyemail/" + pemail)
    }
-
-
+updateProductNotAvailable(pid:any){
+  return this.httpClient.put(`${"http://localhost:8080/api/v1/products"}/${pid}`,pid);
+}
 }

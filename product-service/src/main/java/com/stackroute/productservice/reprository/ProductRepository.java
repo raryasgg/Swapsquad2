@@ -12,8 +12,8 @@ public interface ProductRepository extends MongoRepository<Product, Integer> {
      
 
 	List<Product> findAllByPstatus(String abc);
-	Product findAllByPname(String abc);
 	Product findByPname(String abc);
 	List<Product> findAllByPemail(String email);
 	Product findByPemail(String abc);
+	List<Product> findAllByPname(String abc);
 }
