@@ -44,6 +44,8 @@ export class TranscationsComponent implements OnInit {
   abc:Product
   userrat:Userrating[];
   a:Userrating=null
+
+  usersemail=""
   
   selectCar(event: Event) {
     this.selectedValue = (event.target as HTMLSelectElement).value;
@@ -51,7 +53,7 @@ export class TranscationsComponent implements OnInit {
 
     if(this.selectedValue=='Purchased Products'){
 
-      this.transcationService.getTranscationsByByerEmailId("anjali@gmail.com").subscribe((data:any)=>{
+      this.transcationService.getTranscationsByByerEmailId(this.usersemail).subscribe((data:any)=>{
         console.log("data",data);
         // for (let i = 0; i < data.length; i++) {
         // this.abc.push(data[i]);
@@ -83,10 +85,29 @@ export class TranscationsComponent implements OnInit {
             this.tran[i].image2=this.tran[i].image
             console.log("product",this.tran);
           });
+          this.transcationService.getProductByName(this.tran[i].productSend).subscribe((data:any)=>{
+            console.log("product",data);
+            this.abc=data
+            // for (let i = 0; i < data.length; i++) {
+            // this.abc.push(data[i]);
+            // }
+            // console.log(this.abc);
+            
+          
+            this.tran[i].image=this.domSanitizer.bypassSecurityTrustResourceUrl(
+    
+              "data:img/" + "jpg" + ";base64," + data.image
+        
+            );
+            this.tran[i].pname1=this.tran[i].productSend
+            this.tran[i].pcategory1=this.abc.pcategory
+            this.tran[i].image1=this.tran[i].image
+            console.log("product",this.tran);
+          });
         }
       });
     }else{
-      this.transcationService.getTranscationsBySellerEmailId("anjali@gmail.com").subscribe((data:any)=>{
+      this.transcationService.getTranscationsBySellerEmailId(this.usersemail).subscribe((data:any)=>{
         console.log("data",data);
         // for (let i = 0; i < data.length; i++) {
         // this.abc.push(data[i]);
@@ -202,6 +223,8 @@ export class TranscationsComponent implements OnInit {
   
   
   ngOnInit(): void {
+
+    this.usersemail=localStorage.getItem('loginEmail')
     this.transcationService.getTranscationsBySellerEmailId("anjali@gmail.com").subscribe((data:any)=>{
       console.log("data",data);
       // for (let i = 0; i < data.length; i++) {

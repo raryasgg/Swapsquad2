@@ -1,11 +1,11 @@
 <div class="cont">
   <div class="drop">
      <form>
-       <mat-form-field appearance="fill" style="width: 400px;background-color: rgb(116, 225, 116);" >
+       <mat-form-field appearance="outline" style="width: 400px;border-color:blue;border-width: 5px;" >
          <mat-label> <b>Transcation Type</b> </mat-label>
          <select matNativeControl (change)="selectCar($event)">
-           <option style="background-color: rgb(150, 220, 150);" value=""></option>
-           <option style="background-color: rgb(150, 220, 150);" *ngFor="let tran of transcations" [value]="tran.value"
+           <option  value=""></option>
+           <option  *ngFor="let tran of transcations" [value]="tran.value"
                    [selected]="selectedValue === tran.value">{{ tran.value }}</option>
          </select>
        </mat-form-field>
