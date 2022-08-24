@@ -113,6 +113,16 @@ public class ProductController {
 		}
 	}
 	
+	@GetMapping("/productn/{name}")
+	public ResponseEntity<Product> getProductByName(@PathVariable String name) {
+		try {
+			log.debug("Inside the ProductController -- getProductByEmail methods");
+			return new ResponseEntity<Product>(pservice.getByName(name), HttpStatus.OK);
+		} catch (ProductNotFoundException e) {
+			log.error("Product not found.",e);
+			return new ResponseEntity("Product Not found", HttpStatus.NOT_FOUND);
+		}
+	}
 
 	
 	@GetMapping("/product/a")
@@ -190,5 +200,4 @@ public class ProductController {
 	}
 	
 	
-
 }

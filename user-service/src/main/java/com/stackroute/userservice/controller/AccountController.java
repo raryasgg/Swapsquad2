@@ -36,7 +36,7 @@ public class AccountController {
 
 
     @GetMapping("/{accountNumber}")
-    public ResponseEntity<AccountDetails> getAccountDataByAccountNumber(@PathVariable int accountNumber) {
+    public ResponseEntity<AccountDetails> getAccountDataByAccountNumber(@PathVariable long accountNumber) {
         try {
             log.debug("Inside the AccountController -- ById methods");
             return new ResponseEntity<AccountDetails>(accservice.getById(accountNumber), HttpStatus.OK);

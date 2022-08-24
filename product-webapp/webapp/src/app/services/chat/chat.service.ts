@@ -31,4 +31,8 @@ getChatIdByBuyerAndSellerEmail(buyerEmail:String,ownerEmail:String){
   return this.httpClient.get<Chat>(this.baseUrl+ "/chatByBothOwnerAndBuyerEmail" + '?buyerEmail='+buyerEmail+'&ownerEmail='+ownerEmail)
  }
 
+ getChatByBuyerOrSellerEmail(email:any){
+  return this.httpClient.get<Chat>(this.baseUrl+ "/chatByOwnerOrBuyerEmail/" + email)
+ }
+
 }

@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import { FormArray, FormBuilder, FormControl, FormGroup, NgForm, Validators } from '@angular/forms';
 import { Account } from 'src/app/models/account-data/account';
 import { AccountService } from 'src/app/services/accounts-data/account.service';
@@ -18,9 +18,9 @@ import Swal from 'sweetalert2';
 })
 export class AccountdataComponent implements OnInit {
   accountForm: FormGroup;
-
+  accnumarray:any;
   emaildataobj:any;
-
+  public abc:Array<Account>=[];
   accountObj: Account = new Account();
 public accountdata : any;
   accountHolderName: any;
@@ -29,12 +29,8 @@ public accountdata : any;
   cvv: any;
   amount:any;
   email:any;
-  // date = new FormControl(moment());
-
-  // monthSelected(event, dp, input) {
-  //   dp.close();
-  //   input.value = event.toISOString().split('-').join('/').substr(0, 7);
-  // }
+  selectednum: string;
+ 
 
   
 
@@ -43,26 +39,45 @@ public accountdata : any;
   constructor( private fb: FormBuilder, private accountService: AccountService ) { 
     this.accountForm= new FormGroup({
       accountHolderName : new FormControl ("", [Validators.required]),
-      accountNumber :new FormControl("",[Validators.required,Validators.pattern('[0-9 ]*')]),
-      cvv : new FormControl("",[Validators.required,Validators.pattern('[0-9 ]*')]),
+      accountNumber :new FormControl("",[Validators.required,Validators.pattern('[0-9 ]*'),Validators.minLength(9),Validators.maxLength(18)]),
+      cvv : new FormControl("",[Validators.required,Validators.pattern('[0-9 ]*'),Validators.minLength(3),Validators.maxLength(4)]),
       expiryMonth: new FormControl("",[Validators.required]),
-      email :new FormControl(""),
+      // email :new FormControl("",[Validators.required]),
       
       // accountHolderName : new FormControl (),
       // accountNumber :new FormControl(),
       // cvv : new FormControl(),
       // expiryMonth: new FormControl(),
-      amount: new FormControl()
+      amount: new FormControl(),
+      // emai: new FormControl()
 
     })
   }
 
   ngOnInit() {
-    // this.accountService.getAccountDataByEmail("ravi@gmail.com").subscribe(resbyemail=>{
-    //   this.emaildataobj=resbyemail;
-    //   this.accountNumber=this.emaildataobj.accountNumber;
+    this.accountService.getAccountDataByEmail("ravi@gmail.com").subscribe((resbyemail:any)=>{
+      this.emaildataobj=resbyemail;
+      console.log(this.emaildataobj);
+     
+      this.accountNumber=this.emaildataobj.accountNumber;
+      // console.log(this.accountNumber);
+      for (let i = 0; i < resbyemail.length; i++) {
+        this.abc.push(resbyemail[i]);
+        }
+        // this.abc.map(accountNumber=>{
+        //   console.log(accountNumber);
+        //   accountNumber.accountNumber=this.accountNumber.accoutNumber;
+        //  } );
 
-    // })
+// var allAccountNumbers= resbyemail.filter(activity => (activity.accountNumber));
+// console.log(allAccountNumbers);
+
+// let accnumarray= resbyemail.map((item) =>[item["accountNumber"]]);
+// console.log(accnumarray);
+
+});
+
+   
 
 
 }
@@ -75,20 +90,24 @@ onSave(){
     this.accountObj.accountNumber= this.accountForm.value.accountNumber;
     this.accountObj.cvv=this.accountForm.value.cvv;
     this.accountObj.expiryMonth=this.accountForm.value.expiryMonth;
-    this.accountObj.email=this.accountForm.value.email;
+    this.accountObj.email="ravi@gmail.com";
     // this.accountObj.amount=this.accountForm.value.amount;
     this.accountService.addAccount(this.accountObj).subscribe(result =>
       console.log(result)
-      );  this.accountForm.reset();
+   );
+   
+       this.accountForm.reset();
       Swal.fire({ icon: 'success', title: 'Successfully Saved !!', text: 'Your Account is added Succesfully !', })
      
   }
+  }
   
-}
 
 
-onclickgetaccount(){
-  this.accountService.getAccountByAccountNumber(2222).subscribe(accresult =>{
+onclickgetaccount(accm){
+  // this.selectednum = (event.target).value;
+  console.log(accm);
+  this.accountService.getAccountByAccountNumber(accm).subscribe(accresult =>{
     this.accountdata=accresult;
     console.log(this.accountdata);
     this.accountHolderName= this.accountdata.accountHolderName;
@@ -96,16 +115,26 @@ onclickgetaccount(){
     this.expiryMonth=this.accountdata.expiryMonth;
     this.cvv =  this.accountdata.cvv;
     this.email= this.accountdata.email;
-  })
-
+ 
+  }) 
 }
 
+disablebutton:boolean=true;
+
+
 onAddCoin(){
+  if(this.accountForm.value.amount!=null){
 console.log(this.accountForm.value)
 this.accountObj.amount=this.accountForm.value.amount;
 this.accountService.addAmount("ravi@gmail.com",this.accountObj.amount).subscribe(updateres =>{
   console.log(updateres)
-} )
+  // this.disablebutton=false;
 
+}); this.accountForm.reset();
+Swal.fire({ icon: 'success', title: 'Coin added !!', text: 'Coins added Succesfully !', })
+// this.disablebutton=false;
+  }else{
+    // this.disablebutton=true;
+  }
 }
 }

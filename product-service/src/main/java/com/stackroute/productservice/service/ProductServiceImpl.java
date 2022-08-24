@@ -230,4 +230,13 @@ public class ProductServiceImpl implements ProductService {
     	}
     }
 	
+	public Product getByName(String id) throws ProductNotFoundException {
+		if(repo.findAllByPname(id).isEmpty()) {
+    		log.error("Product not exists in the repository");
+    		throw new ProductNotFoundException();
+    	} else {
+    		log.debug("Inside the ProductServiceImpl -- getByEmail methods");
+    		return repo.findByPname(id);
+    	}
+	}
 }
