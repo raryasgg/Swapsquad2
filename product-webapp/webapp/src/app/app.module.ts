@@ -36,6 +36,11 @@ import { TranscationsComponent } from "./transcations/transcations.component";
 import { MyProfileComponent } from './my-profile/my-profile.component';
 import { CommonModule } from "@angular/common";
 // If You are getting error then install ( npm i ng-starrating )
+
+
+ 
+
+
 import { RatingModule } from "ng-starrating";
 import { AccountdataComponent } from './component/accountdata/accountdata.component';
 import {MatDialogModule} from '@angular/material/dialog';
@@ -47,6 +52,11 @@ import {MatListModule} from '@angular/material/list';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import { FilterPipe } from './shared/filter.pipe';
+
+
+
+
+
 import { Payment2Component } from './payment2/payment2.component';
 import { Payment3Component } from './payment3/payment3.component';
 import { LoginComponent } from './login/login.component';

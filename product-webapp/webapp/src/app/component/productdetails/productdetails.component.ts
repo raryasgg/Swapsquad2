@@ -1,23 +1,22 @@
-import { Component, OnInit } from '@angular/core';
-import { pid } from 'process';
-import { Product } from './product';
-import { ProductDetailsService } from './product-details.service';
-import { DomSanitizer } from '@angular/platform-browser';
-import { UserratingService } from './userrating.service';
-import { Router } from '@angular/router';
-import { MatDialog } from '@angular/material/dialog';
-import { PaymentComponent } from '../../payment/payment.component';
-import { Payment2Component } from '../../payment2/payment2.component';
-import { Payment3Component } from '../../payment3/payment3.component';
-import { ChatService } from 'src/app/services/chat/chat.service';
-import { Chat } from 'src/app/models/chat/chat';
-import { error } from 'protractor';
-import { I } from '@angular/cdk/keycodes';
+import { Component, OnInit } from "@angular/core";
+import { Product } from "./product";
+import { ProductDetailsService } from "./product-details.service";
+import { DomSanitizer } from "@angular/platform-browser";
+import { UserratingService } from "./userrating.service";
+import { Router } from "@angular/router";
+import { MatDialog } from "@angular/material/dialog";
+import { PaymentComponent } from "../../payment/payment.component";
+import { Payment2Component } from "../../payment2/payment2.component";
+import { Payment3Component } from "../../payment3/payment3.component";
+import { ChatService } from "src/app/services/chat/chat.service";
+import { Chat } from "src/app/models/chat/chat";
+import { error } from "protractor";
+import { I } from "@angular/cdk/keycodes";
 
 @Component({
-  selector: 'app-productdetails',
-  templateUrl: './productdetails.component.html',
-  styleUrls: ['./productdetails.component.css']
+  selector: "app-productdetails",
+  templateUrl: "./productdetails.component.html",
+  styleUrls: ["./productdetails.component.css"],
 })
 export class ProductdetailsComponent implements OnInit {
 
@@ -27,23 +26,24 @@ export class ProductdetailsComponent implements OnInit {
   pstatus = "Available";
   pdate = "";
   pcoin = 20000;
-  pdatepost = ""
+  pdatepost = "";
 
-  pexchangetype = "exchange"
-  desc = "this is description of the product";
+  pexchangetype = "exchange";
+  desc =
+    " Operating System: OxygenOS based on Android 11 CPU: Qualcomm® Snapdragon™ 870.. GPU: Adreno 650. RAM: 8GB/12GB";
   pcategory = "";
   year: any;
   dateofpurchase: String;
   time: String;
-  product: any
-  img: any
-  dateofposting: any
+  product: any;
+  img: any;
+  dateofposting: any;
 
-//user rating
-rate:any;
- review:any
- userId:""
- totalstar='5'
+  //user rating
+  rate: any;
+  review: any;
+  userId: "";
+  totalstar = "5";
 
   // img1="assets/1.jpg"
 
@@ -52,29 +52,31 @@ rate:any;
   pexchange: any;
   ratings: any;
   avgRating: any;
+  pstate: any;
+  pcity: any;
 
-  constructor(private _productdetailsService: ProductDetailsService, private domSanitizer: DomSanitizer, private userratingservice: UserratingService, private router: Router, public dialog: MatDialog, private chatService: ChatService) {
 
-
-  }
+  constructor(
+    private _productdetailsService: ProductDetailsService,
+    private domSanitizer: DomSanitizer,
+    private userratingservice: UserratingService,
+    private router: Router,
+    public dialog: MatDialog,
+    private chatService: ChatService
+  ) { }
 
   ngOnInit(): void {
-    // console.log("working...")
-    // console.log(this._productdetailsService)
-    // this._productdetailsService.getProductdetailsById(1)
-    // .subscribe(data => this.productdata =data)
 
-    // commented starts
-
-
-    this._productdetailsService.getProductDetailsById(9).subscribe(data => {
+    this._productdetailsService.getProductDetailsById(3).subscribe((data) => {
 
       this.productdata = data;
       console.log(this.productdata)
       this.pname = this.productdata.pname
       this.pemail = this.productdata.pemail
       this.pcategory = this.productdata.pcategory
-      this.plocation = this.productdata.plocation
+      // this.plocation = this.productdata.plocation
+      this.pstate = this.productdata.pstate
+      this.pcity = this.productdata.pcity
       this.pdate = this.productdata.pdate
       this.pdatepost = this.productdata.pdatepost
       this.pcoin = this.productdata.pcoin
@@ -87,15 +89,16 @@ rate:any;
 
       );
 
-      this.ownerEmail=this.productdata.pemail;
+      this.ownerEmail = this.productdata.pemail;
       var t = this.pdatepost;
       this.dateofpurchase = t.substring(0, 10);
 
       var t2 = this.pdate;
-      this.dateofposting = t2.substring(0, 10)
+      this.dateofposting = t2.substring(0, 10);
     });
 
-    this.userratingservice.getUserRatingByEmail("poojitha@gmail.com").subscribe(dataofrating => {
+
+    this.userratingservice.getUserRatingByEmail("raju@gmail.com").subscribe(dataofrating => {
       this.userratingdata = dataofrating
       console.log(this.userratingdata)
       this.ratings = this.userratingdata.ratings
@@ -105,18 +108,15 @@ rate:any;
 
   }
 
-
+  //<============================ Payment Service Starts Here=========================>
 
   openDialog() {
-    if (this.pexchangetype = "coin") {
+    console.log(this.productdata.pexchangetype);
+    if (this.productdata.pexchangetype == "COIN") {
       this.dialog.open(PaymentComponent);
-    }
-
-    if (this.pexchangetype = "exchange") {
+    } else if (this.productdata.pexchangetype == "BARTER") {
       this.dialog.open(Payment2Component);
-    }
-
-    if (this.pexchangetype = "both") {
+    } else {
       this.dialog.open(Payment3Component);
     }
   }
@@ -167,8 +167,7 @@ rate:any;
   }
 
   //<============================ Chat Service Ends Here=========================>
-
 }
-  function gmail(gmail: any) {
-    throw new Error('Function not implemented.');
-  }
+function gmail(gmail: any) {
+  throw new Error("Function not implemented.");
+}

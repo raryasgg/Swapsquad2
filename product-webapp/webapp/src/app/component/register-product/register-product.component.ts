@@ -111,6 +111,7 @@ if (!this.productForm.invalid){
   this.productObj.pemail = this.pemail;
   this.productObj.pstate = this.productForm.value.pstate;
   this.productObj.pcoin = this.productForm.value.pcoin;
+  this.productObj.pemail=JSON.parse(localStorage.getItem('loginEmail'))
   this.productService.addProduct(this.productObj, this.file[0]).subscribe(data =>
     console.log(data)
   )

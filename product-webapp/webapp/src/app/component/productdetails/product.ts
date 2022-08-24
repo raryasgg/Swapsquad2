@@ -5,7 +5,9 @@ export class Product {
    public pemail:string;
    public pname:string;
     pcategory:string;
-    plocation:string;
+    // plocation:string;
+    pstate:string;
+    pcity:string;
     pstatus:string;
     pdate:string;
     pexchange:[]

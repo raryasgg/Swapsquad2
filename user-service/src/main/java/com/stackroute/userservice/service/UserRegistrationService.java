@@ -28,4 +28,5 @@ public interface UserRegistrationService {
 
 public	UserRegistration add(UserRegistration user);
 
+
 }

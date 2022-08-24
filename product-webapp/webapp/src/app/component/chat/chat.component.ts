@@ -114,4 +114,12 @@ export class ChatComponent implements OnInit {
     })
   }
 
+  routeX(){
+    this.router.navigateByUrl('recommendation-service');
+  }
+
+  routeHome(){
+    this.router.navigateByUrl('');
+  }
+
 }

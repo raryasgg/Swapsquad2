@@ -29,8 +29,8 @@ public class UserRegistrationServiceImpl implements UserRegistrationService{
 	
 	@Override
 	public UserRegistration addNew(UserRegistration emp) throws UserAlreadyExistException {
-		Optional<UserRegistration> movie = repo.findById(emp.getEmail());
-		if (movie.isPresent()) {
+		Optional<UserRegistration> user = repo.findById(emp.getEmail());
+		if (user.isPresent()) {
 			throw new UserAlreadyExistException();
 		} else {
 			return repo.save(emp);
@@ -39,11 +39,11 @@ public class UserRegistrationServiceImpl implements UserRegistrationService{
 
 //	@Override
 //	public UserRegistration addNew(UserRegistration emp) throws UserAlreadyExistException {
-//		Optional<UserRegistration> movie = repo.findById(emp.getEmail());
-//		if (movie.isPresent()) {
+//		Optional<UserRegistration> user = repo.findById(emp.getEmail());
+//		if (user.isPresent()) {
 //			throw new UserAlreadyExistException();
 //		} else {
-//			UserRegistration userreg=movie.get();
+//			UserRegistration userreg=user.get();
 //			userreg.setBarterCoins(50);
 //			return repo.save(userreg);
 //		}
@@ -116,7 +116,7 @@ public class UserRegistrationServiceImpl implements UserRegistrationService{
 	public UserRegistration add(UserRegistration user) {
 
 
-		user.setBarterCoins(50);
+//		user.setBarterCoins(50);
 	return repo.save(user);
 
 

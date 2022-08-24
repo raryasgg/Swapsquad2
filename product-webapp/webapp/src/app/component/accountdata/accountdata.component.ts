@@ -3,6 +3,7 @@ import { FormArray, FormBuilder, FormControl, FormGroup, NgForm, Validators } fr
 import { Account } from 'src/app/models/account-data/account';
 import { AccountService } from 'src/app/services/accounts-data/account.service';
 import Swal from 'sweetalert2';
+import { MatDialogRef } from '@angular/material/dialog';
 
 // import * as moment from 'moment';
 
@@ -36,7 +37,7 @@ public accountdata : any;
 
 
 
-  constructor( private fb: FormBuilder, private accountService: AccountService ) { 
+  constructor( private fb: FormBuilder, private accountService: AccountService, private matDialogRef: MatDialogRef<AccountdataComponent> ) { 
     this.accountForm= new FormGroup({
       accountHolderName : new FormControl ("", [Validators.required]),
       accountNumber :new FormControl("",[Validators.required,Validators.pattern('[0-9 ]*'),Validators.minLength(9),Validators.maxLength(18)]),
@@ -113,13 +114,16 @@ onclickgetaccount(accm){
     this.accountHolderName= this.accountdata.accountHolderName;
     this.accountNumber=this.accountdata.accountNumber;
     this.expiryMonth=this.accountdata.expiryMonth;
-    this.cvv =  this.accountdata.cvv;
+    this.cvv =  "***"
     this.email= this.accountdata.email;
  
   }) 
 }
 
-disablebutton:boolean=true;
+// gmail=localStorage.getItem('loginemail');
+gmail=JSON.parse(localStorage.getItem('loginemail'));
+
+
 
 
 onAddCoin(){
@@ -128,13 +132,17 @@ console.log(this.accountForm.value)
 this.accountObj.amount=this.accountForm.value.amount;
 this.accountService.addAmount("ravi@gmail.com",this.accountObj.amount).subscribe(updateres =>{
   console.log(updateres)
-  // this.disablebutton=false;
+ 
 
 }); this.accountForm.reset();
 Swal.fire({ icon: 'success', title: 'Coin added !!', text: 'Coins added Succesfully !', })
 // this.disablebutton=false;
   }else{
-    // this.disablebutton=true;
+    Swal.fire({ icon: 'question', title: 'Want to add coins ?', text: 'Enter amount  !', })
   }
+}
+
+onClickClear(){
+this.matDialogRef.close();
 }
 }

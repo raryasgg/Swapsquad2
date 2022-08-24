@@ -10,6 +10,7 @@ import Validation from './validation';
 import { authService } from './auth.service';
 import { LoginService } from '../services/login/login.service';
 import { UserDao } from '../models/login/user-dao';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -21,7 +22,7 @@ export class LoginComponent implements OnInit {
   submitted = false;
   errorMessage:string;
 
-  constructor(private formBuilder: FormBuilder,private loginService:LoginService) {
+  constructor(private formBuilder: FormBuilder,private loginService:LoginService,private router: Router) {
     this.form=new FormGroup({
       email:new FormControl("", [Validators.required,Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$")]),
       password:new FormControl("", [Validators.required,Validators.minLength(6), Validators.maxLength(15)])
@@ -66,6 +67,7 @@ export class LoginComponent implements OnInit {
         console.log("validated",data);
         this.form.reset();
         localStorage.setItem("loginEmail",this.loginObj.username);
+        this.router.navigate(["recommendation-service"]);
       },(
         error=>{console.log(error);
            this.errorMessage=error.error;

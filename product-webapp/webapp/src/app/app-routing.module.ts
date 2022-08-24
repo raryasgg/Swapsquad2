@@ -21,7 +21,7 @@ const routes: Routes = [
   { path: 'registerProduct', component: RegisterProductComponent },
   { path: 'productDetail', component: ProductdetailsComponent },
   { path: 'recommendation-service', component: RecommendationServiceComponent },
-  { path: 'updateDetails', component: UpdateDetailsComponent },
+  { path: 'updateDetails/:email', component: UpdateDetailsComponent },
   { path: 'home', component: AppComponent },
   {path:'transcations', component:TranscationsComponent},
   {path:'myProfile', component: MyProfileComponent},
