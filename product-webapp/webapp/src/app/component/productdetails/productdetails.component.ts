@@ -21,7 +21,7 @@ import { I } from '@angular/cdk/keycodes';
 })
 export class ProductdetailsComponent implements OnInit {
 
-  pmail = "raju@gmail.com";
+  pemail = "raju@gmail.com";
   pname = "One Plus 9r";
   plocation = "Patna,Bihar";
   pstatus = "Available";
@@ -67,12 +67,12 @@ rate:any;
     // commented starts
 
 
-    this._productdetailsService.getProductDetailsById(12).subscribe(data => {
+    this._productdetailsService.getProductDetailsById(9).subscribe(data => {
 
       this.productdata = data;
       console.log(this.productdata)
       this.pname = this.productdata.pname
-      this.pmail = this.productdata.pemail
+      this.pemail = this.productdata.pemail
       this.pcategory = this.productdata.pcategory
       this.plocation = this.productdata.plocation
       this.pdate = this.productdata.pdate
@@ -87,7 +87,7 @@ rate:any;
 
       );
 
-      // this.ownerEmail=this.productdata.pemail;
+      this.ownerEmail=this.productdata.pemail;
       var t = this.pdatepost;
       this.dateofpurchase = t.substring(0, 10);
 
@@ -122,9 +122,8 @@ rate:any;
   }
 
   //<============================ Chat Service Starts Here=========================>
-
-  ownerEmail = "raju@gmail.com";
-  buyerEmail = "raju@gmail.com";
+  ownerEmail = "";
+  buyerEmail = localStorage.getItem("loginEmail");
   public chatData: any;
   chatObj: Chat = new Chat();
   chatId = 0;
@@ -132,37 +131,39 @@ rate:any;
 
   // For routing to the chat page when click on chat button
   goToChat() {
-
     // For string the buyerEmail or whose ever logged in, in localstorage
-    localStorage.setItem('buyerEmail', JSON.stringify(this.buyerEmail));
+    localStorage.setItem("buyerEmail", JSON.stringify(this.buyerEmail));
 
     if (this.ownerEmail != this.buyerEmail) {
       // For checking the chat room by both the emails , if there is present then it will give the chat Id in localstorage
-      this.chatService.getChatIdByBuyerAndSellerEmail(this.buyerEmail, this.ownerEmail).subscribe((data => {
-        // console.log(data);
-        this.chatData = data;
-        this.chatId = this.chatData[0].chatId;
-        console.log(this.chatId);
-        localStorage.setItem('chatId', JSON.stringify(this.chatId))
-      }), ((error: any) => {
-        console.log(error.error);
-        this.chatNotFound = error.error;
+      this.chatService
+        .getChatIdByBuyerAndSellerEmail(this.buyerEmail, this.ownerEmail)
+        .subscribe(
+          (data) => {
+            // console.log(data);
+            this.chatData = data;
+            this.chatId = this.chatData[0].chatId;
+            console.log(this.chatId);
+            localStorage.setItem("chatId", JSON.stringify(this.chatId));
+          },
+          (error: any) => {
+            console.log(error.error);
+            this.chatNotFound = error.error;
 
-        //  If the chat room is not already present then it will create new chat room and give the chatId in localstorage
-        this.chatObj.buyerEmail = this.buyerEmail;
-        this.chatObj.ownerEmail = this.ownerEmail;
-        this.chatService.createChatRoom(this.chatObj).subscribe(data => {
-          console.log(data);
-          this.chatData = data;
-          this.chatId = this.chatData.chatId;
-          localStorage.setItem('chatId', JSON.stringify(this.chatId))
-        })
-      })
-      );
-
+            //  If the chat room is not already present then it will create new chat room and give the chatId in localstorage
+            this.chatObj.buyerEmail = this.buyerEmail;
+            this.chatObj.ownerEmail = this.ownerEmail;
+            this.chatService.createChatRoom(this.chatObj).subscribe((data) => {
+              console.log(data);
+              this.chatData = data;
+              this.chatId = this.chatData.chatId;
+              localStorage.setItem("chatId", JSON.stringify(this.chatId));
+            });
+          }
+        );
     }
     // define your component where you want to go
-    this.router.navigate(['chat']);
+    this.router.navigate(["chat"]);
   }
 
   //<============================ Chat Service Ends Here=========================>

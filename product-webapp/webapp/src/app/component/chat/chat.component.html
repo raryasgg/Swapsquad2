@@ -25,9 +25,13 @@
                                     <div class="img_cont">
                                         <img src="https://i.pinimg.com/originals/ac/b9/90/acb990190ca1ddbb9b20db303375bb58.jpg"
                                             class="rounded-circle user_img">
+                                    
                                     </div>
-                                    <div class="user_info"  (click)="loadChatByEmail(chats.ownerEmail, chats.buyerEmail)" [style.background]="color">
-                                        {{chats.ownerEmail}} <br>
+                                    <div class="user_info"  (click)="loadChatByEmail(chats.ownerEmail, chats.buyerEmail)">
+                                        <!-- {{chats.ownerEmail}}  -->
+                                        <div *ngIf="ownerEmail!=senderCheck" style="margin-top: 1rem;">{{chats.ownerEmail}}</div>
+                                        <div *ngIf="ownerEmail==senderCheck" style="margin-top: 1rem;">{{chats.buyerEmail}}</div>
+                                        <br>
                                         <!-- {{chats.buyerEmail}} -->
                                         <!-- {{chats.chatId}} -->
                                     </div>
@@ -52,8 +56,8 @@
                                     class="rounded-circle user_img">
                             </div>
                             <div class="user_info">
-                                <span *ngIf="ownerEmail!=senderEmail">{{ownerEmail}}</span>
-                                <span *ngIf="ownerEmail==senderEmail">{{buyerEmail}}</span>
+                                <span *ngIf="ownerEmail!=senderCheck">{{ownerEmail}}</span>
+                                <span *ngIf="ownerEmail==senderCheck">{{buyerEmail}}</span>
                                 <p>Message</p>
                             </div>
                             <div class="video_cam">
@@ -71,7 +75,7 @@
 
                         <div *ngFor="let msg of messageList">
 
-                            <div class="d-flex justify-content-end mb-4" *ngIf="msg.senderEmail==buyerEmail">
+                            <div class="d-flex justify-content-end mb-4" *ngIf="msg.senderEmail==senderCheck">
                                 <div class="msg_cotainer_send">
                                     <!-- {{msg.replymessage | json}} -->
                                     {{msg.replymessage}}
@@ -86,7 +90,7 @@
                             </div>
 
 
-                            <div class="d-flex justify-content-start mb-4" *ngIf="msg.senderEmail!=buyerEmail">
+                            <div class="d-flex justify-content-start mb-4" *ngIf="msg.senderEmail!=senderCheck">
                                 <div class="img_cont_msg">
                                     <img src="https://static.turbosquid.com/Preview/001292/481/WV/_D.jpg"
                                         class="rounded-circle user_img_msg">

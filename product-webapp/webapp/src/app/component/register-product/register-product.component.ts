@@ -26,6 +26,7 @@ export class RegisterProductComponent implements OnInit {
   // pexchange: "";
   // pcoin:0;
   productForm: FormGroup;
+  pemail=localStorage.getItem("loginEmail");
 
   constructor(private productService: RegisterProductService,
     private sanitizer: DomSanitizer, private fb: FormBuilder, private router: Router
@@ -40,7 +41,7 @@ export class RegisterProductComponent implements OnInit {
       // pexchange: this.fb.array([], Validators.required),
       pcoin: new FormControl("", [Validators.pattern("^[0-9]*$"), Validators.maxLength(8)]),
       pexchange: this.fb.array([]),
-      pemail: new FormControl(),
+      // pemail: new FormControl(),
       pstate: new FormControl("", [Validators.required]),
       image: new FormControl([], Validators.required)
     });
@@ -107,7 +108,7 @@ if (!this.productForm.invalid){
   this.productObj.desc = this.productForm.value.desc;
   this.productObj.pexchangetype = this.productForm.value.pexchangetype;
   this.productObj.pexchange = this.productForm.value.pexchange;
-  this.productObj.pemail = this.productForm.value.pemail;
+  this.productObj.pemail = this.pemail;
   this.productObj.pstate = this.productForm.value.pstate;
   this.productObj.pcoin = this.productForm.value.pcoin;
   this.productService.addProduct(this.productObj, this.file[0]).subscribe(data =>
