@@ -11,5 +11,5 @@ public interface AccountdetailsRepo  extends MongoRepository<AccountDetails,Long
     HashSet<AccountDetails> getAccountDataByEmail(String email);
 
 
-//    HashSet<AccountDetails> getAccountDataByAccountNumber(int accountNumber);
+
 }

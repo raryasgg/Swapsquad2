@@ -29,7 +29,9 @@
         <div class="col-lg-8">
           <div class="card mb-4">
             <div class="card-body">
-               
+              <div class="close">
+                <mat-icon (click)="onClickClear()" style=" cursor: pointer;">clear</mat-icon>
+              </div>
                  <form [formGroup]="accountForm"  >
               <div class="row">
                 <div class="col-sm-3" style="padding-top:1rem;">
@@ -186,7 +188,7 @@
             
               <div class="d-flex justify-content-center mb-2">
                 <button type="button" class="btn btn-outline-primary" style="padding-left: 1rem;" type="submit"(click)="onSave()"  [disabled]="!accountForm.valid">Save Card</button>
-                <button type="button" class="btn btn-primary ms-3" (click)="onAddCoin()" *ngIf="disablebutton">Add Coin</button>
+                <button type="button" class="btn btn-primary ms-3" (click)="onAddCoin()">Add Coin</button>
               </div>
             </form>
             </div>

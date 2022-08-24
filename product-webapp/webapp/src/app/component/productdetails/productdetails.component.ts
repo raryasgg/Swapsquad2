@@ -50,9 +50,12 @@ export class ProductdetailsComponent implements OnInit {
   public userratingdata: any;
   pexchange: any;
   ratings: any;
-  avgRating: any;
-
-  constructor(
+  avgRating:any;
+  pstate: any;
+  pcity: any;
+ 
+  
+constructor(
     private _productdetailsService: ProductDetailsService,
     private domSanitizer: DomSanitizer,
     private userratingservice: UserratingService,
@@ -62,30 +65,26 @@ export class ProductdetailsComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    // console.log("working...")
-    // console.log(this._productdetailsService)
-    // this._productdetailsService.getProductdetailsById(1)
-    // .subscribe(data => this.productdata =data)
-
-    // commented starts
-
-    // this._productdetailsService.getProductDetailsById(12).subscribe(data =>{
-
-    this._productdetailsService.getProductDetailsById(4).subscribe((data) => {
+   
+this._productdetailsService.getProductDetailsById(3).subscribe((data) => {
       this.productdata = data;
-      console.log(this.productdata);
-      this.pname = this.productdata.pname;
-      this.pemail = this.productdata.pemail;
-      this.pcategory = this.productdata.pcategory;
-      this.plocation = this.productdata.plocation;
-      this.pdate = this.productdata.pdate;
-      this.pdatepost = this.productdata.pdatepost;
-      this.pcoin = this.productdata.pcoin;
-      this.pexchange = this.productdata.pexchange;
-      this.pexchangetype = this.productdata.pexchangetype;
-      this.desc = this.productdata.desc;
+      console.log(this.productdata)
+      this.pname = this.productdata.pname
+      this.pemail = this.productdata.pemail
+      this.pcategory = this.productdata.pcategory
+      // this.plocation = this.productdata.plocation
+      this.pstate =this.productdata.pstate
+      this.pcity= this.productdata.pcity
+      this.pdate = this.productdata.pdate
+      this.pdatepost = this.productdata.pdatepost
+      this.pcoin = this.productdata.pcoin
+      this.pexchange = this.productdata.pexchange
+      this.pexchangetype = this.productdata.pexchangetype
+      this.desc = this.productdata.desc
       this.img = this.domSanitizer.bypassSecurityTrustResourceUrl(
+
         "data:img/" + "jpg" + ";base64," + this.productdata.image
+
       );
 
       // this.ownerEmail=this.productdata.pemail;
@@ -96,14 +95,15 @@ export class ProductdetailsComponent implements OnInit {
       this.dateofposting = t2.substring(0, 10);
     });
 
-    this.userratingservice
-      .getUserRatingByEmail("poojitha@gmail.com")
-      .subscribe((dataofrating) => {
-        this.userratingdata = dataofrating;
-        console.log(this.userratingdata);
-        this.ratings = this.userratingdata.ratings;
-        this.avgRating = this.userratingdata.avgRating;
-      });
+
+    this.userratingservice.getUserRatingByEmail("raju@gmail.com").subscribe(dataofrating => {
+      this.userratingdata = dataofrating
+      console.log(this.userratingdata)
+      this.ratings = this.userratingdata.ratings
+      this.avgRating = this.userratingdata.avgRating
+    })
+
+    
   }
 
   //<============================ Payment Service Starts Here=========================>
