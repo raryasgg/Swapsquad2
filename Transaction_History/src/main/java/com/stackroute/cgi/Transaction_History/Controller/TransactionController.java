@@ -17,7 +17,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Optional;
 @RestController
-@RequestMapping
+@RequestMapping()
 @Slf4j
 public class TransactionController {
 @Autowired
