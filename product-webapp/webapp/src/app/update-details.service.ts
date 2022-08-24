@@ -7,7 +7,7 @@ import { UserRegistration } from './user-registration';
   providedIn: 'root'
 })
 export class UpdateDetailsService {
-  baseUrl="http://localhost:8080/users/update/";
+  baseUrl="http://localhost:9999/users/update/";
   constructor(private httpClient: HttpClient) { }
 
 
@@ -15,11 +15,11 @@ export class UpdateDetailsService {
     const dataObj: FormData=new FormData;
     dataObj.append('str',JSON.stringify(registerObject));
     dataObj.append('file',profileImage);
-    return this.httpClient.put<UserRegistration>("http://localhost:8080/users/update/add",dataObj);
+    return this.httpClient.put<UserRegistration>("http://localhost:9999/users/update/add",dataObj);
   }
 
   getUserDetailByEmail(email:any){
-    return this.httpClient.get<UserRegistration>("http://localhost:8080/users/user/" + email)
+    return this.httpClient.get<UserRegistration>("http://localhost:9999/users/user/" + email)
   }
 
   updateEmployee( employees: UserRegistration,email:any): Observable<Object>{
@@ -28,4 +28,13 @@ export class UpdateDetailsService {
   update123( updateObj: UserRegistration): Observable<Object>{
     return this.httpClient.put(`${this.baseUrl}`,  updateObj);
   }
+
+  getUserCoinByEmail(email:any){
+    return this.httpClient.get<UserRegistration>("http://localhost:9999/users/user/" + email)
+  }
+  
+exchange( buyeremail:any,selleremail:any,coinOfProduct:any): Observable<Object>{
+  return this.httpClient.put("http://localhost:9999/users/exchhange?buyeremail="+buyeremail+"&selleremail="+selleremail+"&newTotalCoins="+coinOfProduct,{});
+}
+
 }

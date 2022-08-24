@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { pid } from 'process';
 import { Product } from './product';
 import { ProductDetailsService } from './product-details.service';
 import { DomSanitizer } from '@angular/platform-browser';
@@ -17,7 +16,7 @@ import { Payment3Component } from '../../payment3/payment3.component';
 })
 export class ProductdetailsComponent implements OnInit {
 
-  pmail = "raju@gmail.com";
+  pemail = "raju@gmail.com";
   pname = "One Plus 9r";
   plocation = "Patna,Bihar";
   pstatus = "Available";
@@ -26,7 +25,7 @@ export class ProductdetailsComponent implements OnInit {
   pdatepost = ""
 
   pexchangetype = "exchange"
-  desc = "this is description of the product";
+  desc = " Operating System: OxygenOS based on Android 11 CPU: Qualcomm® Snapdragon™ 870.. GPU: Adreno 650. RAM: 8GB/12GB";
   pcategory = "";
   year: any;
   dateofpurchase: String;
@@ -70,14 +69,14 @@ rate:any;
 
   // this._productdetailsService.getProductDetailsById(12).subscribe(data =>{
 
-    this._productdetailsService.getProductDetailsById(12).subscribe(data => {
+    this._productdetailsService.getProductDetailsById(4).subscribe(data => {
 
 
 
       this.productdata = data;
       console.log(this.productdata)
       this.pname = this.productdata.pname
-      this.pmail = this.productdata.pemail
+      this.pemail = this.productdata.pemail
       this.pcategory = this.productdata.pcategory
       this.plocation = this.productdata.plocation
       this.pdate = this.productdata.pdate
