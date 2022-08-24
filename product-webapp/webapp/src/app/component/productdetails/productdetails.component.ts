@@ -9,6 +9,10 @@ import { MatDialog } from '@angular/material/dialog';
 import { PaymentComponent } from '../../payment/payment.component';
 import { Payment2Component } from '../../payment2/payment2.component';
 import { Payment3Component } from '../../payment3/payment3.component';
+import { ChatService } from 'src/app/services/chat/chat.service';
+import { Chat } from 'src/app/models/chat/chat';
+import { error } from 'protractor';
+import { I } from '@angular/cdk/keycodes';
 
 @Component({
   selector: 'app-productdetails',
@@ -41,19 +45,19 @@ export class ProductdetailsComponent implements OnInit {
   review: any
   userId: ""
   totalstar = '5'
-  
+
   // img1="assets/1.jpg"
 
   public productdata: any;
   public userratingdata: any;
   pexchange: any;
   ratings: any;
-  avgRating:any;
- 
-  constructor(private _productdetailsService: ProductDetailsService, private domSanitizer: DomSanitizer,private userratingservice:UserratingService, private router: Router,public dialog:MatDialog) {
+  avgRating: any;
 
-    
-   }
+  constructor(private _productdetailsService: ProductDetailsService, private domSanitizer: DomSanitizer, private userratingservice: UserratingService, private router: Router, public dialog: MatDialog, private chatService: ChatService) {
+
+
+  }
 
   ngOnInit(): void {
     // console.log("working...")
@@ -61,8 +65,9 @@ export class ProductdetailsComponent implements OnInit {
     // this._productdetailsService.getProductdetailsById(1)
     // .subscribe(data => this.productdata =data)
 
+    // commented starts
 
-    this._productdetailsService.getProductDetailsById(5).subscribe(data => {
+    this._productdetailsService.getProductDetailsById(7).subscribe(data => {
 
 
       this.productdata = data;
@@ -83,7 +88,7 @@ export class ProductdetailsComponent implements OnInit {
 
       );
 
-
+      // this.ownerEmail=this.productdata.pemail;
       var t = this.pdatepost;
       this.dateofpurchase = t.substring(0, 10);
 
@@ -97,31 +102,73 @@ export class ProductdetailsComponent implements OnInit {
       this.ratings = this.userratingdata.ratings
       this.avgRating = this.userratingdata.avgRating
     })
+
+
   }
 
 
-  // Chat Service Starts Here
+
+  openDialog() {
+    if (this.pexchangetype = "coin") {
+      this.dialog.open(PaymentComponent);
+    }
+
+    if (this.pexchangetype = "exchange") {
+      this.dialog.open(Payment2Component);
+    }
+
+    if (this.pexchangetype = "both") {
+      this.dialog.open(Payment3Component);
+    }
+  }
+
+  //<============================ Chat Service Starts Here=========================>
+
+  ownerEmail = "raju@gmail.com";
+  buyerEmail = "raju@gmail.com";
+  public chatData: any;
+  chatObj: Chat = new Chat();
+  chatId = 0;
+  chatNotFound = "";
+
+  // For routing to the chat page when click on chat button
   goToChat() {
-    this.router.navigate(['chat']);  // define your component where you want to go
 
-}
+    // For string the buyerEmail or whose ever logged in, in localstorage
+    localStorage.setItem('buyerEmail', JSON.stringify(this.buyerEmail));
 
-openDialog(){
-  if(this.pexchangetype="coin"){
-  this.dialog.open(PaymentComponent);
+    if (this.ownerEmail != this.buyerEmail) {
+      // For checking the chat room by both the emails , if there is present then it will give the chat Id in localstorage
+      this.chatService.getChatIdByBuyerAndSellerEmail(this.buyerEmail, this.ownerEmail).subscribe((data => {
+        // console.log(data);
+        this.chatData = data;
+        this.chatId = this.chatData[0].chatId;
+        console.log(this.chatId);
+        localStorage.setItem('chatId', JSON.stringify(this.chatId))
+      }), ((error: any) => {
+        console.log(error.error);
+        this.chatNotFound = error.error;
+
+        //  If the chat room is not already present then it will create new chat room and give the chatId in localstorage
+        this.chatObj.buyerEmail = this.buyerEmail;
+        this.chatObj.ownerEmail = this.ownerEmail;
+        this.chatService.createChatRoom(this.chatObj).subscribe(data => {
+          console.log(data);
+          this.chatData = data;
+          this.chatId = this.chatData.chatId;
+          localStorage.setItem('chatId', JSON.stringify(this.chatId))
+        })
+      })
+      );
+
+    }
+    // define your component where you want to go
+    this.router.navigate(['chat']);
   }
 
-  if(this.pexchangetype="exchange"){
-    this.dialog.open(Payment2Component); 
-  }
+  //<============================ Chat Service Ends Here=========================>
 
-if(this.pexchangetype="both"){
-  this.dialog.open(Payment3Component); 
 }
-}
-
-
-  }
 
 function gmail(gmail: any) {
   throw new Error('Function not implemented.');

@@ -26,4 +26,6 @@ public interface ChatService {
 //     Chat getChatByOwnerEmailAndBuyerEmail(String ownerEmail, String buyerEmail) throws ChatNotFoundException;
 
     Chat addMessage(Message add, int chatId);
+
+    HashSet<Chat> getChatByOrOwnerEmailBuyerEmail(String email) throws ChatNotFoundException;
 }

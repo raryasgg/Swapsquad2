@@ -25,12 +25,22 @@ html {
     white-space: nowrap;
 }
 
+.card ::-webkit-scrollbar {
+    width: 5px;
+}
+
 .msg_card_body {
     overflow-y: auto;
 }
 
 .msg_card_body::-webkit-scrollbar {
    width: 5px;
+}
+
+.chat-list-title{
+    display: flex;
+    justify-content: center;
+    text-align: center;
 }
 
 .card-header {
@@ -135,6 +145,11 @@ html {
 .img_cont_msg {
     height: 40px;
     width: 40px;
+}
+
+.chatList:hover{
+    background-color: #91fea9;
+    cursor: pointer;
 }
 
 .online_icon {
