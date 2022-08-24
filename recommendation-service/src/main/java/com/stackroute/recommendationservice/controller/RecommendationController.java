@@ -7,7 +7,7 @@ import com.stackroute.recommendationservice.exception.ProductAlreadyExistExcepti
 import com.stackroute.recommendationservice.model.CustomMessage;
 import com.stackroute.recommendationservice.model.IncomingProductData;
 import com.stackroute.recommendationservice.exception.ProductNotFoundException;
-import com.stackroute.recommendationservice.model.config.Publisher;
+
 import com.stackroute.recommendationservice.service.RecommendationService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,8 +31,7 @@ public class RecommendationController {
         this.recommendationService = recommendationService;
     }
 
-    @Autowired
-    private Publisher publisher;
+
 
     @GetMapping("test")
     public String test() {
@@ -67,8 +66,8 @@ public class RecommendationController {
             CustomMessage messages = new CustomMessage(incomingData.getProductId(), incomingData.getProductName(), incomingData.getProductCategory(),
                     incomingData.getState(), incomingData.getCity(), incomingData.getProductOwnerEmail(),
                     incomingData.getProductImage(),incomingData.getPdatepost(),incomingData.getPexchangetype());
-            publisher.publishMessage(messages);
-            this.recommendationService.createNode(incomingData);
+//            publisher.publishMessage(messages);
+          this.recommendationService.createNode(incomingData);
             return new ResponseEntity<>("Added data to neo4j successfully!", HttpStatus.OK);
         } catch (ProductAlreadyExistException e) {
             // TODO Auto-generated catch block

@@ -16,6 +16,8 @@ public interface ChatRepository extends MongoRepository<Chat, Integer> {
 
     HashSet<Chat> getChatByBuyerEmailAndOwnerEmail(String ownerEmail, String buyerEmail);
 
+//    HashSet<Chat> getChatByOrOwnerEmailOrBuyerEmail(String email);
+
 //    Optional<Chat> findById(String ownerEmail, String buyerEmail);
 
 }

@@ -17,8 +17,14 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Optional;
 @RestController
-@RequestMapping()
+
+
+
+@RequestMapping
+@CrossOrigin(origins="*")
+
 @Slf4j
+
 public class TransactionController {
 @Autowired
 	 TransactionRepository repositry;
@@ -30,13 +36,13 @@ TransactionServiceImplementation transactionService;
 //Add Transactions
 	@PostMapping ("/addTransaction")
 	//generate sequence
-    public String saveTransaction(@RequestBody Transaction transaction){
+    public Transaction saveTransaction(@RequestBody Transaction transaction){
         System.out.println(transaction);
         Transaction sc = new Transaction();
 
 		transaction.setTransactionId(idGeneratorService.getNextSequence("user_sequence"));
-		repositry.save(transaction);
-				return "Transaction Added ";
+		return repositry.save(transaction);
+			
 
 }
 //// Find all the transactions

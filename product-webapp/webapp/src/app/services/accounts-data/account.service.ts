@@ -25,7 +25,7 @@ export class AccountService {
  }
 
  getAccountByAccountNumber(accountNumber:any){
-  return this.httpClient.get<Account>(this.baseurl +"/" + accountNumber)
+  return this.httpClient.get<Account>(this.baseurl +"/"+ accountNumber)
 
  }
 

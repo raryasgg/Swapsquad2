@@ -1,45 +1,54 @@
+<span class="pl"><button class="btn-dialog-close" mat-stroked-button (click)="onClose()" tabIndex="-3">
+        <mat-icon>clear</mat-icon>
+    </button></span>
 <div class="center-wrapper">
     <div class="content">
+        <form [formGroup]="updateForm">
 
-        <div class="top-bar" style="text-align: center;">
-            <h2>Payment</h2>
-        </div>
-        <div class="bag-product">
-
-            <div class="description">
-                <p class="product-code small muted">Product ID: SS022592000</p>
-                <h2>One Plus 9r</h2>
-                <p class="description-text">OnePlus 9R ; Performance. Operating System: OxygenOS based on Android™
-                    11. CPU: Qualcomm® Snapdragon™ 870. 5G Chipset: X55. GPU: Adreno 650. RAM: 8GB/12GB.</p>
-                
-                    <i class="fa-solid fa-arrow-down-arrow-up" style="margin-top: 0.5rem; margin-bottom: 0.5rem"></i>
-            </div>
-        </div>
-       
-        <div class="bag-total">
-           
-        </div>
-        <div class="bag-product">
-
-            <div class="description">
-                <p class="product-code small muted">Product ID: SS83878947</p>
-                <h2>Samsung Galaxy A23</h2>
-                <p class="description-text">Galaxy A23 · 50MP Quad Cam with OIS · Powerful Snapdragon processor · 16.72cm (6.6") FHD+ 90Hz Smooth Display. GPU: Adreno 650. RAM: 8GB/12GB.</p>
-                
+            <div class="top-bar" style="text-align: center;">
+                <h2>Payment </h2>
 
             </div>
-        </div>
-        <div class="exchange">
+
+            <div class="bag-product">
+
+                <div class="description">
+                    <p class="product-code">Product ID: {{pid}}</p>
+                    <h2>{{pname}}</h2>
+                    <p class="description-text">Operating System: OxygenOS based on Android 11 CPU: Qualcomm®
+                        Snapdragon™ 870.. GPU: Adreno 650. RAM: 8GB/12GB{{desc}}</p>
 
 
-            <button mat-raised-button style="background: hsla(106, 86%, 57%, 0.762)" type="submit">
-                Request Exchange
-            </button>
+                </div>
+            </div>
 
-            <!-- <button type="button" class="btn btn-success">
-                <span>Request Exchange</span>
-            </button> -->
-        </div>
+            <div class="bag-total">
 
+
+
+                <div class="promo-checkbox">
+                    <div class="total">
+                        <label class="col-md-5 labelname">Exchange</label>
+                        <i class="fa-solid fa-right-left" style="margin-right: 0.5rem; margin-left: 0.5rem"></i>
+                    </div>
+                    <mat-form-field>
+                        <mat-label>Select</mat-label>
+                        <mat-select formControlName="pid" ngDefaultControl>
+                            <mat-option *ngFor="let pro of abc" [value]="pro.pid">
+                                {{pro.pname}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+
+
+
+
+                <button mat-raised-button style="background: hsla(106, 86%, 57%, 0.762)" type="submit"
+                    (click)="onClickSubmitForm()">
+                    Request Exchange
+                </button>
+            </div>
+        </form>
     </div>
 </div>

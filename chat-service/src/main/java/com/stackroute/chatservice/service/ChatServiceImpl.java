@@ -119,6 +119,25 @@ public class ChatServiceImpl implements ChatService {
 
 
     @Override
+    public HashSet<Chat> getChatByOrOwnerEmailBuyerEmail(String email) throws ChatNotFoundException{
+//        HashSet<Chat> chat = chatRepository.getChatByOrOwnerEmailOrBuyerEmail(email);
+
+        HashSet<Chat> chat = chatRepository.getChatByOwnerEmail(email);
+        HashSet<Chat> chat1 = chatRepository.getChatByBuyerEmail(email);
+        if (chat.isEmpty() && chat1.isEmpty()) {
+            log.debug("Chat not exists in the repository");
+            throw new ChatNotFoundException();
+        } else if (chat.isEmpty()) {
+            log.debug("Inside the ChatServiceImpl -- getOwnerEmail methods");
+            return chat1;
+        } else {
+            log.debug("Inside the ChatServiceImpl -- getOwnerEmail methods");
+            return chat;
+        }
+    }
+
+
+    @Override
     public HashSet<Chat> getChatByOwnerEmailAndBuyerEmail(String ownerEmail, String buyerEmail) throws ChatNotFoundException {
 
         HashSet<Chat> chat = chatRepository.getChatByOwnerEmailAndBuyerEmail(ownerEmail, buyerEmail);
@@ -147,19 +166,6 @@ public class ChatServiceImpl implements ChatService {
 //        }
 //    }
 
-//    @Override
-//    public Chat getById(int chatId) throws ChatNotFoundException {
-//        Optional<Chat> chatid = chatRepository.findById(chatId);
-//        if (chatid.isPresent()) {
-//            log.debug("Inside the ChatServiceImpl -- getById methods");
-//            return chatid.get();
-//        } else {
-//            log.error("Chat not exists in the repository");
-//            throw new ChatNotFoundException();
-//        }
-//    }
-
-
 
     @Override
     public Chat addMessage(Message add, int chatId) {
@@ -177,6 +183,8 @@ public class ChatServiceImpl implements ChatService {
             return chatRepository.save(abc);
         }
     }
+
+
 
 
 }

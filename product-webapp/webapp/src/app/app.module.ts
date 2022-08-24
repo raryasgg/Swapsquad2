@@ -36,27 +36,32 @@ import { TranscationsComponent } from "./transcations/transcations.component";
 import { MyProfileComponent } from './my-profile/my-profile.component';
 import { CommonModule } from "@angular/common";
 // If You are getting error then install ( npm i ng-starrating )
+<<<<<<< HEAD
 
  
 
+=======
+>>>>>>> df5ffd6cdcf8f3de7038efe6dd90ccb14549175e
 import { RatingModule } from "ng-starrating";
 import { AccountdataComponent } from './component/accountdata/accountdata.component';
 import {MatDialogModule} from '@angular/material/dialog';
 import { PaymentComponent } from './payment/payment.component';
-
 import { ChatComponent } from './component/chat/chat.component';
 import {MatMenuModule} from '@angular/material/menu';
 import { NavbarComponent } from './navbar/navbar.component';
 import {MatListModule} from '@angular/material/list';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatToolbarModule} from '@angular/material/toolbar';
-
 import { FilterPipe } from './shared/filter.pipe';
+<<<<<<< HEAD
 
 
 
+=======
+>>>>>>> df5ffd6cdcf8f3de7038efe6dd90ccb14549175e
 import { Payment2Component } from './payment2/payment2.component';
 import { Payment3Component } from './payment3/payment3.component';
+import { LoginComponent } from './login/login.component';
 
 
 @NgModule({
@@ -75,11 +80,9 @@ import { Payment3Component } from './payment3/payment3.component';
     MyProfileComponent,
     NavbarComponent,
     FilterPipe,
-
-    
-
     Payment2Component,
-    Payment3Component
+    Payment3Component,
+    LoginComponent
   ],
 
 
@@ -116,7 +119,7 @@ entryComponents:[PaymentComponent,Payment2Component,Payment3Component,Accountdat
 
      RatingModule,
 
-    RatingModule,
+    
 
 
     MatDialogModule,

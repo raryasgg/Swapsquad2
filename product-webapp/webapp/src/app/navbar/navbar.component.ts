@@ -3,6 +3,8 @@ import { MatSidenav } from '@angular/material/sidenav';
 import { Route } from '@angular/router';
 import { MatDialog,MatDialogConfig } from '@angular/material/dialog';
 import { AccountdataComponent } from '../component/accountdata/accountdata.component';
+import { HttpClient } from '@angular/common/http';
+import { NavService } from './service/nav.service';
 
 @Component({
   selector: 'app-navbar',
@@ -12,9 +14,16 @@ import { AccountdataComponent } from '../component/accountdata/accountdata.compo
 export class NavbarComponent implements OnInit {
   isDisabled:boolean=true
   coin:any=50
-  constructor(private dialog: MatDialog) { }
-
+  constructor(private dialog: MatDialog,private httpClient:HttpClient,private navservice:NavService ) { }
+  usersemail=""
+  username=""
+  
   ngOnInit(): void {
+    this.usersemail=localStorage.getItem('loginEmail')
+    this.navservice.getuserdetails(this.usersemail).subscribe((data:any)=>{
+    this.username=data.firstname
+    this.coin=data.barterCoins
+    });
   }
 
   goToHome():any{
@@ -39,7 +48,8 @@ export class NavbarComponent implements OnInit {
 
   onClickCoin(){
     const dialogConfig =new MatDialogConfig();
-    dialogConfig.autoFocus = true;
+    dialogConfig.autoFocus = false;
+    dialogConfig.restoreFocus=false;
     dialogConfig.width= "70%"
     dialogConfig.height = "75%"
     this.dialog.open(AccountdataComponent,dialogConfig);
@@ -47,4 +57,5 @@ export class NavbarComponent implements OnInit {
 
 
   }
+
 }
