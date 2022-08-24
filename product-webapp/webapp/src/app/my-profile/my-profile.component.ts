@@ -24,6 +24,7 @@ export class MyProfileComponent implements OnInit {
   city: String;
   state: String;
   pincode: string;
+  password:String;
 
   constructor(
     private domSanitizer: DomSanitizer,
@@ -33,10 +34,12 @@ export class MyProfileComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.email = this.route.snapshot.params["email"];
+    this.email=localStorage.getItem('loginEmail')
+    console.log(this.email)
+    // this.email = this.route.snapshot.params["email"];
     this.employees = new UserRegistration();
     this.userratingservice
-      .getUserDetailByEmail("nkkkk@gmail.com")
+      .getUserDetailByEmail(this.email)
       .subscribe((data) => {
         this.employees = data;
         console.log(this.employees);
@@ -50,6 +53,7 @@ export class MyProfileComponent implements OnInit {
         this.state = this.employees.state;
         this.pincode = this.employees.pincode;
         this.gender = this.employees.gender;
+        this.password=this.employees.password;
         this.image = this.domSanitizer.bypassSecurityTrustResourceUrl(
           "data:img/" + "jpg" + ";base64," + this.employees.image
         );

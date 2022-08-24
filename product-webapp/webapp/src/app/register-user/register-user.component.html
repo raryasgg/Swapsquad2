@@ -2,7 +2,7 @@
 <div class="fcontainer">
 
   <div class="fitem item1">
-    <img src="assets/r1.jpg" alt="img" width="90%" height="80%">
+    <img src="assets/r3.png" alt="img" width="90%" height="80%">
   </div>
 
   <div class="fitem item2">
@@ -28,11 +28,11 @@
         <label for="exampleFormControlInput1" class="form-label">Password</label>
 
         <input type="password" class="form-control" required="required" id="password" name="password"
-          [(ngModel)]="user.password" #fpassword="ngModel" [pattern]="passwordPattern" placeholder="Enter Password ">
+          [(ngModel)]="user.password" #password="ngModel" [pattern]="passwordPattern" placeholder="Enter Password ">
 
-        <div *ngIf="fpassword.invalid && (fpassword.touched || fpassword.dirty)" style="color:red;">
-          <span *ngIf="fpassword.errors?.required">*Password is required</span>
-          <span *ngIf="fpassword.errors?.pattern">This field should have min of 5 char and 1 alphabet, 1 numeric and
+        <div *ngIf="password.invalid && (password.touched || password.dirty)" style="color:red;">
+          <span *ngIf="password.errors?.required">*Password is required</span>
+          <span *ngIf="password.errors?.pattern">This field should have min of 5 char and 1 alphabet, 1 numeric and
             atleast 1 special char</span>
         </div>
       </div>
@@ -41,13 +41,16 @@
       <div class="mb-3">
         <label for="exampleFormControlInput1" class="form-label">Confirm Password</label>
         <input type="password" class="form-control" id="cpassword" required="required" name="cpassword"
-          [(ngModel)]="user.cpassword" #password="ngModel" [pattern]="passwordPattern"
+          [(ngModel)]="user.cpassword" #cpassword="ngModel" [pattern]="passwordPattern"
           placeholder="Enter confirm password ">
-        <div *ngIf="password.invalid && (password.touched || password.dirty)" style="color:red;">
-          <span *ngIf="password.errors?.required">*Confirm Password is required</span>
-          <span *ngIf="password.errors?.pattern">This field should have min of 5 char and 1 alphabet, 1 numeric and
-            atleast 1 special char</span>
-          <span>{{ errorMessage }}</span>
+          <div *ngIf="cpassword.invalid && (cpassword.touched || cpassword.dirty)" style="color:red;">
+            <span *ngIf="password.errors?.required">*Confirm Password is required</span>
+            <span *ngIf="password.value != cpassword.value">Password and confirm password should be same</span>
+
+          <!-- <span *ngIf="cpassword.invalid && cpassword.touched"  style="color:red ;">*Confirm password is required</span> -->
+          <!-- <span *ngIf="password.errors?.pattern">This field should have min of 5 char and 1 alphabet, 1 numeric and
+            atleast 1 special char</span> -->
+            <!-- <span *ngIf="password.value != cpassword.value"  style="color: red;" > Password and confirm password should be same</span> -->
         </div>
       </div>
 

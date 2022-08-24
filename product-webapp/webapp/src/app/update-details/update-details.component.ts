@@ -24,6 +24,7 @@ export class UpdateDetailsComponent implements OnInit {
   city: String;
   state: String;
   pincode: string;
+  password:String;
 
   updateForm: FormGroup;
 
@@ -49,9 +50,11 @@ export class UpdateDetailsComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.email = this.route.snapshot.params["email"];
+    this.email=localStorage.getItem('loginEmail')
+    console.log(this.email)
+    // this.email = this.route.snapshot.params["email"];
     this.updateDetailsService
-      .getUserDetailByEmail("nkkkk@gmail.com")
+      .getUserDetailByEmail(this.email)
       .subscribe((data) => {
         this.employees = data;
 
@@ -65,6 +68,7 @@ export class UpdateDetailsComponent implements OnInit {
         this.state = this.employees.state;
         this.pincode = this.employees.pincode;
         this.gender = this.employees.gender;
+        this.password=this.employees.password;
         this.image = this.domSanitizer.bypassSecurityTrustResourceUrl(
           "data:img/" + "jpg" + ";base64," + this.employees.image
         );
