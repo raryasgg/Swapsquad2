@@ -85,11 +85,23 @@ public class ChatController {
     }
 
 
+
     @GetMapping("/ownerEmail/{email}")
     public ResponseEntity<?> getChatByOwnerEmail(@PathVariable String email) {
 
         try {
             HashSet<Chat> byChat = this.chatService.getChatByOwnerEmail(email);
+            return new ResponseEntity<>(byChat, HttpStatus.OK);
+        } catch (ChatNotFoundException e) {
+            return new ResponseEntity("Chat Not Exits", HttpStatus.CONFLICT);
+        }
+    }
+
+    @GetMapping("/chatByOwnerOrBuyerEmail/{email}")
+    public ResponseEntity<?> getChatByOwnerOrEmailBuyerEmail(@PathVariable String email) {
+
+        try {
+            HashSet<Chat> byChat = this.chatService.getChatByOrOwnerEmailBuyerEmail(email);
             return new ResponseEntity<>(byChat, HttpStatus.OK);
         } catch (ChatNotFoundException e) {
             return new ResponseEntity("Chat Not Exits", HttpStatus.CONFLICT);
@@ -124,7 +136,6 @@ public class ChatController {
 
         return new ResponseEntity<Chat>(chatService.addMessage(add,chatId), org.springframework.http.HttpStatus.OK);
     }
-
 
 
 }
