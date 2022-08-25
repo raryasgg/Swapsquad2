@@ -71,7 +71,7 @@ export class ChatComponent implements OnInit {
       this.chatData = data;
       this.chatId = this.chatData[0].chatId;
       console.log(this.chatId);
-      localStorage.setItem('chatId', this.chatId)
+      localStorage.setItem('chatId', "this.chatId")
 
       this.chatService.getChatById(this.chatId).subscribe(data => {
         this.chatData = data;
