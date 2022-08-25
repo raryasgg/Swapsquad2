@@ -36,40 +36,23 @@ import { TranscationsComponent } from "./transcations/transcations.component";
 import { MyProfileComponent } from './my-profile/my-profile.component';
 import { CommonModule } from "@angular/common";
 // If You are getting error then install ( npm i ng-starrating )
-
-
- 
-
-
 import { RatingModule } from "ng-starrating";
 import { AccountdataComponent } from './component/accountdata/accountdata.component';
 import {MatDialogModule} from '@angular/material/dialog';
 import { PaymentComponent } from './payment/payment.component';
-<<<<<<< HEAD
 import{MatCarouselModule} from '@ngmodule/material-carousel';
-=======
->>>>>>> a81b7f4a301b2153408e96850d8d1bf347fcbb68
 import { ChatComponent } from './component/chat/chat.component';
 import {MatMenuModule} from '@angular/material/menu';
 import { NavbarComponent } from './navbar/navbar.component';
 import {MatListModule} from '@angular/material/list';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatToolbarModule} from '@angular/material/toolbar';
-<<<<<<< HEAD
 import { HomePageComponent } from './home-page/home-page.component';
 import { CarouselModule } from "ng-bootstrap";
-=======
 import { FilterPipe } from './shared/filter.pipe';
-
-
-
-
-
 import { Payment2Component } from './payment2/payment2.component';
 import { Payment3Component } from './payment3/payment3.component';
 import { LoginComponent } from './login/login.component';
->>>>>>> a81b7f4a301b2153408e96850d8d1bf347fcbb68
-
 
 @NgModule({
   declarations: [
@@ -86,16 +69,12 @@ import { LoginComponent } from './login/login.component';
     ChatComponent,
     MyProfileComponent,
     NavbarComponent,
-<<<<<<< HEAD
-    HomePageComponent
-=======
+    HomePageComponent,
     FilterPipe,
     Payment2Component,
     Payment3Component,
     LoginComponent
   ],
->>>>>>> a81b7f4a301b2153408e96850d8d1bf347fcbb68
-
 
 
 entryComponents:[PaymentComponent,Payment2Component,Payment3Component,AccountdataComponent],
@@ -128,23 +107,12 @@ entryComponents:[PaymentComponent,Payment2Component,Payment3Component,Accountdat
     MatProgressBarModule,
     FlexLayoutModule,
     CommonModule,
-
      RatingModule,
-
-    
-
-
     MatDialogModule,
-
-
     MatMenuModule,
     MatListModule,
     MatSidenavModule,
     MatToolbarModule
-    
-
-
-
   ],
   providers: [ProductDetailsService],
   bootstrap: [AppComponent],
