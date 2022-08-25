@@ -36,5 +36,8 @@ export class UpdateDetailsService {
 exchange( buyeremail:any,selleremail:any,coinOfProduct:any): Observable<Object>{
   return this.httpClient.put("http://localhost:9998/users/exchhange?buyeremail="+buyeremail+"&selleremail="+selleremail+"&newTotalCoins="+coinOfProduct,{});
 }
+updatewithoutPicture(data:UserRegistration){
+  return this.httpClient.put("http://localhost:9998/users/update2/add",data);
+}
 
 }

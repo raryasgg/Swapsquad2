@@ -20,7 +20,8 @@ const routes: Routes = [
   {path: 'login',component:LoginComponent},
   { path: '', component: RegisterUserComponent },
   {path:'navbar', component:NavbarComponent,
-children:[ { path: 'registerProduct', component: RegisterProductComponent },
+children:[ 
+{ path: 'registerProduct', component: RegisterProductComponent },
 { path: 'productDetail', component: ProductdetailsComponent },
 { path: 'recommendation-service', component: RecommendationServiceComponent },
 { path: 'updateDetails', component: UpdateDetailsComponent },

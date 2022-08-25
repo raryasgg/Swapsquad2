@@ -123,7 +123,22 @@ public class UserRegistrationServiceImpl implements UserRegistrationService{
 		
 	}
 
-	@Override
+	 @Override
+	 public UserRegistration updateuser(UserRegistration user) throws UserNotFoundException {
+		 UserRegistration users =repo.findById(user.getEmail()).get();
+		 users.setFirstname(user.getFirstname());
+		 users.setLastname(user.getLastname());
+		 users.setMobile(user.getMobile());
+		 users.setGender(user.getGender());
+		 users.setPincode(user.getPincode());
+		 users.setCity(user.getCity());
+		 users.setState(user.getState());
+		 users.setStreet(user.getStreet());
+		 users.setAge(user.getAge());
+		 return repo.save(users);
+	 }
+
+	 @Override
 	public UserRegistration add(UserRegistration user) {
 
 

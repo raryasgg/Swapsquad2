@@ -7,16 +7,7 @@ import org.apache.velocity.exception.ResourceNotFoundException;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
@@ -109,6 +100,21 @@ public class UserRegistrationController {
 			return new ResponseEntity<UserRegistration>(userservice.adduser(str,file),org.springframework.http.HttpStatus.OK);
 		
 		
+	}
+
+	@PutMapping("/update2/add")
+	public ResponseEntity<UserRegistration> Updateuser2(@RequestBody UserRegistration user)  {
+
+		log.debug("Inside the UserRegistrationController -- Updateuser methods");
+		try {
+
+
+			return new ResponseEntity<UserRegistration>(userservice.updateuser(user), org.springframework.http.HttpStatus.OK);
+		}
+		catch (UserNotFoundException e){
+			return new ResponseEntity("User Not found", org.springframework.http.HttpStatus.NOT_FOUND);
+		}
+
 	}
 
 

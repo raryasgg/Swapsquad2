@@ -154,7 +154,7 @@ export class ProductdetailsComponent implements OnInit {
             this.chatData = data;
             this.chatId = this.chatData[0].chatId;
             console.log(this.chatId);
-            localStorage.setItem("chatId", this.chatId);
+            localStorage.setItem('chatId', this.chatData[0].chatId);
           },
           (error: any) => {
             console.log(error.error);
@@ -167,7 +167,7 @@ export class ProductdetailsComponent implements OnInit {
               console.log(data);
               this.chatData = data;
               this.chatId = this.chatData.chatId;
-              localStorage.setItem("chatId", this.chatId);
+              localStorage.setItem('chatId', this.chatData.chatId);
             });
           }
         );

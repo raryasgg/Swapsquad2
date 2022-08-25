@@ -11,6 +11,7 @@
 
                     <input type="file" (change)="handleFileInput($event.target.files)" formControlName="image"
                         class="form-control">
+                       
                 </div>
             </div>
             <div class="col-xl-9 col-lg-9 col-md-12 col-sm-12 col-12">
@@ -24,7 +25,7 @@
                                 <div class="form-group">
                                     <label for="firstname">First Name</label>
                                     <input type="text" class="form-control" formControlName="firstname"
-                                        value="{{firstname}}" placeholder="Enter First Name">
+                                         placeholder="Enter First Name">
 
                                 </div>
                             </div>
@@ -32,21 +33,21 @@
                                 <div class="form-group">
                                     <label for="lastname">Last Name</label>
                                     <input type="text" class="form-control" formControlName="lastname"
-                                        value="{{lastname}}" placeholder="Enter Last Name">
+                                         placeholder="Enter Last Name">
                                 </div>
                             </div>
                             <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
                                 <div class="form-group">
                                     <label for="phone">Mobile</label>
                                     <input type="number" class="form-control" formControlName="mobile"
-                                        value="{{mobile}}" placeholder="Enter Mobile number">
+                                         placeholder="Enter Mobile number">
                                 </div>
                             </div>
                             <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
                                 <div class="form-group">
                                     <label for="email">Email</label>
-                                    <input type="text" class="form-control" formControlName="email" value="{{email}}"
-                                        placeholder="Enter Email">
+                                    <input type="text" class="form-control" formControlName="email" 
+                                        placeholder="Enter Email" disabled>
                                 </div>
                             </div>
                             <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
@@ -72,7 +73,7 @@
                             <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
                                 <div class="form-group">
                                     <label for="age">Age</label>
-                                    <input type="number" class="form-control" formControlName="age" value="{{age}}"
+                                    <input type="number" class="form-control" formControlName="age" 
                                         placeholder="Enter Age">
                                 </div>
                             </div>
@@ -85,21 +86,21 @@
                             <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
                                 <div class="form-group">
                                     <label for="Street">Street</label>
-                                    <input type="name" class="form-control" formControlName="street" value="{{street}}"
+                                    <input type="name" class="form-control" formControlName="street" 
                                         placeholder="Enter Street">
                                 </div>
                             </div>
                             <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
                                 <div class="form-group">
                                     <label for="ciTy">City</label>
-                                    <input type="name" class="form-control" formControlName="city" value="{{city}}"
+                                    <input type="name" class="form-control" formControlName="city" 
                                         placeholder="Enter City">
                                 </div>
                             </div>
                             <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
                                 <div class="form-group">
                                     <label for="sTate">State</label>
-                                    <input type="text" class="form-control" formControlName="state" value="{{state}}"
+                                    <input type="text" class="form-control" formControlName="state" 
                                         placeholder="Enter State">
                                 </div>
                             </div>
@@ -107,7 +108,7 @@
                                 <div class="form-group">
                                     <label for="zIp">Pin Code</label>
                                     <input type="text" class="form-control" formControlName="pincode"
-                                        value="{{pincode}}" placeholder="Pin Code">
+                                        placeholder="Pin Code">
                                 </div>
                             </div>
                         </div>
