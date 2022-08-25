@@ -24,7 +24,7 @@ public class CustomMessage {
     private String productCategory;
     private byte[] productImage;
     private Date pdatepost;
-    private Exchange pexchangetype;
+    private String pexchangetype;
 
 
 }

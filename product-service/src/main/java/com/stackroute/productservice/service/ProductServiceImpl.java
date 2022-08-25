@@ -209,7 +209,7 @@ public class ProductServiceImpl implements ProductService {
 		prod.setProductCategory(pro.getPcategory());
 		prod.setProductImage(pro.getImage());
 		prod.setPdatepost(pro.getPdatepost());
-		prod.setPexchangetype(pro.getPexchangetype());
+		prod.setPexchangetype(pro.getPexchangetype().toString());
 		return prod;
 	}
 
