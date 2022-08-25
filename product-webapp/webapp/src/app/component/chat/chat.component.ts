@@ -121,4 +121,8 @@ export class ChatComponent implements OnInit {
     this.router.navigateByUrl('');
   }
 
+
 }
+
+
+

@@ -19,6 +19,7 @@ import { I } from "@angular/cdk/keycodes";
   styleUrls: ["./productdetails.component.css"],
 })
 export class ProductdetailsComponent implements OnInit {
+
   pemail = "raju@gmail.com";
   pname = "One Plus 9r";
   plocation = "Patna,Bihar";
@@ -50,31 +51,32 @@ export class ProductdetailsComponent implements OnInit {
   public userratingdata: any;
   pexchange: any;
   ratings: any;
-  avgRating:any;
+  avgRating: any;
   pstate: any;
   pcity: any;
- 
-  
-constructor(
+
+
+  constructor(
     private _productdetailsService: ProductDetailsService,
     private domSanitizer: DomSanitizer,
     private userratingservice: UserratingService,
     private router: Router,
     public dialog: MatDialog,
     private chatService: ChatService
-  ) {}
+  ) { }
 
   ngOnInit(): void {
-   
-this._productdetailsService.getProductDetailsById(3).subscribe((data) => {
+
+    this._productdetailsService.getProductDetailsById(3).subscribe((data) => {
+
       this.productdata = data;
       console.log(this.productdata)
       this.pname = this.productdata.pname
       this.pemail = this.productdata.pemail
       this.pcategory = this.productdata.pcategory
       // this.plocation = this.productdata.plocation
-      this.pstate =this.productdata.pstate
-      this.pcity= this.productdata.pcity
+      this.pstate = this.productdata.pstate
+      this.pcity = this.productdata.pcity
       this.pdate = this.productdata.pdate
       this.pdatepost = this.productdata.pdatepost
       this.pcoin = this.productdata.pcoin
@@ -88,7 +90,11 @@ this._productdetailsService.getProductDetailsById(3).subscribe((data) => {
       );
     
 
-      this.ownerEmail=this.productdata.pemail;
+
+
+
+      this.ownerEmail = this.productdata.pemail;
+
       var t = this.pdatepost;
       this.dateofpurchase = t.substring(0, 10);
 
@@ -104,7 +110,7 @@ this._productdetailsService.getProductDetailsById(3).subscribe((data) => {
       this.avgRating = this.userratingdata.avgRating
     })
 
-    
+
   }
 
   //<============================ Payment Service Starts Here=========================>
@@ -122,6 +128,9 @@ this._productdetailsService.getProductDetailsById(3).subscribe((data) => {
   }
 
   //<============================ Chat Service Starts Here=========================>
+
+
+
 
   ownerEmail = "";
   buyerEmail = localStorage.getItem("loginEmail");

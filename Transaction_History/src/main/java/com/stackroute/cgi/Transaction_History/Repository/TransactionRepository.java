@@ -21,5 +21,5 @@ List<Transaction> findBySellerEmail(String sellerEmail);
 	Transaction getBybuyerEmail(String buyerEmail);
 
 
-
+//    Object getTransactionbyTransactionId(int i);
 }
