@@ -40,13 +40,15 @@ import { RatingModule } from "ng-starrating";
 
 import {MatDialogModule} from '@angular/material/dialog';
 import { PaymentComponent } from './payment/payment.component';
-
+import{MatCarouselModule} from '@ngmodule/material-carousel';
 import { ChatComponent } from './component/chat/chat.component';
 import {MatMenuModule} from '@angular/material/menu';
 import { NavbarComponent } from './navbar/navbar.component';
 import {MatListModule} from '@angular/material/list';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatToolbarModule} from '@angular/material/toolbar';
+import { HomePageComponent } from './home-page/home-page.component';
+import { CarouselModule } from "ng-bootstrap";
 
 
 @NgModule({
@@ -64,7 +66,8 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 
     ChatComponent,
     MyProfileComponent,
-    NavbarComponent
+    NavbarComponent,
+    HomePageComponent
 
 
 
@@ -73,6 +76,7 @@ entryComponents:[PaymentComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    CarouselModule,
     BrowserAnimationsModule,
     FormsModule,
     ReactiveFormsModule,
