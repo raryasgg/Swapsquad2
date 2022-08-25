@@ -60,8 +60,8 @@ export class UpdateDetailsComponent implements OnInit {
 
         this.firstname = this.employees.firstname;
         this.lastname = this.employees.lastname;
-        this.email = this.employees.email;
-        console.log(this.employees.email)
+        // this.email = this.employees.email;
+        // console.log(this.employees.email)
         this.mobile = this.employees.mobile;
         this.age = this.employees.age; 
         this.street = this.employees.street;

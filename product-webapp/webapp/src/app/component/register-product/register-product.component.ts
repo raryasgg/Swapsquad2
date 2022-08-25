@@ -124,7 +124,7 @@ if (!this.productForm.invalid){
   Swal.fire({ icon: 'success', title: 'Successfully Registered !!', text: 'Your Product Posted Succesfully !', })
 
   //To navigate to home page
-  this.router.navigateByUrl('');
+  this.router.navigateByUrl('/navbar/recommendation-service');
 
 }
 // else{

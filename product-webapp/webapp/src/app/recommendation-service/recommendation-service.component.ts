@@ -5,6 +5,7 @@ import { switchMap,filter} from 'rxjs/operators';
 import { IncomingProductData } from '../models/recommendation/incoming-product-data';
 import { RecommedationService } from '../services/recommendation-service/recommedation.service';
 import { DomSanitizer } from '@angular/platform-browser';
+import { Router } from '@angular/router';
 
 
 interface City {
@@ -46,7 +47,7 @@ public searchTerm : string='';
   public getproduct:any[]=[];
   
 
-  constructor(private httpClient:HttpClient,private _recommendationService: RecommedationService ,private domSanitizer:DomSanitizer) {
+  constructor(private httpClient:HttpClient,private _recommendationService: RecommedationService ,private domSanitizer:DomSanitizer,private router: Router) {
     this.recommendationForm = new FormGroup({
       city: new FormControl(),
       category: new FormControl(),
@@ -190,7 +191,15 @@ public searchTerm : string='';
  }
   
   
+ recommendation(productId:any){
   
+console.log(productId)
+
+ localStorage.setItem("productId",productId);
+ this.router.navigate(["/navbar/productDetail"]);
+
+
+ }
   
   
 }

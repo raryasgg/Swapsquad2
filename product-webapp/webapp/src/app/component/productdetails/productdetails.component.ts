@@ -67,7 +67,7 @@ export class ProductdetailsComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this._productdetailsService.getProductDetailsById(3).subscribe((data) => {
+    this._productdetailsService.getProductDetailsById(localStorage.getItem("productId")).subscribe((data) => {
 
       this.productdata = data;
       console.log(this.productdata)
@@ -103,7 +103,7 @@ export class ProductdetailsComponent implements OnInit {
     });
 
 
-    this.userratingservice.getUserRatingByEmail("raju@gmail.com").subscribe(dataofrating => {
+    this.userratingservice.getUserRatingByEmail(this.pemail).subscribe(dataofrating => {
       this.userratingdata = dataofrating
       console.log(this.userratingdata)
       this.ratings = this.userratingdata.ratings
@@ -142,7 +142,7 @@ export class ProductdetailsComponent implements OnInit {
   // For routing to the chat page when click on chat button
   goToChat() {
     // For string the buyerEmail or whose ever logged in, in localstorage
-    localStorage.setItem("buyerEmail", JSON.stringify(this.buyerEmail));
+    localStorage.setItem("buyerEmail",this.buyerEmail);
 
     if (this.ownerEmail != this.buyerEmail) {
       // For checking the chat room by both the emails , if there is present then it will give the chat Id in localstorage
@@ -154,7 +154,7 @@ export class ProductdetailsComponent implements OnInit {
             this.chatData = data;
             this.chatId = this.chatData[0].chatId;
             console.log(this.chatId);
-            localStorage.setItem("chatId", JSON.stringify(this.chatId));
+            localStorage.setItem("chatId", this.chatId);
           },
           (error: any) => {
             console.log(error.error);
@@ -167,7 +167,7 @@ export class ProductdetailsComponent implements OnInit {
               console.log(data);
               this.chatData = data;
               this.chatId = this.chatData.chatId;
-              localStorage.setItem("chatId", JSON.stringify(this.chatId));
+              localStorage.setItem("chatId", this.chatId);
             });
           }
         );
