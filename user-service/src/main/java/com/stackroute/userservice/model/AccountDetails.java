@@ -18,13 +18,22 @@ import java.util.Collection;
 @Document(collection="accountdata")
 public class AccountDetails {
     @Id
-    private int accountNumber;
+    private long accountNumber;
     private String email;
     private String  expiryMonth;
 //    private int amount;
     private int cvv;
+    private String accountHolderName;
 
 
 
+//public AccountDetails(long accountNumber, String email, String expiryMonth, int cvv, String accountHolderName){
+//    super();
+//    this.accountNumber=accountNumber;
+//    this.email=email;
+//    this.expiryMonth=expiryMonth;
+//    this.cvv=cvv;
+//    this.accountHolderName=accountHolderName;
+//}
 
 }

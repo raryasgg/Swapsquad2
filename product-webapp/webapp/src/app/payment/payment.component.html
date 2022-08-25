@@ -1,54 +1,63 @@
+<span class="pl"><button class="btn-dialog-close" mat-stroked-button (click)="onClose()" tabIndex="-3">
+        <mat-icon>clear</mat-icon>
+    </button></span>
 <div class="center-wrapper">
     <div class="content">
         <form [formGroup]="updateForm">
-            <div class="top-bar">
-                <span>Payment</span>
+
+            <div class="top-bar" style="text-align: center;">
+                <h2>Payment </h2>
+
             </div>
-<h2>{{book}}</h2>
+
             <div class="bag-product">
 
                 <div class="description">
-                    <p class="product-code small muted">Product ID: SS022592000</p>
-                    <h2>One Plus 9r</h2>
-                    <p class="description-text">OnePlus 9R ; Performance. Operating System: OxygenOS based on Android™
-                        11. CPU: Qualcomm® Snapdragon™ 870. 5G Chipset: X55. GPU: Adreno 650. RAM: 8GB/12GB.</p>
-                    <h2>{{price}}</h2>
+                    <p class="product-code">Product ID: {{pid}}</p>
+                    <h2>{{pname}}</h2>
+                    <p class="description-text">Operating System: OxygenOS based on Android 11 CPU: Qualcomm®
+                        Snapdragon™ 870.. GPU: Adreno 650. RAM: 8GB/12GB{{desc}}</p>
+
 
                 </div>
             </div>
             <div class="bag-total">
-                <div class="total">
-                    <h3>Total:</h3>
-                    <h3><i class="fa-solid fa-coins" style="margin-right: 0.5rem; margin-left: 0.5rem"></i>825.00</h3>
-                  </div>
-                <div class="promo-checkbox">
-                    <div class="form-group">
-                        <label for="website">Exchange Mode</label>
-                        <div class="form-check">
+                <h3>Available BarterCoin:{{barterCoins}}<i class="fa-solid fa-coins"
+                        style="margin-right: 0.5rem; margin-left: 0.5rem"></i> </h3>
+                <div class="form-group">
+                    <!-- <input type="checkbox" name="promo-check" name="mode" id="coin" > -->
+                    <i class="fa-solid fa-coins" style="margin-right: 0.5rem; margin-left: 0.5rem"></i>
+                    <label for="promo-check">Pay Using Coin</label>
 
-                            <input class="form-check-input" type="radio" name="mode" id="coin" value="coin"  formControlName="coin">
-                            <i class="fa-solid fa-coins" style="margin-right: 0.5rem; margin-left: 0.5rem"></i>
-                            <label class="form-check-label" for="exampleRadios1">
-                               Coin
-                            </label>
-                            <span class="pl-lg-5">
-                                <input class="form-check-input" type="radio" name="mode" id="exchange" value="exchange"  formControlName="exchange">
-                                <i class="fa-solid fa-right-left" style="margin-right: 0.5rem; margin-left: 0.5rem"></i>
-                                <label class="form-check-label " for="exampleRadios2">
-                                   Exchange
-                                </label>
-                            </span>
-                        </div>
+                </div>
+
+                <div class="promo-checkbox">
+                    <div class="total">
+                        <h3>Total Coin For Exchange :</h3>
+                        <h3><i class="fa-solid fa-coins" style="margin-right: 0.5rem; margin-left: 0.5rem"></i>{{pcoin}}
+                        </h3>
                     </div>
-                    <h3>Available Coin:400<i class="fa-solid fa-coins" style="margin-right: 0.5rem; margin-left: 0.5rem"></i> {{acoin}}</h3>
-                    <h3 style="color: red;">{{errorMessage}}</h3>
+
+                    <mat-form-field>
+                        <mat-label>Select</mat-label>
+                        <mat-select formControlName="pid" ngDefaultControl>
+                            <mat-option *ngFor="let pro of abc" [value]="pro.pid">
+                                {{pro.pname}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+
                 </div>
 
                 <button mat-raised-button style="background: hsla(106, 86%, 57%, 0.762)" type="submit"
-                    (click)="onClickSubmitForm()" [disabled]="!updateForm.valid">
+                    (click)="onClickSubmitForm()">
                     Request Exchange
                 </button>
-
+                <span class="pl-lg-3">
+                    <button mat-raised-button color="primary" (click)="addcoin()">
+                        Add More Coin
+                    </button>
+                </span>
                 <!-- <button type="button" class="btn btn-success">
                 <span>Request Exchange</span>
             </button> -->

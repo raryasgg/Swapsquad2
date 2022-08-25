@@ -17,7 +17,10 @@ public interface RecommendationService {
     HashSet<IncomingProductData> getProductRecommendationsByLocation(String city)throws ProductNotFoundException;
     HashSet<IncomingProductData> getProductRecommendationByCityAndCategory(String city,String category)throws ProductNotFoundException;
     HashSet<IncomingProductData> getProductByCategory(String category)throws ProductNotFoundException;
-    ArrayList<IncomingProductData> getAllProduct();
+   public ArrayList<IncomingProductData> getAllProduct();
+
+
+
 
 //   public IncomingProductData data1(IncomingProductData user);
 

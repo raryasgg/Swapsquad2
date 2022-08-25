@@ -41,13 +41,13 @@ public class AccountServiceImpl implements AccountService{
     }
 
     @Override
-     public String addcoin(int amount, String email) {
+     public UserRegistration addcoin(int amount, String email) {
         UserRegistration ad = userrep.findById(email).get();
         int coin= amount/10;
         int newTotalCoin = ad.getBarterCoins() + coin;
         ad.setBarterCoins(newTotalCoin);
-        userrep.save(ad);
-        return "coin is added";
+       return userrep.save(ad);
+
 
 
     }
@@ -62,21 +62,24 @@ public class AccountServiceImpl implements AccountService{
        int buyerCoins = x.getBarterCoins()- coinOfProduct;
        x.setBarterCoins(buyerCoins);
  userrep.save(add);
- userrep.save(x);
-        return "succesfull";
+  userrep.save(x);
+  return  "Succesful";
+
+
+
     }
     @Override
-    public String withdraw(int amountWithdraw, String email) {
+    public UserRegistration withdraw(int amountWithdraw, String email) {
         UserRegistration y=userrep.findById(email).get();
 
       int balance =  y.getBarterCoins() - amountWithdraw;
       y.setBarterCoins(balance);
-      userrep.save(y);
-        return "withdrawn";
+      return userrep.save(y);
+
     }
 
     @Override
-    public AccountDetails getById(int accountNumber) throws UserNotFoundException {
+    public AccountDetails getById(long accountNumber) throws UserNotFoundException {
         Optional<AccountDetails> accountnum = accrepo.findById(accountNumber);
         if(accountnum.isPresent()){
             return accountnum.get();

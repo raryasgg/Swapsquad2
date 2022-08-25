@@ -1,7 +1,5 @@
 package com.stackroute.recommendationservice.service;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.stackroute.recommendationservice.exception.ProductAlreadyExistException;
 import com.stackroute.recommendationservice.exception.ProductNotFoundException;
 import com.stackroute.recommendationservice.model.Category;
@@ -14,9 +12,7 @@ import com.stackroute.recommendationservice.repository.UserRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.multipart.MultipartFile;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Optional;
@@ -103,13 +99,15 @@ public class RecommendationServiceImp implements RecommendationService {
         return (ArrayList<IncomingProductData>) repo.findAll();
     }
 
+
 //    @Override
 //    public IncomingProductData data1(IncomingProductData user) {
 //        return null;
 //    }
 
 
-    public IncomingProductData getById(int i) throws ProductNotFoundException {Optional<IncomingProductData> pro = repo.findById(i);
+    public IncomingProductData getById(int i) throws ProductNotFoundException {
+        Optional<IncomingProductData> pro = repo.findById(i);
         if (pro.isPresent()) {
             return pro.get();
         } else {
@@ -126,6 +124,24 @@ public class RecommendationServiceImp implements RecommendationService {
         }
     }
 }
+//    public void createNode(String str,MultipartFile file) throws ProvideProperProductDetails, JsonMappingException, JsonProcessingException {
+//        if(str.isEmpty()) {
+//            log.error("Provide proper product details");
+//            throw new ProvideProperProductDetails();
+//        } else {
+//            log.debug("Inside the ProductServiceImpl --createNode  methods");
+//            ObjectMapper objectMapper = new ObjectMapper();
+//            IncomingProductData prod = objectMapper.readValue(str,IncomingProductData.class);
+//            prod.setProductId(sequenceGeneratorService.generateSequence(IncomingProductData.SEQUENCE_NAME));
+//            try {
+//                prod.getProductImage(file.getBytes());
+//            } catch (IOException e) {
+//                // TODO Auto-generated catch block
+//                e.printStackTrace();
+//            }
+//            repo.save(prod);
+//            return prod;
+//}
 
 //    @Override
 //    public void createImageNode(IncomingProductData Data,MultipartFile file) throws IOException {

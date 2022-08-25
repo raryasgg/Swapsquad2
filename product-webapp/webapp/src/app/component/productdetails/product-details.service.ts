@@ -18,7 +18,12 @@ export class ProductDetailsService {
    
   // }
    getProductDetailsById(pid:any){
-   return this.httpClient.get<Product[]>(this.url+ "/api/v1/product/" + pid)
+   return this.httpClient.get<Product[]>("http://localhost:8080/api/v1/product/" + pid)
   }
-  
+  getProductDetailsByEmail(pemail:any){
+    return this.httpClient.get<Product[]>(this.url+ "/api/v1/productavailablebyemail/" + pemail)
+   }
+updateProductNotAvailable(pid:any){
+  return this.httpClient.put(`${"http://localhost:8080/api/v1/products"}/${pid}`,pid);
+}
 }

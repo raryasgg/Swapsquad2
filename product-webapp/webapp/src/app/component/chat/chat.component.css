@@ -13,16 +13,20 @@ html {
 }
 
 .card {
-    height: 650px;
+    height: 630px;
     border-radius: 15px !important; 
-    background: linear-gradient(90deg, rgb(140, 200, 253) 0%, rgb(93, 226, 241) 100%);
-
+    /* background: linear-gradient(90deg, rgb(140, 200, 253) 0%, rgb(93, 226, 241) 100%); */
+    border:1px solid rgb(140, 200, 253);
 }
 
 .contacts_body {
     padding: 0.75rem 0 !important;
     overflow-y: auto;
     white-space: nowrap;
+}
+
+.card ::-webkit-scrollbar {
+    width: 5px;
 }
 
 .msg_card_body {
@@ -33,9 +37,16 @@ html {
    width: 5px;
 }
 
+.chat-list-title{
+    display: flex;
+    justify-content: center;
+    text-align: center;
+}
+
 .card-header {
     border-radius: 15px 15px 0 0 !important;
     border-bottom: 0 !important;
+    background: linear-gradient(90deg, rgb(140, 200, 253) 0%, rgb(93, 226, 241) 100%);
 }
 
 .card-footer {
@@ -134,6 +145,11 @@ html {
 .img_cont_msg {
     height: 40px;
     width: 40px;
+}
+
+.chatList:hover{
+    background-color: #91fea9;
+    cursor: pointer;
 }
 
 .online_icon {

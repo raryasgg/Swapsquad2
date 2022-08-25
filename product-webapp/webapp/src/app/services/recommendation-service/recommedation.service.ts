@@ -11,7 +11,9 @@ export class RecommedationService {
 
  
   
-  private url: string ="http://localhost:8080"
+
+  private url: string ="http://localhost:8090"
+
 
   constructor(private httpClient: HttpClient) { }
 //   IncomingProductData(city:Location,category:Category): Observable<Object> {
@@ -20,16 +22,16 @@ export class RecommedationService {
 //  }
 
   getProductRecommendationsByLocation(city:String){
-   return this.httpClient.get<IncomingProductData[]>(this.url+ "/recommend/" +  city)
+   return this.httpClient.get<IncomingProductData[]>(this.url+ "/recommend/recommend/" +  city)
   }
   getgetProductRecommendationByCityAndCategory(city:String,category:String){
-    return this.httpClient.get<IncomingProductData[]>(this.url+ "/recommendCategory" + '?city='+city+'&category='+category)
+    return this.httpClient.get<IncomingProductData[]>(this.url+ "/recommend/recommendCategory" + '?city='+city+'&category='+category)
    }
    getgetProductByCategory(category:String){
-    return this.httpClient.get<IncomingProductData[]>(this.url+ "/Product" + '?category=' + category )
+    return this.httpClient.get<IncomingProductData[]>(this.url+ "/recommend/Product" + '?category=' + category )
    }
    getAllProduct(){
-    return this.httpClient.get<IncomingProductData[]>(this.url+ "/getAllProduct")
+    return this.httpClient.get<IncomingProductData[]>(this.url+ "/recommend/getAllProduct")
    }
 }
 

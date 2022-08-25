@@ -6,10 +6,10 @@ import org.springframework.data.mongodb.repository.MongoRepository;
 import java.util.ArrayList;
 import java.util.HashSet;
 
-public interface AccountdetailsRepo  extends MongoRepository<AccountDetails,Integer> {
+public interface AccountdetailsRepo  extends MongoRepository<AccountDetails,Long> {
 
     HashSet<AccountDetails> getAccountDataByEmail(String email);
 
 
-//    HashSet<AccountDetails> getAccountDataByAccountNumber(int accountNumber);
+
 }

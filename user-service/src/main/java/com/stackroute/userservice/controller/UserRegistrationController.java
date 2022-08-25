@@ -37,7 +37,7 @@ import lombok.extern.slf4j.Slf4j;
 
 @RestController
 @RequestMapping("/users")
-@CrossOrigin(origins="http://localhost:4200")
+@CrossOrigin(origins="*")
 @Slf4j
 public class UserRegistrationController {
 
@@ -121,6 +121,6 @@ public class UserRegistrationController {
 		return new ResponseEntity<UserRegistration>(userservice.add(user),
 				org.springframework.http.HttpStatus.CREATED);
 	}
-	 
+
 
 }
