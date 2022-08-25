@@ -60,7 +60,7 @@ export class MyProfileComponent implements OnInit {
       });
   }
 
-  updateEmployee(email: any) {
-    this.router.navigate(["/updateDetails", email]);
+  updateEmployee(email:any) {
+    this.router.navigate(["/updateDetails"],email);
   }
 }

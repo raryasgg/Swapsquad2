@@ -86,8 +86,9 @@ this._productdetailsService.getProductDetailsById(3).subscribe((data) => {
         "data:img/" + "jpg" + ";base64," + this.productdata.image
 
       );
+    
 
-      // this.ownerEmail=this.productdata.pemail;
+      this.ownerEmail=this.productdata.pemail;
       var t = this.pdatepost;
       this.dateofpurchase = t.substring(0, 10);
 
@@ -114,15 +115,16 @@ this._productdetailsService.getProductDetailsById(3).subscribe((data) => {
       this.dialog.open(PaymentComponent);
     } else if (this.productdata.pexchangetype == "BARTER") {
       this.dialog.open(Payment2Component);
-    } else {
+    } else 
+    {
       this.dialog.open(Payment3Component);
     }
   }
 
   //<============================ Chat Service Starts Here=========================>
 
-  ownerEmail = "raju@gmail.com";
-  buyerEmail = "raju@gmail.com";
+  ownerEmail = "";
+  buyerEmail = localStorage.getItem("loginEmail");
   public chatData: any;
   chatObj: Chat = new Chat();
   chatId = 0;
@@ -162,7 +164,7 @@ this._productdetailsService.getProductDetailsById(3).subscribe((data) => {
         );
     }
     // define your component where you want to go
-    this.router.navigate(["chat"]);
+    this.router.navigate(["/navbar/chat"]);
   }
 
   //<============================ Chat Service Ends Here=========================>

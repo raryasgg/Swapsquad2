@@ -59,7 +59,7 @@ export class RegisterUserComponent implements OnInit {
             text: "User Already Exist!",
           })
       );
-      this.router.navigate(["login"]);
+      this.router.navigate(["/navbar/recommendation-service"]);
     }
   }
 }

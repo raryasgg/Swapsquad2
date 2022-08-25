@@ -28,22 +28,36 @@
 <mat-sidenav-container class="example-container" autosize>
 	<mat-sidenav #sidenav class="example-sidenav" mode="side" opened="true" (mouseenter)="mouseenter()" (mouseleave)="mouseleave()">
 		<mat-nav-list>
-			<mat-list-item class="parent" routerLink='recommendation-service'>
+			<mat-list-item class="parent" routerLink='/navbar/recommendation-service'>
 				<span class="full-width" *ngIf="isExpanded || isShowing">Home</span>
 				<mat-icon mat-list-icon>home</mat-icon>
 			</mat-list-item>
-      <mat-list-item class="parent" routerLink='registerProduct'>
+      <mat-list-item class="parent" routerLink='/navbar/registerProduct'>
 				<span class="full-width" *ngIf="isExpanded || isShowing" >Register Product</span>
           <mat-icon mat-list-icon>workspaces</mat-icon>
 			</mat-list-item>
-      <mat-list-item class="parent" routerLink='updateDetails'>
+      <mat-list-item class="parent" routerLink='/navbar/updateDetails'>
 				<span class="full-width" *ngIf="isExpanded || isShowing">Update Profile</span>
         <mat-icon mat-list-icon>account_circle</mat-icon>
 			</mat-list-item>
-      <mat-list-item class="parent" routerLink='transcations'>
+      <mat-list-item class="parent" routerLink='/navbar/transcations'>
 				<span class="full-width" *ngIf="isExpanded || isShowing">Transcations</span>
         <mat-icon mat-list-icon>history</mat-icon>
         
+			</mat-list-item>
+      <mat-list-item class="parent" routerLink='/navbar/myProfile'>
+				<span class="full-width" *ngIf="isExpanded || isShowing">Myprofile</span>
+        <mat-icon mat-list-icon>history</mat-icon>        
+			</mat-list-item>
+
+      <mat-list-item class="parent" routerLink='/navbar/chat'>
+				<span class="full-width" *ngIf="isExpanded || isShowing">Chat</span>
+        <mat-icon mat-list-icon>history</mat-icon>        
+			</mat-list-item>
+
+      <mat-list-item class="parent" routerLink='/navbar/productDetail'>
+				<span class="full-width" *ngIf="isExpanded || isShowing">Product Details</span>
+        <mat-icon mat-list-icon>history</mat-icon>        
 			</mat-list-item>
 			
 		</mat-nav-list>

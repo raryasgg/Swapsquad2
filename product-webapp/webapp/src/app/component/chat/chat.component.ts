@@ -1,4 +1,3 @@
-
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -23,12 +22,14 @@ export class ChatComponent implements OnInit {
   public chatData: any;
   msg = "Good work";
   chatId = localStorage.getItem('chatId');
-  color=""
-  ownerEmail=""
+  color="";
+  ownerEmail="";
+
 
   //  For getting the senderEmail from localStorage
   buyerEmail = JSON.parse(localStorage.getItem('buyerEmail'));
   senderEmail = JSON.parse(localStorage.getItem('buyerEmail'));
+  senderCheck = JSON.parse(localStorage.getItem('buyerEmail'));
 
   constructor(private chatService: ChatService, private router: Router) {
     this.chatForm = new FormGroup({
@@ -110,6 +111,14 @@ export class ChatComponent implements OnInit {
 
       })
     })
+  }
+
+  routeX(){
+    this.router.navigateByUrl('recommendation-service');
+  }
+
+  routeHome(){
+    this.router.navigateByUrl('');
   }
 
 }

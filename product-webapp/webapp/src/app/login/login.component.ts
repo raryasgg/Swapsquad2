@@ -67,7 +67,7 @@ export class LoginComponent implements OnInit {
         console.log("validated",data);
         this.form.reset();
         localStorage.setItem("loginEmail",this.loginObj.username);
-        this.router.navigate(["recommendation-service"]);
+        this.router.navigate(["/navbar/recommendation-service"]);
       },(
         error=>{console.log(error);
            this.errorMessage=error.error;

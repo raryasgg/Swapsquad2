@@ -1,7 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { Product } from "../component/productdetails/product";
 import { ProductDetailsService } from "../component/productdetails/product-details.service";
-import { MatDialogRef } from "@angular/material/dialog";
+import { MatDialog, MatDialogConfig, MatDialogRef } from "@angular/material/dialog";
 import { UpdateDetailsService } from "../update-details.service";
 import { Router } from "@angular/router";
 import { FormControl, FormGroup } from "@angular/forms";
@@ -11,6 +11,7 @@ import { Transaction } from "../transaction";
 import { TransactionService } from "../transaction.service";
 import { EmailService } from "../email.service";
 import { EmailDetails } from "../email-details";
+import { AccountdataComponent } from "../component/accountdata/accountdata.component";
 @Component({
   selector: "app-payment",
   templateUrl: "./payment.component.html",
@@ -26,7 +27,8 @@ export class PaymentComponent implements OnInit {
     private userservice: UpdateDetailsService,
     private router: Router,
     private tranactionservice: TransactionService,
-    private emailservice: EmailService
+    private emailservice: EmailService,
+    public dialog: MatDialog
   ) {
     this.updateForm = new FormGroup({
       pid: new FormControl(),
@@ -80,10 +82,17 @@ export class PaymentComponent implements OnInit {
   onClose() {
     this.dialogRef.close();
   }
-
-  addcoin() {
-    this.router.navigate(["payment"]);
+  onClickCoin(){
+    const dialogConfig =new MatDialogConfig();
+    dialogConfig.autoFocus = false;
+    dialogConfig.restoreFocus=false;
+    dialogConfig.width= "70%"
+    dialogConfig.height = "75%"
+    this.dialog.open(AccountdataComponent,dialogConfig);
   }
+  // addcoin() {
+  //   this.router.navigate(["payment"]);
+  // }
 
   productObj: Product = new Product();
   userObj: UserRegistration = new UserRegistration();

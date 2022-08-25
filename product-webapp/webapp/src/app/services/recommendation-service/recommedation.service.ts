@@ -22,16 +22,16 @@ export class RecommedationService {
 //  }
 
   getProductRecommendationsByLocation(city:String){
-   return this.httpClient.get<IncomingProductData[]>(this.url+ "/recommend/recommend/" +  city)
+   return this.httpClient.get<IncomingProductData[]>(this.url+ "/recommend/" +  city)
   }
   getgetProductRecommendationByCityAndCategory(city:String,category:String){
-    return this.httpClient.get<IncomingProductData[]>(this.url+ "/recommend/recommendCategory" + '?city='+city+'&category='+category)
+    return this.httpClient.get<IncomingProductData[]>(this.url+ "/recommendCategory" + '?city='+city+'&category='+category)
    }
    getgetProductByCategory(category:String){
-    return this.httpClient.get<IncomingProductData[]>(this.url+ "/recommend/Product" + '?category=' + category )
+    return this.httpClient.get<IncomingProductData[]>(this.url+ "/Product" + '?category=' + category )
    }
    getAllProduct(){
-    return this.httpClient.get<IncomingProductData[]>(this.url+ "/recommend/getAllProduct")
+    return this.httpClient.get<IncomingProductData[]>(this.url+ "/getAllProduct")
    }
 }
 

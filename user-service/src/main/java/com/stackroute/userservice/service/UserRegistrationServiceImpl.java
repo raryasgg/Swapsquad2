@@ -66,8 +66,19 @@ public class UserRegistrationServiceImpl implements UserRegistrationService{
 
 	@Override
 	public UserRegistration update(UserRegistration user) {
-		UserRegistration savedEmployee = repo.save(user);
-		return savedEmployee;
+		 UserRegistration users =repo.findById(user.getEmail()).get();
+		 users.setFirstname(user.getFirstname());
+		 users.setLastname(user.getLastname());
+		 users.setMobile(user.getMobile());
+		 users.setGender(user.getGender());
+		 users.setPincode(user.getPincode());
+		 users.setCity(user.getCity());
+		 users.setState(user.getState());
+		 users.setStreet(user.getStreet());
+         users.setAge(user.getAge());
+         users.setImage(user.getImage());
+         repo.save(users);
+		return users;
 	}
 
 

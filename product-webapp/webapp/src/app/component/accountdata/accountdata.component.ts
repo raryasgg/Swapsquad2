@@ -56,7 +56,7 @@ public accountdata : any;
   }
 
   ngOnInit() {
-    this.accountService.getAccountDataByEmail("ravi@gmail.com").subscribe((resbyemail:any)=>{
+    this.accountService.getAccountDataByEmail("chitranshu@gmail.com").subscribe((resbyemail:any)=>{
       this.emaildataobj=resbyemail;
       console.log(this.emaildataobj);
      
@@ -91,7 +91,7 @@ onSave(){
     this.accountObj.accountNumber= this.accountForm.value.accountNumber;
     this.accountObj.cvv=this.accountForm.value.cvv;
     this.accountObj.expiryMonth=this.accountForm.value.expiryMonth;
-    this.accountObj.email="ravi@gmail.com";
+    this.accountObj.email="chitranshu@gmail.com";
     // this.accountObj.amount=this.accountForm.value.amount;
     this.accountService.addAccount(this.accountObj).subscribe(result =>
       console.log(result)
@@ -130,7 +130,7 @@ onAddCoin(){
   if(this.accountForm.value.amount!=null){
 console.log(this.accountForm.value)
 this.accountObj.amount=this.accountForm.value.amount;
-this.accountService.addAmount("ravi@gmail.com",this.accountObj.amount).subscribe(updateres =>{
+this.accountService.addAmount("chitranshu@gmail.com",this.accountObj.amount).subscribe(updateres =>{
   console.log(updateres)
  
 

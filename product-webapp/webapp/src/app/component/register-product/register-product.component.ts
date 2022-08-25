@@ -22,7 +22,7 @@ export interface Fruit {
 })
 
 export class RegisterProductComponent implements OnInit {
-pemail=""
+pemail=localStorage.getItem("loginEmail");
   // pexchange: "";
   // pcoin:0;
   productForm: FormGroup;
@@ -110,7 +110,7 @@ if (!this.productForm.invalid){
   this.productObj.pemail = this.productForm.value.pemail;
   this.productObj.pstate = this.productForm.value.pstate;
   this.productObj.pcoin = this.productForm.value.pcoin;
-  this.productObj.pemail=JSON.parse(localStorage.getItem('loginEmail'))
+  this.productObj.pemail=localStorage.getItem('loginEmail')
   this.productService.addProduct(this.productObj, this.file[0]).subscribe(data =>
     console.log(data)
   )

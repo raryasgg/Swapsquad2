@@ -56,9 +56,24 @@ public searchTerm : string='';
    
    cities: City[] = [
     {value: '', viewValue: ''},
-    {value: 'Lucknow', viewValue: 'Lucknow'},
-    {value: 'Raebareli', viewValue: 'Raebareli'},
-    {value: 'Varanasi', viewValue: 'Varanasi'},
+    {value: 'Andhra Pradesh', viewValue: 'Andhra Pradesh'},
+    {value: 'Assam', viewValue: 'Assam'},
+    {value: 'Arunachal Pradesh', viewValue: 'Arunachal Pradesh'},
+    {value: 'Bihar', viewValue: 'Bihar'},
+    {value: 'Chhattisgarh', viewValue: 'Chhattisgarh'},
+    {value: 'Goa', viewValue: 'Goa'},
+    {value: 'Gujarat', viewValue: 'Gujarat'},
+    {value: 'Haryana', viewValue: 'Haryana'},
+    {value: 'Himachal Pradesh', viewValue: 'Himachal Pradesh'},
+    {value: 'Jharkhand', viewValue: 'Jharkhand'},
+    {value: 'Karnataka', viewValue: 'Karnataka'},
+    {value: 'Kerala', viewValue: 'Kerala'},
+    {value: 'Madhya Pradesh', viewValue: 'Madhya Pradesh'},
+    {value: 'Maharashtra', viewValue: 'Maharashtra'},
+    {value: 'Manipur', viewValue: 'Manipur'},
+    {value: 'Meghalaya', viewValue: 'Meghalaya'},
+    {value: 'Nagaland', viewValue: 'Nagaland'},
+    {value: 'Odisha', viewValue: 'Odisha'}
   ];
   
   selectedCity = this.cities[0].value;
@@ -85,9 +100,12 @@ public searchTerm : string='';
   }
   categories: Category[]=[
     {value: '', viewValue: ''},
-    {value: 'Electronics', viewValue: 'Electronics'},
-    {value: 'AutoMobiles', viewValue: 'AutoMoblies'},
-    {value: 'Clothing', viewValue: 'Clothing'},
+    {value: 'Mobile, Tablet & Accessories', viewValue: 'Mobile, Tablet & Accessories'},
+    {value: 'Cars & Bikes', viewValue: 'Cars & Bikes'},
+    {value: 'Books & Sports', viewValue: 'Books & Sports'},
+    {value: 'Pets & Pet Care', viewValue: 'Pets & Pet Care'},
+    {value: 'Electronics & Appliances', viewValue: 'Electronics & Appliances'},
+    {value: 'Home & Life Styles', viewValue: 'Home & Life Styles'}
   ];
    selectedCategory = this.categories[0].value;
    selectCategory(event:Event) {

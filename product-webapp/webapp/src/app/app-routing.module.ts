@@ -16,22 +16,25 @@ import { LoginComponent } from './login/login.component';
 
 
 const routes: Routes = [
-
-  { path: 'registerUser', component: RegisterUserComponent },
-  { path: 'registerProduct', component: RegisterProductComponent },
-  { path: 'productDetail', component: ProductdetailsComponent },
-  { path: 'recommendation-service', component: RecommendationServiceComponent },
-  { path: 'updateDetails/:email', component: UpdateDetailsComponent },
   { path: 'home', component: AppComponent },
-  {path:'transcations', component:TranscationsComponent},
-  {path:'myProfile', component: MyProfileComponent},
-  {path:'payment',component:AccountdataComponent},
-  {path:'transcations', component:TranscationsComponent},
-  {path:'chat', component:ChatComponent},
-  {path:'transcations', component:TranscationsComponent},
-  {path:'myProfile', component: MyProfileComponent},
-  {path:'navbar', component:NavbarComponent},
   {path: 'login',component:LoginComponent},
+  { path: '', component: RegisterUserComponent },
+  {path:'navbar', component:NavbarComponent,
+children:[ { path: 'registerProduct', component: RegisterProductComponent },
+{ path: 'productDetail', component: ProductdetailsComponent },
+{ path: 'recommendation-service', component: RecommendationServiceComponent },
+{ path: 'updateDetails', component: UpdateDetailsComponent },
+{path:'transcations', component:TranscationsComponent},
+{path:'myProfile', component: MyProfileComponent},
+{path:'payment',component:AccountdataComponent},
+{path:'transcations', component:TranscationsComponent},
+{path:'chat', component:ChatComponent},
+{path:'transcations', component:TranscationsComponent},
+{path:'myProfile', component: MyProfileComponent}
+  
+
+]
+  }
 
 
 ];
