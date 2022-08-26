@@ -50,6 +50,7 @@ import { FilterPipe } from "./shared/filter.pipe";
 import { Payment2Component } from "./payment2/payment2.component";
 import { Payment3Component } from "./payment3/payment3.component";
 import { LoginComponent } from "./login/login.component";
+import { LandingPageComponent } from './landing-page/landing-page.component';
 
 @NgModule({
   declarations: [
@@ -70,6 +71,7 @@ import { LoginComponent } from "./login/login.component";
     Payment2Component,
     Payment3Component,
     LoginComponent,
+    LandingPageComponent,
   ],
 
   entryComponents: [

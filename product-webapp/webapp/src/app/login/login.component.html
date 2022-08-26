@@ -1,4 +1,4 @@
-<mat-grid-list cols="2" rowHeight="2:2">
+<button type="button" class="btn btn-light"><a routerLink=""><i class="fa fa-house"></i></a></button><mat-grid-list cols="2" rowHeight="90vh">
   <mat-grid-tile>
     <img mat-cad-image src="assets/r2.webp" alt="img" width="90%" height="80%">
   </mat-grid-tile>
@@ -64,7 +64,7 @@
           <input class="btn btn-success width:100px" type="submit" [disabled]="!form.valid" name="submit_reg" value="Sign-In"
             (click)="onSubmit()">
         </div>
-        <p>Do not have an account? <a href="#">registerUser</a></p>
+        <p>Do not have an account? <a href="register-user">registerUser</a></p>
       </form>
     </div>
   </mat-grid-tile>

@@ -25,8 +25,8 @@ public class Transaction {
 
     private String buyerEmail;
     private String sellerEmail;
-    private String productSend;
-    private String productObtained;
+    private int productSend;
+    private int productObtained;
     private String method_of_Transaction;
     private Double price_of_Product_in_coins;
     private String historyDetails;

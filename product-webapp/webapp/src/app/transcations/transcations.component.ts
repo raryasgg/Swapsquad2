@@ -79,7 +79,7 @@ export class TranscationsComponent implements OnInit {
         
             );
             this.tran[i].pcoin1=this.tran[i].price_of_Product_in_coins
-            this.tran[i].pname2=this.tran[i].productObtained
+            this.tran[i].pname2=this.abc.pname
             this.tran[i].pcategory2=this.abc.pcategory
             this.tran[i].eemail=this.tran[i].sellerEmail
             this.tran[i].image2=this.tran[i].image
@@ -99,7 +99,7 @@ export class TranscationsComponent implements OnInit {
               "data:img/" + "jpg" + ";base64," + data.image
         
             );
-            this.tran[i].pname1=this.tran[i].productSend
+            this.tran[i].pname1=this.abc.pname
             this.tran[i].pcategory1=this.abc.pcategory
             this.tran[i].image1=this.tran[i].image
             console.log("product",this.tran);
@@ -132,7 +132,7 @@ export class TranscationsComponent implements OnInit {
         
             );
             this.tran[i].pcoin2=this.tran[i].price_of_Product_in_coins
-            this.tran[i].pname2=this.tran[i].productObtained
+            this.tran[i].pname2=this.abc.pname
             this.tran[i].pcategory2=this.abc.pcategory
             this.tran[i].eemail=this.tran[i].buyerEmail
             this.tran[i].image2=this.tran[i].image
@@ -152,7 +152,7 @@ export class TranscationsComponent implements OnInit {
               "data:img/" + "jpg" + ";base64," + data.image
         
             );
-            this.tran[i].pname1=this.tran[i].productSend
+            this.tran[i].pname1=this.abc.pname
             this.tran[i].pcategory1=this.abc.pcategory
             this.tran[i].eemail=this.tran[i].buyerEmail
             this.tran[i].image1=this.tran[i].image
@@ -250,7 +250,7 @@ export class TranscationsComponent implements OnInit {
       
           );
           this.tran[i].pcoin2=this.tran[i].price_of_Product_in_coins
-          this.tran[i].pname2=this.tran[i].productObtained
+          this.tran[i].pname2=this.abc.pname
           this.tran[i].pcategory2=this.abc.pcategory
           this.tran[i].eemail=this.tran[i].buyerEmail
           this.tran[i].image2=this.tran[i].image
@@ -270,7 +270,7 @@ export class TranscationsComponent implements OnInit {
             "data:img/" + "jpg" + ";base64," + data.image
       
           );
-          this.tran[i].pname1=this.tran[i].productSend
+          this.tran[i].pname1=this.abc.pname
           this.tran[i].pcategory1=this.abc.pcategory
           this.tran[i].eemail=this.tran[i].buyerEmail
           this.tran[i].image1=this.tran[i].image
