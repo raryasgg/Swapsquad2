@@ -1,13 +1,51 @@
-eureka:
-  client:
-    service-url:
-      defaultZone: http://localhost:8076/eureka
-    register-with-eureka: true
-    fetch-registry: true
+#eureka:
+#  client:
+#    service-url:
+#      defaultZone:
+#    register-with-eureka:
+#    fetch-registry:
+
 
 server:
-  port: 8086
+  port: 8080
 
 spring:
   application:
     name: "api-gateway"
+  cloud:
+    gateway:
+      globalcors:
+        corsConfiguration:
+          '[/**]':
+            allowedOrigins: "*"
+            allowedMethods: "*"
+            allowedHeaders: "*"
+      routes:
+        - id: AuthenticationService
+          uri: http://localhost:8081/
+          predicates:
+            - Path=/authenticationservice/**
+        - id: ChatService
+          uri: http://localhost:9090/
+          predicates:
+            - Path=/chatservice/**
+        - id: RecommendationService
+          uri: http://localhost:8090/
+          predicates:
+            - Path=/recommendationservice/**
+        - id: Email
+          uri: http://localhost:9292/
+          predicates:
+            - Path=/emailservice/**
+        - id: ProductService
+          uri: http://localhost:8083/
+          predicates:
+            - Path=/productservice/**
+        - id: TransactionHistory
+          uri: http://localhost:8078/
+          predicates:
+            - Path=/transactionservice/**
+        - id: UserService
+          uri: http://localhost:9998/
+          predicates:
+            - Path=/userservice/**

@@ -11,7 +11,9 @@ export class RecommedationService {
 
  
   
-  private url: string ="http://localhost:8080"
+
+  private url: string ="http://localhost:8090"
+
 
   constructor(private httpClient: HttpClient) { }
 //   IncomingProductData(city:Location,category:Category): Observable<Object> {

@@ -19,6 +19,7 @@ import { I } from "@angular/cdk/keycodes";
   styleUrls: ["./productdetails.component.css"],
 })
 export class ProductdetailsComponent implements OnInit {
+
   pemail = "raju@gmail.com";
   pname = "One Plus 9r";
   plocation = "Patna,Bihar";
@@ -51,6 +52,9 @@ export class ProductdetailsComponent implements OnInit {
   pexchange: any;
   ratings: any;
   avgRating: any;
+  pstate: any;
+  pcity: any;
+
 
   constructor(
     private _productdetailsService: ProductDetailsService,
@@ -59,36 +63,38 @@ export class ProductdetailsComponent implements OnInit {
     private router: Router,
     public dialog: MatDialog,
     private chatService: ChatService
-  ) {}
+  ) { }
 
   ngOnInit(): void {
-    // console.log("working...")
-    // console.log(this._productdetailsService)
-    // this._productdetailsService.getProductdetailsById(1)
-    // .subscribe(data => this.productdata =data)
 
-    // commented starts
+    this._productdetailsService.getProductDetailsById(localStorage.getItem("productId")).subscribe((data) => {
 
-    // this._productdetailsService.getProductDetailsById(12).subscribe(data =>{
-
-    this._productdetailsService.getProductDetailsById(4).subscribe((data) => {
       this.productdata = data;
-      console.log(this.productdata);
-      this.pname = this.productdata.pname;
-      this.pemail = this.productdata.pemail;
-      this.pcategory = this.productdata.pcategory;
-      this.plocation = this.productdata.plocation;
-      this.pdate = this.productdata.pdate;
-      this.pdatepost = this.productdata.pdatepost;
-      this.pcoin = this.productdata.pcoin;
-      this.pexchange = this.productdata.pexchange;
-      this.pexchangetype = this.productdata.pexchangetype;
-      this.desc = this.productdata.desc;
+      console.log(this.productdata)
+      this.pname = this.productdata.pname
+      this.pemail = this.productdata.pemail
+      this.pcategory = this.productdata.pcategory
+      // this.plocation = this.productdata.plocation
+      this.pstate = this.productdata.pstate
+      this.pcity = this.productdata.pcity
+      this.pdate = this.productdata.pdate
+      this.pdatepost = this.productdata.pdatepost
+      this.pcoin = this.productdata.pcoin
+      this.pexchange = this.productdata.pexchange
+      this.pexchangetype = this.productdata.pexchangetype
+      this.desc = this.productdata.desc
       this.img = this.domSanitizer.bypassSecurityTrustResourceUrl(
-        "data:img/" + "jpg" + ";base64," + this.productdata.image
-      );
 
-      // this.ownerEmail=this.productdata.pemail;
+        "data:img/" + "jpg" + ";base64," + this.productdata.image
+
+      );
+    
+
+
+
+
+      this.ownerEmail = this.productdata.pemail;
+
       var t = this.pdatepost;
       this.dateofpurchase = t.substring(0, 10);
 
@@ -96,14 +102,15 @@ export class ProductdetailsComponent implements OnInit {
       this.dateofposting = t2.substring(0, 10);
     });
 
-    this.userratingservice
-      .getUserRatingByEmail("poojitha@gmail.com")
-      .subscribe((dataofrating) => {
-        this.userratingdata = dataofrating;
-        console.log(this.userratingdata);
-        this.ratings = this.userratingdata.ratings;
-        this.avgRating = this.userratingdata.avgRating;
-      });
+
+    this.userratingservice.getUserRatingByEmail(this.pemail).subscribe(dataofrating => {
+      this.userratingdata = dataofrating
+      console.log(this.userratingdata)
+      this.ratings = this.userratingdata.ratings
+      this.avgRating = this.userratingdata.avgRating
+    })
+
+
   }
 
   //<============================ Payment Service Starts Here=========================>
@@ -114,15 +121,19 @@ export class ProductdetailsComponent implements OnInit {
       this.dialog.open(PaymentComponent);
     } else if (this.productdata.pexchangetype == "BARTER") {
       this.dialog.open(Payment2Component);
-    } else {
+    } else 
+    {
       this.dialog.open(Payment3Component);
     }
   }
 
   //<============================ Chat Service Starts Here=========================>
 
-  ownerEmail = "raju@gmail.com";
-  buyerEmail = "raju@gmail.com";
+
+
+
+  ownerEmail = "";
+  buyerEmail = localStorage.getItem("loginEmail");
   public chatData: any;
   chatObj: Chat = new Chat();
   chatId = 0;
@@ -131,7 +142,7 @@ export class ProductdetailsComponent implements OnInit {
   // For routing to the chat page when click on chat button
   goToChat() {
     // For string the buyerEmail or whose ever logged in, in localstorage
-    localStorage.setItem("buyerEmail", JSON.stringify(this.buyerEmail));
+    localStorage.setItem("buyerEmail",this.buyerEmail);
 
     if (this.ownerEmail != this.buyerEmail) {
       // For checking the chat room by both the emails , if there is present then it will give the chat Id in localstorage
@@ -143,7 +154,7 @@ export class ProductdetailsComponent implements OnInit {
             this.chatData = data;
             this.chatId = this.chatData[0].chatId;
             console.log(this.chatId);
-            localStorage.setItem("chatId", JSON.stringify(this.chatId));
+            localStorage.setItem('chatId', this.chatData[0].chatId);
           },
           (error: any) => {
             console.log(error.error);
@@ -156,13 +167,13 @@ export class ProductdetailsComponent implements OnInit {
               console.log(data);
               this.chatData = data;
               this.chatId = this.chatData.chatId;
-              localStorage.setItem("chatId", JSON.stringify(this.chatId));
+              localStorage.setItem('chatId', this.chatData.chatId);
             });
           }
         );
     }
     // define your component where you want to go
-    this.router.navigate(["chat"]);
+    this.router.navigate(["/navbar/chat"]);
   }
 
   //<============================ Chat Service Ends Here=========================>

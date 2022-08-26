@@ -13,26 +13,31 @@ import { MyProfileComponent } from './my-profile/my-profile.component';
 import { AccountdataComponent } from './component/accountdata/accountdata.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { LoginComponent } from './login/login.component';
+import { LandingPageComponent } from './landing-page/landing-page.component';
 
 
 const routes: Routes = [
-
-  { path: 'registerUser', component: RegisterUserComponent },
-  { path: 'registerProduct', component: RegisterProductComponent },
-  { path: 'productDetail', component: ProductdetailsComponent },
-  { path: 'recommendation-service', component: RecommendationServiceComponent },
-  { path: 'updateDetails', component: UpdateDetailsComponent },
-  { path: 'home', component: AppComponent },
-  {path:'transcations', component:TranscationsComponent},
-  {path:'myProfile', component: MyProfileComponent},
-  {path:'payment',component:AccountdataComponent},
-  {path:'transcations', component:TranscationsComponent},
-  {path:'chat', component:ChatComponent},
-  {path:'transcations', component:TranscationsComponent},
-  {path:'myProfile', component: MyProfileComponent},
-  {path:'navbar', component:NavbarComponent},
+  // { path: 'home', component: AppComponent },
   {path: 'login',component:LoginComponent},
+  { path: 'register-user', component: RegisterUserComponent },
+  {path:'navbar', component:NavbarComponent,
+children:[ 
+{ path: 'registerProduct', component: RegisterProductComponent },
+{ path: 'productDetail', component: ProductdetailsComponent },
+{ path: 'recommendation-service', component: RecommendationServiceComponent },
+{ path: 'updateDetails', component: UpdateDetailsComponent },
+{path:'transcations', component:TranscationsComponent},
+{path:'myProfile', component: MyProfileComponent},
+{path:'payment',component:AccountdataComponent},
+{path:'transcations', component:TranscationsComponent},
+{path:'chat', component:ChatComponent},
+{path:'transcations', component:TranscationsComponent},
+{path:'myProfile', component: MyProfileComponent}
+  
 
+]
+  },
+  {path: '',component:LandingPageComponent},
 
 ];
 

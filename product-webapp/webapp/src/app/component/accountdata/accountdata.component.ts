@@ -3,6 +3,7 @@ import { FormArray, FormBuilder, FormControl, FormGroup, NgForm, Validators } fr
 import { Account } from 'src/app/models/account-data/account';
 import { AccountService } from 'src/app/services/accounts-data/account.service';
 import Swal from 'sweetalert2';
+import { MatDialogRef } from '@angular/material/dialog';
 
 // import * as moment from 'moment';
 
@@ -36,7 +37,7 @@ public accountdata : any;
 
 
 
-  constructor( private fb: FormBuilder, private accountService: AccountService ) { 
+  constructor( private fb: FormBuilder, private accountService: AccountService, private matDialogRef: MatDialogRef<AccountdataComponent> ) { 
     this.accountForm= new FormGroup({
       accountHolderName : new FormControl ("", [Validators.required]),
       accountNumber :new FormControl("",[Validators.required,Validators.pattern('[0-9 ]*'),Validators.minLength(9),Validators.maxLength(18)]),
@@ -55,7 +56,7 @@ public accountdata : any;
   }
 
   ngOnInit() {
-    this.accountService.getAccountDataByEmail("ravi@gmail.com").subscribe((resbyemail:any)=>{
+    this.accountService.getAccountDataByEmail(localStorage.getItem('loginEmail')).subscribe((resbyemail:any)=>{
       this.emaildataobj=resbyemail;
       console.log(this.emaildataobj);
      
@@ -90,7 +91,7 @@ onSave(){
     this.accountObj.accountNumber= this.accountForm.value.accountNumber;
     this.accountObj.cvv=this.accountForm.value.cvv;
     this.accountObj.expiryMonth=this.accountForm.value.expiryMonth;
-    this.accountObj.email="ravi@gmail.com";
+    this.accountObj.email=localStorage.getItem('loginEmail');
     // this.accountObj.amount=this.accountForm.value.amount;
     this.accountService.addAccount(this.accountObj).subscribe(result =>
       console.log(result)
@@ -113,28 +114,35 @@ onclickgetaccount(accm){
     this.accountHolderName= this.accountdata.accountHolderName;
     this.accountNumber=this.accountdata.accountNumber;
     this.expiryMonth=this.accountdata.expiryMonth;
-    this.cvv =  this.accountdata.cvv;
+    this.cvv =  "***"
     this.email= this.accountdata.email;
  
   }) 
 }
 
-disablebutton:boolean=true;
+// gmail=localStorage.getItem('loginemail');
+gmail=JSON.parse(localStorage.getItem('loginEmail'));
+
+
 
 
 onAddCoin(){
   if(this.accountForm.value.amount!=null){
 console.log(this.accountForm.value)
 this.accountObj.amount=this.accountForm.value.amount;
-this.accountService.addAmount("ravi@gmail.com",this.accountObj.amount).subscribe(updateres =>{
+this.accountService.addAmount(localStorage.getItem("loginEmail"),this.accountObj.amount).subscribe(updateres =>{
   console.log(updateres)
-  // this.disablebutton=false;
+ 
 
 }); this.accountForm.reset();
 Swal.fire({ icon: 'success', title: 'Coin added !!', text: 'Coins added Succesfully !', })
 // this.disablebutton=false;
   }else{
-    // this.disablebutton=true;
+    Swal.fire({ icon: 'question', title: 'Want to add coins ?', text: 'Enter amount  !', })
   }
+}
+
+onClickClear(){
+this.matDialogRef.close();
 }
 }

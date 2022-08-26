@@ -23,7 +23,7 @@ public class IncomingProductData {
     private String productCategory;
     private byte[] productImage;
     private Date pdatepost;
-    private Exchange pexchangetype;
+    private String pexchangetype;
 
     public IncomingProductData(int productId, String state, String city, String productCategory) {
         super();

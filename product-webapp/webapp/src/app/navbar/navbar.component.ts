@@ -48,7 +48,8 @@ export class NavbarComponent implements OnInit {
 
   onClickCoin(){
     const dialogConfig =new MatDialogConfig();
-    dialogConfig.autoFocus = true;
+    dialogConfig.autoFocus = false;
+    dialogConfig.restoreFocus=false;
     dialogConfig.width= "70%"
     dialogConfig.height = "75%"
     this.dialog.open(AccountdataComponent,dialogConfig);
@@ -56,4 +57,5 @@ export class NavbarComponent implements OnInit {
 
 
   }
+
 }

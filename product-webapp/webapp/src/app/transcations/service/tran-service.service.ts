@@ -10,7 +10,7 @@ import { Userrating } from '../model/userrating';
 export class TranServiceService {
   private url: string ="http://localhost:8078"
   private urlp: string ="http://localhost:8083"
-  private urluser: string ="http://localhost:9999"
+  private urluser: string ="http://localhost:9998"
 
 
   constructor(private httpClient: HttpClient) { }

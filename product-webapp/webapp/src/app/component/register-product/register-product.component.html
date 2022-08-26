@@ -244,7 +244,7 @@
                       <i class="fa-solid fa-coins" style="margin-right: 0.5rem; margin-left: 0.5rem"></i>
                       Coin
                     </mat-radio-button>
-                    <mat-radio-button value="EXCHANGE" class="col-md-4" (click)="text(1)">
+                    <mat-radio-button value="BARTER" class="col-md-4" (click)="text(1)">
                       <i class="fa-solid fa-right-left" style="margin-right: 0.5rem; margin-left: 0.5rem"></i>
                       Exchange
                     </mat-radio-button>
@@ -349,9 +349,10 @@
 
                   <mat-form-field class="col-md-3" appearance="outline">
                     <mat-label>
-                      <p>ramkrishn257@gmail.com</p>
+                      <p>{{pemail}}</p>
                     </mat-label>
-                    <input matInput formControlName="pemail" readonly />
+                    <!-- <input matInput formControlName="pemail" readonly /> -->
+                    <input matInput placeholder="" readonly />
                   </mat-form-field>
 
                   <div class="col-md-1"></div>
@@ -389,7 +390,7 @@
                         <mat-option value="Manipur">Manipur</mat-option>
                         <mat-option value="Meghalaya">Meghalaya</mat-option>
                         <mat-option value="Nagaland">Nagaland</mat-option>
-                        <mat-option value="Nagaland">Odisha</mat-option>
+                        <mat-option value="Odisha">Odisha</mat-option>
                       </mat-select>
                     </mat-form-field>
                   </div>

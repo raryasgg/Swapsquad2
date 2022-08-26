@@ -2,6 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { RegisterService } from "../register.service";
 import { UserRegistration } from "../user-registration";
 import Swal from "sweetalert2";
+import { Router } from "@angular/router";
 @Component({
   selector: "app-register-user",
   templateUrl: "./register-user.component.html",
@@ -18,7 +19,7 @@ export class RegisterUserComponent implements OnInit {
     /(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{5,10}/
   );
 
-  constructor(private registerService: RegisterService) {}
+  constructor(private registerService: RegisterService,private router: Router) {}
 
   ngOnInit(): void {}
 
@@ -35,14 +36,18 @@ export class RegisterUserComponent implements OnInit {
         title: "Oops...",
         text: "Fields cannot be empty!",
       });
-    } else if (this.user.password != this.user.cpassword) {
-      Swal.fire({
-        icon: "error",
-        title: "Oops...",
-        text: "Password Must Be Same",
-      });
-      this.errorMessage = "Password Must Be Same";
-    } else {
+    } 
+    else if (this.user.password != this.user.cpassword) {
+      console.log("password must be same")
+    }
+      // Swal.fire({
+      //   icon: "error",
+      //   title: "Oops...",
+      //   text: "Password Must Be Same",
+      // });
+      // this.errorMessage = "Password Must Be Same";
+   
+     else {
       this.registerService.registerUser(this.user).subscribe(
         (data) => {
           Swal.fire("Successfully done !!", "User is Registered ", "success");
@@ -54,6 +59,7 @@ export class RegisterUserComponent implements OnInit {
             text: "User Already Exist!",
           })
       );
+      this.router.navigate(["/login"]);
     }
   }
 }

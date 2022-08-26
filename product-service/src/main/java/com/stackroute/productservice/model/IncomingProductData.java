@@ -21,6 +21,6 @@ public class IncomingProductData {
     private String productCategory;
     private byte[] productImage;
     private Date pdatepost;
-    private Exchange pexchangetype;
+    private String pexchangetype;
 
 }

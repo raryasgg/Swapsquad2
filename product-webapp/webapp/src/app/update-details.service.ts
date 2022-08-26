@@ -7,7 +7,7 @@ import { UserRegistration } from './user-registration';
   providedIn: 'root'
 })
 export class UpdateDetailsService {
-  baseUrl="http://localhost:9999/users/update/";
+  baseUrl="http://localhost:9998/users/update/";
   constructor(private httpClient: HttpClient) { }
 
 
@@ -15,11 +15,11 @@ export class UpdateDetailsService {
     const dataObj: FormData=new FormData;
     dataObj.append('str',JSON.stringify(registerObject));
     dataObj.append('file',profileImage);
-    return this.httpClient.put<UserRegistration>("http://localhost:9999/users/update/add",dataObj);
+    return this.httpClient.put<UserRegistration>("http://localhost:9998/users/update/add",dataObj);
   }
 
   getUserDetailByEmail(email:any){
-    return this.httpClient.get<UserRegistration>("http://localhost:9999/users/user/" + email)
+    return this.httpClient.get<UserRegistration>("http://localhost:9998/users/user/" + email)
   }
 
   updateEmployee( employees: UserRegistration,email:any): Observable<Object>{
@@ -30,11 +30,14 @@ export class UpdateDetailsService {
   }
 
   getUserCoinByEmail(email:any){
-    return this.httpClient.get<UserRegistration>("http://localhost:9999/users/user/" + email)
+    return this.httpClient.get<UserRegistration>("http://localhost:9998/users/user/" + email)
   }
   
 exchange( buyeremail:any,selleremail:any,coinOfProduct:any): Observable<Object>{
-  return this.httpClient.put("http://localhost:9999/users/exchhange?buyeremail="+buyeremail+"&selleremail="+selleremail+"&newTotalCoins="+coinOfProduct,{});
+  return this.httpClient.put("http://localhost:9998/users/exchhange?buyeremail="+buyeremail+"&selleremail="+selleremail+"&newTotalCoins="+coinOfProduct,{});
+}
+updatewithoutPicture(data:UserRegistration){
+  return this.httpClient.put("http://localhost:9998/users/update2/add",data);
 }
 
 }

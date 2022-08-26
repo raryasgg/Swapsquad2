@@ -19,6 +19,7 @@ public interface UserRegistrationService {
 	public UserRegistration adduser(String str, MultipartFile file) throws JsonMappingException, JsonProcessingException;
 
 	public UserRegistration addrating(UserRating add, String email);
+	public UserRegistration updateuser(UserRegistration user) throws UserNotFoundException;
 
 
 

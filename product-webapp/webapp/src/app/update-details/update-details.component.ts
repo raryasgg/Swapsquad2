@@ -24,6 +24,7 @@ export class UpdateDetailsComponent implements OnInit {
   city: String;
   state: String;
   pincode: string;
+  password:String;
 
   updateForm: FormGroup;
 
@@ -49,25 +50,44 @@ export class UpdateDetailsComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.email = this.route.snapshot.params["email"];
+    this.email=localStorage.getItem('loginEmail')
+    console.log(this.email)
+    // this.email = this.route.snapshot.params["email"];
     this.updateDetailsService
-      .getUserDetailByEmail("nkkkk@gmail.com")
+      .getUserDetailByEmail(this.email)
       .subscribe((data) => {
         this.employees = data;
 
-        this.firstname = this.employees.firstname;
-        this.lastname = this.employees.lastname;
-        this.email = this.employees.email;
-        this.mobile = this.employees.mobile;
-        this.age = this.employees.age;
-        this.street = this.employees.street;
-        this.city = this.employees.city;
-        this.state = this.employees.state;
-        this.pincode = this.employees.pincode;
-        this.gender = this.employees.gender;
+        this.updateForm.patchValue({
+          firstname:this.employees.firstname,
+          lastname:this.employees.lastname,
+          mobile:this.employees.mobile,
+          email:this.employees.email,
+          gender:this.employees.gender,
+          age:this.employees.age,
+          street:this.employees.street,
+          city:this.employees.city,
+          state:this.employees.state,
+          pincode: this.employees.pincode,
+        })
         this.image = this.domSanitizer.bypassSecurityTrustResourceUrl(
-          "data:img/" + "jpg" + ";base64," + this.employees.image
-        );
+           "data:img/" + "jpg" + ";base64," + this.employees.image);
+
+        // this.firstname = this.employees.firstname;
+        // this.lastname = this.employees.lastname;
+        // // this.email = this.employees.email;
+        // // console.log(this.employees.email)
+        // this.mobile = this.employees.mobile;
+        // this.age = this.employees.age; 
+        // this.street = this.employees.street;
+        // this.city = this.employees.city;
+        // this.state = this.employees.state;
+        // this.pincode = this.employees.pincode;
+        // this.gender = this.employees.gender;
+        // this.password=this.employees.password;
+        // this.image = this.domSanitizer.bypassSecurityTrustResourceUrl(
+        //   "data:img/" + "jpg" + ";base64," + this.employees.image
+        // );
       });
   }
 
@@ -117,6 +137,19 @@ export class UpdateDetailsComponent implements OnInit {
     this.updateObj.state = this.updateForm.value.state;
     this.updateObj.pincode = this.updateForm.value.pincode;
 
+    if(this.file.length==0){
+      this.updateDetailsService
+      .updatewithoutPicture(this.updateObj)
+      .subscribe((data) => console.log(data));
+      Swal.fire({
+        icon: "success",
+        title: "Successfully Updated!!",
+        text: "Your Profile Updated Succesfully !",
+      });
+      this.router.navigateByUrl("/navbar/myProfile");
+      // window.location.reload();
+    }
+    else{
     this.updateDetailsService
       .update(this.updateObj, this.file[0])
       .subscribe((data) => console.log(data));
@@ -129,10 +162,13 @@ export class UpdateDetailsComponent implements OnInit {
     });
 
     //To navigate to home page
-    this.router.navigateByUrl("/myProfile");
-
+    this.router.navigateByUrl("/navbar/myProfile");
+  }
     // else{
     //   Swal.fire({ icon: 'error', title: 'Oops...Empty Feild !!', text: 'Please fill all sections the to continue !', })
     // }
   }
+
+  
+
 }
