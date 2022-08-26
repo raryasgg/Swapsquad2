@@ -34,7 +34,7 @@ export class PaymentComponent implements OnInit {
       pid: new FormControl(),
     });
   }
-
+  public productdata1:any;
   public productdata: any;
   pid = 1001;
   pname = "One Plus 9r";
@@ -55,7 +55,11 @@ export class PaymentComponent implements OnInit {
         for (let i = 0; i < data.length; i++) {
           this.abc.push(data[i]);
         }
-
+        this.productdata1=data;
+        this.pid=this.productdata1[0].pid;
+        this.pemail=this.productdata1[0].pemail;
+        console.log(this.productdata1[0].pid);
+        console.log(this.productdata1[0].pemail);
         console.log(this.abc);
       });
 
@@ -129,14 +133,10 @@ export class PaymentComponent implements OnInit {
       text: "Thank You!",
     });
 
-    console.log(this.coindata.email);
-    console.log(this.productdata.pemail);
-    console.log(this.productdata.pname);
-    console.log(this.updateForm.value.pname);
-    this.transactionObj.buyerEmail = this.coindata.email;
+    this.transactionObj.buyerEmail = this.productdata1[0].pemail;
     this.transactionObj.sellerEmail = this.productdata.pemail;
-    this.transactionObj.productSend = this.productdata.pname;
-    this.transactionObj.productObtained = this.updateForm.value.pname;
+     this.transactionObj.productSend =this.productdata1[0].pid;
+    this.transactionObj.productObtained =  this.productdata.pid;
     this.tranactionservice
       .saveTransaction(this.transactionObj)
       .subscribe((data) => console.log(data));

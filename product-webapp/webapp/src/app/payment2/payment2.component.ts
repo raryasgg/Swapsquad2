@@ -73,14 +73,7 @@ console.log(this.productdata1[0].pemail);
       this.pemail = this.productdata.pemail;
     });
 
-    this.userservice
-      .getUserCoinByEmail(localStorage.getItem("loginEmail"))
-      .subscribe((data) => {
-        this.coindata = data;
-        console.log(this.coindata);
-        this.barterCoins = this.coindata.barterCoins;
-        this.email = this.coindata.email;
-      });
+   
   }
 
   onClose() {
@@ -108,21 +101,7 @@ console.log(this.productdata1[0].pemail);
       text: "Thank You!",
     });
 
-    console.log(this.coindata.email);
-    console.log(this.productdata.pemail);
-    console.log(this.productdata.pcoin);
-    this.userservice
-      .exchange(
-        this.coindata.email,
-        this.productdata.pemail,
-        this.productdata.pcoin
-      )
-      .subscribe((data) => console.log(data));
-    Swal.fire({
-      icon: "success",
-      title: "Requested for Exchange!!",
-      text: "Thank You!",
-    });
+   
 
     console.log(this.productdata1[0].pemail);
     console.log(this.productdata.pemail);

@@ -114,8 +114,17 @@ export class ProductdetailsComponent implements OnInit {
   }
 
   //<============================ Payment Service Starts Here=========================>
+ getExchangeDisable:Boolean=false;
+
 
   openDialog() {
+    if(this.pemail==localStorage.getItem('loginEmail')){
+      this.getExchangeDisable=true;
+
+    }else{
+      this.getExchangeDisable=false
+    
+    
     console.log(this.productdata.pexchangetype);
     if (this.productdata.pexchangetype == "COIN") {
       this.dialog.open(PaymentComponent);
@@ -126,7 +135,7 @@ export class ProductdetailsComponent implements OnInit {
       this.dialog.open(Payment3Component);
     }
   }
-
+  }
   //<============================ Chat Service Starts Here=========================>
 
 
