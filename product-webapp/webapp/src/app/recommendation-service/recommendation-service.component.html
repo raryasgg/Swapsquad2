@@ -142,13 +142,14 @@
       <!-- <div fxFlex=25% fxFlex.xs="100%" fxFlex.sm="33%" > -->
         <!-- <div *ngFor="let a of abc"> -->
           <mat-card (click)="recommendation(a.productId)" class="example-card" *ngFor="let a of abc " fxFlex="23%" fxLayoutGap="2%">
-            <img mat-card-image [src]="a.productImage">
+            <img mat-card-image [src]="a.productImage" style="height:15rem;">
               <mat-card-content>
-                <h4>{{a.pexchangetype}}</h4>
+                <h4 style="color:rgb(132, 20, 124)">MODE OF EXCHANGE : {{a.pexchangetype}}</h4>
               <p>{{a.productName}}</p>
               <div class="addres_data">
-                <p>{{a.city}} , {{a.state}}</p>
-                <p>{{a.pdatepost}}</p>
+                <!-- <p>{{a.city}} , {{a.state}}</p> -->
+                <p>{{a.state}}</p>
+                <p>{{a.pdatepost.substring(0,10)}}</p>
               </div>
             </mat-card-content>
           </mat-card>

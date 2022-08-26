@@ -29,8 +29,8 @@
                                     </div>
                                     <div class="user_info"  (click)="loadChatByEmail(chats.ownerEmail, chats.buyerEmail)">
                                         <!-- {{chats.ownerEmail}}  -->
-                                        <div *ngIf="ownerEmail!=senderCheck" style="margin-top: 1rem;">{{chats.ownerEmail}}</div>
-                                        <div *ngIf="ownerEmail==senderCheck" style="margin-top: 1rem;">{{chats.buyerEmail}}</div>
+                                        <div *ngIf="chats.ownerEmail!=senderCheck" style="margin-top: 1rem;">{{chats.ownerEmail}}</div>
+                                        <div *ngIf="chats.ownerEmail==senderCheck" style="margin-top: 1rem;">{{chats.buyerEmail}}</div>
                                         <br>
                                         <!-- {{chats.buyerEmail}} -->
                                         <!-- {{chats.chatId}} -->

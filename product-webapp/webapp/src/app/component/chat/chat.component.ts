@@ -27,9 +27,9 @@ export class ChatComponent implements OnInit {
 
 
   //  For getting the senderEmail from localStorage
-  buyerEmail = localStorage.getItem('buyerEmail');
-  senderEmail = localStorage.getItem('buyerEmail');
-  senderCheck = localStorage.getItem('buyerEmail');
+  buyerEmail = localStorage.getItem('loginEmail');
+  senderEmail = localStorage.getItem('loginEmail');
+  senderCheck = localStorage.getItem('loginEmail');
 
   constructor(private chatService: ChatService, private router: Router) {
     this.chatForm = new FormGroup({
@@ -40,7 +40,7 @@ export class ChatComponent implements OnInit {
 
   ngOnInit(): void {
 
-  
+    this.chatId = localStorage.getItem('chatId');
     // For the first time displaying the chat by the chatId
     this.chatId = localStorage.getItem('chatId');
     this.chatService.getChatById(this.chatId).subscribe(data => {
@@ -51,12 +51,15 @@ export class ChatComponent implements OnInit {
     });
 
     // For getting all the chat list whose ever is logged in.
-    this.chatService.getChatByBuyerOrSellerEmail(this.buyerEmail).subscribe(data => {
+    this.chatService.getChatByBuyerOrSellerEmail(localStorage.getItem('loginEmail')).subscribe(data => {
       console.log(data);
       this.chatData = data;
       this.chatList = this.chatData;
       console.log(this.chatList)
+      
     });
+
+    console.log("owner",this.ownerEmail);
 
   }
 
