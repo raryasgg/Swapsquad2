@@ -143,7 +143,7 @@
               <div class="produuct-owners"></div>
   
               <mat-card-actions align="end">
-                <button mat-raised-button color="primary">Add to Wishlist</button>
+                
                 <button
                   mat-raised-button
                   style="background: #43db52; color: white"
@@ -164,7 +164,7 @@
         </div>
   
         <div class="exchange-button" align="end">
-          <button mat-raised-button color="primary" (click)="openDialog()">
+          <button mat-raised-button color="primary" (click)="openDialog()" disable="getExchangeDisable">
             Exchange
           </button>
           <!-- <button mat-raised-button color="primary" (click)="openDialog2()">Exchange</button> -->

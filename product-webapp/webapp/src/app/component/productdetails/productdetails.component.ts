@@ -114,8 +114,26 @@ export class ProductdetailsComponent implements OnInit {
   }
 
   //<============================ Payment Service Starts Here=========================>
+  getExchangeDisable:boolean=false;
+  // openDialog(){ 
+  // if(this.pemail==localStorage.getItem('loginEmail')){
+  //     this.getExchangeDisable=true;
 
+  //   }else{
+  //     this.getExchangeDisable=false
+  //   }
+      
+
+  
   openDialog() {
+
+    if(this.pemail==localStorage.getItem('loginEmail')){
+      this.getExchangeDisable=true;
+
+    }else{
+      this.getExchangeDisable=false
+    }
+    
     console.log(this.productdata.pexchangetype);
     if (this.productdata.pexchangetype == "COIN") {
       this.dialog.open(PaymentComponent);
