@@ -19,30 +19,30 @@ public class TransactionServiceImplementationTest {
     public Object addNew(Object any) {
         return "Transaction_added";
     }
-    @Test
-    public void    getTransactionbyTransactionId (int transactionId) throws TransactionIdNotFound {
-        {
-            Transaction user = new
-                    Transaction(8979, "gsfj@gmail.com", "ghbnj@gmail.com", "Bluetooth", "Charger",
-                    "ProductExchanged", 0.0, "Headphone exchanging only", null);
-            Optional<Transaction> optionalUser = Optional.of(user);
-            when(Repository.getTransactionbyTransactionId(8979));
-            Transaction retreivedUser = (Transaction) Service.getByTransactionId(8979);
-            assertEquals(user.getTransactionId(),
-                    retreivedUser.getTransactionId(), "Display All transactions");
-        }
+//    @Test
+//    public void    getTransactionbyTransactionId (int transactionId) throws TransactionIdNotFound {
+//        {
+//            Transaction user = new
+//                    Transaction(8979, "gsfj@gmail.com", "ghbnj@gmail.com", "Bluetooth", "Charger",
+//                    "ProductExchanged", 0.0, "Headphone exchanging only", null);
+//            Optional<Transaction> optionalUser = Optional.of(user);
+//            when(Repository.getTransactionbyTransactionId(8979));
+//            Transaction retreivedUser = (Transaction) Service.getByTransactionId(8979);
+//            assertEquals(user.getTransactionId(),
+//                    retreivedUser.getTransactionId(), "Display All transactions");
+//        }
+//
+//
+//    }
 
-
-    }
-
-    @Test
-    public void   TransactionIsNotDoneByTransactionId() throws TransactionNotFound, TransactionIdNotFound {
-        Optional<Transaction> optionalUser =
-                Optional.empty();
-        when(Repository.getTransactionbyTransactionId(8779));
-        assertThrows(TransactionNotFound.class, () -> {
-            Service.getByTransactionId(8779);
-        });
-
-    }
+//    @Test
+//    public void   TransactionIsNotDoneByTransactionId() throws TransactionNotFound, TransactionIdNotFound {
+//        Optional<Transaction> optionalUser =
+//                Optional.empty();
+//        when(Repository.getTransactionbyTransactionId(8779));
+//        assertThrows(TransactionNotFound.class, () -> {
+//            Service.getByTransactionId(8779);
+//        });
+//
+//    }
 }
