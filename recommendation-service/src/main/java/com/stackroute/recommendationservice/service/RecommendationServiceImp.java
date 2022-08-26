@@ -53,19 +53,19 @@ public class RecommendationServiceImp implements RecommendationService {
             Category category1 = new Category(incomingData.getProductCategory());
             categoryRepository.save(category1);
         }
-        if (locationRepository.findById(incomingData.getCity()).isEmpty()) {
+        if (locationRepository.findById(incomingData.getState()).isEmpty()) {
             Location location1 = new Location(incomingData.getCity(), incomingData.getState());
             locationRepository.save(location1);
         }
 
 
         repo.createCategoryRelationshipWithProduct(incomingData.getProductId(), incomingData.getProductCategory());
-        repo.createLocationRelationshipWithProduct(incomingData.getProductId(), incomingData.getCity());
+        repo.createLocationRelationshipWithProduct(incomingData.getProductId(), incomingData.getState());
     }
 
     @Override
-    public HashSet<IncomingProductData> getProductRecommendationsByLocation(String city) throws ProductNotFoundException {
-        HashSet<IncomingProductData> prod = repo.getProductRecommendationByLocation(city);
+    public HashSet<IncomingProductData> getProductRecommendationsByLocation(String State) throws ProductNotFoundException {
+        HashSet<IncomingProductData> prod = repo.getProductRecommendationByLocation(State);
         if (prod.isEmpty()) {
             throw new ProductNotFoundException();
         } else {
@@ -75,8 +75,8 @@ public class RecommendationServiceImp implements RecommendationService {
 
 
     @Override
-    public HashSet<IncomingProductData> getProductRecommendationByCityAndCategory(String city, String category) throws ProductNotFoundException {
-        HashSet<IncomingProductData> produ = repo.getProductRecommendationByCityAndCategory(city, category);
+    public HashSet<IncomingProductData> getProductRecommendationByStateAndCategory(String state, String category) throws ProductNotFoundException {
+        HashSet<IncomingProductData> produ = repo.getProductRecommendationByStateAndCategory(state, category);
         if (produ.isEmpty()) {
             throw new ProductNotFoundException();
         } else {

@@ -38,10 +38,10 @@ public class RecommendationController {
         return "hello";
     }
 
-    @GetMapping("/recommend/{city}")
-    public ResponseEntity<?> getProductRecommendationsByLocation(@PathVariable String city) {
+    @GetMapping("/recommend/{state}")
+    public ResponseEntity<?> getProductRecommendationsByLocation(@PathVariable String state) {
         try {
-            HashSet<IncomingProductData> recommendations = this.recommendationService.getProductRecommendationsByLocation(city);
+            HashSet<IncomingProductData> recommendations = this.recommendationService.getProductRecommendationsByLocation(state);
             return new ResponseEntity<>(recommendations, HttpStatus.OK);
         } catch (ProductNotFoundException e) {
             return new ResponseEntity("Product Not Exits", HttpStatus.CONFLICT);
@@ -49,10 +49,10 @@ public class RecommendationController {
     }
 
     @GetMapping("/recommendCategory")
-    public ResponseEntity<?> getProductRecommendationByCityAndCategory(@RequestParam("city") String city, @RequestParam("category") String category) {
-        log.debug("City:category" + city + category);
+    public ResponseEntity<?> getProductRecommendationByStateAndCategory(@RequestParam("state") String state, @RequestParam("category") String category) {
+        log.debug("state:category" + state + category);
         try {
-            HashSet<IncomingProductData> recommendations = this.recommendationService.getProductRecommendationByCityAndCategory(city, category);
+            HashSet<IncomingProductData> recommendations = this.recommendationService.getProductRecommendationByStateAndCategory(state, category);
             return new ResponseEntity<>(recommendations, HttpStatus.OK);
         } catch (ProductNotFoundException e) {
             return new ResponseEntity("Product Not Exits", HttpStatus.CONFLICT);

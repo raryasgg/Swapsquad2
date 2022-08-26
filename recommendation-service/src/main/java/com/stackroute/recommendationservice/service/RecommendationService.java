@@ -14,8 +14,8 @@ import java.util.HashSet;
 public interface RecommendationService {
     void deleteProductNode(int productId);
     void  createNode(IncomingProductData incomingData)throws ProductAlreadyExistException;
-    HashSet<IncomingProductData> getProductRecommendationsByLocation(String city)throws ProductNotFoundException;
-    HashSet<IncomingProductData> getProductRecommendationByCityAndCategory(String city,String category)throws ProductNotFoundException;
+    HashSet<IncomingProductData> getProductRecommendationsByLocation(String State)throws ProductNotFoundException;
+    HashSet<IncomingProductData> getProductRecommendationByStateAndCategory(String state,String category)throws ProductNotFoundException;
     HashSet<IncomingProductData> getProductByCategory(String category)throws ProductNotFoundException;
    public ArrayList<IncomingProductData> getAllProduct();
 

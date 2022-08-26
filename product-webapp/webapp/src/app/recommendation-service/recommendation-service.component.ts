@@ -89,7 +89,7 @@ public searchTerm : string='';
      })
    }
    else{
-    this._recommendationService.getgetProductRecommendationByCityAndCategory(this.selectedCity,this.selectedCategory).subscribe(data=>{
+    this._recommendationService.getgetProductRecommendationByStateAndCategory(this.selectedCity,this.selectedCategory).subscribe(data=>{
         this.abc=data;
         console.log(this.abc);
        })
@@ -119,7 +119,7 @@ public searchTerm : string='';
        })
      }
      else{
-      this._recommendationService.getgetProductRecommendationByCityAndCategory(this.selectedCity,this.selectedCategory).subscribe(data=>{
+      this._recommendationService.getgetProductRecommendationByStateAndCategory(this.selectedCity,this.selectedCategory).subscribe(data=>{
           this.abc=data;
           console.log(this.abc);
          })

@@ -21,7 +21,7 @@
         </a>
         <mat-menu #menu="matMenu" class="customize">
           <button mat-menu-item style="color: white;">{{usersemail}}</button>
-          <button mat-menu-item style="color: white;">Logout</button>
+          <button mat-menu-item style="color: white;" (click)="onClicklogout()">Logout</button>
         </mat-menu>
       </div>
 </mat-toolbar>
