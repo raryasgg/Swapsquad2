@@ -50,7 +50,7 @@ export class Payment3Component implements OnInit {
   recipent: any;
   ngOnInit(): void {
     this._productdetailsService
-      .getProductDetailsByEmail("raryasgg@gmail.com")
+      .getProductDetailsByEmail(localStorage.getItem("loginEmail"))
       .subscribe((data: any) => {
         console.log("data", data);
         for (let i = 0; i < data.length; i++) {
@@ -60,7 +60,7 @@ export class Payment3Component implements OnInit {
         console.log(this.abc);
       });
 
-    this._productdetailsService.getProductDetailsById(15).subscribe((data) => {
+    this._productdetailsService.getProductDetailsById(localStorage.getItem("productId")).subscribe((data) => {
       this.productdata = data;
       console.log(this.productdata);
       this.pname = this.productdata.pname;
@@ -71,7 +71,7 @@ export class Payment3Component implements OnInit {
     });
 
     this.userservice
-      .getUserCoinByEmail("raryasgg@gmail.com")
+      .getUserCoinByEmail(localStorage.getItem("loginEmail"))
       .subscribe((data) => {
         this.coindata = data;
         console.log(this.coindata);
