@@ -101,12 +101,12 @@ public searchTerm : string='';
   }
   categories: Category[]=[
     {value: '', viewValue: ''},
-    {value: 'Mobile, Tablet & Accessories', viewValue: 'Mobile, Tablet & Accessories'},
-    {value: 'Cars & Bikes', viewValue: 'Cars & Bikes'},
-    {value: 'Books & Sports', viewValue: 'Books & Sports'},
-    {value: 'Pets & Pet Care', viewValue: 'Pets & Pet Care'},
-    {value: 'Electronics & Appliances', viewValue: 'Electronics & Appliances'},
-    {value: 'Home & Life Styles', viewValue: 'Home & Life Styles'}
+    {value: 'Mobiles', viewValue: 'Mobiles'},
+    {value: 'Automobiles', viewValue: 'Automobiles'},
+    {value: 'Electronics', viewValue: 'Electronics'},
+    {value: 'Fashion', viewValue: 'Fashion'},
+    {value: 'Appliances', viewValue: 'Appliances'},
+    {value: 'Furnitures', viewValue: 'Furnitures'}
   ];
    selectedCategory = this.categories[0].value;
    selectCategory(event:Event) {
