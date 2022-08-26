@@ -13,12 +13,13 @@ import { MyProfileComponent } from './my-profile/my-profile.component';
 import { AccountdataComponent } from './component/accountdata/accountdata.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { LoginComponent } from './login/login.component';
+import { LandingPageComponent } from './landing-page/landing-page.component';
 
 
 const routes: Routes = [
-  { path: 'home', component: AppComponent },
+  // { path: 'home', component: AppComponent },
   {path: 'login',component:LoginComponent},
-  { path: '', component: RegisterUserComponent },
+  { path: 'register-user', component: RegisterUserComponent },
   {path:'navbar', component:NavbarComponent,
 children:[ 
 { path: 'registerProduct', component: RegisterProductComponent },
@@ -35,8 +36,8 @@ children:[
   
 
 ]
-  }
-
+  },
+  {path: '',component:LandingPageComponent},
 
 ];
 
