@@ -111,11 +111,11 @@ export class PaymentComponent implements OnInit {
     this._productdetailsService
       .updateProductNotAvailable(this.updateForm.value.pid)
       .subscribe((data) => console.log(data));
-    Swal.fire({
-      icon: "success",
-      title: "Set for NotAvailable!!",
-      text: "Thank You!",
-    });
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "Transaction  Unsuccessful!",
+      })
 
     console.log(this.coindata.email);
     console.log(this.productdata.pemail);
@@ -156,6 +156,10 @@ export class PaymentComponent implements OnInit {
       title: "Transaction Sucessfully!!",
       text: "Thank You!",
     });
-    this.router.navigate(["/navbar/recommendation-service"]);
+    this.router.navigate(["/navbar/recommendation-service"])
+    .then(() => {
+      window.location.reload();
+    });
+    
   }
 }
