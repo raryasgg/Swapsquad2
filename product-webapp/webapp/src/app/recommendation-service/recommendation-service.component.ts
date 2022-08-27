@@ -8,7 +8,7 @@ import { DomSanitizer } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 
 
-interface City {
+interface State {
   value: string;
   viewValue: string;
 }
@@ -49,13 +49,13 @@ public searchTerm : string='';
 
   constructor(private httpClient:HttpClient,private _recommendationService: RecommedationService ,private domSanitizer:DomSanitizer,private router: Router) {
     this.recommendationForm = new FormGroup({
-      city: new FormControl(),
+      state: new FormControl(),
       category: new FormControl(),
           });
    }
   
    
-   cities: City[] = [
+   states: State[] = [
     {value: '', viewValue: ''},
     {value: 'Andhra Pradesh', viewValue: 'Andhra Pradesh'},
     {value: 'Assam', viewValue: 'Assam'},
@@ -77,19 +77,19 @@ public searchTerm : string='';
     {value: 'Odisha', viewValue: 'Odisha'}
   ];
   
-  selectedCity = this.cities[0].value;
+  selectedState = this.states[0].value;
 
-  selectCity(event: Event) {
-    this.selectedCity = (event.target as HTMLSelectElement).value;
+  selectState(event: Event) {
+    this.selectedState = (event.target as HTMLSelectElement).value;
    if(!this.selectedCategory){
-    return this._recommendationService.getProductRecommendationsByLocation(this.selectedCity).subscribe(data=>{
+    return this._recommendationService.getProductRecommendationsByLocation(this.selectedState).subscribe(data=>{
       this.abc=data;
       console.log(this.abc);
 
      })
    }
    else{
-    this._recommendationService.getgetProductRecommendationByStateAndCategory(this.selectedCity,this.selectedCategory).subscribe(data=>{
+    this._recommendationService.getgetProductRecommendationByStateAndCategory(this.selectedState,this.selectedCategory).subscribe(data=>{
         this.abc=data;
         console.log(this.abc);
        })
@@ -111,15 +111,15 @@ public searchTerm : string='';
    selectedCategory = this.categories[0].value;
    selectCategory(event:Event) {
     this.selectedCategory = (event.target as HTMLSelectElement).value;
-    console.log(this.selectedCity);
-    if(!this.selectedCity){
+    console.log(this.selectedState);
+    if(!this.selectedState){
       return this._recommendationService.getgetProductByCategory(this.selectedCategory).subscribe(data=>{
         this.abc=data;
         console.log(this.abc);
        })
      }
      else{
-      this._recommendationService.getgetProductRecommendationByStateAndCategory(this.selectedCity,this.selectedCategory).subscribe(data=>{
+      this._recommendationService.getgetProductRecommendationByStateAndCategory(this.selectedState,this.selectedCategory).subscribe(data=>{
           this.abc=data;
           console.log(this.abc);
          })

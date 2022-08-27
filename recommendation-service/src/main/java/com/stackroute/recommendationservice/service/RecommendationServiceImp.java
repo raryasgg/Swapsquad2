@@ -64,8 +64,8 @@ public class RecommendationServiceImp implements RecommendationService {
     }
 
     @Override
-    public HashSet<IncomingProductData> getProductRecommendationsByLocation(String State) throws ProductNotFoundException {
-        HashSet<IncomingProductData> prod = repo.getProductRecommendationByLocation(State);
+    public HashSet<IncomingProductData> getProductRecommendationsByLocation(String state) throws ProductNotFoundException {
+        HashSet<IncomingProductData> prod = repo.getProductRecommendationByLocation(state);
         if (prod.isEmpty()) {
             throw new ProductNotFoundException();
         } else {
