@@ -27,27 +27,27 @@ public class UserRegistrationServiceImpl implements UserRegistrationService{
 	private UserRepo repo;
 	
 	
-	@Override
-	public UserRegistration addNew(UserRegistration emp) throws UserAlreadyExistException {
-		Optional<UserRegistration> user = repo.findById(emp.getEmail());
-		if (user.isPresent()) {
-			throw new UserAlreadyExistException();
-		} else {
-			return repo.save(emp);
-		}
-	}
-
 //	@Override
 //	public UserRegistration addNew(UserRegistration emp) throws UserAlreadyExistException {
 //		Optional<UserRegistration> user = repo.findById(emp.getEmail());
 //		if (user.isPresent()) {
 //			throw new UserAlreadyExistException();
 //		} else {
-//			UserRegistration userreg=user.get();
-//			userreg.setBarterCoins(50);
-//			return repo.save(userreg);
+//			return repo.save(emp);
 //		}
 //	}
+
+	@Override
+	public UserRegistration addNew(UserRegistration emp) throws UserAlreadyExistException {
+		Optional<UserRegistration> user = repo.findById(emp.getEmail());
+		if (user.isPresent()) {
+			throw new UserAlreadyExistException();
+		} else {
+			UserRegistration userreg=user.get();
+			userreg.setBarterCoins(50);
+			return repo.save(userreg);
+		}
+	}
 
 	public  UserRegistration getById(String emp) throws UserNotFoundException {
     	Optional<UserRegistration> pro = repo.findById(emp);

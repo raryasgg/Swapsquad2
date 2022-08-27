@@ -20,7 +20,7 @@ import { I } from "@angular/cdk/keycodes";
 })
 export class ProductdetailsComponent implements OnInit {
 
-  pemail = "raju@gmail.com";
+  pemail = "";
   pname = "One Plus 9r";
   plocation = "Patna,Bihar";
   pstatus = "Available";

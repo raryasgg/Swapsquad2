@@ -15,5 +15,4 @@ public class Location {
     private String state;
     private  String city;
 
-
 }

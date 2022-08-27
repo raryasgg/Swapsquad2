@@ -121,7 +121,7 @@ onclickgetaccount(accm){
 }
 
 // gmail=localStorage.getItem('loginemail');
-gmail=JSON.parse(localStorage.getItem('loginEmail'));
+// gmail=JSON.parse(localStorage.getItem('loginEmail'));
 
 
 
