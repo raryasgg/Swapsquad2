@@ -37,15 +37,6 @@
                         </h3>
                     </div>
 
-                    <mat-form-field>
-                        <mat-label>Select</mat-label>
-                        <mat-select formControlName="pid" ngDefaultControl>
-                            <mat-option *ngFor="let pro of abc" [value]="pro.pid">
-                                {{pro.pname}}
-                            </mat-option>
-                        </mat-select>
-                    </mat-form-field>
-
                 </div>
 
                 <button mat-raised-button style="background: hsla(106, 86%, 57%, 0.762)" type="submit"

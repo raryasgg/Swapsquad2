@@ -86,6 +86,8 @@ public searchTerm : string='';
       this.abc=data;
       console.log(this.abc);
 
+      
+
      })
    }
    else{
@@ -130,7 +132,7 @@ public searchTerm : string='';
    
     this._recommendationService.getAllProduct().subscribe((data:any)=>{
       console.log("data",data);
-      for (let i = 0; i < data.length; i++) {
+      for (let i= data.length-1; i >= 0; i--) {
       this.abc.push(data[i]);
       }
       this.abc.map(image=>{

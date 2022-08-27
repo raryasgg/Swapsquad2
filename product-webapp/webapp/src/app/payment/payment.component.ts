@@ -103,19 +103,27 @@ export class PaymentComponent implements OnInit {
   transactionObj: Transaction = new Transaction();
   emailObj: EmailDetails = new EmailDetails();
 
-  onClickSubmitForm() {
-    console.log(this.updateForm.value);
+  onClickSubmitForm() {if(this.coindata.barterCoins < this.productdata.pcoin){
+    Swal.fire({
+      icon: "error",
+      title: "Insufficient Coin",
+      text: "Please Add More Coin!",
+    })
+       
+      }
+      else{
+    // console.log(this.updateForm.value);
 
-    this.productObj.pid = this.updateForm.value.pid;
-    console.log(this.updateForm.value.pid);
-    this._productdetailsService
-      .updateProductNotAvailable(this.updateForm.value.pid)
-      .subscribe((data) => console.log(data));
-      Swal.fire({
-        icon: "error",
-        title: "Oops...",
-        text: "Transaction  Unsuccessful!",
-      })
+    // this.productObj.pid = this.updateForm.value.pid;
+    // console.log(this.updateForm.value.pid);
+    // this._productdetailsService
+    //   .updateProductNotAvailable(this.updateForm.value.pid)
+    //   .subscribe((data) => console.log(data));
+    //   Swal.fire({
+    //     icon: "error",
+    //     title: "Oops...",
+    //     text: "Transaction  Unsuccessful!",
+    //   })
 
     console.log(this.coindata.email);
     console.log(this.productdata.pemail);
@@ -135,7 +143,7 @@ export class PaymentComponent implements OnInit {
 
     this.transactionObj.buyerEmail = this.productdata1[0].pemail;
     this.transactionObj.sellerEmail = this.productdata.pemail;
-     this.transactionObj.productSend =this.productdata1[0].pid;
+    //  this.transactionObj.productSend =this.productdata1[0].pid;
     this.transactionObj.productObtained =  this.productdata.pid;
     this.tranactionservice
       .saveTransaction(this.transactionObj)
@@ -162,4 +170,5 @@ export class PaymentComponent implements OnInit {
     });
     
   }
+}
 }

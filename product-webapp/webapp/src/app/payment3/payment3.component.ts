@@ -105,6 +105,16 @@ export class Payment3Component implements OnInit {
   emailObj: EmailDetails = new EmailDetails();
 
   onClickSubmitForm() {
+
+    if(this.coindata.barterCoins < this.productdata.pcoin){
+      Swal.fire({
+        icon: "error",
+        title: "Insufficient Coin",
+        text: "Please Add More Coin!",
+      })
+         
+        }
+        else{
     console.log(this.updateForm.value);
 
     this.productObj.pid = this.updateForm.value.pid;
@@ -162,4 +172,5 @@ export class Payment3Component implements OnInit {
       window.location.reload();
     });
   }
+}
 }
