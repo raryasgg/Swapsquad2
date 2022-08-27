@@ -54,7 +54,7 @@ public class RecommendationServiceImp implements RecommendationService {
             categoryRepository.save(category1);
         }
         if (locationRepository.findById(incomingData.getState()).isEmpty()) {
-            Location location1 = new Location(incomingData.getCity(), incomingData.getState());
+            Location location1 = new Location(incomingData.getState(), incomingData.getCity());
             locationRepository.save(location1);
         }
 

@@ -14,7 +14,5 @@ public class Location {
     @Id
     private String state;
     private  String city;
-    
-
 
 }
