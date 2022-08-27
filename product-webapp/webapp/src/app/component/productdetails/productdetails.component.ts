@@ -20,6 +20,7 @@ import { I } from "@angular/cdk/keycodes";
 })
 export class ProductdetailsComponent implements OnInit {
 
+  employees:  Product = new  Product();
   pemail = "";
   pname = "One Plus 9r";
   plocation = "Patna,Bihar";
@@ -70,7 +71,7 @@ export class ProductdetailsComponent implements OnInit {
     this._productdetailsService.getProductDetailsById(localStorage.getItem("productId")).subscribe((data) => {
 
       this.productdata = data;
-      console.log(this.productdata)
+    
       this.pname = this.productdata.pname
       this.pemail = this.productdata.pemail
       this.pcategory = this.productdata.pcategory
@@ -92,7 +93,6 @@ export class ProductdetailsComponent implements OnInit {
 
 
 
-
       this.ownerEmail = this.productdata.pemail;
 
       var t = this.pdatepost;
@@ -100,9 +100,14 @@ export class ProductdetailsComponent implements OnInit {
 
       var t2 = this.pdate;
       this.dateofposting = t2.substring(0, 10);
-    });
+    })
+    
+    this._productdetailsService.getProductDetailsById(localStorage.getItem("productId")).subscribe((data) => {
 
-
+      this.productdata = data;
+ 
+    
+    console.log(this.pemail)
     this.userratingservice.getUserRatingByEmail(this.pemail).subscribe(dataofrating => {
       this.userratingdata = dataofrating
       console.log(this.userratingdata)
@@ -110,7 +115,7 @@ export class ProductdetailsComponent implements OnInit {
       this.avgRating = this.userratingdata.avgRating
     })
 
-
+  })
   }
 
   //<============================ Payment Service Starts Here=========================>
