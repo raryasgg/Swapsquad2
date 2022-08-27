@@ -120,7 +120,7 @@ console.log(this.productdata1[0].pemail);
       text: "Thank You!",
     });
 
-    this.emailObj.recipient = this.coindata.email;
+    this.emailObj.recipient = this.productdata1[0].pemail;
     console.log(this.emailObj.recipient);
     this.emailservice
       .emailnotification(this.emailObj)
