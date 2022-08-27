@@ -157,5 +157,6 @@ export class Payment3Component implements OnInit {
       title: "Transaction Sucessfully!!",
       text: "Thank You!",
     });
+    this.router.navigate(["/navbar/recommendation-service"]);
   }
 }

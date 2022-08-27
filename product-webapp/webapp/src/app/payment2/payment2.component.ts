@@ -130,5 +130,6 @@ console.log(this.productdata1[0].pemail);
       title: "Transaction Sucessfully!!",
       text: "Thank You!",
     });
+    this.router.navigate(["/navbar/recommendation-service"]);
   }
 }
