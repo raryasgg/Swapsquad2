@@ -12,6 +12,7 @@ import { TransactionService } from "../transaction.service";
 import { EmailService } from "../email.service";
 import { EmailDetails } from "../email-details";
 import { AccountdataComponent } from "../component/accountdata/accountdata.component";
+import { RecommedationService } from "../services/recommendation-service/recommedation.service";
 @Component({
   selector: "app-payment",
   templateUrl: "./payment.component.html",
@@ -28,7 +29,8 @@ export class PaymentComponent implements OnInit {
     private router: Router,
     private tranactionservice: TransactionService,
     private emailservice: EmailService,
-    public dialog: MatDialog
+    public dialog: MatDialog,
+    private reccomservice: RecommedationService
   ) {
     this.updateForm = new FormGroup({
       pid: new FormControl(),
@@ -153,6 +155,17 @@ export class PaymentComponent implements OnInit {
       title: "Tranaction Saved!!",
       text: "Thank You!",
     });
+
+
+
+    this.reccomservice.deleteproductbyId(this.productdata.pid)
+    .subscribe((data) => console.log(data));
+  Swal.fire({
+    icon: "success",
+    title: "Product Deleted!!",
+    text: "Thank You!",
+  });
+
 
     this.emailObj.recipient = this.coindata.email;
     console.log(this.emailObj.recipient);
