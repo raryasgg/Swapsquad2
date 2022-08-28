@@ -6,7 +6,7 @@
 
             <div class="col-md-3">
                 <div class="text-center">
-                    <img [src]="image" class="avatar img-circle img-thumbnail" alt="loading">
+                    <img [src]="image"  class="avatar img-circle img-thumbnail" alt="Add profile Photo">
                     <h3>Add Profile Picture</h3>
 
                     <input type="file" (change)="handleFileInput($event.target.files)" formControlName="image"
@@ -48,6 +48,20 @@
                                     <label for="email">Email</label>
                                     <input type="text" class="form-control" formControlName="email" 
                                         placeholder="Enter Email" disabled>
+                                </div>
+                            </div>
+                            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                                <div class="form-group">
+                                    <label for="barterCoins">Available Coin </label>
+                                    <input type="text" class="form-control" formControlName="barterCoins" 
+                                         disabled>
+                                </div>
+                            </div>
+                            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                                <div class="form-group">
+                                    <label for="password">Password</label>
+                                    <input type="text" class="form-control" formControlName="password" 
+                                        placeholder="Enter Password" disabled>
                                 </div>
                             </div>
                             <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">

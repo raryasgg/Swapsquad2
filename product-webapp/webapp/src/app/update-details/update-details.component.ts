@@ -25,7 +25,7 @@ export class UpdateDetailsComponent implements OnInit {
   state: String;
   pincode: string;
   password:String;
-
+  barterCoins:any;
   updateForm: FormGroup;
 
   constructor(
@@ -46,6 +46,8 @@ export class UpdateDetailsComponent implements OnInit {
       city: new FormControl(),
       state: new FormControl(),
       pincode: new FormControl(),
+      password:new FormControl(),
+      barterCoins:new FormControl()
     });
   }
 
@@ -69,6 +71,8 @@ export class UpdateDetailsComponent implements OnInit {
           city:this.employees.city,
           state:this.employees.state,
           pincode: this.employees.pincode,
+          password: this.employees.password,
+          barterCoins: this.employees.barterCoins
         })
         this.image = this.domSanitizer.bypassSecurityTrustResourceUrl(
            "data:img/" + "jpg" + ";base64," + this.employees.image);
@@ -136,6 +140,8 @@ export class UpdateDetailsComponent implements OnInit {
     this.updateObj.city = this.updateForm.value.city;
     this.updateObj.state = this.updateForm.value.state;
     this.updateObj.pincode = this.updateForm.value.pincode;
+    this.updateObj.password = this.updateForm.value.password;
+    this.updateObj.barterCoins = this.updateForm.value.barterCoins;
 
     if(this.file.length==0){
       this.updateDetailsService
