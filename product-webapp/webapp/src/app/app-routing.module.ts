@@ -14,6 +14,7 @@ import { AccountdataComponent } from './component/accountdata/accountdata.compon
 import { NavbarComponent } from './navbar/navbar.component';
 import { LoginComponent } from './login/login.component';
 import { LandingPageComponent } from './landing-page/landing-page.component';
+import { ProductregsiteredbyuserComponent } from './productregsiteredbyuser/productregsiteredbyuser.component';
 
 
 const routes: Routes = [
@@ -32,8 +33,8 @@ children:[
 {path:'transcations', component:TranscationsComponent},
 {path:'chat', component:ChatComponent},
 {path:'transcations', component:TranscationsComponent},
-{path:'myProfile', component: MyProfileComponent}
-  
+{path:'myProfile', component: MyProfileComponent},
+{ path: 'productregisterbyuser', component: ProductregsiteredbyuserComponent },
 
 ]
   },

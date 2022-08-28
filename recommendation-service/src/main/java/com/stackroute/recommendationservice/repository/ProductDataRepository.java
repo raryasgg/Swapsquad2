@@ -22,7 +22,7 @@ public interface ProductDataRepository extends Neo4jRepository<IncomingProductDa
         @Query("MATCH (a:IncomingProductData{productId:$productId}),(b:Location{state:$state}) MERGE (a)-[r:state]->(b)")
 	public void createLocationRelationshipWithProduct(int productId,String state);
 
-	@Query("MATCH (a:IncomingProductData),(b:Location) where (a.state)=$state and (b.state)=$state create (a)-[:from]->(b) return a")
+	@Query("MATCH (a:IncomingProductData),(b:Location) where (a.state)=$state and (b.state)=$state create (a)-[:belongs]->(b) return a")
 		HashSet<IncomingProductData> getProductRecommendationByLocation(String state);
     @Query ("Match (a:IncomingProductData),(b:Location),(c:Category) where (a.productCategory)=$category and (c.category)=$category and (a.state)=$state and (b.state)=$state create (a)-[:from]->(b) create (a)-[:belongs]->(c) return a")
 	HashSet<IncomingProductData> getProductRecommendationByStateAndCategory(String state,String category);
