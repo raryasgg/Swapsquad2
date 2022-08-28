@@ -20,6 +20,7 @@
           {{username}}
         </a>
         <mat-menu #menu="matMenu" class="customize">
+          <button mat-menu-item style="color: white;" routerLink='/navbar/myProfile'>My Profile</button>
           <button mat-menu-item style="color: white;">{{usersemail}}</button>
           <button mat-menu-item style="color: white;" (click)="onClicklogout()">Logout</button>
         </mat-menu>
@@ -45,14 +46,11 @@
         <mat-icon mat-list-icon>history</mat-icon>
         
 			</mat-list-item>
-      <mat-list-item class="parent" routerLink='/navbar/myProfile'>
-				<span class="full-width" *ngIf="isExpanded || isShowing">Myprofile</span>
-        <mat-icon mat-list-icon>history</mat-icon>        
-			</mat-list-item>
+      
 
       <mat-list-item class="parent" routerLink='/navbar/chat'>
 				<span class="full-width" *ngIf="isExpanded || isShowing">Chat</span>
-        <mat-icon mat-list-icon>history</mat-icon>        
+        <mat-icon mat-list-icon>chat</mat-icon>        
 			</mat-list-item>
 
      
