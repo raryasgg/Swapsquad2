@@ -8,7 +8,7 @@
                         <h1 class="chat-list-title">Chat List</h1>
                     </div>
                     <div class="card-body contacts_body ">
-                        <ul class="contacts chatList" *ngFor="let chats of chatList" >
+                        <ul class="contacts chatList" *ngFor="let chats of chatList">
                             <!-- <li class="active" >
                         <div class="d-flex bd-highlight">
                             <div class="img_cont">
@@ -23,14 +23,24 @@
                             <li>
                                 <div class="d-flex bd-highlight">
                                     <div class="img_cont">
-                                        <img src="https://i.pinimg.com/originals/ac/b9/90/acb990190ca1ddbb9b20db303375bb58.jpg"
-                                            class="rounded-circle user_img">
-                                    
+                                        <!-- <img src="https://i.pinimg.com/originals/ac/b9/90/acb990190ca1ddbb9b20db303375bb58.jpg"
+                                            class="rounded-circle user_img"> -->
+
+                                        <div class="rounded-circle user_img text_inside_circle"
+                                            *ngIf="chats.ownerEmail!=senderCheck">{{chats.ownerEmail.substring(0,1)}}
+                                        </div>
+                                        <div class="rounded-circle user_img text_inside_circle"
+                                            *ngIf="chats.ownerEmail==senderCheck">{{chats.buyerEmail.substring(0,1)}}
+                                        </div>
+
                                     </div>
-                                    <div class="user_info"  (click)="loadChatByEmail(chats.ownerEmail, chats.buyerEmail)">
+                                    <div class="user_info"
+                                        (click)="loadChatByEmail(chats.ownerEmail, chats.buyerEmail)">
                                         <!-- {{chats.ownerEmail}}  -->
-                                        <div *ngIf="chats.ownerEmail!=senderCheck" style="margin-top: 1rem;">{{chats.ownerEmail}}</div>
-                                        <div *ngIf="chats.ownerEmail==senderCheck" style="margin-top: 1rem;">{{chats.buyerEmail}}</div>
+                                        <div *ngIf="chats.ownerEmail!=senderCheck" style="margin-top: 1rem;">
+                                            {{chats.ownerEmail}}</div>
+                                        <div *ngIf="chats.ownerEmail==senderCheck" style="margin-top: 1rem;">
+                                            {{chats.buyerEmail}}</div>
                                         <br>
                                         <!-- {{chats.buyerEmail}} -->
                                         <!-- {{chats.chatId}} -->
@@ -52,8 +62,12 @@
                     <div class="card-header msg_head">
                         <div class="d-flex bd-highlight">
                             <div class="img_cont">
-                                <img src="https://static.turbosquid.com/Preview/001292/481/WV/_D.jpg"
-                                    class="rounded-circle user_img">
+                                <!-- <img src="https://static.turbosquid.com/Preview/001292/481/WV/_D.jpg"
+                                    class="rounded-circle user_img"> -->
+                                <div class="rounded-circle user_img text_inside_circle1"
+                                    *ngIf="ownerEmail!=senderCheck">{{ownerEmail.substring(0,1)}}</div>
+                                <div class="rounded-circle user_img text_inside_circle1"
+                                    *ngIf="ownerEmail==senderCheck">{{buyerEmail.substring(0,1)}}</div>
                             </div>
                             <div class="user_info">
                                 <span *ngIf="ownerEmail!=senderCheck">{{ownerEmail}}</span>
@@ -71,7 +85,7 @@
                         </span>
                         <!-- <span id="action_menu_btn"><i class="fa-solid fa-xmark"></i></span> -->
                     </div>
-                    <div class="card-body msg_card_body" >
+                    <div class="card-body msg_card_body">
 
                         <div *ngFor="let msg of messageList">
 
@@ -84,16 +98,20 @@
                                     <span class="msg_time_send">{{msg.time.substring(11,16)}}</span>
                                 </div>
                                 <div class="img_cont_msg">
-                                    <img src="https://static.turbosquid.com/Preview/001214/650/2V/boy-cartoon-3D-model_D.jpg"
-                                        class="rounded-circle user_img" class="rounded-circle user_img_msg">
+                                    <!-- <img src="https://static.turbosquid.com/Preview/001214/650/2V/boy-cartoon-3D-model_D.jpg"
+                                        class="rounded-circle user_img" class="rounded-circle user_img_msg"> -->
+                                    <span
+                                        class="rounded-circle user_img_msg text_inside_circle2">{{msg.senderEmail.substring(0,1)}}</span>
                                 </div>
                             </div>
 
 
                             <div class="d-flex justify-content-start mb-4" *ngIf="msg.senderEmail!=senderCheck">
                                 <div class="img_cont_msg">
-                                    <img src="https://static.turbosquid.com/Preview/001292/481/WV/_D.jpg"
-                                        class="rounded-circle user_img_msg">
+                                    <!-- <img src="https://static.turbosquid.com/Preview/001292/481/WV/_D.jpg"
+                                        class="rounded-circle user_img_msg"> -->
+                                    <span
+                                        class="rounded-circle user_img_msg text_inside_circle3">{{msg.senderEmail.substring(0,1)}}</span>
                                 </div>
                                 <div class="msg_cotainer">
                                     {{msg.replymessage}}
