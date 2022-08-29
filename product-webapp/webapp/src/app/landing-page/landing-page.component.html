@@ -3,13 +3,13 @@
         <!---Start navigation Bar -->
         <nav class="navbar navbar-expand-lg navbar fixed-top navbar-light">
 
-            <a class="navbar-brand" href="" class=" col-lg-5 col-md-5 col-sm-5 col-12">
-                <img src="assets/Objects.png" width="50" height="50" class="d-inline-block" alt="">
-                <span class="Title"> SwapSquad</span>
-            </a>
+            <span class="navbar-brand" class=" col-lg-5 col-md-5 col-sm-5 col-12">
+                <img src="assets/Objects.png" routerLink="" width="50" height="50" class="d-inline-block navbar-brand" alt="logo">
+                <span class="Title navbar-brand" routerLink=""> SwapSquad</span>
+            </span>
             <div class="rightNav col-lg-7 col-md-7 col-sm-7 col-12 mt-2">
-                <button mat-raised-button color="accent" class="mr-3" routerLink="login">LOGIN</button>
-                <button mat-raised-button color="accent" class="mr-4" routerLink="register-user">REGISTER </button>
+                <button mat-raised-button  class="mr-3" (mouseover)="color = 'primary'" (mouseout)="color = 'accent'" [color]="color" routerLink="login">LOGIN</button>
+                <button mat-raised-button  class="mr-4" (mouseover)="color1 = 'primary'" (mouseout)="color1 = 'accent'" [color]="color1" routerLink="register-user">REGISTER </button>
             </div>
 
         </nav>

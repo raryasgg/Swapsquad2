@@ -137,7 +137,9 @@ table {
     margin-top: -4rem;
     border-radius: 6px;
     min-height:9rem; 
-    max-height:12px
+    max-height:12px;
+    overflow-y: auto;
+    
 }
 
 @media screen and (min-width: 1250px) and (max-width: 1450px){
@@ -146,7 +148,8 @@ table {
         margin-top: 1rem;
         border-radius: 6px;
         min-height: 7rem; 
-        max-height:10px
+        max-height:10px;
+        overflow-y: auto;
     }
     .example-card{
         width: 18rem;
@@ -168,7 +171,8 @@ table {
         margin-top: 1rem;
         border-radius: 6px;
         min-height: 6rem; 
-        max-height:9px
+        max-height:9px;
+        overflow-y: auto;
     }
     .example-card{
         width: 14rem;
@@ -220,7 +224,8 @@ table {
         margin-top: 1rem;
         border-radius: 6px;
         min-height: 6rem; 
-        max-height:9px
+        max-height:9px;
+        overflow-y: auto;
     }
     .user-profile-box-review {
         border: 1px solid black;
@@ -254,7 +259,8 @@ table {
             margin-top: 1rem;
             border-radius: 6px;
             min-height: 6rem; 
-            max-height:9px
+            max-height:9px;
+            overflow-y: auto;
         }
         .user-profile-box-review {
             border: 1px solid black;
