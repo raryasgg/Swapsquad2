@@ -42,7 +42,20 @@ body {
   font-size: 180%;
 }
 
-.navbar-brand {}
+.navbar-brand {
+  cursor: pointer;
+}
+
+/* .button:focus {
+  background: pink;
+} */
+ /* .button{
+  background:red;
+} */
+/*
+.button :hover {
+  background: cyan;
+} */
 
 .rightNav {
   display: flex;
