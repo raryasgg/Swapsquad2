@@ -87,9 +87,11 @@ public class UserRegistrationServiceImpl implements UserRegistrationService{
 		log.debug("Inside the UserRegistrationServiceImpl -- adduser methods");
 		ObjectMapper objectMapper = new ObjectMapper();
 		UserRegistration update = objectMapper.readValue(str,UserRegistration.class);
+	
+	
+    	try {
+        update.setImage(file.getBytes());
 		
-		try {
-			update.setImage(file.getBytes());
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

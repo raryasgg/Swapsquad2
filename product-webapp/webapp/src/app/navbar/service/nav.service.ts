@@ -5,7 +5,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class NavService {
-  private url: string ="http://localhost:9999"
+  private url: string ="http://localhost:9998"
   constructor(private httpClient: HttpClient) { }
   getuserdetails(email:string): Observable<Object> {
     return this.httpClient.get(this.url+"/users/user/"+email);

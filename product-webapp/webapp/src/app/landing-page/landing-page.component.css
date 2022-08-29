@@ -140,6 +140,7 @@ body {
        0   var(--_i,200%)/var(--_i,8px) 200% border-box no-repeat,
       linear-gradient(#000 0 0) padding-box no-repeat;
     transition: .3s, -webkit-mask-position .3s .3s;
+    
   }
   .hover-4:hover {
     --_i: 100%;
@@ -194,4 +195,8 @@ body {
   }
   .hover-1:hover {
     --_p: 0%;
+  }
+
+  .boxes{
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   }

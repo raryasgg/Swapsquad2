@@ -114,25 +114,16 @@ export class ProductdetailsComponent implements OnInit {
   }
 
   //<============================ Payment Service Starts Here=========================>
-  getExchangeDisable:boolean=false;
-  // openDialog(){ 
-  // if(this.pemail==localStorage.getItem('loginEmail')){
-  //     this.getExchangeDisable=true;
+ getExchangeDisable:Boolean=false;
 
-  //   }else{
-  //     this.getExchangeDisable=false
-  //   }
-      
 
-  
   openDialog() {
-
     if(this.pemail==localStorage.getItem('loginEmail')){
       this.getExchangeDisable=true;
 
     }else{
       this.getExchangeDisable=false
-    }
+    
     
     console.log(this.productdata.pexchangetype);
     if (this.productdata.pexchangetype == "COIN") {
@@ -144,7 +135,7 @@ export class ProductdetailsComponent implements OnInit {
       this.dialog.open(Payment3Component);
     }
   }
-
+  }
   //<============================ Chat Service Starts Here=========================>
 
 

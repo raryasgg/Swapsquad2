@@ -5,7 +5,7 @@ import { MatDialog,MatDialogConfig } from '@angular/material/dialog';
 import { AccountdataComponent } from '../component/accountdata/accountdata.component';
 import { HttpClient } from '@angular/common/http';
 import { NavService } from './service/nav.service';
-
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
@@ -14,7 +14,7 @@ import { NavService } from './service/nav.service';
 export class NavbarComponent implements OnInit {
   isDisabled:boolean=true
   coin:any=50
-  constructor(private dialog: MatDialog,private httpClient:HttpClient,private navservice:NavService ) { }
+  constructor(private dialog: MatDialog,private httpClient:HttpClient,private navservice:NavService,private router: Router ) { }
   usersemail=""
   username=""
   
@@ -56,6 +56,10 @@ export class NavbarComponent implements OnInit {
    
 
 
+  }
+  onClicklogout(){
+    localStorage.removeItem('loginEmail');
+    this.router.navigateByUrl('');
   }
 
 }

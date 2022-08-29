@@ -21,11 +21,11 @@ export class RecommedationService {
 //     return this.httpClient.post(`${this.url}`,"city" + "category");
 //  }
 
-  getProductRecommendationsByLocation(city:String){
-   return this.httpClient.get<IncomingProductData[]>(this.url+ "/recommend/" +  city)
+  getProductRecommendationsByLocation(state:String){
+   return this.httpClient.get<IncomingProductData[]>(this.url+ "/recommend/" +  state)
   }
-  getgetProductRecommendationByCityAndCategory(city:String,category:String){
-    return this.httpClient.get<IncomingProductData[]>(this.url+ "/recommendCategory" + '?city='+city+'&category='+category)
+  getgetProductRecommendationByStateAndCategory(state:String,category:String){
+    return this.httpClient.get<IncomingProductData[]>(this.url+ "/recommendCategory" + '?state='+state+'&category='+category)
    }
    getgetProductByCategory(category:String){
     return this.httpClient.get<IncomingProductData[]>(this.url+ "/Product" + '?category=' + category )
