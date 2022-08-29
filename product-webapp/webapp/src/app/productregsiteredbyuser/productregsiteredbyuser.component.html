@@ -1,9 +1,8 @@
-
-<div class="a container">
-<div class="" >
+<div class="container">
+<div>
     
-<div class="row b" style="background-color: rgb(102, 102, 202);">
-    <div class="col-5"></div>
+<div class="row col-md-12 col-lg-12 col-sm-12" style="background-color: rgb(102, 102, 202);">
+    <div class="col-4"></div>
     <div class="col-4" style="display:contents ; "> <h1>Registered Products</h1> </div>
     <div class="col-4"></div>
 </div>
@@ -16,8 +15,7 @@
             <img class="card-img-top embed-responsive-item" [src]=item.image alt="Card image cap" >
             <div class="card-body">
               <h1 class="card-title" style="text-transform: capitalize;">  {{item.pname}}</h1>
-              <!-- <p class="card-text">{{item.desc}}</p> -->
-              
+              <h2 [style.visibility]="item.pstatus=='NOTAVAILABLE'? 'visible': 'hidden'" style="color: red;text-align:right;" class="card-text">Not Available</h2>
             </div>
           </div>
     </div>
