@@ -58,7 +58,8 @@ export class NavbarComponent implements OnInit {
 
   }
   onClicklogout(){
-    localStorage.removeItem('loginEmail');
+    // localStorage.removeItem('loginEmail');
+    localStorage.clear();
     this.router.navigateByUrl('');
   }
 

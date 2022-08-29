@@ -11,6 +11,7 @@ import { Transaction } from "../transaction";
 import { TransactionService } from "../transaction.service";
 import { EmailService } from "../email.service";
 import { EmailDetails } from "../email-details";
+import { RecommedationService } from "../services/recommendation-service/recommedation.service";
 
 @Component({
   selector: "app-payment2",
@@ -27,7 +28,8 @@ export class Payment2Component implements OnInit {
     private userservice: UpdateDetailsService,
     private router: Router,
     private tranactionservice: TransactionService,
-    private emailservice: EmailService
+    private emailservice: EmailService,
+    private reccomservice: RecommedationService
   ) {
     this.updateForm = new FormGroup({
       pid: new FormControl(),
@@ -92,6 +94,7 @@ console.log(this.productdata1[0].pemail);
 
     this.productObj.pid = this.updateForm.value.pid;
     console.log(this.updateForm.value.pid);
+    console.log(this.updateForm.value.pid);
     this._productdetailsService
       .updateProductNotAvailable(this.updateForm.value.pid)
       .subscribe((data) => console.log(data));
@@ -119,6 +122,16 @@ console.log(this.productdata1[0].pemail);
       title: "Tranaction Saved!!",
       text: "Thank You!",
     });
+
+    this.reccomservice.deleteproductbyId(this.productdata.pid)
+    .subscribe((data) => console.log(data));
+  Swal.fire({
+    icon: "success",
+    title: "Product Deleted!!",
+    text: "Thank You!",
+  });
+
+
 
     this.emailObj.recipient = this.productdata1[0].pemail;
     console.log(this.emailObj.recipient);
