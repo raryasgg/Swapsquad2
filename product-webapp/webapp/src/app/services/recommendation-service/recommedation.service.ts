@@ -33,5 +33,8 @@ export class RecommedationService {
    getAllProduct(){
     return this.httpClient.get<IncomingProductData[]>(this.url+ "/getAllProduct")
    }
+   deleteproductbyId(productId:any){
+    return this.httpClient.delete<IncomingProductData[]>(this.url+ "/delete/" + productId)
+   }
 }
 

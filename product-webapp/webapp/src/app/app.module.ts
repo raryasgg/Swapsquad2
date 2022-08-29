@@ -51,6 +51,7 @@ import { Payment2Component } from "./payment2/payment2.component";
 import { Payment3Component } from "./payment3/payment3.component";
 import { LoginComponent } from "./login/login.component";
 import { LandingPageComponent } from './landing-page/landing-page.component';
+import { ProductregsiteredbyuserComponent } from './productregsiteredbyuser/productregsiteredbyuser.component';
 
 @NgModule({
   declarations: [
@@ -72,6 +73,7 @@ import { LandingPageComponent } from './landing-page/landing-page.component';
     Payment3Component,
     LoginComponent,
     LandingPageComponent,
+    ProductregsiteredbyuserComponent,
   ],
 
   entryComponents: [

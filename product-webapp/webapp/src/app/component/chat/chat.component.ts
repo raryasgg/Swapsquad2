@@ -74,7 +74,7 @@ export class ChatComponent implements OnInit {
       this.chatData = data;
       this.chatId = this.chatData[0].chatId;
       console.log(this.chatId);
-      localStorage.setItem('chatId', "this.chatId")
+      localStorage.setItem('chatId', this.chatId)
 
       this.chatService.getChatById(this.chatId).subscribe(data => {
         this.chatData = data;
@@ -117,7 +117,7 @@ export class ChatComponent implements OnInit {
   }
 
   routeX(){
-    this.router.navigateByUrl('recommendation-service');
+    this.router.navigateByUrl('/navbar/recommendation-service');
   }
 
   routeHome(){
@@ -126,6 +126,3 @@ export class ChatComponent implements OnInit {
 
 
 }
-
-
-
