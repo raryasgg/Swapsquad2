@@ -7,16 +7,16 @@ html {
 }
 
 .chat {
-    margin-top: auto;
+    margin-top: 1rem;
     margin-bottom: auto;
-   
+
 }
 
 .card {
-    height: 630px;
-    border-radius: 15px !important; 
+    height: 550px;
+    border-radius: 15px !important;
     /* background: linear-gradient(90deg, rgb(140, 200, 253) 0%, rgb(93, 226, 241) 100%); */
-    border:1px solid rgb(140, 200, 253);
+    border: 1px solid rgb(140, 200, 253);
 }
 
 .contacts_body {
@@ -34,10 +34,10 @@ html {
 }
 
 .msg_card_body::-webkit-scrollbar {
-   width: 5px;
+    width: 5px;
 }
 
-.chat-list-title{
+.chat-list-title {
     display: flex;
     justify-content: center;
     text-align: center;
@@ -85,7 +85,7 @@ html {
 
 .attach_btn {
     border-radius: 15px 0 0 15px !important;
-    background:  rgb(97, 151, 198) !important;
+    background: rgb(97, 151, 198) !important;
     border: 0 !important;
     color: white !important;
     cursor: pointer;
@@ -93,7 +93,7 @@ html {
 
 .send_btn {
     border-radius: 0 15px 15px 0 !important;
-    background-color:  rgb(66, 170, 182) !important;
+    background-color: rgb(66, 170, 182) !important;
     border: 0 !important;
     color: white !important;
     cursor: pointer;
@@ -122,6 +122,42 @@ html {
     background-color: rgba(0, 0, 0, 0.3);
 }
 
+.text_inside_circle {
+    background: rgb(140, 200, 253);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-transform: capitalize;
+    font-size:1.5rem
+}
+
+.text_inside_circle1 {
+    background: rgb(167, 165, 165);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-transform: capitalize;
+    font-weight: bold;
+    font-size:1.5rem
+}
+
+.text_inside_circle2 {
+    background: rgb(77, 190, 203);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-transform: capitalize;
+}
+
+.text_inside_circle3 {
+    background:rgb(140, 200, 253);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-transform: capitalize;
+}
+
+
 .user_img {
     height: 70px;
     width: 70px;
@@ -147,7 +183,7 @@ html {
     width: 40px;
 }
 
-.chatList:hover{
+.chatList:hover {
     background-color: #91fea9;
     cursor: pointer;
 }

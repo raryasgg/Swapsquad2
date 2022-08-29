@@ -15,9 +15,9 @@
           <div class="col-lg-7 col-md-7 col-sm-7 col-7 location-dropdown">
             <mat-form-field appearance="outline" style="inline-size: auto;" >
               <mat-label><i class="fa-solid fa-location-dot" style="margin-right: 0.5rem;"> </i>Location</mat-label>
-              <select matNativeControl (change)="selectCity($event)">
+              <select matNativeControl (change)="selectState($event)">
                 <option value=""></option>
-                <option *ngFor="let option of cities" [value]="option.value" [selected]="selectedCity === option.value">
+                <option *ngFor="let option of states" [value]="option.value" [selected]="selectedState === option.value">
                   {{ option.viewValue }}</option>
               </select>
             </mat-form-field>

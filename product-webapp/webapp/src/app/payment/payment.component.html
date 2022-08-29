@@ -13,9 +13,9 @@
             <div class="bag-product">
 
                 <div class="description">
-                    <p class="product-code">Product ID: {{pid}}</p>
+                    <p class="product-code">Product ID: {{productdata.pid}}</p>
                     <h2>{{pname}}</h2>
-                    <p class="description-text">{{desc}}</p>
+                    <p class="description-text">Description: {{desc}}</p>
 
 
                 </div>
@@ -36,15 +36,6 @@
                         <h3><i class="fa-solid fa-coins" style="margin-right: 0.5rem; margin-left: 0.5rem"></i>{{pcoin}}
                         </h3>
                     </div>
-
-                    <mat-form-field>
-                        <mat-label>Select</mat-label>
-                        <mat-select formControlName="pid" ngDefaultControl>
-                            <mat-option *ngFor="let pro of abc" [value]="pro.pid">
-                                {{pro.pname}}
-                            </mat-option>
-                        </mat-select>
-                    </mat-form-field>
 
                 </div>
 

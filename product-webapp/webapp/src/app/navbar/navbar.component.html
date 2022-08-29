@@ -20,6 +20,7 @@
           {{username}}
         </a>
         <mat-menu #menu="matMenu" class="customize">
+          <button mat-menu-item style="color: white;" routerLink='/navbar/myProfile'>My Profile</button>
           <button mat-menu-item style="color: white;">{{usersemail}}</button>
           <button mat-menu-item style="color: white;" (click)="onClicklogout()">Logout</button>
         </mat-menu>
@@ -36,6 +37,10 @@
 				<span class="full-width" *ngIf="isExpanded || isShowing" >Register Product</span>
           <mat-icon mat-list-icon>workspaces</mat-icon>
 			</mat-list-item>
+      <mat-list-item class="parent" routerLink='/navbar/productregisterbyuser'>
+				<span class="full-width" *ngIf="isExpanded || isShowing">Registered Product</span>
+        <mat-icon mat-list-icon>do_not_disturb_on</mat-icon>
+			</mat-list-item>
       <mat-list-item class="parent" routerLink='/navbar/updateDetails'>
 				<span class="full-width" *ngIf="isExpanded || isShowing">Update Profile</span>
         <mat-icon mat-list-icon>account_circle</mat-icon>
@@ -45,14 +50,11 @@
         <mat-icon mat-list-icon>history</mat-icon>
         
 			</mat-list-item>
-      <mat-list-item class="parent" routerLink='/navbar/myProfile'>
-				<span class="full-width" *ngIf="isExpanded || isShowing">Myprofile</span>
-        <mat-icon mat-list-icon>history</mat-icon>        
-			</mat-list-item>
+      
 
       <mat-list-item class="parent" routerLink='/navbar/chat'>
 				<span class="full-width" *ngIf="isExpanded || isShowing">Chat</span>
-        <mat-icon mat-list-icon>history</mat-icon>        
+        <mat-icon mat-list-icon>chat</mat-icon>        
 			</mat-list-item>
 
      
@@ -61,7 +63,9 @@
     <mat-nav-list>
 </mat-nav-list>
 	</mat-sidenav>
-  <mat-sidenav-content>
+  <mat-sidenav-content style="width:100%;
+  overflow-x:hidden;
+  overflow-y:hidden;overflow-y: scroll;overflow-x: scroll;">
     <router-outlet></router-outlet>
 </mat-sidenav-content>
 	

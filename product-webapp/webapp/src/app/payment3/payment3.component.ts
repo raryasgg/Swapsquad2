@@ -12,6 +12,7 @@ import { TransactionService } from "../transaction.service";
 import { EmailService } from "../email.service";
 import { EmailDetails } from "../email-details";
 import { AccountdataComponent } from "../component/accountdata/accountdata.component";
+import { RecommedationService } from "../services/recommendation-service/recommedation.service";
 @Component({
   selector: "app-payment3",
   templateUrl: "./payment3.component.html",
@@ -29,7 +30,8 @@ export class Payment3Component implements OnInit {
     private router: Router,
     private tranactionservice: TransactionService,
     private emailservice: EmailService,
-    public dialog: MatDialog
+    public dialog: MatDialog,
+    private reccomservice: RecommedationService
   ) {
     this.updateForm = new FormGroup({
       pid: new FormControl(),
@@ -105,6 +107,16 @@ export class Payment3Component implements OnInit {
   emailObj: EmailDetails = new EmailDetails();
 
   onClickSubmitForm() {
+
+    if(this.coindata.barterCoins < this.productdata.pcoin){
+      Swal.fire({
+        icon: "error",
+        title: "Insufficient Coin",
+        text: "Please Add More Coin!",
+      })
+         
+        }
+        else{
     console.log(this.updateForm.value);
 
     this.productObj.pid = this.updateForm.value.pid;
@@ -112,11 +124,11 @@ export class Payment3Component implements OnInit {
     this._productdetailsService
       .updateProductNotAvailable(this.updateForm.value.pid)
       .subscribe((data) => console.log(data));
-    Swal.fire({
-      icon: "success",
-      title: "Set for NotAvailable!!",
-      text: "Thank You!",
-    });
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "Transaction  Unsuccessful!",
+      })
 
     console.log(this.coindata.email);
     console.log(this.productdata.pemail);
@@ -147,6 +159,16 @@ export class Payment3Component implements OnInit {
       text: "Thank You!",
     });
 
+    this.reccomservice.deleteproductbyId(this.productdata.pid)
+    .subscribe((data) => console.log(data));
+  Swal.fire({
+    icon: "success",
+    title: "Product Deleted!!",
+    text: "Thank You!",
+  });
+
+
+
     this.emailObj.recipient = this.coindata.email;
     console.log(this.emailObj.recipient);
     this.emailservice
@@ -157,5 +179,10 @@ export class Payment3Component implements OnInit {
       title: "Transaction Sucessfully!!",
       text: "Thank You!",
     });
+    this.router.navigate(["/navbar/recommendation-service"])
+    .then(() => {
+      window.location.reload();
+    });
   }
+}
 }

@@ -33,6 +33,7 @@ public class UserRegistrationServiceImpl implements UserRegistrationService{
 		if (user.isPresent()) {
 			throw new UserAlreadyExistException();
 		} else {
+			emp.setBarterCoins(50);
 			return repo.save(emp);
 		}
 	}

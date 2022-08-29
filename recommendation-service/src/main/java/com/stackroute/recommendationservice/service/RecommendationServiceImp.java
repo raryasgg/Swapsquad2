@@ -54,7 +54,7 @@ public class RecommendationServiceImp implements RecommendationService {
             categoryRepository.save(category1);
         }
         if (locationRepository.findById(incomingData.getState()).isEmpty()) {
-            Location location1 = new Location(incomingData.getCity(), incomingData.getState());
+            Location location1 = new Location(incomingData.getState(), incomingData.getCity());
             locationRepository.save(location1);
         }
 
@@ -64,8 +64,8 @@ public class RecommendationServiceImp implements RecommendationService {
     }
 
     @Override
-    public HashSet<IncomingProductData> getProductRecommendationsByLocation(String State) throws ProductNotFoundException {
-        HashSet<IncomingProductData> prod = repo.getProductRecommendationByLocation(State);
+    public HashSet<IncomingProductData> getProductRecommendationsByLocation(String state) throws ProductNotFoundException {
+        HashSet<IncomingProductData> prod = repo.getProductRecommendationByLocation(state);
         if (prod.isEmpty()) {
             throw new ProductNotFoundException();
         } else {

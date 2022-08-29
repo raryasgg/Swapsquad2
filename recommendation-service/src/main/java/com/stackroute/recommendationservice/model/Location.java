@@ -12,8 +12,7 @@ import org.springframework.data.neo4j.core.schema.Node;
 @AllArgsConstructor
 public class Location {
     @Id
-    private  String city;
-    private String state;
-
+    private  String state;
+    private String city;
 
 }
