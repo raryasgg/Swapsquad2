@@ -37,4 +37,7 @@
   /* flex-grow: 2; */
   
 }
-
+.Title {
+  font-family: 'Rubik Distressed', cursive;
+  font-size: 180%;
+}
