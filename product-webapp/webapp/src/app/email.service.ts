@@ -12,6 +12,6 @@ export class EmailService {
 
 
   emailnotification(details: EmailDetails): Observable<Object> {
-     return this.httpClient.post(this.baseUrl+"/userservice/sendMail",details);
+     return this.httpClient.post(this.baseUrl+"/emailservice/sendMail",details);
   }
 }
