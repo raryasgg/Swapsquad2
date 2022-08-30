@@ -33,4 +33,11 @@
     background: #3A5DC7;
     color: aliceblue;
   }
-  
+  .Title {
+    font-family: 'Rubik Distressed', cursive;
+    font-size: 140%;
+  }
+
+  .navbar-brand{
+    pointer-events: none;
+}

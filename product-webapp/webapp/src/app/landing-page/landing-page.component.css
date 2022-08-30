@@ -42,7 +42,10 @@ body {
   font-size: 180%;
 }
 
-.navbar-brand {}
+.navbar-brand {
+  cursor: pointer;
+}
+
 
 .rightNav {
   display: flex;
