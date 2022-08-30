@@ -9,7 +9,8 @@ import { Product } from '../../models/register-product/Product';
 })
 export class RegisterProductService {
 
-  baseUrl="http://localhost:8083/product/api/v1/product/add";
+  // baseUrl="http://localhost:8083/product/api/v1/product/add";
+  baseUrl="http://localhost:8080"
 
   constructor(private httpClient: HttpClient) { }
 
@@ -24,7 +25,7 @@ public addProduct(productObject:any, productImage:File){
   const dataObj: FormData=new FormData;
   dataObj.append('str',JSON.stringify(productObject));
   dataObj.append('file',productImage);
-  return this.httpClient.post<Product>("http://localhost:8083/api/v1/product/add",dataObj);
+  return this.httpClient.post<Product>( this.baseUrl+"/productservice/api/v1/product/add",dataObj);
 }
 
 

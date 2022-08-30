@@ -157,7 +157,7 @@ export class PaymentComponent implements OnInit {
     });
 
 
-
+   
     this.reccomservice.deleteproductbyId(this.productdata.pid)
     .subscribe((data) => console.log(data));
   Swal.fire({

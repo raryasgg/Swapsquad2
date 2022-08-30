@@ -7,7 +7,7 @@ import { UserRegistration } from './user-registration';
   providedIn: 'root'
 })
 export class UpdateDetailsService {
-  baseUrl="http://localhost:9998/users/update/";
+  baseUrl="http://localhost:8080";
   constructor(private httpClient: HttpClient) { }
 
 
@@ -15,29 +15,29 @@ export class UpdateDetailsService {
     const dataObj: FormData=new FormData;
     dataObj.append('str',JSON.stringify(registerObject));
     dataObj.append('file',profileImage);
-    return this.httpClient.put<UserRegistration>("http://localhost:9998/users/update/add",dataObj);
+    return this.httpClient.put<UserRegistration>(this.baseUrl+"/userservice/users/update/add",dataObj);
   }
 
   getUserDetailByEmail(email:any){
-    return this.httpClient.get<UserRegistration>("http://localhost:9998/users/user/" + email)
+    return this.httpClient.get<UserRegistration>(this.baseUrl +"/userservice/users/user/"+ email)
   }
 
   updateEmployee( employees: UserRegistration,email:any): Observable<Object>{
-    return this.httpClient.put(`${this.baseUrl}/${email}`, employees);
+    return this.httpClient.put(this.baseUrl+"/userservice/users/update/"+`${email}`, employees);
   }
   update123( updateObj: UserRegistration): Observable<Object>{
-    return this.httpClient.put(`${this.baseUrl}`,  updateObj);
+    return this.httpClient.put(this.baseUrl+"/userservice/users/update/",  updateObj);
   }
 
   getUserCoinByEmail(email:any){
-    return this.httpClient.get<UserRegistration>("http://localhost:9998/users/user/" + email)
+    return this.httpClient.get<UserRegistration>(this.baseUrl +"/userservice/users/user/"+ email)
   }
   
 exchange( buyeremail:any,selleremail:any,coinOfProduct:any): Observable<Object>{
-  return this.httpClient.put("http://localhost:9998/users/exchhange?buyeremail="+buyeremail+"&selleremail="+selleremail+"&newTotalCoins="+coinOfProduct,{});
+  return this.httpClient.put(this.baseUrl+"/userservice/users/exchhange?buyeremail="+buyeremail+"&selleremail="+selleremail+"&newTotalCoins="+coinOfProduct,{});
 }
 updatewithoutPicture(data:UserRegistration){
-  return this.httpClient.put("http://localhost:9998/users/update2/add",data);
+  return this.httpClient.put(this.baseUrl+"/userservice/users/update2/add",data);
 }
 
 }

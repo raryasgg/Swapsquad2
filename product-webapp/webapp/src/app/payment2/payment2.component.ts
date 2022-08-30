@@ -123,6 +123,8 @@ console.log(this.productdata1[0].pemail);
       text: "Thank You!",
     });
 
+    this.reccomservice.deleteproductbyId(this.productdata1[0].pid)
+    .subscribe((data) => console.log(data));
     this.reccomservice.deleteproductbyId(this.productdata.pid)
     .subscribe((data) => console.log(data));
   Swal.fire({

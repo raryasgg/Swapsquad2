@@ -85,6 +85,12 @@ public searchTerm : string='';
     return this._recommendationService.getProductRecommendationsByLocation(this.selectedState).subscribe(data=>{
       this.abc=data;
       console.log(this.abc);
+      this.abc.map(image=>{
+        console.log(image);
+        image.productImage=this.domSanitizer.bypassSecurityTrustResourceUrl(
+          "data:productImage/" + "jpg" + ";base64," +image.productImage
+        );
+      })
 
       
 
@@ -94,6 +100,12 @@ public searchTerm : string='';
     this._recommendationService.getgetProductRecommendationByStateAndCategory(this.selectedState,this.selectedCategory).subscribe(data=>{
         this.abc=data;
         console.log(this.abc);
+        this.abc.map(image=>{
+          console.log(image);
+          image.productImage=this.domSanitizer.bypassSecurityTrustResourceUrl(
+            "data:productImage/" + "jpg" + ";base64," +image.productImage
+          );
+        })
        })
    }
   
@@ -118,12 +130,24 @@ public searchTerm : string='';
       return this._recommendationService.getgetProductByCategory(this.selectedCategory).subscribe(data=>{
         this.abc=data;
         console.log(this.abc);
+        this.abc.map(image=>{
+          console.log(image);
+          image.productImage=this.domSanitizer.bypassSecurityTrustResourceUrl(
+            "data:productImage/" + "jpg" + ";base64," +image.productImage
+          );
+        })
        })
      }
      else{
       this._recommendationService.getgetProductRecommendationByStateAndCategory(this.selectedState,this.selectedCategory).subscribe(data=>{
           this.abc=data;
           console.log(this.abc);
+          this.abc.map(image=>{
+            console.log(image);
+            image.productImage=this.domSanitizer.bypassSecurityTrustResourceUrl(
+              "data:productImage/" + "jpg" + ";base64," +image.productImage
+            );
+          })
          })
      }
    } 

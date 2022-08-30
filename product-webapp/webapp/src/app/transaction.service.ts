@@ -7,11 +7,11 @@ import { Transaction } from './transaction';
 })
 export class TransactionService {
 
-  baseUrl="http://localhost:8078/";
+  baseUrl="http://localhost:8080";
   constructor(private httpClient: HttpClient) { }
 
 
   public saveTransaction(transaction:any ){
-    return this.httpClient.post<Transaction>("http://localhost:8078/addTransaction",transaction);
+    return this.httpClient.post<Transaction>(this.baseUrl+"/transactionservice/addTransaction",transaction);
   }
 }

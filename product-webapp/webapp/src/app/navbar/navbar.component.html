@@ -17,11 +17,11 @@
           <span class="material-icons">
             account_circle
             </span>
-          {{username}}
+          {{usersemail}}
         </a>
         <mat-menu #menu="matMenu" class="customize">
           <button mat-menu-item style="color: white;" routerLink='/navbar/myProfile'>My Profile</button>
-          <button mat-menu-item style="color: white;">{{usersemail}}</button>
+          <!-- <button mat-menu-item style="color: white;">{{usersemail}}</button> -->
           <button mat-menu-item style="color: white;" (click)="onClicklogout()">Logout</button>
         </mat-menu>
       </div>

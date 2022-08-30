@@ -12,7 +12,7 @@ export class RecommedationService {
  
   
 
-  private url: string ="http://localhost:8090"
+  private url: string ="http://localhost:8080"
 
 
   constructor(private httpClient: HttpClient) { }
@@ -22,19 +22,19 @@ export class RecommedationService {
 //  }
 
   getProductRecommendationsByLocation(state:String){
-   return this.httpClient.get<IncomingProductData[]>(this.url+ "/recommend/" +  state)
+   return this.httpClient.get<IncomingProductData[]>(this.url+ "/recommendationservice/recommend/" +  state)
   }
   getgetProductRecommendationByStateAndCategory(state:String,category:String){
-    return this.httpClient.get<IncomingProductData[]>(this.url+ "/recommendCategory" + '?state='+state+'&category='+category)
+    return this.httpClient.get<IncomingProductData[]>(this.url+ "/recommendationservice/recommendCategory" + '?state='+state+'&category='+category)
    }
    getgetProductByCategory(category:String){
-    return this.httpClient.get<IncomingProductData[]>(this.url+ "/Product" + '?category=' + category )
+    return this.httpClient.get<IncomingProductData[]>(this.url+ "/recommendationservice/Product" + '?category=' + category )
    }
    getAllProduct(){
-    return this.httpClient.get<IncomingProductData[]>(this.url+ "/getAllProduct")
+    return this.httpClient.get<IncomingProductData[]>(this.url+ "/recommendationservice/getAllProduct")
    }
    deleteproductbyId(productId:any){
-    return this.httpClient.delete<IncomingProductData[]>(this.url+ "/delete/" + productId)
+    return this.httpClient.delete<IncomingProductData[]>(this.url+ "/recommendationservice/delete/" + productId)
    }
 }
 

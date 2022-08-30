@@ -8,15 +8,15 @@ import { UserDao } from 'src/app/models/login/user-dao';
   providedIn: 'root'
 })
 export class LoginService {
-  baseUrl="http://localhost:8080/validate"
+  baseUrl="http://localhost:8080"
 
 
   constructor(private httpClient:HttpClient) { }
   loginUser(user: UserDao): Observable<Object> {
     console.log("user",user);
-    return this.httpClient.post(`${this.baseUrl}`,user);
+    return this.httpClient.post(this.baseUrl+"/authenticationservice/validate",user);
  }
  validate(user){
-  return this.httpClient.get(this.baseUrl,user)
+  return this.httpClient.get(this.baseUrl+"/authenticationservice/validate",user)
 }
 }

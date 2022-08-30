@@ -7,11 +7,11 @@ import { Observable } from 'rxjs';
 })
 export class EmailService {
 
-  baseUrl="http://localhost:9292/sendMail";
+  baseUrl="http://localhost:8080";
   constructor(private httpClient: HttpClient) { }
 
 
   emailnotification(details: EmailDetails): Observable<Object> {
-     return this.httpClient.post(`${this.baseUrl}`,details);
+     return this.httpClient.post(this.baseUrl+"/userservice/sendMail",details);
   }
 }

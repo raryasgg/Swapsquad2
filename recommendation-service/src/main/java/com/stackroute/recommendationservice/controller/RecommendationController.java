@@ -21,8 +21,8 @@ import java.util.ArrayList;
 import java.util.HashSet;
 @Slf4j
 @RestController
-@RequestMapping()
-@CrossOrigin("*")
+//@RequestMapping()
+//@CrossOrigin("*")
 public class RecommendationController {
     private RecommendationService recommendationService;
 

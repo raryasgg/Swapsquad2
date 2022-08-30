@@ -9,7 +9,7 @@ import { Product } from './product';
 })
 export class ProductDetailsService {
 
-   private url: string ="http://localhost:8083"
+   private url: string ="http://localhost:8080"
 
   constructor(private httpClient: HttpClient) { }
   //get method for obtaining all the product details by id
@@ -18,12 +18,12 @@ export class ProductDetailsService {
    
   // }
    getProductDetailsById(pid:any){
-   return this.httpClient.get<Product[]>("http://localhost:8083/api/v1/product/" + pid)
+   return this.httpClient.get<Product[]>(this.url +"/productservice/api/v1/product/" + pid)
   }
   getProductDetailsByEmail(pemail:any){
-    return this.httpClient.get<Product[]>(this.url+ "/api/v1/productavailablebyemail/" + pemail)
+    return this.httpClient.get<Product[]>(this.url+ "/productservice/api/v1/productavailablebyemail/" + pemail)
    }
 updateProductNotAvailable(pid:any){
-  return this.httpClient.put(`${"http://localhost:8083/api/v1/products"}/${pid}`,pid);
+  return this.httpClient.put( this.url+ "/productservice/api/v1/products/"+`${pid}`,pid);
 }
 }
