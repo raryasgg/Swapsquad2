@@ -201,7 +201,7 @@ export class TranscationsComponent implements OnInit {
   onClickSubmit(data,email){
     this.toDisplay = !this.toDisplay;
      console.log(this.rating,data.review,email);
-     this.rateings.userId = this.useremail
+     this.rateings.userId = this.usersemail
      this.rateings.reviews= data.review
      this.rateings.rating=this.rating
      console.log(this.rateings);
