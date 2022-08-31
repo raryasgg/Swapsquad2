@@ -23,7 +23,7 @@ import com.authencationservice.service.SecurityTokenGenerator;
 
 @RestController
 //@CrossOrigin("*")
-@CrossOrigin(origins = "*", allowedHeaders = "*")
+//@CrossOrigin(origins = "*", allowedHeaders = "*")
 public class JwtController {
 
 

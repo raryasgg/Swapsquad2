@@ -8,27 +8,27 @@ import { Userrating } from '../model/userrating';
   providedIn: 'root'
 })
 export class TranServiceService {
-  private url: string ="http://localhost:8078"
-  private urlp: string ="http://localhost:8083"
-  private urluser: string ="http://localhost:9998"
+  private url: string ="http://localhost:8080"
+  private urlp: string ="http://localhost:8080"
+  private urluser: string ="http://localhost:8080"
 
 
   constructor(private httpClient: HttpClient) { }
 
 
   getTranscationsByByerEmailId(email:String){
-   return this.httpClient.get<Transcation[]>(this.url+ "/BuyerEmail/" +  email)
+   return this.httpClient.get<Transcation[]>(this.url+ "/transactionservice/BuyerEmail/" +  email)
   }
 
   getTranscationsBySellerEmailId(email:String){
-    return this.httpClient.get<Transcation[]>(this.url+ "/SellerEmail/" +  email)
+    return this.httpClient.get<Transcation[]>(this.url+ "/transactionservice/SellerEmail/" +  email)
    }
 
   getProductByName(name){
-    return this.httpClient.get<Product>(this.urlp+ "/api/v1/product/" + name)
+    return this.httpClient.get<Product>(this.urlp+ "/productservice/api/v1/product/" + name)
    }
   
   ratebyemail(rating:Userrating,email:string){
-  return this.httpClient.put<Product>(this.urluser+"/users/rate/"+email,rating);
+  return this.httpClient.put<Product>(this.urluser+"/userservice/users/rate/"+email,rating);
 }
 }

@@ -157,7 +157,7 @@ export class PaymentComponent implements OnInit {
     });
 
 
-
+   
     this.reccomservice.deleteproductbyId(this.productdata.pid)
     .subscribe((data) => console.log(data));
   Swal.fire({
@@ -177,11 +177,12 @@ export class PaymentComponent implements OnInit {
       title: "Transaction Sucessfully!!",
       text: "Thank You!",
     });
-    this.router.navigate(["/navbar/recommendation-service"])
+    
+  }
+  this.router.navigate(["/navbar/recommendation-service"])
     .then(() => {
       window.location.reload();
     });
     
-  }
 }
 }

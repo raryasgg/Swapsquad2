@@ -19,7 +19,7 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping
-@CrossOrigin(origins="*")
+//@CrossOrigin(origins="*")
 @Slf4j
 public class TransactionController {
 @Autowired

@@ -6,13 +6,13 @@ import { UserRating } from './user-rating';
   providedIn: 'root'
 })
 export class UserratingService {
-  private baseurl: string = "http://localhost:9998"
+  private baseurl: string = "http://localhost:8080"
   email: any;
 
   constructor(private httpClient: HttpClient) { }
 
   //get method for obtainig user ratings and reviews
   getUserRatingByEmail(email:any){
-    return this.httpClient.get<UserRating[]>(this.baseurl +"/users/user/" + email)
+    return this.httpClient.get<UserRating[]>(this.baseurl +"/userservice/users/user/" + email)
   }
 }

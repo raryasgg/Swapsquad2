@@ -12,7 +12,7 @@ import com.stackroute.email.model.EmailDetails;
 import com.stackroute.email.service.EmailService;
  
 @RestController
-@CrossOrigin(origins="*")
+//@CrossOrigin(origins="*")
 public class EmailController {
  
     @Autowired private EmailService emailService;

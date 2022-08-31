@@ -8,8 +8,8 @@ import { Account } from 'src/app/models/account-data/account';
 })
 export class AccountService {
 
-  private baseurl="http://localhost:9998/users"
-  private baserurla="http://localhost:9998/users/addaccount"
+  private baseurl="http://localhost:8080"
+  // private baserurla="http://localhost:9998/users/addaccount"
  
 
   constructor(private httpClient: HttpClient) { }
@@ -21,20 +21,20 @@ export class AccountService {
 
   addAccount(user: Account): Observable<Object> {
     console.log(user);
-    return this.httpClient.post(`${this.baserurla}`,user);
+    return this.httpClient.post(this.baseurl+"/userservice/users/addaccount",user);
  }
 
  getAccountByAccountNumber(accountNumber:any){
-  return this.httpClient.get<Account>(this.baseurl +"/"+ accountNumber)
+  return this.httpClient.get<Account>(this.baseurl +"/userservice/users/"+ accountNumber)
 
  }
 
  addAmount(email:any,amount:any){
-  return this.httpClient.put(this.baseurl+"/addcoin?email=" + email +"&amount=" + amount, {} )
+  return this.httpClient.put(this.baseurl+"/userservice/users/addcoin?email=" + email +"&amount=" + amount, {} )
 }
 
 getAccountDataByEmail(email:any){
-  return this.httpClient.get(this.baseurl +"/account/" + email)
+  return this.httpClient.get(this.baseurl +"/userservice/users/account/" + email)
 }
  
 }

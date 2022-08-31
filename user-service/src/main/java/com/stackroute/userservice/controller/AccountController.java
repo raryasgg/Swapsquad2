@@ -16,7 +16,7 @@ import java.util.HashSet;
 
 @RestController
 @RequestMapping("/users")
-@CrossOrigin(origins="*")
+//@CrossOrigin(origins="*")
 @Slf4j
 public class AccountController {
     @Autowired

@@ -159,6 +159,8 @@ export class Payment3Component implements OnInit {
       text: "Thank You!",
     });
 
+    this.reccomservice.deleteproductbyId(this.productdata1[0].pid)
+    .subscribe((data) => console.log(data));
     this.reccomservice.deleteproductbyId(this.productdata.pid)
     .subscribe((data) => console.log(data));
   Swal.fire({
@@ -179,10 +181,11 @@ export class Payment3Component implements OnInit {
       title: "Transaction Sucessfully!!",
       text: "Thank You!",
     });
-    this.router.navigate(["/navbar/recommendation-service"])
-    .then(() => {
-      window.location.reload();
-    });
+   
   }
+  this.router.navigate(["/navbar/recommendation-service"])
+  .then(() => {
+    window.location.reload();
+  });
 }
 }

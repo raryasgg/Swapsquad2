@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 import { LoginComponent } from './login.component';
 
 
-const AUTH_API = 'http://localhost:8080/api/auth/';
+const AUTH_API = 'http://localhost:8080/authenticationservice/api/auth/';
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
 };

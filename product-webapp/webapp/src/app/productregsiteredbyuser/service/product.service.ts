@@ -7,10 +7,10 @@ import { Observable } from 'rxjs';
 })
 export class ProductService {
   
-  private url: string ="http://localhost:8083/api/v1/producte/"
+  private url: string ="http://localhost:8080"
   constructor(private httpClient: HttpClient) { }
   getproduct(email:string): Observable<Object> {
-    return this.httpClient.get(this.url+email);
+    return this.httpClient.get(this.url+"/productservice/api/v1/producte/"+email);
  }
 
 }

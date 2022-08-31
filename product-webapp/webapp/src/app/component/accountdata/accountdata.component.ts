@@ -4,6 +4,7 @@ import { Account } from 'src/app/models/account-data/account';
 import { AccountService } from 'src/app/services/accounts-data/account.service';
 import Swal from 'sweetalert2';
 import { MatDialogRef } from '@angular/material/dialog';
+import { Router } from '@angular/router';
 
 // import * as moment from 'moment';
 
@@ -37,7 +38,7 @@ public accountdata : any;
 
 
 
-  constructor( private fb: FormBuilder, private accountService: AccountService, private matDialogRef: MatDialogRef<AccountdataComponent> ) { 
+  constructor( private fb: FormBuilder, private accountService: AccountService, private matDialogRef: MatDialogRef<AccountdataComponent>,private router: Router ) { 
     this.accountForm= new FormGroup({
       accountHolderName : new FormControl ("", [Validators.required]),
       accountNumber :new FormControl("",[Validators.required,Validators.pattern('[0-9 ]*'),Validators.minLength(9),Validators.maxLength(18)]),
@@ -101,6 +102,16 @@ onSave(){
       Swal.fire({ icon: 'success', title: 'Successfully Saved !!', text: 'Your Account is added Succesfully !', })
      
   }
+  this.accountService.getAccountDataByEmail(localStorage.getItem('loginEmail')).subscribe((resbyemail:any)=>{
+    this.emaildataobj=resbyemail;
+    console.log(this.emaildataobj);
+   
+    this.accountNumber=this.emaildataobj.accountNumber;
+    // console.log(this.accountNumber);
+    for (let i = 0; i < resbyemail.length; i++) {
+      this.abc.push(resbyemail[i]);
+      }
+    })
   }
   
 
@@ -140,6 +151,8 @@ Swal.fire({ icon: 'success', title: 'Coin added !!', text: 'Coins added Succesfu
   }else{
     Swal.fire({ icon: 'question', title: 'Want to add coins ?', text: 'Enter amount  !', })
   }
+  this.matDialogRef.close();
+  this.router.navigate(["/navbar/recommendation-service"])
 }
 
 onClickClear(){
