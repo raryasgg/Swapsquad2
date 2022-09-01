@@ -46,7 +46,9 @@ body {
   cursor: pointer;
 }
 
-
+.Title :hover{
+  color: rgb(210, 29, 41);
+}
 .rightNav {
   display: flex;
   justify-content: right;
