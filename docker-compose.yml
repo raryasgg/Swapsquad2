@@ -93,9 +93,9 @@ services:
       - mongodb
       - eureka-server
     restart: always
-  Transaction_History:
-    container_name: transaction_history
-    build: transaction_history/
+  transaction-history:
+    container_name: transaction-history
+    build: transaction-history/
     hostname: localhost
     network_mode: host
     ports:

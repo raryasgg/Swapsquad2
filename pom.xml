@@ -31,7 +31,7 @@
         <module>recommendation-service</module>
         <module>product-service</module>
         <module>authentication-service</module>
-        <module>Transaction_History</module>
+        <module>transaction-history</module>
         <module>chat-service</module>
         <module>email</module>
     </modules>
