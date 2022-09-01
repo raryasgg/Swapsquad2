@@ -8,8 +8,8 @@ import { UserDao } from 'src/app/models/login/user-dao';
   providedIn: 'root'
 })
 export class LoginService {
-  baseUrl="http://localhost:8080"
-
+  // baseUrl="http://localhost:8080"
+  baseUrl="https://swapsquad.stackroute.io"
 
   constructor(private httpClient:HttpClient) { }
   loginUser(user: UserDao): Observable<Object> {
