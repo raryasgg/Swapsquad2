@@ -9,9 +9,9 @@
 		<relativePath> ../pom.xml</relativePath><!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.stackroute.cgi</groupId>
-	<artifactId>Transaction_History</artifactId>
+	<artifactId>transaction-history</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>Transaction_History</name>
+	<name>transaction-history</name>
 	<description>Demo project for Spring Boot</description>
 	<properties>
 		<java.version>11</java.version>
