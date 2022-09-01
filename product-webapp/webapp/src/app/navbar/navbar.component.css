@@ -8,7 +8,7 @@
 
   .example-container {
     height: 650px;
-    border: 1px solid rgba(0, 0, 0, 0.5);
+    border: 1px solid rgb(130, 207, 238, 0.5);
   }
   
   .example-sidenav-content {
@@ -30,14 +30,29 @@
   }
 
   ::ng-deep .customize {
-    background: #3A5DC7;
-    color: aliceblue;
+    background: rgb(130, 207, 238);;
+    color: black;
   }
   .Title {
     font-family: 'Rubik Distressed', cursive;
+    color: black;
     font-size: 140%;
+    cursor: pointer;
+    text-decoration: none;
+  }
+
+  .Title:hover {
+    
+    color: rgb(210, 29, 41);
+   
   }
 
   .navbar-brand{
     pointer-events: none;
 }
+
+.email:hover{
+  color: inherit;
+  
+}
+
