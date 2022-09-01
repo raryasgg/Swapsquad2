@@ -45,7 +45,7 @@ export class Payment3Component implements OnInit {
     " Operating System: OxygenOS based on Android 11 CPU: Qualcomm® Snapdragon™ 870.. GPU: Adreno 650. RAM: 8GB/12GB";
   pcoin = 20000;
   pemail = "raju@gmail.com";
-
+  pexchangetype = "exchange";
   public coindata: any;
   barterCoins = 5000;
   email: any;
@@ -74,6 +74,7 @@ export class Payment3Component implements OnInit {
       this.pcoin = this.productdata.pcoin;
       this.pid = this.productdata.pid;
       this.pemail = this.productdata.pemail;
+      this.pexchangetype = this.productdata.pexchangetype
     });
 
     this.userservice
@@ -150,6 +151,8 @@ export class Payment3Component implements OnInit {
     this.transactionObj.sellerEmail = this.productdata.pemail;
      this.transactionObj.productSend =this.productdata1[0].pid;
     this.transactionObj.productObtained =  this.productdata.pid;
+    this.transactionObj.method_of_Transaction =  this.productdata.pexchangetype;
+    this.transactionObj.price_of_Product_in_coins = this.productdata.pcoin;
     this.tranactionservice
       .saveTransaction(this.transactionObj)
       .subscribe((data) => console.log(data));
