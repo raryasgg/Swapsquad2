@@ -197,7 +197,7 @@ export class TranscationsComponent implements OnInit {
   rating = 1
   reviews=""
   rateings:Userrating = new Userrating();
-  useremail = "anjali@gmail.com"
+  useremail:any;
   onClickSubmit(data,email){
     this.toDisplay = !this.toDisplay;
      console.log(this.rating,data.review,email);
@@ -225,7 +225,7 @@ export class TranscationsComponent implements OnInit {
   ngOnInit(): void {
 
     this.usersemail=localStorage.getItem('loginEmail')
-    this.transcationService.getTranscationsBySellerEmailId("anjali@gmail.com").subscribe((data:any)=>{
+    this.transcationService.getTranscationsBySellerEmailId(this.useremail).subscribe((data:any)=>{
       console.log("data",data);
       // for (let i = 0; i < data.length; i++) {
       // this.abc.push(data[i]);
