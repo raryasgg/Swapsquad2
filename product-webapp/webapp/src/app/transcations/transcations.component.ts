@@ -53,7 +53,7 @@ export class TranscationsComponent implements OnInit {
 
     if(this.selectedValue=='Purchased Products'){
 
-      this.transcationService.getTranscationsByByerEmailId(this.usersemail).subscribe((data:any)=>{
+      this.transcationService.getTranscationsByByerEmailId(this.useremail).subscribe((data:any)=>{
         console.log("data",data);
         // for (let i = 0; i < data.length; i++) {
         // this.abc.push(data[i]);
@@ -107,7 +107,7 @@ export class TranscationsComponent implements OnInit {
         }
       });
     }else{
-      this.transcationService.getTranscationsBySellerEmailId(this.usersemail).subscribe((data:any)=>{
+      this.transcationService.getTranscationsBySellerEmailId(this.useremail).subscribe((data:any)=>{
         console.log("data",data);
         // for (let i = 0; i < data.length; i++) {
         // this.abc.push(data[i]);
@@ -132,10 +132,10 @@ export class TranscationsComponent implements OnInit {
         
             );
             this.tran[i].pcoin2=this.tran[i].price_of_Product_in_coins
-            this.tran[i].pname2=this.abc.pname
+            this.tran[i].pname1=this.abc.pname
             this.tran[i].pcategory2=this.abc.pcategory
             this.tran[i].eemail=this.tran[i].buyerEmail
-            this.tran[i].image2=this.tran[i].image
+            this.tran[i].image1=this.tran[i].image
             console.log("product",this.tran);
           });
           this.transcationService.getProductByName(this.tran[i].productSend).subscribe((data:any)=>{
@@ -152,10 +152,10 @@ export class TranscationsComponent implements OnInit {
               "data:img/" + "jpg" + ";base64," + data.image
         
             );
-            this.tran[i].pname1=this.abc.pname
+            this.tran[i].pname2=this.abc.pname
             this.tran[i].pcategory1=this.abc.pcategory
             this.tran[i].eemail=this.tran[i].buyerEmail
-            this.tran[i].image1=this.tran[i].image
+            this.tran[i].image2=this.tran[i].image
             console.log("product",this.tran);
           });
         }
@@ -250,10 +250,10 @@ export class TranscationsComponent implements OnInit {
       
           );
           this.tran[i].pcoin2=this.tran[i].price_of_Product_in_coins
-          this.tran[i].pname2=this.abc.pname
+          this.tran[i].pname1=this.abc.pname
           this.tran[i].pcategory2=this.abc.pcategory
           this.tran[i].eemail=this.tran[i].buyerEmail
-          this.tran[i].image2=this.tran[i].image
+          this.tran[i].image1=this.tran[i].image
           console.log("product",this.tran);
         });
         this.transcationService.getProductByName(this.tran[i].productSend).subscribe((data:any)=>{
@@ -270,10 +270,10 @@ export class TranscationsComponent implements OnInit {
             "data:img/" + "jpg" + ";base64," + data.image
       
           );
-          this.tran[i].pname1=this.abc.pname
+          this.tran[i].pname2=this.abc.pname
           this.tran[i].pcategory1=this.abc.pcategory
           this.tran[i].eemail=this.tran[i].buyerEmail
-          this.tran[i].image1=this.tran[i].image
+          this.tran[i].image2=this.tran[i].image
           console.log("product",this.tran);
         });
       }
