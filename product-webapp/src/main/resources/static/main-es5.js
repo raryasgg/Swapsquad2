@@ -8178,7 +8178,7 @@
           value: function ngOnInit() {
             var _this18 = this;
 
-            this.usersemail = localStorage.getItem('loginEmail');
+            this.useremail = localStorage.getItem('loginEmail');
             this.transcationService.getTranscationsBySellerEmailId(this.useremail).subscribe(function (data) {
               console.log("data", data); // for (let i = 0; i < data.length; i++) {
               // this.abc.push(data[i]);

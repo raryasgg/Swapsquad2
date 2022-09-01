@@ -224,7 +224,7 @@ export class TranscationsComponent implements OnInit {
   
   ngOnInit(): void {
 
-    this.usersemail=localStorage.getItem('loginEmail')
+    this.useremail=localStorage.getItem('loginEmail')
     this.transcationService.getTranscationsBySellerEmailId(this.useremail).subscribe((data:any)=>{
       console.log("data",data);
       // for (let i = 0; i < data.length; i++) {
