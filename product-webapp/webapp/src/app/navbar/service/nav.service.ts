@@ -6,8 +6,8 @@ import { Observable } from 'rxjs';
 })
 export class NavService {
 
-   // private url: string ="http://localhost:8080"
-    private url="https://swapsquad.stackroute.io"
+    // private url: string ="http://localhost:8080"
+   private url="https://swapsquad.stackroute.io"
 
   constructor(private httpClient: HttpClient) { }
   getuserdetails(email:string): Observable<Object> {

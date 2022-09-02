@@ -39,7 +39,7 @@ export class RegisterProductComponent implements OnInit {
       pcategory: new FormControl("", [Validators.required]),
       pname: new FormControl("", [Validators.required, Validators.minLength(2)]),
       pdatepost: new FormControl("", [Validators.required]),
-      desc: new FormControl("", [Validators.required, Validators.minLength(10), Validators.maxLength(150)]),
+      desc: new FormControl("", [Validators.required, Validators.minLength(10), Validators.maxLength(350)]),
       pexchangetype: new FormControl(),
       // pcoin: new FormControl("",[Validators.required,Validators.pattern("^[0-9]*$"),Validators.maxLength(8)]),
       // pexchange: this.fb.array([], Validators.required),

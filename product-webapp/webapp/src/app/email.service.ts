@@ -8,8 +8,8 @@ import { Observable } from 'rxjs';
 export class EmailService {
 
 
- //  baseUrl="http://localhost:8080";
-  baseUrl="https://swapsquad.stackroute.io"
+  //baseUrl="http://localhost:8080";
+   baseUrl="https://swapsquad.stackroute.io"
 
   constructor(private httpClient: HttpClient) { }
 

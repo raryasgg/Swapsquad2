@@ -104,27 +104,30 @@ public class UserRegistrationServiceImpl implements UserRegistrationService{
 
 
 
-	@Override
-	public UserRegistration addrating(UserRating add, String email) {
-		Optional<UserRegistration> user= repo.findById(email);
-		UserRegistration abc=user.get();
-		if(abc.getRatings()==null) {
-			List<UserRating> rate=new ArrayList<>();
-			rate.add(add);
-			abc.setRatings(rate);	
-			return repo.save(abc);
-		}
-		else
-		{
-			List<UserRating> rates=abc.getRatings();
-			rates.add(add);
-			abc.setRatings(rates);
-			return repo.save(abc);
-		}
-		
-
-		
-	}
+	 @Override
+	 public UserRegistration addrating(UserRating add, String email) {
+		 Optional<UserRegistration> user= repo.findById(email);
+		 UserRegistration abc=user.get();
+		 if(abc.getRatings()==null) {
+			 List<UserRating> rate=new ArrayList<>();
+			 rate.add(add);
+			 abc.setRatings(rate);
+			 abc.setAvgRating(add.getRating());
+			 return repo.save(abc);
+		 } else
+		 {
+			 List<UserRating> rates=abc.getRatings();
+			 rates.add(add);
+			 double sum=0;
+			 for(UserRating userRate:rates){
+				 sum= sum+ userRate.getRating();
+			 }
+			 double avg=sum/rates.size();
+			 abc.setAvgRating(avg);
+			 abc.setRatings(rates);
+			 return repo.save(abc);
+		 }
+	 }
 
 	 @Override
 	 public UserRegistration updateuser(UserRegistration user) throws UserNotFoundException {
