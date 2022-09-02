@@ -976,6 +976,9 @@ class Payment2Component {
     }
     onClickSubmitForm() {
         console.log(this.updateForm.value);
+        this._productdetailsService
+            .updateProductNotAvailable(this.productdata.pid)
+            .subscribe((data) => console.log(data));
         this.productObj.pid = this.updateForm.value.pid;
         console.log(this.updateForm.value.pid);
         console.log(this.updateForm.value.pid);
@@ -1904,7 +1907,7 @@ __webpack_require__.r(__webpack_exports__);
 class UpdateDetailsService {
     constructor(httpClient) {
         this.httpClient = httpClient;
-        //baseUrl="http://localhost:8080";
+        // baseUrl="http://localhost:8080";
         this.baseUrl = "https://swapsquad.stackroute.io";
     }
     update(registerObject, profileImage) {
@@ -2483,7 +2486,7 @@ __webpack_require__.r(__webpack_exports__);
 class TransactionService {
     constructor(httpClient) {
         this.httpClient = httpClient;
-        // baseUrl="http://localhost:8080";
+        //baseUrl="http://localhost:8080";
         this.baseUrl = "https://swapsquad.stackroute.io";
     }
     saveTransaction(transaction) {
@@ -2912,7 +2915,7 @@ __webpack_require__.r(__webpack_exports__);
 class UserratingService {
     constructor(httpClient) {
         this.httpClient = httpClient;
-        // private baseurl: string = "http://localhost:8080"
+        //   private baseurl: string = "http://localhost:8080"
         this.baseurl = "https://swapsquad.stackroute.io";
     }
     //get method for obtainig user ratings and reviews
@@ -4271,7 +4274,8 @@ class TranscationsComponent {
         this.selectedValue = event.target.value;
         console.log(this.selectedValue);
         if (this.selectedValue == 'Purchased Products') {
-            this.transcationService.getTranscationsByByerEmailId(this.usersemail).subscribe((data) => {
+            this.tran = null;
+            this.transcationService.getTranscationsByByerEmailId(this.useremail).subscribe((data) => {
                 console.log("data", data);
                 // for (let i = 0; i < data.length; i++) {
                 // this.abc.push(data[i]);
@@ -4312,7 +4316,8 @@ class TranscationsComponent {
             });
         }
         else {
-            this.transcationService.getTranscationsBySellerEmailId(this.usersemail).subscribe((data) => {
+            this.tran = null;
+            this.transcationService.getTranscationsBySellerEmailId(this.useremail).subscribe((data) => {
                 console.log("data", data);
                 // for (let i = 0; i < data.length; i++) {
                 // this.abc.push(data[i]);
@@ -4330,10 +4335,10 @@ class TranscationsComponent {
                         // console.log(this.abc);
                         this.tran[i].image = this.domSanitizer.bypassSecurityTrustResourceUrl("data:img/" + "jpg" + ";base64," + data.image);
                         this.tran[i].pcoin2 = this.tran[i].price_of_Product_in_coins;
-                        this.tran[i].pname2 = this.abc.pname;
+                        this.tran[i].pname1 = this.abc.pname;
                         this.tran[i].pcategory2 = this.abc.pcategory;
                         this.tran[i].eemail = this.tran[i].buyerEmail;
-                        this.tran[i].image2 = this.tran[i].image;
+                        this.tran[i].image1 = this.tran[i].image;
                         console.log("product", this.tran);
                     });
                     this.transcationService.getProductByName(this.tran[i].productSend).subscribe((data) => {
@@ -4344,10 +4349,10 @@ class TranscationsComponent {
                         // }
                         // console.log(this.abc);
                         this.tran[i].image = this.domSanitizer.bypassSecurityTrustResourceUrl("data:img/" + "jpg" + ";base64," + data.image);
-                        this.tran[i].pname1 = this.abc.pname;
+                        this.tran[i].pname2 = this.abc.pname;
                         this.tran[i].pcategory1 = this.abc.pcategory;
                         this.tran[i].eemail = this.tran[i].buyerEmail;
-                        this.tran[i].image1 = this.tran[i].image;
+                        this.tran[i].image2 = this.tran[i].image;
                         console.log("product", this.tran);
                     });
                 }
@@ -4357,7 +4362,7 @@ class TranscationsComponent {
     onClickSubmit(data, email) {
         this.toDisplay = !this.toDisplay;
         console.log(this.rating, data.review, email);
-        this.rateings.userId = this.usersemail;
+        this.rateings.userId = this.useremail;
         this.rateings.reviews = data.review;
         this.rateings.rating = this.rating;
         console.log(this.rateings);
@@ -4392,10 +4397,10 @@ class TranscationsComponent {
                     // console.log(this.abc);
                     this.tran[i].image = this.domSanitizer.bypassSecurityTrustResourceUrl("data:img/" + "jpg" + ";base64," + data.image);
                     this.tran[i].pcoin2 = this.tran[i].price_of_Product_in_coins;
-                    this.tran[i].pname2 = this.abc.pname;
+                    this.tran[i].pname1 = this.abc.pname;
                     this.tran[i].pcategory2 = this.abc.pcategory;
                     this.tran[i].eemail = this.tran[i].buyerEmail;
-                    this.tran[i].image2 = this.tran[i].image;
+                    this.tran[i].image1 = this.tran[i].image;
                     console.log("product", this.tran);
                 });
                 this.transcationService.getProductByName(this.tran[i].productSend).subscribe((data) => {
@@ -4406,10 +4411,10 @@ class TranscationsComponent {
                     // }
                     // console.log(this.abc);
                     this.tran[i].image = this.domSanitizer.bypassSecurityTrustResourceUrl("data:img/" + "jpg" + ";base64," + data.image);
-                    this.tran[i].pname1 = this.abc.pname;
+                    this.tran[i].pname2 = this.abc.pname;
                     this.tran[i].pcategory1 = this.abc.pcategory;
                     this.tran[i].eemail = this.tran[i].buyerEmail;
-                    this.tran[i].image1 = this.tran[i].image;
+                    this.tran[i].image2 = this.tran[i].image;
                     console.log("product", this.tran);
                 });
             }
@@ -4417,7 +4422,7 @@ class TranscationsComponent {
     }
 }
 TranscationsComponent.ɵfac = function TranscationsComponent_Factory(t) { return new (t || TranscationsComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_common_http__WEBPACK_IMPORTED_MODULE_3__["HttpClient"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_service_tran_service_service__WEBPACK_IMPORTED_MODULE_4__["TranServiceService"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_platform_browser__WEBPACK_IMPORTED_MODULE_5__["DomSanitizer"])); };
-TranscationsComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: TranscationsComponent, selectors: [["app-transcations"]], decls: 13, vars: 2, consts: [["name", "viewport", "content", "width=device-width, initial-scale=1"], [1, "cont"], [1, "drop"], ["appearance", "outline", 2, "width", "400px", "border-color", "blue", "border-width", "5px"], ["matNativeControl", "", 3, "change"], ["value", ""], [3, "value", "selected", 4, "ngFor", "ngForOf"], [1, "x", "col-xl-9", "col-lg-9", "col-md-12", "col-sm-6", "col-12"], [4, "ngFor", "ngForOf"], [3, "value", "selected"], [1, "a"], [2, "padding", "10px 0px 0px 20px", "position", "absolute"], [2, "padding", "10px 0px 0px 150px", "position", "absolute"], [2, "padding", "10px 0px 0px 400px", "position", "absolute"], [2, "padding", "10px 0px 0px 550px", "position", "absolute"], [2, "padding", "60px 0px 10px 180px", "position", "absolute", "text-transform", "capitalize"], ["sizes", "10px", "alt", ".", 2, "padding", "50px 0px 0px 20px", "height", "245px", "width", "150px", 3, "src"], ["sizes", "10px", 2, "padding", "50px 0px 0px 250px", "height", "245px", "width", "33%", 3, "src"], [2, "padding", "60px 0px 10px 600px", "position", "absolute", "text-transform", "capitalize"], [2, "padding", "40px 5px 0px 700px", "position", "absolute"], [2, "padding", "80px 5px 0px 700px", "position", "absolute", "text-transform", "capitalize"], [2, "padding", "100px 5px 0px 700px", "position", "absolute"], [2, "padding", "140px 5px 0px 700px", "position", "absolute"], [2, "padding", "140px 5px 0px 840px", "position", "absolute", "text-transform", "capitalize"], [2, "padding", "20px 5px 0px 840px", "position", "absolute"], [2, "padding", "180px 5px 0px 750px", "position", "absolute"], [1, "btn", "btn-success", 3, "click"], ["style", "padding: 50px 5px 0px 400px;", 4, "ngIf"], [2, "padding", "50px 5px 0px 400px"], [3, "ngSubmit"], ["userlogin", "ngForm"], [1, "form-group"], ["name", "rating", "checkedcolor", "blue", "uncheckedcolor", "black", "size", "30px", "readonly", "false", 3, "value", "totalstars", "rate"], [1, "form-group", 2, "padding-top", "30px"], ["type", "text", "id", "exampleInputPassword1", "name", "review", "placeholder", "review", "ngModel", "", 1, "form-control"], ["type", "submit", 1, "btn", "btn-success"]], template: function TranscationsComponent_Template(rf, ctx) { if (rf & 1) {
+TranscationsComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: TranscationsComponent, selectors: [["app-transcations"]], decls: 13, vars: 2, consts: [["name", "viewport", "content", "width=device-width, initial-scale=1"], [1, "cont"], [1, "drop"], ["appearance", "outline", 2, "width", "400px", "border-color", "blue", "border-width", "5px"], ["matNativeControl", "", 3, "change"], ["value", ""], [3, "value", "selected", 4, "ngFor", "ngForOf"], [1, "x", "col-xl-9", "col-lg-9", "col-md-12", "col-sm-6", "col-12"], [4, "ngFor", "ngForOf"], [3, "value", "selected"], [1, "a"], [2, "padding", "10px 0px 0px 20px", "position", "absolute"], [2, "padding", "10px 0px 0px 150px", "position", "absolute"], [2, "padding", "10px 0px 0px 400px", "position", "absolute"], [2, "padding", "10px 0px 0px 550px", "position", "absolute"], [2, "padding", "60px 0px 10px 180px", "position", "absolute", "text-transform", "capitalize"], ["sizes", "10px", "alt", ".", 2, "padding", "50px 0px 0px 20px", "height", "245px", "width", "150px", 3, "src"], ["sizes", "10px", "alt", ".", 2, "padding", "50px 0px 0px 250px", "height", "245px", "width", "33%", 3, "src"], [2, "padding", "60px 0px 10px 600px", "position", "absolute", "text-transform", "capitalize"], [2, "padding", "40px 5px 0px 700px", "position", "absolute"], [2, "padding", "80px 5px 0px 700px", "position", "absolute", "text-transform", "capitalize"], [2, "padding", "100px 5px 0px 700px", "position", "absolute"], [2, "padding", "140px 5px 0px 700px", "position", "absolute"], [2, "padding", "140px 5px 0px 840px", "position", "absolute", "text-transform", "capitalize"], [2, "padding", "20px 5px 0px 840px", "position", "absolute"], [2, "padding", "180px 5px 0px 750px", "position", "absolute"], [1, "btn", "btn-success", 3, "click"], ["style", "padding: 50px 5px 0px 400px;", 4, "ngIf"], [2, "padding", "50px 5px 0px 400px"], [3, "ngSubmit"], ["userlogin", "ngForm"], [1, "form-group"], ["name", "rating", "checkedcolor", "blue", "uncheckedcolor", "black", "size", "30px", "readonly", "false", 3, "value", "totalstars", "rate"], [1, "form-group", 2, "padding-top", "30px"], ["type", "text", "id", "exampleInputPassword1", "name", "review", "placeholder", "review", "ngModel", "", 1, "form-control"], ["type", "submit", 1, "btn", "btn-success"]], template: function TranscationsComponent_Template(rf, ctx) { if (rf & 1) {
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](0, "meta", 0);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "div", 1);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](2, "div", 2);
@@ -4553,6 +4558,7 @@ class Payment3Component {
         this.dialog = dialog;
         this.reccomservice = reccomservice;
         this.abc = [];
+        this.finalcoin = 0;
         this.pid = 1001;
         this.pname = "One Plus 9r";
         this.desc = " Operating System: OxygenOS based on Android 11 CPU: Qualcomm® Snapdragon™ 870.. GPU: Adreno 650. RAM: 8GB/12GB";
@@ -4582,6 +4588,7 @@ class Payment3Component {
             this.productdata1 = data;
             this.pid = this.productdata1[0].pid;
             this.pemail = this.productdata1[0].pemail;
+            this.pcoin = this.productdata1[0].pcoin;
             console.log(this.productdata1[0].pid);
             console.log(this.productdata1[0].pemail);
             console.log(this.abc);
@@ -4626,6 +4633,9 @@ class Payment3Component {
         }
         else {
             console.log(this.updateForm.value);
+            this._productdetailsService
+                .updateProductNotAvailable(this.productdata.pid)
+                .subscribe((data) => console.log(data));
             this.productObj.pid = this.updateForm.value.pid;
             console.log(this.updateForm.value.pid);
             this._productdetailsService
@@ -4639,8 +4649,11 @@ class Payment3Component {
             console.log(this.coindata.email);
             console.log(this.productdata.pemail);
             console.log(this.productdata.pcoin);
+            console.log(this.productdata1[0].pcoin);
+            this.finalcoin = this.productdata.pcoin - this.productdata1[0].pcoin;
+            console.log(this.finalcoin);
             this.userservice
-                .exchange(this.coindata.email, this.productdata.pemail, this.productdata.pcoin)
+                .exchange(this.coindata.email, this.productdata.pemail, this.finalcoin)
                 .subscribe((data) => console.log(data));
             sweetalert2__WEBPACK_IMPORTED_MODULE_4___default.a.fire({
                 icon: "success",
@@ -4783,7 +4796,7 @@ Payment3Component.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefine
         args: [{
                 selector: "app-payment3",
                 templateUrl: "./payment3.component.html",
-                styleUrls: ["./payment3.component.css"],
+                styleUrls: ["./payment3.component.css"]
             }]
     }], function () { return [{ type: _component_productdetails_product_details_service__WEBPACK_IMPORTED_MODULE_9__["ProductDetailsService"] }, { type: _angular_material_dialog__WEBPACK_IMPORTED_MODULE_2__["MatDialogRef"] }, { type: _update_details_service__WEBPACK_IMPORTED_MODULE_10__["UpdateDetailsService"] }, { type: _angular_router__WEBPACK_IMPORTED_MODULE_11__["Router"] }, { type: _transaction_service__WEBPACK_IMPORTED_MODULE_12__["TransactionService"] }, { type: _email_service__WEBPACK_IMPORTED_MODULE_13__["EmailService"] }, { type: _angular_material_dialog__WEBPACK_IMPORTED_MODULE_2__["MatDialog"] }, { type: _services_recommendation_service_recommedation_service__WEBPACK_IMPORTED_MODULE_14__["RecommedationService"] }]; }, null); })();
 
@@ -4915,7 +4928,7 @@ __webpack_require__.r(__webpack_exports__);
 class RegisterService {
     constructor(httpClient) {
         this.httpClient = httpClient;
-        //   baseUrl="http://localhost:8080"
+        // baseUrl="http://localhost:8080"
         this.baseUrl = "https://swapsquad.stackroute.io";
     }
     registerUser(user) {
@@ -6037,7 +6050,7 @@ __webpack_require__.r(__webpack_exports__);
 class NavService {
     constructor(httpClient) {
         this.httpClient = httpClient;
-        //private url: string ="http://localhost:8080"
+        // private url: string ="http://localhost:8080"
         this.url = "https://swapsquad.stackroute.io";
     }
     getuserdetails(email) {
