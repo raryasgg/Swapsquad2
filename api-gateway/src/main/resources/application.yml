@@ -1,9 +1,9 @@
-##eureka:
-##  client:
-##    service-url:
-##      defaultZone:
-##    register-with-eureka:
-##    fetch-registry:
+#eureka:
+#  client:
+#    service-url:
+#      defaultZone:
+#    register-with-eureka:
+#    fetch-registry:
 #server:
 #  port: 8080
 #spring:
