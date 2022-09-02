@@ -92,6 +92,9 @@ console.log(this.productdata1[0].pemail);
 
   onClickSubmitForm() {
     console.log(this.updateForm.value);
+    this._productdetailsService
+    .updateProductNotAvailable(this.productdata.pid)
+    .subscribe((data) => console.log(data));
 
     this.productObj.pid = this.updateForm.value.pid;
     console.log(this.updateForm.value.pid);
