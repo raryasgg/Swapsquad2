@@ -8,8 +8,8 @@ import { Message } from 'src/app/models/chat/message';
   providedIn: 'root'
 })
 export class ChatService {
-  // baseUrl="http://localhost:8080";
-  baseUrl = "https://swapsquad.stackroute.io";
+   baseUrl="http://localhost:8080";
+ // baseUrl = "https://swapsquad.stackroute.io";
 
   constructor(private httpClient: HttpClient) { }
 

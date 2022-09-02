@@ -8,13 +8,13 @@ import { Userrating } from '../model/userrating';
   providedIn: 'root'
 })
 export class TranServiceService {
-  // private url: string ="http://localhost:8080"
-  // private urlp: string ="http://localhost:8080"
-  // private urluser: string ="http://localhost:8080"
+  private url: string ="http://localhost:8080"
+  private urlp: string ="http://localhost:8080"
+  private urluser: string ="http://localhost:8080"
 
-  private url="https://swapsquad.stackroute.io"
-  private urlp="https://swapsquad.stackroute.io"
-  private urluser="https://swapsquad.stackroute.io"
+  // private url="https://swapsquad.stackroute.io"
+  // private urlp="https://swapsquad.stackroute.io"
+  // private urluser="https://swapsquad.stackroute.io"
 
 
   constructor(private httpClient: HttpClient) { }
