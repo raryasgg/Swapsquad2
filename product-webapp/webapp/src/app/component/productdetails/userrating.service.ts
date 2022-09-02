@@ -6,7 +6,7 @@ import { UserRating } from './user-rating';
   providedIn: 'root'
 })
 export class UserratingService {
- // private baseurl: string = "http://localhost:8080"
+//  private baseurl: string = "http://localhost:8080"
    private baseurl="https://swapsquad.stackroute.io"
 
 

@@ -16,7 +16,7 @@ import { RecommedationService } from "../services/recommendation-service/recomme
 @Component({
   selector: "app-payment3",
   templateUrl: "./payment3.component.html",
-  styleUrls: ["./payment3.component.css"],
+  styleUrls: ["./payment3.component.css"]
 })
 export class Payment3Component implements OnInit {
   public abc: Array<Product> = [];
@@ -39,6 +39,7 @@ export class Payment3Component implements OnInit {
   }
   public productdata1:any;
   public productdata: any;
+  public finalcoin:any;
   pid = 1001;
   pname = "One Plus 9r";
   desc =
@@ -61,6 +62,7 @@ export class Payment3Component implements OnInit {
         this.productdata1=data;
         this.pid=this.productdata1[0].pid;
         this.pemail=this.productdata1[0].pemail;
+        this.pcoin=this.productdata1[0].pcoin;
         console.log(this.productdata1[0].pid);
         console.log(this.productdata1[0].pemail);
         console.log(this.abc);
@@ -134,11 +136,13 @@ export class Payment3Component implements OnInit {
     console.log(this.coindata.email);
     console.log(this.productdata.pemail);
     console.log(this.productdata.pcoin);
+    console.log(this.productdata1[0].pcoin);
+    this.finalcoin.pcoin=(this.productdata.pcoin-this.productdata1[0].pcoin);
     this.userservice
       .exchange(
         this.coindata.email,
         this.productdata.pemail,
-        this.productdata.pcoin
+        this.finalcoin.pcoin
       )
       .subscribe((data) => console.log(data));
     Swal.fire({
