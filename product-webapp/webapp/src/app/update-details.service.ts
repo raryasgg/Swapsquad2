@@ -7,8 +7,10 @@ import { UserRegistration } from './user-registration';
   providedIn: 'root'
 })
 export class UpdateDetailsService {
+
   baseUrl="http://localhost:8080";
  //  baseUrl="https://swapsquad.stackroute.io"
+
   constructor(private httpClient: HttpClient) { }
 
 
