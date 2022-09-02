@@ -10,8 +10,8 @@ import { Product } from '../../models/register-product/Product';
 export class RegisterProductService {
 
   // baseUrl="http://localhost:8083/product/api/v1/product/add";
-  // baseUrl="http://localhost:8080"
-  baseUrl= "https://swapsquad.stackroute.io"
+ // baseUrl="http://localhost:8080"
+   baseUrl= "https://swapsquad.stackroute.io"
   
   constructor(private httpClient: HttpClient) { }
 
