@@ -39,7 +39,7 @@ export class Payment3Component implements OnInit {
   }
   public productdata1:any;
   public productdata: any;
-  public finalcoin:any;
+   finalcoin=0;
   pid = 1001;
   pname = "One Plus 9r";
   desc =
@@ -141,12 +141,13 @@ export class Payment3Component implements OnInit {
     console.log(this.productdata.pemail);
     console.log(this.productdata.pcoin);
     console.log(this.productdata1[0].pcoin);
-    this.finalcoin.pcoin=(this.productdata.pcoin-this.productdata1[0].pcoin);
+    this.finalcoin=(this.productdata.pcoin-this.productdata1[0].pcoin);
+    
     this.userservice
       .exchange(
         this.coindata.email,
         this.productdata.pemail,
-        this.finalcoin.pcoin
+        this.finalcoin
       )
       .subscribe((data) => console.log(data));
     Swal.fire({
