@@ -1897,6 +1897,11 @@
           key: "onClickSubmitForm",
           value: function onClickSubmitForm() {
             console.log(this.updateForm.value);
+
+            this._productdetailsService.updateProductNotAvailable(this.productdata.pid).subscribe(function (data) {
+              return console.log(data);
+            });
+
             this.productObj.pid = this.updateForm.value.pid;
             console.log(this.updateForm.value.pid);
             console.log(this.updateForm.value.pid);
@@ -3585,7 +3590,7 @@
         function UpdateDetailsService(httpClient) {
           _classCallCheck(this, UpdateDetailsService);
 
-          this.httpClient = httpClient; //baseUrl="http://localhost:8080";
+          this.httpClient = httpClient; // baseUrl="http://localhost:8080";
 
           this.baseUrl = "https://swapsquad.stackroute.io";
         }
@@ -4693,7 +4698,7 @@
         function TransactionService(httpClient) {
           _classCallCheck(this, TransactionService);
 
-          this.httpClient = httpClient; // baseUrl="http://localhost:8080";
+          this.httpClient = httpClient; //baseUrl="http://localhost:8080";
 
           this.baseUrl = "https://swapsquad.stackroute.io";
         }
@@ -5543,7 +5548,7 @@
         function UserratingService(httpClient) {
           _classCallCheck(this, UserratingService);
 
-          this.httpClient = httpClient; // private baseurl: string = "http://localhost:8080"
+          this.httpClient = httpClient; //   private baseurl: string = "http://localhost:8080"
 
           this.baseurl = "https://swapsquad.stackroute.io";
         } //get method for obtainig user ratings and reviews
@@ -8049,7 +8054,8 @@
             console.log(this.selectedValue);
 
             if (this.selectedValue == 'Purchased Products') {
-              this.transcationService.getTranscationsByByerEmailId(this.usersemail).subscribe(function (data) {
+              this.tran = null;
+              this.transcationService.getTranscationsByByerEmailId(this.useremail).subscribe(function (data) {
                 console.log("data", data); // for (let i = 0; i < data.length; i++) {
                 // this.abc.push(data[i]);
                 // }
@@ -8095,7 +8101,8 @@
                 }
               });
             } else {
-              this.transcationService.getTranscationsBySellerEmailId(this.usersemail).subscribe(function (data) {
+              this.tran = null;
+              this.transcationService.getTranscationsBySellerEmailId(this.useremail).subscribe(function (data) {
                 console.log("data", data); // for (let i = 0; i < data.length; i++) {
                 // this.abc.push(data[i]);
                 // }
@@ -8114,10 +8121,10 @@
 
                     _this17.tran[i].image = _this17.domSanitizer.bypassSecurityTrustResourceUrl("data:img/" + "jpg" + ";base64," + data.image);
                     _this17.tran[i].pcoin2 = _this17.tran[i].price_of_Product_in_coins;
-                    _this17.tran[i].pname2 = _this17.abc.pname;
+                    _this17.tran[i].pname1 = _this17.abc.pname;
                     _this17.tran[i].pcategory2 = _this17.abc.pcategory;
                     _this17.tran[i].eemail = _this17.tran[i].buyerEmail;
-                    _this17.tran[i].image2 = _this17.tran[i].image;
+                    _this17.tran[i].image1 = _this17.tran[i].image;
                     console.log("product", _this17.tran);
                   });
 
@@ -8129,10 +8136,10 @@
                     // console.log(this.abc);
 
                     _this17.tran[i].image = _this17.domSanitizer.bypassSecurityTrustResourceUrl("data:img/" + "jpg" + ";base64," + data.image);
-                    _this17.tran[i].pname1 = _this17.abc.pname;
+                    _this17.tran[i].pname2 = _this17.abc.pname;
                     _this17.tran[i].pcategory1 = _this17.abc.pcategory;
                     _this17.tran[i].eemail = _this17.tran[i].buyerEmail;
-                    _this17.tran[i].image1 = _this17.tran[i].image;
+                    _this17.tran[i].image2 = _this17.tran[i].image;
                     console.log("product", _this17.tran);
                   });
                 };
@@ -8148,7 +8155,7 @@
           value: function onClickSubmit(data, email) {
             this.toDisplay = !this.toDisplay;
             console.log(this.rating, data.review, email);
-            this.rateings.userId = this.usersemail;
+            this.rateings.userId = this.useremail;
             this.rateings.reviews = data.review;
             this.rateings.rating = this.rating;
             console.log(this.rateings);
@@ -8198,10 +8205,10 @@
 
                   _this18.tran[i].image = _this18.domSanitizer.bypassSecurityTrustResourceUrl("data:img/" + "jpg" + ";base64," + data.image);
                   _this18.tran[i].pcoin2 = _this18.tran[i].price_of_Product_in_coins;
-                  _this18.tran[i].pname2 = _this18.abc.pname;
+                  _this18.tran[i].pname1 = _this18.abc.pname;
                   _this18.tran[i].pcategory2 = _this18.abc.pcategory;
                   _this18.tran[i].eemail = _this18.tran[i].buyerEmail;
-                  _this18.tran[i].image2 = _this18.tran[i].image;
+                  _this18.tran[i].image1 = _this18.tran[i].image;
                   console.log("product", _this18.tran);
                 });
 
@@ -8213,10 +8220,10 @@
                   // console.log(this.abc);
 
                   _this18.tran[i].image = _this18.domSanitizer.bypassSecurityTrustResourceUrl("data:img/" + "jpg" + ";base64," + data.image);
-                  _this18.tran[i].pname1 = _this18.abc.pname;
+                  _this18.tran[i].pname2 = _this18.abc.pname;
                   _this18.tran[i].pcategory1 = _this18.abc.pcategory;
                   _this18.tran[i].eemail = _this18.tran[i].buyerEmail;
-                  _this18.tran[i].image1 = _this18.tran[i].image;
+                  _this18.tran[i].image2 = _this18.tran[i].image;
                   console.log("product", _this18.tran);
                 });
               };
@@ -8240,7 +8247,7 @@
         selectors: [["app-transcations"]],
         decls: 13,
         vars: 2,
-        consts: [["name", "viewport", "content", "width=device-width, initial-scale=1"], [1, "cont"], [1, "drop"], ["appearance", "outline", 2, "width", "400px", "border-color", "blue", "border-width", "5px"], ["matNativeControl", "", 3, "change"], ["value", ""], [3, "value", "selected", 4, "ngFor", "ngForOf"], [1, "x", "col-xl-9", "col-lg-9", "col-md-12", "col-sm-6", "col-12"], [4, "ngFor", "ngForOf"], [3, "value", "selected"], [1, "a"], [2, "padding", "10px 0px 0px 20px", "position", "absolute"], [2, "padding", "10px 0px 0px 150px", "position", "absolute"], [2, "padding", "10px 0px 0px 400px", "position", "absolute"], [2, "padding", "10px 0px 0px 550px", "position", "absolute"], [2, "padding", "60px 0px 10px 180px", "position", "absolute", "text-transform", "capitalize"], ["sizes", "10px", "alt", ".", 2, "padding", "50px 0px 0px 20px", "height", "245px", "width", "150px", 3, "src"], ["sizes", "10px", 2, "padding", "50px 0px 0px 250px", "height", "245px", "width", "33%", 3, "src"], [2, "padding", "60px 0px 10px 600px", "position", "absolute", "text-transform", "capitalize"], [2, "padding", "40px 5px 0px 700px", "position", "absolute"], [2, "padding", "80px 5px 0px 700px", "position", "absolute", "text-transform", "capitalize"], [2, "padding", "100px 5px 0px 700px", "position", "absolute"], [2, "padding", "140px 5px 0px 700px", "position", "absolute"], [2, "padding", "140px 5px 0px 840px", "position", "absolute", "text-transform", "capitalize"], [2, "padding", "20px 5px 0px 840px", "position", "absolute"], [2, "padding", "180px 5px 0px 750px", "position", "absolute"], [1, "btn", "btn-success", 3, "click"], ["style", "padding: 50px 5px 0px 400px;", 4, "ngIf"], [2, "padding", "50px 5px 0px 400px"], [3, "ngSubmit"], ["userlogin", "ngForm"], [1, "form-group"], ["name", "rating", "checkedcolor", "blue", "uncheckedcolor", "black", "size", "30px", "readonly", "false", 3, "value", "totalstars", "rate"], [1, "form-group", 2, "padding-top", "30px"], ["type", "text", "id", "exampleInputPassword1", "name", "review", "placeholder", "review", "ngModel", "", 1, "form-control"], ["type", "submit", 1, "btn", "btn-success"]],
+        consts: [["name", "viewport", "content", "width=device-width, initial-scale=1"], [1, "cont"], [1, "drop"], ["appearance", "outline", 2, "width", "400px", "border-color", "blue", "border-width", "5px"], ["matNativeControl", "", 3, "change"], ["value", ""], [3, "value", "selected", 4, "ngFor", "ngForOf"], [1, "x", "col-xl-9", "col-lg-9", "col-md-12", "col-sm-6", "col-12"], [4, "ngFor", "ngForOf"], [3, "value", "selected"], [1, "a"], [2, "padding", "10px 0px 0px 20px", "position", "absolute"], [2, "padding", "10px 0px 0px 150px", "position", "absolute"], [2, "padding", "10px 0px 0px 400px", "position", "absolute"], [2, "padding", "10px 0px 0px 550px", "position", "absolute"], [2, "padding", "60px 0px 10px 180px", "position", "absolute", "text-transform", "capitalize"], ["sizes", "10px", "alt", ".", 2, "padding", "50px 0px 0px 20px", "height", "245px", "width", "150px", 3, "src"], ["sizes", "10px", "alt", ".", 2, "padding", "50px 0px 0px 250px", "height", "245px", "width", "33%", 3, "src"], [2, "padding", "60px 0px 10px 600px", "position", "absolute", "text-transform", "capitalize"], [2, "padding", "40px 5px 0px 700px", "position", "absolute"], [2, "padding", "80px 5px 0px 700px", "position", "absolute", "text-transform", "capitalize"], [2, "padding", "100px 5px 0px 700px", "position", "absolute"], [2, "padding", "140px 5px 0px 700px", "position", "absolute"], [2, "padding", "140px 5px 0px 840px", "position", "absolute", "text-transform", "capitalize"], [2, "padding", "20px 5px 0px 840px", "position", "absolute"], [2, "padding", "180px 5px 0px 750px", "position", "absolute"], [1, "btn", "btn-success", 3, "click"], ["style", "padding: 50px 5px 0px 400px;", 4, "ngIf"], [2, "padding", "50px 5px 0px 400px"], [3, "ngSubmit"], ["userlogin", "ngForm"], [1, "form-group"], ["name", "rating", "checkedcolor", "blue", "uncheckedcolor", "black", "size", "30px", "readonly", "false", 3, "value", "totalstars", "rate"], [1, "form-group", 2, "padding-top", "30px"], ["type", "text", "id", "exampleInputPassword1", "name", "review", "placeholder", "review", "ngModel", "", 1, "form-control"], ["type", "submit", 1, "btn", "btn-success"]],
         template: function TranscationsComponent_Template(rf, ctx) {
           if (rf & 1) {
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](0, "meta", 0);
@@ -8537,6 +8544,7 @@
           this.dialog = dialog;
           this.reccomservice = reccomservice;
           this.abc = [];
+          this.finalcoin = 0;
           this.pid = 1001;
           this.pname = "One Plus 9r";
           this.desc = " Operating System: OxygenOS based on Android 11 CPU: Qualcomm® Snapdragon™ 870.. GPU: Adreno 650. RAM: 8GB/12GB";
@@ -8571,6 +8579,7 @@
               _this19.productdata1 = data;
               _this19.pid = _this19.productdata1[0].pid;
               _this19.pemail = _this19.productdata1[0].pemail;
+              _this19.pcoin = _this19.productdata1[0].pcoin;
               console.log(_this19.productdata1[0].pid);
               console.log(_this19.productdata1[0].pemail);
               console.log(_this19.abc);
@@ -8620,6 +8629,11 @@
               });
             } else {
               console.log(this.updateForm.value);
+
+              this._productdetailsService.updateProductNotAvailable(this.productdata.pid).subscribe(function (data) {
+                return console.log(data);
+              });
+
               this.productObj.pid = this.updateForm.value.pid;
               console.log(this.updateForm.value.pid);
 
@@ -8635,7 +8649,10 @@
               console.log(this.coindata.email);
               console.log(this.productdata.pemail);
               console.log(this.productdata.pcoin);
-              this.userservice.exchange(this.coindata.email, this.productdata.pemail, this.productdata.pcoin).subscribe(function (data) {
+              console.log(this.productdata1[0].pcoin);
+              this.finalcoin = this.productdata.pcoin - this.productdata1[0].pcoin;
+              console.log(this.finalcoin);
+              this.userservice.exchange(this.coindata.email, this.productdata.pemail, this.finalcoin).subscribe(function (data) {
                 return console.log(data);
               });
               sweetalert2__WEBPACK_IMPORTED_MODULE_4___default.a.fire({
@@ -9158,7 +9175,7 @@
         function RegisterService(httpClient) {
           _classCallCheck(this, RegisterService);
 
-          this.httpClient = httpClient; //   baseUrl="http://localhost:8080"
+          this.httpClient = httpClient; // baseUrl="http://localhost:8080"
 
           this.baseUrl = "https://swapsquad.stackroute.io";
         }
@@ -11456,7 +11473,7 @@
         function NavService(httpClient) {
           _classCallCheck(this, NavService);
 
-          this.httpClient = httpClient; //private url: string ="http://localhost:8080"
+          this.httpClient = httpClient; // private url: string ="http://localhost:8080"
 
           this.url = "https://swapsquad.stackroute.io";
         }
