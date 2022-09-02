@@ -8,8 +8,8 @@ import { Account } from 'src/app/models/account-data/account';
 })
 export class AccountService {
 
-   private baseurl="http://localhost:8080"
- // private baseurl="https://swapsquad.stackroute.io"
+  // private baseurl="http://localhost:8080"
+  private baseurl="https://swapsquad.stackroute.io"
   // private baserurla="http://localhost:9998/users/addaccount"
  
 

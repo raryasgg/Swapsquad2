@@ -196,9 +196,9 @@ export class Payment3Component implements OnInit {
     });
    
   }
-  // this.router.navigate(["/navbar/recommendation-service"])
-  // .then(() => {
-  //   window.location.reload();
-  // });
+  this.router.navigate(["/navbar/recommendation-service"])
+  .then(() => {
+    window.location.reload();
+  });
 }
 }

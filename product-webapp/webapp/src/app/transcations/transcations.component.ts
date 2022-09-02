@@ -52,7 +52,7 @@ export class TranscationsComponent implements OnInit {
     console.log(this.selectedValue)
 
     if(this.selectedValue=='Purchased Products'){
-
+      this.tran=null
       this.transcationService.getTranscationsByByerEmailId(this.useremail).subscribe((data:any)=>{
         console.log("data",data);
         // for (let i = 0; i < data.length; i++) {
@@ -107,8 +107,10 @@ export class TranscationsComponent implements OnInit {
         }
       });
     }else{
+      this.tran=null
       this.transcationService.getTranscationsBySellerEmailId(this.useremail).subscribe((data:any)=>{
         console.log("data",data);
+        
         // for (let i = 0; i < data.length; i++) {
         // this.abc.push(data[i]);
         // }

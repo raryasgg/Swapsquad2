@@ -10,8 +10,8 @@ import { Product } from './product';
 export class ProductDetailsService {
 
 
-    private url: string ="http://localhost:8080"
-    //    private url="https://swapsquad.stackroute.io"
+    //  private url: string ="http://localhost:8080"
+      private url="https://swapsquad.stackroute.io"
 
 
   constructor(private httpClient: HttpClient) { }
