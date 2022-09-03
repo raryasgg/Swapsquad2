@@ -15,7 +15,7 @@ public class Consumer {
 	  private RecommendationServiceImp  recommendation;
 	 @RabbitListener(queues = RabbitMq.QUEUE)
 	    public void consumeMessageFromQueue(IncomingProductData orderStatus) {
-	        System.out.println("Message recieved from queue : " + orderStatus);
+	        //System.out.println("Message recieved from queue : " + orderStatus);
 	        
 	        recommendation.createNode(orderStatus);
 	        
