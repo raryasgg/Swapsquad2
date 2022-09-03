@@ -5,7 +5,7 @@ import { LoginComponent } from './login.component';
 
 
 
-//const AUTH_API = 'http://localhost:8080/authenticationservice/api/auth/';
+// const AUTH_API = 'http://localhost:8080/authenticationservice/api/auth/';
  const AUTH_API="https://swapsquad.stackroute.io/authenticationservice/api/auth/"
 
 const httpOptions = {

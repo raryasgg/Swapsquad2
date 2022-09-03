@@ -40,7 +40,7 @@ export class ChatComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.chatId = localStorage.getItem('chatId');
+    
     // For the first time displaying the chat by the chatId
     this.chatId = localStorage.getItem('chatId');
     this.chatService.getChatById(this.chatId).subscribe(data => {

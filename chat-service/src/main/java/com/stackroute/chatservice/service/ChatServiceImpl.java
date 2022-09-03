@@ -124,15 +124,16 @@ public class ChatServiceImpl implements ChatService {
 
         HashSet<Chat> chat = chatRepository.getChatByOwnerEmail(email);
         HashSet<Chat> chat1 = chatRepository.getChatByBuyerEmail(email);
+        chat1.addAll(chat);
         if (chat.isEmpty() && chat1.isEmpty()) {
             log.debug("Chat not exists in the repository");
             throw new ChatNotFoundException();
-        } else if (chat.isEmpty()) {
-            log.debug("Inside the ChatServiceImpl -- getOwnerEmail methods");
-            return chat1;
-        } else {
+        } else if (chat1.isEmpty()) {
             log.debug("Inside the ChatServiceImpl -- getOwnerEmail methods");
             return chat;
+        } else {
+            log.debug("Inside the ChatServiceImpl -- getOwnerEmail methods");
+            return chat1;
         }
     }
 
