@@ -7,7 +7,7 @@
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! D:\CGI\Project\SwapSquad_1Sep\swapsquad\product-webapp\webapp\src\polyfills.ts */"hN/g");
+module.exports = __webpack_require__(/*! /home/chaitali/Documents/swapsquad/product-webapp/webapp/src/polyfills.ts */"hN/g");
 
 
 /***/ }),
